@@ -1,0 +1,111 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter --quiet assemble --depfile /Users/meetshahsiddhivinayakcreativewitty/Desktop/robustremedy/build/app/intermediates/flutter/debug/flutter_build.d --output /Users/meetshahsiddhivinayakcreativewitty/Desktop/robustremedy/build/app/intermediates/flutter/debug -dTargetFile=/Users/meetshahsiddhivinayakcreativewitty/Desktop/robustremedy/lib/main.dart -dTargetPlatform=android -dBuildMode=debug -dTrackWidgetCreation=true --DartDefines=flutter.inspector.structuredErrors%3Dtrue debug_android_application
+
+## exception
+
+FileSystemException: FileSystemException: writeFrom failed, path = '/Users/meetshahsiddhivinayakcreativewitty/Desktop/robustremedy/.dart_tool/flutter_build/bed44b0524731924c5dc601019461f79/outputs.json' (OS Error: No space left on device, errno = 28)
+
+```
+#0      _RandomAccessFile.writeFromSync (dart:io/file_impl.dart:870:7)
+#1      _File.writeAsBytesSync (dart:io/file_impl.dart:606:14)
+#2      _File.writeAsStringSync (dart:io/file_impl.dart:628:5)
+#3      ForwardingFile.writeAsStringSync (package:file/src/forwarding/forwarding_file.dart:154:16)
+#4      FlutterBuildSystem.build (package:flutter_tools/src/build_system/build_system.dart:588:8)
+<asynchronous suspension>
+#5      AssembleCommand.runCommand (package:flutter_tools/src/commands/assemble.dart:221:58)
+#6      FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:860:18)
+<asynchronous suspension>
+#7      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:741:33)
+<asynchronous suspension>
+#8      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart)
+#9      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:29)
+#10     _rootRun (dart:async/zone.dart:1190:13)
+#11     _CustomZone.run (dart:async/zone.dart:1093:19)
+#12     _runZoned (dart:async/zone.dart:1630:10)
+#13     runZoned (dart:async/zone.dart:1550:10)
+#14     AppContext.run (package:flutter_tools/src/base/context.dart:149:18)
+#15     FlutterCommand.run (package:flutter_tools/src/runner/flutter_command.dart:730:20)
+#16     CommandRunner.runCommand (package:args/command_runner.dart:197:27)
+#17     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:332:21)
+<asynchronous suspension>
+#18     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart)
+#19     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:29)
+#20     _rootRun (dart:async/zone.dart:1190:13)
+#21     _CustomZone.run (dart:async/zone.dart:1093:19)
+#22     _runZoned (dart:async/zone.dart:1630:10)
+#23     runZoned (dart:async/zone.dart:1550:10)
+#24     AppContext.run (package:flutter_tools/src/base/context.dart:149:18)
+#25     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:282:19)
+<asynchronous suspension>
+#26     CommandRunner.run.<anonymous closure> (package:args/command_runner.dart:112:25)
+#27     new Future.sync (dart:async/future.dart:223:31)
+#28     CommandRunner.run (package:args/command_runner.dart:112:14)
+#29     FlutterCommandRunner.run (package:flutter_tools/src/runner/flutter_command_runner.dart:231:18)
+#30     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:69:22)
+#31     _rootRun (dart:async/zone.dart:1190:13)
+#32     _CustomZone.run (dart:async/zone.dart:1093:19)
+#33     _runZoned (dart:async/zone.dart:1630:10)
+#34     runZonedGuarded (dart:async/zone.dart:1618:12)
+#35     runZoned (dart:async/zone.dart:1547:12)
+#36     run.<anonymous closure> (package:flutter_tools/runner.dart:67:18)
+<asynchronous suspension>
+#37     run.<anonymous closure> (package:flutter_tools/runner.dart)
+#38     runInContext.runnerWrapper (package:flutter_tools/src/context_runner.dart:62:18)
+<asynchronous suspension>
+#39     runInContext.runnerWrapper (package:flutter_tools/src/context_runner.dart)
+#40     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:29)
+#41     _rootRun (dart:async/zone.dart:1190:13)
+#42     _CustomZone.run (dart:async/zone.dart:1093:19)
+#43     _runZoned (dart:async/zone.dart:1630:10)
+#44     runZoned (dart:async/zone.dart:1550:10)
+#45     AppContext.run (package:flutter_tools/src/base/context.dart:149:18)
+#46     runInContext (package:flutter_tools/src/context_runner.dart:65:24)
+#47     run (package:flutter_tools/runner.dart:52:10)
+#48     main (package:flutter_tools/executable.dart:73:9)
+#49     main (file:///b/s/w/ir/k/archive/flutter/packages/flutter_tools/bin/flutter_tools.dart:8:3)
+#50     _startIsolate.<anonymous closure> (dart:isolate-patch/isolate_patch.dart:299:32)
+#51     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:168:12)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 1.20.2, on Mac OS X 10.15.7 19H2, locale en-IN)
+    • Flutter version 1.20.2 at /Users/meetshahsiddhivinayakcreativewitty/Downloads/flutter
+    • Framework revision bbfbf1770c (6 months ago), 2020-08-13 08:33:09 -0700
+    • Engine revision 9d5b21729f
+    • Dart version 2.9.1
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 30.0.2)
+    • Android SDK at /Users/meetshahsiddhivinayakcreativewitty/Library/Android/sdk
+    • Platform android-30, build-tools 30.0.2
+    • ANDROID_HOME = /Users/meetshahsiddhivinayakcreativewitty/Library/Android/sdk
+    • Java binary at: /Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/bin/java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_242-release-1644-b3-6222593)
+    • All Android licenses accepted.
+
+[!] Xcode - develop for iOS and macOS
+    ✗ Xcode installation is incomplete; a full installation is necessary for iOS development.
+      Download at: https://developer.apple.com/xcode/download/
+      Or install Xcode via the App Store.
+      Once installed, run:
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        sudo xcodebuild -runFirstLaunch
+    • CocoaPods version 1.9.3
+
+[✓] Android Studio (version 4.0)
+    • Android Studio at /Applications/Android Studio.app/Contents
+    • Flutter plugin version 48.1.2
+    • Dart plugin version 193.7361
+    • Java version OpenJDK Runtime Environment (build 1.8.0_242-release-1644-b3-6222593)
+
+[✓] Connected device (2 available)
+    • SM G570F (mobile)       • 42005b94f2f19323 • android-arm • Android 8.0.0 (API 26)
+    • sdk gphone x86 (mobile) • emulator-5554    • android-x86 • Android 11 (API 30) (emulator)
+
+! Doctor found issues in 1 category.
+```
