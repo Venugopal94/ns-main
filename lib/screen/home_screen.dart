@@ -13,7 +13,7 @@ import 'package:robustremedy/widgets/AppDrawer.dart';
 import 'package:robustremedy/widgets/badge.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity/connectivity.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 import '../widgets/appdrawer_without_login.dart';
@@ -71,7 +71,7 @@ class _HomeStateScreen extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    GetConnect();
+    // GetConnect();
     getData();
     getStringValuesSF();
   }
@@ -191,21 +191,21 @@ class _HomeStateScreen extends State<HomeScreen> {
   }
 
   void GetConnect() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
-      setState(() {
-        isInternetOn = false;
-      });
-    } else if (connectivityResult == ConnectivityResult.mobile) {
-      iswificonnected = false;
-    } else if (connectivityResult == ConnectivityResult.wifi) {
-      iswificonnected = true;
+    // var connectivityResult = await (Connectivity().checkConnectivity());
+    // if (connectivityResult == ConnectivityResult.none) {
+    //   setState(() {
+    //     isInternetOn = false;
+    //   });
+    // } else if (connectivityResult == ConnectivityResult.mobile) {
+    //   iswificonnected = false;
+    // } else if (connectivityResult == ConnectivityResult.wifi) {
+    //   iswificonnected = true;
       
-        wifiBSSID = await (Connectivity().getWifiBSSID());
-        wifiIP = await (Connectivity().getWifiIP());
-        wifiName = await (Connectivity().getWifiName());
-      // });
-    }
+    //     wifiBSSID = await (Connectivity().getWifiBSSID());
+    //     wifiIP = await (Connectivity().getWifiIP());
+    //     wifiName = await (Connectivity().getWifiName());
+    //   // });
+    // }
   }
 }
 

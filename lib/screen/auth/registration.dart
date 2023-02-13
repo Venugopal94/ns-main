@@ -104,8 +104,8 @@ class _SignUpPageState extends State<RegistrationScreen> {
   }
 
   _getLocation() async {
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    Position position = await Geolocator().getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
     debugPrint('location: ${position.latitude}');
     final coordinates = new Coordinates(position.latitude, position.longitude);
     var addresses =
@@ -134,21 +134,19 @@ class _SignUpPageState extends State<RegistrationScreen> {
     RegExp regex = new RegExp(pattern);
     if (mobileno.length != 8) {
       showInSnackBar("Invalid Mobile No");
-      
     } else if (firstname.length == 0 ||
         lastname.length == 0 ||
         buildingno.length == 0 ||
         zone.length == 0 ||
         street.length == 0 ||
-        password.length == 0 || confirmPasswordController.text.length == 0) {
+        password.length == 0 ||
+        confirmPasswordController.text.length == 0) {
       showInSnackBar("Field Should not be empty");
     } else if (!regex.hasMatch(email)) {
       showInSnackBar("Enter Valid Email");
-    } else if(passwordController.text != confirmPasswordController.text){
+    } else if (passwordController.text != confirmPasswordController.text) {
       showInSnackBar('Password Does not match');
-    }
-    
-    else {
+    } else {
       // SERVER API URL
       var url =
           'https://onlinefamilypharmacy.com/mobileapplication/register.php';
@@ -188,7 +186,6 @@ class _SignUpPageState extends State<RegistrationScreen> {
       passwordController.clear();
       showInSnackBar(
           "Verification link has been sent to your email. Please verify to complete registration!");
-
     }
   }
 
@@ -547,8 +544,6 @@ class _SignUpPageState extends State<RegistrationScreen> {
       backgroundColor: LightColor.midnightBlue,
     ));
   }
-
-  
 }
 
 class UserApi {
