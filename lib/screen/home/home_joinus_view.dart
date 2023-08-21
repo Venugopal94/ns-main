@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:robustremedy/screen/static/Contact_Us.dart';
 import 'package:robustremedy/screen/static/Terms_Condition.dart';
@@ -135,11 +134,11 @@ class joinusview extends StatelessWidget {
 
 class _GenieCardView extends StatelessWidget {
   const _GenieCardView({
-    Key key,
-    @required this.title,
-    @required this.desc,
-    @required this.image,
-    this.onTap,
+    Key? key,
+    required this.title,
+    required this.desc,
+    required this.image,
+    required this.onTap,
   }) : super(key: key);
 
   final String title;
@@ -160,7 +159,7 @@ class _GenieCardView extends StatelessWidget {
             color: Colors.white,
             boxShadow: <BoxShadow>[
               BoxShadow(
-                color: Colors.grey[200],
+                color: Colors.grey[200] ?? Color(1),
                 blurRadius: 2.0,
                 offset: Offset(1.0, 3.0),
               )
@@ -171,7 +170,7 @@ class _GenieCardView extends StatelessWidget {
             children: <Widget>[
               Text(
                 title,
-                style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 22.0),
+                style: Theme.of(context).textTheme.subtitle2?.copyWith(fontSize: 22.0),
               ),
               UIHelper.verticalSpaceMedium(),
               Row(

@@ -10,31 +10,31 @@ import 'package:robustremedy/themes/light_color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderItem {
-  final String ecommerceorderstatus;
-  final String delivery_mode;
-  final String deliveryboy;
-  final String id;
-  final String billing_address_id;
-  final String shipping_address;
-  final String gross_total;
-  final String total_tax;
-  final String delivery_charges;
-  final String total_discount;
-  final String net_total;
-  final String comments;
-  final String delivery_pickup_date;
-  final String delivery_pickup_time;
-  final String created_on;
-  final String first_name;
-  final String last_name;
-  final String mobile;
-  final String email;
-  final String mode;
-  final String mode_service;
-  final String paymentstatus;
-  final String ecommerceorderpaymentstatustitle;
-  final String amount;
-  final String transaction_reference_no;
+  final String? ecommerceorderstatus;
+  final String? delivery_mode;
+  final String? deliveryboy;
+  final String? id;
+  final String? billing_address_id;
+  final String? shipping_address;
+  final String? gross_total;
+  final String? total_tax;
+  final String? delivery_charges;
+  final String? total_discount;
+  final String? net_total;
+  final String? comments;
+  final String? delivery_pickup_date;
+  final String? delivery_pickup_time;
+  final String? created_on;
+  final String? first_name;
+  final String? last_name;
+  final String? mobile;
+  final String? email;
+  final String? mode;
+  final String? mode_service;
+  final String? paymentstatus;
+  final String? ecommerceorderpaymentstatustitle;
+  final String? amount;
+  final String? transaction_reference_no;
   // final String email;
   OrderItem({
     this.ecommerceorderstatus,
@@ -106,7 +106,7 @@ class _myorderState extends State<myorder> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id = prefs.getString('id');
+    String? user_id = prefs.getString('id');
     return user_id;
   }
 
@@ -119,8 +119,8 @@ class _myorderState extends State<myorder> {
         future: _fetchmyorder(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<OrderItem> data = snapshot.data;
-            if (snapshot.data.length == 0) {
+            List<OrderItem> data = snapshot.data ?? [];
+            if (snapshot.data?.length == 0) {
               return Container(
                   padding: EdgeInsets.only(left: 15, right: 15, top: 15),
                   child: Image.asset("assets/noorderfound.png"));
@@ -144,7 +144,7 @@ class _myorderState extends State<myorder> {
     print(token);
     var data = {'userid': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/myorders.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     // _finalprice_= jsonResponse["price"].map((item) => new Item.fromJson(item)).toList();

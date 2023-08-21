@@ -23,7 +23,7 @@ class Warehouse extends StatefulWidget {
 
 class _About_UsScreen extends State<Warehouse> {
   static const routeName = "/";
-  String email;
+  String? email;
 
   void getData() async {
     SharedPreferences pf = await SharedPreferences.getInstance();

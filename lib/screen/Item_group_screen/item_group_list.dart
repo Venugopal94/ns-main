@@ -9,41 +9,41 @@ import 'package:robustremedy/themes/light_color.dart';
 class ListItems extends StatefulWidget {
   final itemnull;
 
-  ListItems({Key key, @required this.itemnull}) : super(key: key);
+  ListItems({Key? key, @required this.itemnull}) : super(key: key);
   @override
   _ListItemsState createState() => _ListItemsState();
 }
 
 class ItemGrpData {
-  final String itemid;
-  final String img;
-  final String itemname_en;
-  final String labelname;
-  final String itempack;
-  final String itemstrength;
-  final String itemmaingrouptitle;
-  final String itemgrouptitle;
-  final String itemproductgrouptitle;
-  final String itemproductgroupimage;
-  final String type;
-  final String itemdosageid;
-  final String itemclassid;
-  final String manufactureshortname;
-  final String seq;
-  final String maxretailprice;
-  final String minretailprice;
-  final String rs;
-  final String origin;
-  final String whichcompany;
-  final String allowsonapp;
-  final String status;
-  final String shortdescription;
-  final String description;
-  final String additionalinformation;
-  final String itemproductgroupid;
-  final String url;
-  final String stock;
-final String itemgroupid;
+  final String? itemid;
+  final String? img;
+  final String? itemname_en;
+  final String? labelname;
+  final String? itempack;
+  final String? itemstrength;
+  final String? itemmaingrouptitle;
+  final String? itemgrouptitle;
+  final String? itemproductgrouptitle;
+  final String? itemproductgroupimage;
+  final String? type;
+  final String? itemdosageid;
+  final String? itemclassid;
+  final String? manufactureshortname;
+  final String? seq;
+  final String? maxretailprice;
+  final String? minretailprice;
+  final String? rs;
+  final String? origin;
+  final String? whichcompany;
+  final String? allowsonapp;
+  final String? status;
+  final String? shortdescription;
+  final String? description;
+  final String? additionalinformation;
+  final String? itemproductgroupid;
+  final String? url;
+  final String? stock;
+final String? itemgroupid;
   ItemGrpData(
       {this.itemid,
       this.img,
@@ -116,7 +116,7 @@ class _ListItemsState extends State<ListItems> {
           future: _fetchItemGrpData(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<ItemGrpData> data = snapshot.data;
+              List<ItemGrpData> data = snapshot.data ?? [];
               return Grid(context, data);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
@@ -132,7 +132,7 @@ class _ListItemsState extends State<ListItems> {
   Future<List<ItemGrpData>> _fetchItemGrpData() async {
     final url = 'https://onlinefamilypharmacy.com/mobileapplication/categories/list_groupitems.php';
     var data = {'itemid': widget.itemnull};
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -164,8 +164,8 @@ Grid(context, data) {
               decoration: BoxDecoration(
                   color: Colors.white12,
                   border: Border(
-                    bottom: BorderSide(color: Colors.grey[300], width: 1.5),
-                    top: BorderSide(color: Colors.grey[300], width: 1.5),
+                    bottom: BorderSide(color: Colors.grey[300] ?? Color(1), width: 1.5),
+                    top: BorderSide(color: Colors.grey[300] ?? Color(1), width: 1.5),
                   )),
               height: 100.0,
               child: Row(

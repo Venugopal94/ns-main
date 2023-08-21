@@ -4,27 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:bouncing_widget/bouncing_widget.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:geocoding/geocoding.dart';
+//import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:google_fonts/google_fonts.dart';
 import 'package:robustremedy/screen/auth/login.dart';
 import 'package:robustremedy/screen/auth/usermodel.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/widgets/bezierContainer.dart';
-import 'package:toast/toast.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geocoder/geocoder.dart';
 
-List data = List();
-String selectedvalue;
+List<dynamic> data = [];
+String? selectedvalue;
 final String url1 =
     'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=zonearea';
 
 class RegistrationScreen extends StatefulWidget {
-  RegistrationScreen({Key key, this.title}) : super(key: key);
+  RegistrationScreen({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  String? title;
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -32,7 +30,7 @@ class RegistrationScreen extends StatefulWidget {
 
 class _SignUpPageState extends State<RegistrationScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   // Boolean variable for CircularProgressIndicator.
   bool visible = false;
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99, 1);
@@ -55,16 +53,16 @@ class _SignUpPageState extends State<RegistrationScreen> {
     // fetchData();
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     var android = AndroidInitializationSettings('@mipmap/ic_launcher');
-    var ios = IOSInitializationSettings();
+    var ios = DarwinInitializationSettings();
     var initialise = InitializationSettings(android: android, iOS: ios);
     flutterLocalNotificationsPlugin.initialize(initialise,
-        onSelectNotification: onSelectionNotification);
+        onDidReceiveNotificationResponse: onSelectionNotification);
     //checkLogin();
   }
 
-  Future onSelectionNotification(String payload) async {
-    if (payload != null) {
-      debugPrint("Notification :" + payload);
+  Future onSelectionNotification(NotificationResponse details) async {
+    if (details?.payload != null) {
+      debugPrint("Notification :" + details.payload!);
     }
   }
 
@@ -92,8 +90,8 @@ class _SignUpPageState extends State<RegistrationScreen> {
 
   Future showNotification() async {
     var android = AndroidNotificationDetails(
-        'channelId', 'Online Family Pharmacy', 'channelDescription');
-    var ios = IOSNotificationDetails();
+        'channelId', 'Online Family Pharmacy');
+    var ios = DarwinNotificationDetails();
     var platform = NotificationDetails(android: android, iOS: ios);
     flutterLocalNotificationsPlugin.show(
         0,
@@ -104,14 +102,13 @@ class _SignUpPageState extends State<RegistrationScreen> {
   }
 
   _getLocation() async {
-    Position position = await Geolocator().getCurrentPosition(
+    Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     debugPrint('location: ${position.latitude}');
-    final coordinates = new Coordinates(position.latitude, position.longitude);
     var addresses =
-        await Geocoder.local.findAddressesFromCoordinates(coordinates);
+        await placemarkFromCoordinates(position.latitude, position.longitude);
     var first = addresses.first;
-    print("${first.featureName} : ${first.addressLine}");
+    print("${first.name}");
   }
 
   Future userRegistration() async {
@@ -126,10 +123,10 @@ class _SignUpPageState extends State<RegistrationScreen> {
     String mobileno = mobileController.text;
     String email = emailController.text;
     String buildingno = buildingController.text;
-    String zone = selectedvalue;
+    String zone = selectedvalue ?? "";
     String street = streetController.text;
     String password = passwordController.text;
-    Pattern pattern =
+    String pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
     if (mobileno.length != 8) {
@@ -164,7 +161,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
       };
 
       // Starting Web API Call.
-      var response = await http.post(url, body: json.encode(data));
+      var response = await http.post(Uri(path: url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
@@ -424,32 +421,25 @@ class _SignUpPageState extends State<RegistrationScreen> {
                             height: 45,
                             width: width / 1.2,
                             color: Color(0xfff3f3f4),
-                            child: DropdownSearch<UserModel>(
-                              dropdownSearchDecoration: InputDecoration(
-
-                                  //enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-                                  //border: OutlineInputBorder(),
-
-                                  ),
-                              mode: Mode.BOTTOM_SHEET,
-                              autoFocusSearchBox: true,
-                              autoValidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              showSearchBox: true,
-                              onFind: (String filter) async {
+                            child:
+                            DropdownSearch<UserModel>(
+                              popupProps: PopupProps.menu(
+                                showSelectedItems: true,
+                              ),
+                              asyncItems: (String? filter) async {
                                 var response = await Dio().get(
                                   "https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=zonearea",
                                   queryParameters: {"filter": filter},
                                 );
                                 var models =
-                                    UserModel.fromJsonList(response.data);
+                                UserModel.fromJsonList(response.data);
                                 return models;
                               },
-                              onChanged: (UserModel data) {
+                              onChanged: (UserModel? data) {
                                 print(data);
-                                selectedvalue = data.id;
+                                selectedvalue = data?.id ?? "";
                               },
-                            ),
+                            )
                           ),
                         ]),
                     SizedBox(
@@ -539,7 +529,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));
@@ -548,7 +538,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
 
 class UserApi {
   static Future<List<ZoneArea>> getUsersuggestion(String query) async {
-    final response = await http.post(url1);
+    final response = await http.post(Uri(path: url1));
 
     final List Zone = json.decode(response.body);
     return Zone.map((json) => ZoneArea.fromJson(json)).where((user) {
@@ -563,9 +553,9 @@ class UserApi {
 class ZoneArea {
   final String zone;
   final String area;
-  final String id;
+  final String? id;
 
-  const ZoneArea({@required this.zone, @required this.area, this.id});
+  const ZoneArea({required this.zone, required this.area, this.id});
   static ZoneArea fromJson(Map<String, dynamic> json) =>
       ZoneArea(zone: json['zone'], area: json['area'], id: json['id']);
 }
@@ -574,8 +564,8 @@ class Button extends StatelessWidget {
   var btnText = "";
   var onClick;
 
-  Button({this.btnText, this.onClick});
-  Color yellowColors = Colors.yellow[700];
+  Button({required this.btnText, this.onClick});
+  Color yellowColors = Colors.yellow[700] ??  Color(0);
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99, 1);
   @override
   Widget build(BuildContext context) {

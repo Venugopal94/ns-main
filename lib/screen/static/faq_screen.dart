@@ -1,16 +1,15 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:expansion_card/expansion_card.dart';
 import 'dart:convert';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class faqItem {
-  final String answer;
-  final String question;
-  final String id;
+  final String? answer;
+  final String? question;
+  final String? id;
 
   faqItem({
     this.answer,
@@ -41,8 +40,8 @@ class _faqState extends State<faq> {
         future: _fetchCartItem(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<faqItem> data = snapshot.data;
-            if (snapshot.data.length == 0) {
+            List<faqItem> data = snapshot.data ?? [];
+            if (snapshot.data?.length == 0) {
               return Container(
                   padding: EdgeInsets.only(left: 15, right: 15, top: 80));
               //child: Image.asset("assets/cart.png"));
@@ -63,7 +62,7 @@ class _faqState extends State<faq> {
 
   Future<List<faqItem>> _fetchCartItem() async {
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=faq';
-    var response = await http.post(url);
+    var response = await http.post(Uri(path: url));
 
     List jsonResponse = json.decode(response.body);
 

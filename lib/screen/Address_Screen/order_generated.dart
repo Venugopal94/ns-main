@@ -6,7 +6,7 @@ import 'package:robustremedy/themes/light_color.dart';
 
 class Order_GeneratedScreen extends StatefulWidget {
   final int orderId;
-  Order_GeneratedScreen({Key key, @required this.orderId})
+  Order_GeneratedScreen({Key? key, required this.orderId})
       : super(key: key);
   @override
   _Order_GeneratedScreenState createState() => _Order_GeneratedScreenState();
@@ -14,8 +14,8 @@ class Order_GeneratedScreen extends StatefulWidget {
 
 class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
     with SingleTickerProviderStateMixin {
-  Animation<double> opacity;
-  AnimationController controller;
+  Animation<double>? opacity;
+  AnimationController? controller;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
     return WillPopScope(
       onWillPop: () async => Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => HomeScreen()),
-          (Route<dynamic> route) => false),
+          (Route<dynamic> route) => false) as bool,
       child: Scaffold(
           appBar: AppBar(
             title: Text("Confirmation"),
@@ -101,22 +101,22 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
                       child: ButtonTheme(
                           minWidth: width,
                           height: 70.0,
-                          child: RaisedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeScreen()));
-                            },
-                            color: LightColor.yellowColor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
+                          child:
+                          ElevatedButton(onPressed:(){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen()));
+                          },
+                            style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), foregroundColor: LightColor.yellowColor),
+
                             child: Text("Continue Shopping",
                                 style: TextStyle(
                                     color: LightColor.midnightBlue,
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold)),
-                          )),
+                          )
+                          ),
                     ),
                   ),
                 ]),

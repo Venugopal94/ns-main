@@ -10,16 +10,16 @@ import 'package:robustremedy/themes/light_color.dart';
 
 
 class order_details {
-  final String id;
-  final String order_id;
-  final String item_code;
-  final String itemname_en;
-  final String img;
-  final String quantity;
-  final String gross_total;
-  final String total_tax;
-  final String total_discount;
-  final String net_total;
+  final String? id;
+  final String? order_id;
+  final String? item_code;
+  final String? itemname_en;
+  final String? img;
+  final String? quantity;
+  final String? gross_total;
+  final String? total_tax;
+  final String? total_discount;
+  final String? net_total;
 
   order_details({this.id,
     this.order_id,
@@ -51,7 +51,7 @@ class order_details {
 }
 class OrderdetailsItemsDemo extends StatefulWidget {
   final id;
-  OrderdetailsItemsDemo({Key key, @required this.id}) : super(key: key);
+  OrderdetailsItemsDemo({Key? key, @required this.id}) : super(key: key);
   //List data;
   @override
   _OrderdetailsItemsDemoState createState() => _OrderdetailsItemsDemoState();
@@ -64,7 +64,7 @@ class _OrderdetailsItemsDemoState extends State<OrderdetailsItemsDemo> {
       future: _fetchJobs(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<order_details> data = snapshot.data;
+          List<order_details> data = snapshot.data ?? [];
           return imageSlider(context, data);
 
         } else if (snapshot.hasError) {
@@ -78,7 +78,7 @@ class _OrderdetailsItemsDemoState extends State<OrderdetailsItemsDemo> {
   Future<List<order_details>> _fetchJobs() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/order_details_item.php';
     var data = {'itemid':widget.id};
-    final response = await http.post(jobsListAPIUrl, body: json.encode(data));
+    final response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

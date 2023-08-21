@@ -18,14 +18,14 @@ class Advertise extends StatelessWidget {
 }
 
 class Job {
-  final String url;
+  String url;
   final String title;
 
-  Job({this.url,this.title});
+  Job({required this.url,required this.title});
 
   factory Job.fromJson(Map<String, dynamic> json) {
     return Job(
-      url: json['image'],
+      url: json['image'], title: '',
       //title:json['title'],
     );
   }
@@ -36,16 +36,16 @@ class AdvertiseDemo extends StatefulWidget {
 }
 
 class _AdvertiseDemoState extends State<AdvertiseDemo> {
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   @override
   void initState() {
     super.initState();
     flutterLocalNotificationsPlugin =FlutterLocalNotificationsPlugin();
     var android= AndroidInitializationSettings('@mipmap/ic_launcher');
-    var ios= IOSInitializationSettings();
+    var ios= DarwinInitializationSettings();
     var initialise= InitializationSettings(android:android, iOS:ios );
-    flutterLocalNotificationsPlugin.initialize(initialise,onSelectNotification: onSelectionNotification);
+    flutterLocalNotificationsPlugin.initialize(initialise);
   }
 Future onSelectionNotification(String payload) async{
     if(payload != null){
@@ -54,8 +54,8 @@ Future onSelectionNotification(String payload) async{
 }
 
 Future showNotification() async{
-    var android = AndroidNotificationDetails('channelId', 'Online Family Pharmacy','channelDescription');
-    var ios= IOSNotificationDetails();
+    var android = AndroidNotificationDetails('channelId', 'Online Family Pharmacy');
+    var ios= DarwinNotificationDetails();
     var platform= NotificationDetails(android: android, iOS: ios);
     flutterLocalNotificationsPlugin.show(0, 'Online Family Pharmacy | Buy medicines online at best price in Qatar', 'Shop online on Qatars Most trusted pharmacy with a wide collection of items ranging from personal care, Baby care, Home care products, Medical equipment & supplements we are the healthcare with best priced deals we offer Home delivery across Qatar.',platform,payload:'some details');
 }
@@ -65,7 +65,7 @@ Future showNotification() async{
       future: _fetchJobs(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Job> data = snapshot.data;
+          List<Job>? data = snapshot.data;
           return imageSlider(context, data);
 
         } else if (snapshot.hasError) {
@@ -78,7 +78,7 @@ Future showNotification() async{
 
   Future<List<Job>> _fetchJobs() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=advertise';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
      //showNotification();

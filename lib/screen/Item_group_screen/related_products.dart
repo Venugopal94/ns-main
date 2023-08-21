@@ -11,36 +11,36 @@ import 'package:robustremedy/screen/Item_group_screen/detail_page.dart';
 import 'package:robustremedy/themes/light_color.dart';
 
 class related_products {
-  final String itemid;
-  final String img;
-  final String itemname_en;
-  final String labelname;
-  final String itempack;
-  final String itemstrength;
-  final String itemmaingrouptitle;
-  final String itemgrouptitle;
-  final String itemproductgrouptitle;
-  final String itemproductgroupimage;
-  final String type;
-  final String itemgroupid;
-  final String itemdosageid;
-  final String itemclassid;
-  final String manufactureshortname;
-  final String seq;
-  final String maxretailprice;
-  final String minretailprice;
-  final String rs;
-  final String origin;
-  final String whichcompany;
-  final String allowsonapp;
-  final String status;
-  final String shortdescription;
-  final String description;
-  final String additionalinformation;
-  final String itemproductgroupid;
-  final String url;
-  final String itemmaingroupid;
-  final String stock;
+  final String? itemid;
+  final String? img;
+  final String? itemname_en;
+  final String? labelname;
+  final String? itempack;
+  final String? itemstrength;
+  final String? itemmaingrouptitle;
+  final String? itemgrouptitle;
+  final String? itemproductgrouptitle;
+  final String? itemproductgroupimage;
+  final String? type;
+  final String? itemgroupid;
+  final String? itemdosageid;
+  final String? itemclassid;
+  final String? manufactureshortname;
+  final String? seq;
+  final String? maxretailprice;
+  final String? minretailprice;
+  final String? rs;
+  final String? origin;
+  final String? whichcompany;
+  final String? allowsonapp;
+  final String? status;
+  final String? shortdescription;
+  final String? description;
+  final String? additionalinformation;
+  final String? itemproductgroupid;
+  final String? url;
+  final String? itemmaingroupid;
+  final String? stock;
   related_products({
     this.itemid,
     this.img,
@@ -114,7 +114,7 @@ class Related_products extends StatefulWidget {
   final itemid;
   final itemc;
 
-  Related_products({Key key, @required this.itemid, @required this.itemc})
+  Related_products({Key? key, @required this.itemid, @required this.itemc})
       : super(key: key);
   @override
   _related_productsState createState() => _related_productsState();
@@ -127,7 +127,7 @@ class _related_productsState extends State<Related_products> {
       future: _fetchrelated_products(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<related_products> data = snapshot.data;
+          List<related_products> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -146,7 +146,7 @@ class _related_productsState extends State<Related_products> {
 
     var data = {'itemid': widget.itemid};
     // print(data);
-    final response = await http.post(jobsListAPIUrl, body: json.encode(data));
+    final response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

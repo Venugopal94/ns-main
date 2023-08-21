@@ -29,7 +29,7 @@ class _Contact_Us_State extends State<Contact_Us> {
     String mobileno = mobileController.text;
     String email = emailController.text;
     String msg = msgController.text;
-    Pattern pattern =
+    String pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
     if (mobileno.length != 8) {
@@ -56,7 +56,7 @@ class _Contact_Us_State extends State<Contact_Us> {
       };
 
       // Starting Web API Call.
-      var response = await http.post(url, body: json.encode(data));
+      var response = await http.post(url as Uri, body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
@@ -72,13 +72,13 @@ class _Contact_Us_State extends State<Contact_Us> {
     }
   }
 
-  String check;
+  String? check;
 
   void getData() async {
     SharedPreferences pf = await SharedPreferences.getInstance();
 
     check = pf.getString("email");
-    log(check);
+    log(check ?? "");
   }
 
   @override
@@ -280,16 +280,15 @@ class _Contact_Us_State extends State<Contact_Us> {
                     ])),
             SizedBox(height: 10),
             Center(
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
                     side: BorderSide(color: LightColor.midnightBlue)),
+                  primary: LightColor.midnightBlue),
                 onPressed: () {
                   usermsg();
                 },
-                color: LightColor.midnightBlue,
-                textColor: Colors.white,
-                child: Text("Send Message", style: TextStyle(fontSize: 18)),
+                child: Text("Send Message", style: TextStyle(fontSize: 18, color: Colors.white)),
               ),
             ),
             SizedBox(height: 20),
@@ -482,7 +481,7 @@ class _Contact_Us_State extends State<Contact_Us> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context)..showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));

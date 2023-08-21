@@ -31,8 +31,8 @@ class AllBranch extends StatefulWidget {
 }
 
 class allbranch {
-  final String id;
-  final String img;
+  final String? id;
+  final String? img;
 
   allbranch({this.id, this.img});
 
@@ -52,7 +52,7 @@ class _AllBranchState extends State<AllBranch> {
         future: _fetchallbranch(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<allbranch> data = snapshot.data;
+            List<allbranch> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
@@ -66,7 +66,7 @@ class _AllBranchState extends State<AllBranch> {
   Future<List<allbranch>> _fetchallbranch() async {
     final url = 'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=slider';
     //var data = {'itemid': widget.itemnull};
-    var response = await http.get(url);
+    var response = await http.get(Uri(path: url));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

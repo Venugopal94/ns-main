@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ import 'package:url_launcher/url_launcher.dart';
 class BranchDetails extends StatefulWidget {
   allbranch todo;
 
-  BranchDetails({Key key, @required this.todo}) : super(key: key);
+  BranchDetails({Key? key, required this.todo}) : super(key: key);
 
   @override
   _BranchDetailsState createState() => _BranchDetailsState();
@@ -28,14 +28,14 @@ class _BranchDetailsState extends State<BranchDetails> {
   getStringValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
-    String emailValue = prefs.getString('email');
+    String? emailValue = prefs.getString('email');
     return emailValue;
   }
 
-  int itemid;
-  int counter = 1;
+  int? itemid;
+  int? counter = 1;
   //final productprice;
-  double finalprice;
+  double? finalprice;
 
   @override
   void initState() {
@@ -45,9 +45,9 @@ class _BranchDetailsState extends State<BranchDetails> {
   @override
   Widget build(BuildContext context) {
     void opengooglemaps() async {
-      double lat = double.parse(widget.todo.locationlatitude);
+      double lat = double.parse(widget.todo.locationlatitude ?? "");
 
-      double long = double.parse(widget.todo.locationlongitude);
+      double long = double.parse(widget.todo.locationlongitude ?? "");
       final url =
           "https://www.google.com/maps/search/?api=1&query=${lat},${long}";
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
@@ -63,7 +63,7 @@ class _BranchDetailsState extends State<BranchDetails> {
       key: _scaffoldKey,
        //backgroundColor: LightColor.yellowColor,
       appBar: AppBar(
-        title: Text(widget.todo.branchecommercename),
+        title: Text(widget.todo.branchecommercename ?? ""),
 
         // backgroundColor: LightColor.midnightBlue,
       ),
@@ -88,7 +88,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                           itemBuilder: (BuildContext context, int index) {
                             return new Image.network(
                               'https://onlinefamilypharmacy.com/images/branch/' +
-                                  widget.todo.img,
+                                  widget.todo.img!,
                               //fit: BoxFit.fitWidth,
                               height: 500, width: 500,
                             );
@@ -108,7 +108,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                       Container(
                         padding: EdgeInsets.only(left: 15, right: 15),
                         child: Text(
-                          widget.todo.branchecommercename,
+                          widget.todo.branchecommercename ?? "",
                           style: TextStyle(
                               fontSize: 24,
                               color: LightColor.midnightBlue,
@@ -121,7 +121,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                       Container(
                         padding: EdgeInsets.only(left: 15, right: 15),
                         child: Text(
-                          widget.todo.email,
+                          widget.todo.email ?? "",
                           style: TextStyle(
                               fontSize: 14, color: LightColor.midnightBlue),
                         ),
@@ -132,7 +132,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                       Container(
                         padding: EdgeInsets.only(left: 15, right: 15),
                         child: Text(
-                          widget.todo.shortdescription,
+                          widget.todo.shortdescription ?? "",
                           style: TextStyle(fontSize: 14, color: Colors.grey),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 4,
@@ -199,7 +199,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                                       maxLines: 2,
                                     ),
                                     Text(
-                                      widget.todo.city,
+                                      widget.todo.city ?? "",
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold),
@@ -252,19 +252,19 @@ class _BranchDetailsState extends State<BranchDetails> {
                                     height: 10.0,
                                   ),
                                   Text(
-                                    "Tel.: "+ widget.todo.tel,
+                                    "Tel.: "+ widget.todo.tel!,
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    "Whatsapp:"+ widget.todo.whatsapp,
+                                    "Whatsapp:"+ widget.todo.whatsapp!,
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    "Email: " + widget.todo.email,
+                                    "Email: " + widget.todo.email!,
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold),
@@ -314,7 +314,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                                     height: 10.0,
                                   ),
                                   Text(
-                                    widget.todo.openinghours,
+                                    widget.todo.openinghours ?? "",
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold),
@@ -336,7 +336,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                       Center(
                         child: InkWell(
                             onTap: () async {
-                              await opengooglemaps();
+                              opengooglemaps();
                               // if (await MapLauncher.isMapAvailable(
                               //     MapType.google)) {
                               //   // ignore: deprecated_member_use
@@ -383,7 +383,7 @@ class _BranchDetailsState extends State<BranchDetails> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context)..showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));

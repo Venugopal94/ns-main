@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+//import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +17,8 @@ import 'package:robustremedy/themes/light_color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
 
-List data = List();
 
-String selectedvalue;
+String? selectedvalue;
 final String url1 =
     'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=zonearea';
 
@@ -29,17 +28,17 @@ class Upload_prescription extends StatefulWidget {
 }
 
 class _Upload_prescriptions_State extends State<Upload_prescription> {
-  File _image;
-  File _image1;
-  File _image2;
-  File _image3;
+  PickedFile? _image;
+  PickedFile? _image1;
+  PickedFile? _image2;
+  PickedFile? _image3;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  List<bool> _isChecks = List();
-  List<bool> isChecks = List();
-  File selectedfile;
-  Response response;
-  String progress;
+  List<bool>? _isChecks = [];
+  List<bool>? isChecks = [];
+  FilePickerResult? selectedfile;
+  Response? response;
+  String? progress;
   Dio dio = new Dio();
   var patient_insure;
   var selected;
@@ -54,16 +53,12 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id = prefs.getString('id');
+    String? user_id = prefs.getString('id');
     return user_id;
   }
 
   selectFile() async {
-    selectedfile = (await FilePicker.getFile(
-      type: FileType.custom,
-      allowedExtensions: ['jpg', 'pdf', 'mp4'],
-      //allowed extension to choose
-    ));
+    selectedfile = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions:  ['jpg', 'pdf', 'mp4']);
 
     setState(() {}); //update the UI so that file name is shown
   }
@@ -78,18 +73,18 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     var request = http.MultipartRequest("POST", url);
     request.fields['fullname'] = fnameController.text;
     request.fields['userid'] = token;
-    request.fields['zone'] = selectedvalue;
+    request.fields['zone'] = selectedvalue ?? "";
     request.fields['patient_insure'] = pi;
     request.fields['mobileno'] = mobileController.text;
     request.fields['comment'] = commentController.text;
-    var pic = await http.MultipartFile.fromPath("image", _image.path);
+    var pic = await http.MultipartFile.fromPath("image", _image?.path ?? "");
     request.files.add(pic);
     if (pi == "true") {
-      var pic1 = await http.MultipartFile.fromPath("image1", _image1.path);
+      var pic1 = await http.MultipartFile.fromPath("image1", _image1?.path ?? "");
       request.files.add(pic1);
-      var pic2 = await http.MultipartFile.fromPath("image2", _image2.path);
+      var pic2 = await http.MultipartFile.fromPath("image2", _image2?.path ?? "");
       request.files.add(pic2);
-      var pic3 = await http.MultipartFile.fromPath("image3", _image3.path);
+      var pic3 = await http.MultipartFile.fromPath("image3", _image3?.path ?? "");
       request.files.add(pic3);
     }
 
@@ -106,7 +101,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     String fullname = fnameController.text;
     String mobileno = mobileController.text;
     String email = emailController.text;
-    String zone = selectedvalue;
+    String zone = selectedvalue ?? "";
     String comment = commentController.text;
     String company = companyController.text;
     dynamic token = await getStringValues();
@@ -157,7 +152,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
   @override
   Widget build(BuildContext context) {
     Future getImage() async {
-      final image = await ImagePicker.pickImage(source: ImageSource.camera);
+      PickedFile? image = await ImagePicker.platform.pickImage(source: ImageSource.camera);
       setState(() {
         _image = image;
         print(image);
@@ -166,7 +161,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     }
 
     Future getGallery() async {
-      final image = await ImagePicker.pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
       setState(() {
         _image = image;
 
@@ -176,7 +171,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     }
 
     Future getImage1() async {
-      final image = await ImagePicker.pickImage(source: ImageSource.camera);
+      final image = await ImagePicker.platform.pickImage(source: ImageSource.camera);
       setState(() {
         _image1 = image;
 
@@ -185,7 +180,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     }
 
     Future getGallery1() async {
-      final image = await ImagePicker.pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
       setState(() {
         _image1 = image;
 
@@ -195,7 +190,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     }
 
     Future getImage2() async {
-      final image = await ImagePicker.pickImage(source: ImageSource.camera);
+      final image = await ImagePicker.platform.pickImage(source: ImageSource.camera);
       setState(() {
         _image2 = image;
         print(image);
@@ -204,7 +199,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     }
 
     Future getGallery2() async {
-      final image = await ImagePicker.pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
       setState(() {
         _image2 = image;
 
@@ -214,7 +209,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     }
 
     Future getImage3() async {
-      final image = await ImagePicker.pickImage(source: ImageSource.camera);
+      final image = await ImagePicker.platform.pickImage(source: ImageSource.camera);
       setState(() {
         _image3 = image;
         print(image);
@@ -223,7 +218,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     }
 
     Future getGallery3() async {
-      final image = await ImagePicker.pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
       setState(() {
         _image3 = image;
 
@@ -235,8 +230,8 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     for (int i = 0; i < 1; i++) {
-      _isChecks.add(false);
-      isChecks.add(false);
+      _isChecks?.add(false);
+      isChecks?.add(false);
     }
 
     return Scaffold(
@@ -410,19 +405,12 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         height: 45,
                         width: width / 1.2,
                         color: Color(0xfff3f3f4),
-                        child: DropdownSearch<UserModel>(
-                          dropdownSearchDecoration: InputDecoration(
-
-                            //enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-                           //border: OutlineInputBorder(),
-
+                        child:
+                        DropdownSearch<UserModel>(
+                          popupProps: PopupProps.menu(
+                            showSelectedItems: true,
                           ),
-                          mode: Mode.BOTTOM_SHEET,
-                          autoFocusSearchBox: true,
-                          autoValidateMode:
-                          AutovalidateMode.onUserInteraction,
-                          showSearchBox: true,
-                          onFind: (String filter) async {
+                          asyncItems: (String? filter) async {
                             var response = await Dio().get(
                               "https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=zonearea",
                               queryParameters: {"filter": filter},
@@ -431,9 +419,9 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                             UserModel.fromJsonList(response.data);
                             return models;
                           },
-                          onChanged: (UserModel data) {
+                          onChanged: (UserModel? data) {
                             print(data);
-                            selectedvalue = data.id;
+                            selectedvalue = data?.id ?? "";
                           },
                         ),
                       ),
@@ -463,7 +451,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               //show file name here
               child: _image == null
                   ? Text("Choose File")
-                  : Text(basename(_image.path)),
+                  : Text(basename(_image?.path ?? "")),
               //basename is from path package, to get filename from path
               //check if file is selected, if yes then show file name
             ),
@@ -479,7 +467,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
 
                   height: 30,
                   // specific value
-                  child: RaisedButton.icon(
+                  child: ElevatedButton.icon(
 
                     onPressed: () => showDialog<String>(
                       context: context,
@@ -510,8 +498,8 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                     ),
                     icon: Icon(Icons.folder_open),
                     label: Text("CHOOSE FILE"),
-                    color: LightColor.midnightBlue,
-                    colorBrightness: Brightness.dark,
+                    // color: LightColor.midnightBlue,
+                    // colorBrightness: Brightness.dark,
                   )),
             ),
 
@@ -520,14 +508,14 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
             selectedfile == null
                 ? Container()
                 : Container(
-                child: RaisedButton.icon(
+                child: ElevatedButton.icon(
                   onPressed: () {
                     // uploadFile();
                   },
                   icon: Icon(Icons.folder_open),
                   label: Text("UPLOAD FILE"),
-                  color: Colors.redAccent,
-                  colorBrightness: Brightness.dark,
+                  // color: Colors.redAccent,
+                  // colorBrightness: Brightness.dark,
                 )),
             SizedBox(height: 10),
 
@@ -576,10 +564,10 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Checkbox(
-                          value: _isChecks[0],
-                          onChanged: (bool val) {
+                          value: _isChecks?[0],
+                          onChanged: (bool? val) {
                             setState(() {
-                              _isChecks[0] = val;
+                              _isChecks?[0] = val ?? false;
                               selected = val;
                               patient_insure = val;
                             });
@@ -654,14 +642,14 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                           //show file name here
                           child: _image1 == null
                               ? Text("Choose File")
-                              : Text(basename(_image1.path)),
+                              : Text(basename(_image1?.path ?? "")),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(),
                           child: SizedBox(
                               height: 30,
                               // specific value
-                              child: RaisedButton.icon(
+                              child: ElevatedButton.icon(
                                 onPressed: () => showDialog<String>(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -690,8 +678,8 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                                 ),
                                 icon: Icon(Icons.folder_open),
                                 label: Text("CHOOSE FILE"),
-                                color: LightColor.midnightBlue,
-                                colorBrightness: Brightness.dark,
+                                // color: LightColor.midnightBlue,
+                                // colorBrightness: Brightness.dark,
                               )),
                         ),
                         SizedBox(
@@ -716,14 +704,14 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                           //show file name here
                           child: _image2 == null
                               ? Text("Choose File")
-                              : Text(basename(_image2.path)),
+                              : Text(basename(_image2?.path ?? "")),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(),
                           child: SizedBox(
                               height: 30,
                               // specific value
-                              child: RaisedButton.icon(
+                              child: ElevatedButton.icon(
                                 onPressed: () => showDialog<String>(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -752,8 +740,8 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                                 ),
                                 icon: Icon(Icons.folder_open),
                                 label: Text("CHOOSE FILE"),
-                                color: LightColor.midnightBlue,
-                                colorBrightness: Brightness.dark,
+                                // color: LightColor.midnightBlue,
+                                // colorBrightness: Brightness.dark,
                               )),
                         ),
                         SizedBox(
@@ -775,14 +763,14 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                           //show file name here
                           child: _image3 == null
                               ? Text("Choose File")
-                              : Text(basename(_image3.path)),
+                              : Text(basename(_image3?.path ?? "")),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(),
                           child: SizedBox(
                               height: 30,
                               // specific value
-                              child: RaisedButton.icon(
+                              child: TextButton.icon(
                                 onPressed: () => showDialog<String>(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -811,8 +799,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                                 ),
                                 icon: Icon(Icons.folder_open),
                                 label: Text("CHOOSE FILE"),
-                                color: LightColor.midnightBlue,
-                                colorBrightness: Brightness.dark,
+                                style: TextButton.styleFrom(foregroundColor: LightColor.midnightBlue),
                               )),
                         ),
                         SizedBox(
@@ -939,10 +926,10 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Checkbox(
-                          value: isChecks[0],
-                          onChanged: (bool val) {
+                          value: isChecks?[0],
+                          onChanged: (bool? val) {
                             setState(() {
-                              isChecks[0] = val;
+                              isChecks?[0] = val ?? false;
                             });
                           }),
                       Text("I hearby agree and accept ",
@@ -970,18 +957,19 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               height: 50.0,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(
+                child:
+                ElevatedButton(onPressed: () {
+                  uploadurl();
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                },
+                  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: LightColor.midnightBlue)),
-                  onPressed: () {
-                    uploadurl();
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                      side: BorderSide(color: LightColor.midnightBlue)), foregroundColor: LightColor.midnightBlue),
 
-                  },
-                  color: LightColor.midnightBlue,
-                  textColor: Colors.white,
-                  child: Text("Upload", style: TextStyle(fontSize: 18)),
+                  child: Text("Upload",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0),),
                 ),
               ),
             ),
@@ -993,7 +981,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context as BuildContext).showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));

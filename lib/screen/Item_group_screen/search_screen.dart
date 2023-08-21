@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_xlider/flutter_xlider.dart' as frs;
 
 import 'package:robustremedy/screen/Item_group_screen/detail_page.dart';
 import 'dart:async';
@@ -9,12 +10,11 @@ import 'package:robustremedy/screen/Item_group_screen/item_group.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_range_slider/flutter_range_slider.dart' as frs;
 
 class Brand {
-  final String url;
-  final String title;
-  final String id;
+  final String? url;
+  final String? title;
+  final String? id;
   Brand({this.url, this.title, this.id});
 
   factory Brand.fromJson(Map<String, dynamic> json) {
@@ -31,9 +31,9 @@ class RangeSliderData {
   double max;
   double lowerValue;
   double upperValue;
-  int divisions;
+  int? divisions;
   bool showValueIndicator;
-  int valueIndicatorMaxDecimals;
+  double valueIndicatorMaxDecimals;
   bool forceValueIndicator;
   Color overlayColor;
   Color activeTrackColor;
@@ -50,11 +50,10 @@ class RangeSliderData {
   static const Color defaultOverlayColor = const Color(0x290175c2);
 
   RangeSliderData({
-    this.min,
-    this.max,
-    this.lowerValue,
-    this.upperValue,
-    this.divisions,
+    required this.min,
+    required this.max,
+    required this.lowerValue,
+    required this.upperValue,
     this.showValueIndicator: true,
     this.valueIndicatorMaxDecimals: 1,
     this.forceValueIndicator: false,
@@ -70,14 +69,14 @@ class RangeSliderData {
   // of decimals, limited to the valueIndicatedMaxDecimals
   //
   String get lowerValueText =>
-      lowerValue.toStringAsFixed(valueIndicatorMaxDecimals);
+      lowerValue.toStringAsFixed(valueIndicatorMaxDecimals as int);
   String get upperValueText =>
-      upperValue.toStringAsFixed(valueIndicatorMaxDecimals);
+      upperValue.toStringAsFixed(valueIndicatorMaxDecimals as int);
 
   // Builds a RangeSlider and customizes the theme
   // based on parameters
   //
-  Widget build(BuildContext context, frs.RangeSliderCallback callback) {
+  Widget build(BuildContext context, Function(dynamic lowerValue, dynamic upperValue) callback) {
     return Container(
       width: double.infinity,
       child: Row(
@@ -106,17 +105,15 @@ class RangeSliderData {
                     ? ShowValueIndicator.always
                     : ShowValueIndicator.onlyForDiscrete,
               ),
-              child: frs.RangeSlider(
+              child:
+              frs.FlutterSlider(
                 min: min,
                 max: max,
-                lowerValue: lowerValue,
-                upperValue: upperValue,
-                divisions: divisions,
-                showValueIndicator: showValueIndicator,
-                valueIndicatorMaxDecimals: valueIndicatorMaxDecimals,
-                onChanged: (double lower, double upper) {
-                  // call
-                  callback(lower, upper);
+                values: [valueIndicatorMaxDecimals],
+                onDragging: (handlerIndex, lower, upper) {
+                lowerValue = lower;
+                upperValue = upper;
+                callback(lower, upper);
                 },
               ),
             ),
@@ -135,34 +132,34 @@ class RangeSliderData {
 }
 
 class ItemData {
-  final String itemid;
-  final String img;
-  final String itemname_en;
-  final String labelname;
-  final String itempack;
-  final String itemstrength;
-  final String itemmaingrouptitle;
-  final String itemgrouptitle;
-  final String itemproductgrouptitle;
-  final String itemproductgroupimage;
-  final String type;
-  final String itemdosageid;
-  final String itemclassid;
-  final String manufactureshortname;
-  final String seq;
-  final String maxretailprice;
-  final String minretailprice;
-  final String rs;
-  final String origin;
-  final String whichcompany;
-  final String allowsonapp;
-  final String status;
-  final String shortdescription;
-  final String description;
-  final String additionalinformation;
-  final String itemproductgroupid;
-  final String itemgroupid;
-  final String stock;
+  final String? itemid;
+  final String? img;
+  final String? itemname_en;
+  final String? labelname;
+  final String? itempack;
+  final String? itemstrength;
+  final String? itemmaingrouptitle;
+  final String? itemgrouptitle;
+  final String? itemproductgrouptitle;
+  final String? itemproductgroupimage;
+  final String? type;
+  final String? itemdosageid;
+  final String? itemclassid;
+  final String? manufactureshortname;
+  final String? seq;
+  final String? maxretailprice;
+  final String? minretailprice;
+  final String? rs;
+  final String? origin;
+  final String? whichcompany;
+  final String? allowsonapp;
+  final String? status;
+  final String? shortdescription;
+  final String? description;
+  final String? additionalinformation;
+  final String? itemproductgroupid;
+  final String? itemgroupid;
+  final String? stock;
   ItemData(
       {this.itemid,
       this.img,
@@ -227,9 +224,9 @@ class ItemData {
 }
 
 class ItemMainData {
-  final String url;
-  final String title;
-  final String id;
+  final String? url;
+  final String? title;
+  final String? id;
   ItemMainData({this.url, this.title, this.id});
 
   factory ItemMainData.fromJson(Map<String, dynamic> json) {
@@ -251,17 +248,17 @@ class UserFilterDemo extends StatefulWidget {
 }
 
 class Debouncer {
-  final int milliseconds;
-  VoidCallback action;
-  Timer _timer;
+  final int? milliseconds;
+  VoidCallback? action;
+  Timer? _timer;
 
   Debouncer({this.milliseconds});
 
   run(VoidCallback action) {
     if (null != _timer) {
-      _timer.cancel();
+      _timer?.cancel();
     }
-    _timer = Timer(Duration(milliseconds: milliseconds), action);
+    _timer = Timer(Duration(milliseconds: milliseconds ?? 0), action);
   }
 }
 
@@ -274,7 +271,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
   var itemmaingroup;
   var chipdata = false;
   final _debouncer = Debouncer(milliseconds: 500);
-  List<RangeSliderData> rangeSliders;
+  late List<RangeSliderData> rangeSliders;
 
   double _lowerValue = 0.0;
   double _upperValue = 500.0;
@@ -335,7 +332,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                   future: _fetchItemMainData(),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData) {
-                                      List<ItemMainData> data = snapshot.data;
+                                      List<ItemMainData> data = snapshot.data ?? [];
                                       return chipview(context, data);
                                     } else if (snapshot.hasError) {
                                       return Text("${snapshot.error}");
@@ -369,7 +366,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                   future: _fetchJobs(),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData) {
-                                      List<Brand> data = snapshot.data;
+                                      List<Brand> data = snapshot.data ?? [];
                                       return chipview(context, data);
                                     } else if (snapshot.hasError) {
                                       return Text("${snapshot.error}");
@@ -459,7 +456,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                 future: _fetchSearchData(),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    List<ItemData> data = snapshot.data;
+                                    List<ItemData> data = snapshot.data ?? [];
                                     return GridSearch(context, data);
                                   } else if (snapshot.hasError) {
                                     return Text("${snapshot.error}");
@@ -480,7 +477,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                   future: _fetchItemData(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      List<ItemData> data = snapshot.data;
+                      List<ItemData> data = snapshot.data ?? [];
                       //filterdata(data);
                       return Grid(context, data);
                     } else if (snapshot.hasError) {
@@ -501,7 +498,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                   future: _fetchItemData(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      List<ItemData> data = snapshot.data;
+                      List<ItemData> data = snapshot.data ?? [];
                       filterdata(data);
                       return Grid(context, data);
                     } else if (snapshot.hasError) {
@@ -549,28 +546,17 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                 Text(_lowerValueFormatter.toString()),
                                 Container(
                                   width: width / 1.3,
-                                  child: frs.RangeSlider(
-                                    min: 0.0,
-                                    max: 500.0,
-                                    lowerValue: _lowerValueFormatter,
-                                    upperValue: _upperValueFormatter,
-                                    divisions: 10,
-                                    showValueIndicator: true,
-                                    valueIndicatorMaxDecimals: 1,
-                                    onChanged: (double newLowerValue,
-                                        double newUpperValue) {
-                                      setState(() {
-                                        _lowerValue = newLowerValue;
-                                        _upperValue = newUpperValue;
-
-                                        _fetchItemData();
-                                      });
-                                    },
-                                    onChangeStart: (double startLowerValue,
-                                        double startUpperValue) {},
-                                    onChangeEnd: (double newLowerValue,
-                                        double newUpperValue) {},
-                                  ),
+                                  child: frs.FlutterSlider(
+                                      min: 0.0,
+                                      max: 500.0,
+                                      values: [_lowerValueFormatter, _upperValueFormatter],
+                                      onDragging: (handlerIndex, lower, upper) {
+                                        setState(() {
+                                          _lowerValue = lower;
+                                          _upperValue = upper;
+                                          _fetchItemData();
+                                        });
+                                      }),
                                 ),
                                 Text(_upperValueFormatter.toString()),
                               ]),
@@ -699,7 +685,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
   Future<List<Brand>> _fetchJobs() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=manufacture';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -712,7 +698,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
   Future<List<ItemMainData>> _fetchItemMainData() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/categories/itemmaingroup.php?action=itemmaingroup';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -726,7 +712,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id = prefs.getString('id');
+    String user_id = prefs.getString('id') ?? "";
     return user_id;
   }
 
@@ -739,7 +725,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
       'itemid': itemid,
       'itemproductgroupid': itemproductgroupid
     };
-    var response = await http.post(jobsListAPIUrl, body: json.encode(data));
+    var response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
   }
 
   Future<List<ItemData>> _fetchSearchData() async {
@@ -747,7 +733,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/get_user_search_history.php';
     var data = {'userid': token};
-    var response = await http.post(jobsListAPIUrl, body: json.encode(data));
+    var response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -767,7 +753,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
       '_upperValue': _upperValue,
       'itemmaingroup': itemmaingroup
     };
-    var response = await http.post(jobsListAPIUrl, body: json.encode(data));
+    var response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -785,19 +771,19 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     data = data;
     if (sort == 'asc') {
       data.sort((a, b) {
-        return a.itemproductgrouptitle.compareTo(b.itemproductgrouptitle);
+        return a.itemproductgrouptitle?.compareTo(b.itemproductgrouptitle ?? "") ?? 0;
       });
     } else if (sort == 'desc') {
       data.sort((b, a) {
-        return a.itemproductgrouptitle.compareTo(b.itemproductgrouptitle);
+        return a.itemproductgrouptitle?.compareTo(b.itemproductgrouptitle ?? "") ?? 0;
       });
     } else if (sort == 'ltoh') {
       data.sort((a, b) {
-        return a.maxretailprice.compareTo(b.maxretailprice);
+        return a.maxretailprice?.compareTo(b.maxretailprice ?? "") ?? 0;
       });
     } else if (sort == 'htol') {
-      data.sort((e, f) {
-        return f.maxretailprice.compareTo(e.maxretailprice);
+      data.sort((b, a) {
+        return a.maxretailprice?.compareTo(b.maxretailprice ?? "") ?? 0;
       });
     }
   }
@@ -861,8 +847,8 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                 decoration: BoxDecoration(
                     color: Colors.white12,
                     border: Border(
-                      bottom: BorderSide(color: Colors.grey[300], width: 1.5),
-                      top: BorderSide(color: Colors.grey[300], width: 1.5),
+                      bottom: BorderSide(color: Colors.grey[300] ?? Color(0), width: 1.5),
+                      top: BorderSide(color: Colors.grey[300] ?? Color(0), width: 1.5),
                     )),
                 height: 100.0,
                 child: Row(

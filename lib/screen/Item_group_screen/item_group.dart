@@ -6,33 +6,20 @@ import 'package:robustremedy/screen/Item_group_screen/item_subgroup.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'item_group_list.dart';
+
 class ItemGroup extends StatefulWidget {
   final itemid;
   final itemtitle;
 
-  ItemGroup({Key key, @required this.itemid, @required this.itemtitle})
+  ItemGroup({Key? key, @required this.itemid, @required this.itemtitle})
       : super(key: key);
   @override
   _ItemGroupState createState() => _ItemGroupState();
 }
 
-class ItemGrpData {
-  final String url;
-  final String title;
-  final String id;
-  ItemGrpData({this.url, this.title, this.id});
-
-  factory ItemGrpData.fromJson(Map<String, dynamic> json) {
-    return ItemGrpData(
-      id: json['id'],
-      url: json['image'],
-      title: json['etitle'],
-    );
-  }
-}
-
 class _ItemGroupState extends State<ItemGroup> {
-  List<ItemGrpData> data ;
+  late List<ItemGrpData> data ;
   String pharmacyname = "";
   Future<void> _showSearch() async {
     await showSearch(
@@ -71,7 +58,7 @@ class _ItemGroupState extends State<ItemGroup> {
           future: _fetchItemGrpData(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<ItemGrpData> data = snapshot.data;
+              List<ItemGrpData> data = snapshot.data ?? [];
               return Grid(context, data);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
@@ -89,7 +76,7 @@ class _ItemGroupState extends State<ItemGroup> {
   Future<List<ItemGrpData>> _fetchItemGrpData() async {
     final url = 'https://onlinefamilypharmacy.com/mobileapplication/categories/itemgroup.php';
     var data = {'itemid': widget.itemid};
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -350,11 +337,11 @@ Grid(context, data) {
   }
 }
 class TheSearch extends SearchDelegate<String> {
-  TheSearch({this.contextPage, this.controller, @required this.data});
+  TheSearch({this.contextPage, this.controller, required this.data});
 
-  List<ItemGrpData> data;
-  BuildContext contextPage;
-  WebViewController controller;
+  List<dynamic> data;
+  BuildContext? contextPage;
+  WebViewController? controller;
   final suggestions1 = [];
 
   @override
@@ -387,7 +374,7 @@ class TheSearch extends SearchDelegate<String> {
         progress: transitionAnimation,
       ),
       onPressed: () {
-        close(context, null);
+        close(context, "");
       },
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:robustremedy/screen/Item_group_screen/detail_page.dart';
+import 'package:robustremedy/screen/home/popularitems.dart';
 import 'package:robustremedy/screen/home/viewAll.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'dart:convert';
@@ -29,7 +30,7 @@ class _headerstate extends State<Header> {
 
   List<header> myAllData = [];
   loadData() async {
-    var response = await http.get(url, headers: {"Aceept": "application/json"});
+    var response = await http.get(Uri(path: url), headers: {"Aceept": "application/json"});
     if (response.statusCode == 200) {
       String responeBody = response.body;
       var jsonBody = json.decode(responeBody);
@@ -49,7 +50,7 @@ class _headerstate extends State<Header> {
     var data = {'epid': _id};
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/ecommerceitemcode.php';
-    final response = await http.post(jobsListAPIUrl, body: jsonEncode(data));
+    final response = await http.post(Uri(path: jobsListAPIUrl), body: jsonEncode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -111,15 +112,13 @@ class _headerstate extends State<Header> {
                 )
               ],
             ),
-            subtitle: FutureBuilder(
+            subtitle: FutureBuilder<List<Job>>(
               future: fetchJobs(myAllData[index].id),
               builder: (context, snap) {
                 if (snap.hasData) {
-                  List<Job> items = snap.data;
+                  List<Job> items = snap.data ?? [];
                   return InkWell(
                     onTap: () {
-                      
-
                     },
                     child: Container(
                       height: 150,
@@ -150,7 +149,7 @@ class _headerstate extends State<Header> {
                                             'assets/noimage.jpeg',
                                             image:
                                             'https://onlinefamilypharmacy.com/images/item/' +
-                                                item.img,
+                                                item!.img!,
                                             fit: BoxFit.fitWidth,
                                             width: 100),
                                         // child: Image.network(
@@ -184,7 +183,7 @@ class _headerstate extends State<Header> {
                                           left: 10,
                                         ),
                                         child: Text(
-                                            item.itemproductgrouptitle,
+                                            item!.itemproductgrouptitle ?? "",
                                             textAlign: TextAlign.left,
                                             // softWrap: true,
                                             style: TextStyle(
@@ -202,7 +201,7 @@ class _headerstate extends State<Header> {
                                           left: 15,
                                         ),
                                         child: Text(
-                                            "\QR ${double.parse(item.maxretailprice).toStringAsFixed(2)}",
+                                            "\QR ${double.parse(item.maxretailprice ?? "").toStringAsFixed(2)}",
                                             textAlign: TextAlign.left,
                                             // softWrap: true,
                                             style: TextStyle(

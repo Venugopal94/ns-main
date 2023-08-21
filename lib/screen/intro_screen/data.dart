@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class SliderModel{
 
-  String imageAssetPath;
-  String title;
-  String desc;
+  String? imageAssetPath;
+  String? title;
+  String? desc;
 
-  SliderModel({this.imageAssetPath,this.title,this.desc});
+  SliderModel({this.imageAssetPath, this.title, this.desc});
 
   void setImageAssetPath(String getImageAssetPath){
     imageAssetPath = getImageAssetPath;
@@ -22,15 +22,15 @@ class SliderModel{
   }
 
   String getImageAssetPath(){
-    return imageAssetPath;
+    return imageAssetPath ?? "";
   }
 
   String getTitle(){
-    return title;
+    return title ?? "";
   }
 
   String getDesc(){
-    return desc;
+    return desc ?? "";
   }
 
 }
@@ -38,8 +38,8 @@ class SliderModel{
 
 List<SliderModel> getSlides(){
 
-  List<SliderModel> slides = new List<SliderModel>();
-  SliderModel sliderModel = new SliderModel();
+  List<SliderModel> slides = [];
+  SliderModel sliderModel = SliderModel();
 
   //1
   sliderModel.setDesc("Have a problem with searching medical products?");

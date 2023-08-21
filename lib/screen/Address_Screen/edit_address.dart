@@ -13,7 +13,7 @@ import 'package:bouncing_widget/bouncing_widget.dart';
 class Edit_Address_Screen extends StatefulWidget {
 
   final addid,total,addscreen;
-  Edit_Address_Screen({Key key, @required this.addid,@required this.total,@required this.addscreen})
+  Edit_Address_Screen({Key? key, @required this.addid,@required this.total,@required this.addscreen})
       : super(key: key);
   @override
   _Edit_Address_ScreenState createState() => _Edit_Address_ScreenState();
@@ -27,16 +27,16 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id=prefs.getString('id');
+    String? user_id=prefs.getString('id');
     return user_id;
   }
   bool visible = false;
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99, 1);
-  String firstname;
-  String lastname;
-  String buildingno;
-  String zone;
-  String street;
+  String? firstname;
+  String? lastname;
+  String? buildingno;
+  String? zone;
+  String? street;
 
 
   Future edit_Address() async {
@@ -48,11 +48,11 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
     // Getting value from Controller
 
 
-    if (firstname.length == 0 ||
-        lastname.length == 0 ||
-        buildingno.length == 0 ||
-        zone.length == 0 ||
-        street.length == 0 ) {
+    if (firstname?.length == 0 ||
+        lastname?.length == 0 ||
+        buildingno?.length == 0 ||
+        zone?.length == 0 ||
+        street?.length == 0 ) {
       showInSnackBar("Field Should not be empty");
 
     } else {
@@ -70,7 +70,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
       };
 
       // Starting Web API Call.
-      var response = await http.post(url, body: json.encode(data));
+      var response = await http.post(Uri(path: url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
@@ -298,10 +298,10 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
     );
   }
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
   }
-  showToast(String msg, {int duration, int gravity}) {
-    Toast.show(msg, context, duration: duration, gravity: gravity);
+  showToast(String msg, {int? duration, int? gravity}) {
+    Toast.show(msg, duration: duration, gravity: gravity);
   }
 }
 
@@ -309,8 +309,8 @@ class Button extends StatelessWidget {
   var btnText = "";
   var onClick;
 
-  Button({this.btnText, this.onClick});
-  Color yellowColors = Colors.yellow[700];
+  Button({required this.btnText, this.onClick});
+  Color yellowColors = Colors.yellow[700] ?? Color(0);
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99, 1);
   @override
   Widget build(BuildContext context) {

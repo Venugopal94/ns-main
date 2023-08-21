@@ -11,7 +11,7 @@ class Example extends StatelessWidget {
             content: Text('Tap back again to leave'),
           ),
           child: Center(
-            child: OutlineButton(
+            child: OutlinedButton(
               child: const Text('Tap to simulate back'),
               // ignore: invalid_use_of_protected_member
               onPressed: WidgetsBinding.instance.handlePopRoute,

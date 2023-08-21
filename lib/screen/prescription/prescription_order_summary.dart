@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 class TotalPrescription  {
-  final String Rs;
+  final String? Rs;
 
 
   // final String email;
@@ -22,17 +22,17 @@ class TotalPrescription  {
   }
 }
 class prescriptionorder {
-  final String prescription_id;
-  final String item_unit;
-  final String item_code;
-  final String itemname_en;
-  final String img;
-  final String quantity;
-  final String approval_status;
-  final String copayment_percent;
-  final String discount;
-  final String outofstock;
-  final String rs;
+  final String? prescription_id;
+  final String? item_unit;
+  final String? item_code;
+  final String? itemname_en;
+  final String? img;
+  final String? quantity;
+  final String? approval_status;
+  final String? copayment_percent;
+  final String? discount;
+  final String? outofstock;
+  final String? rs;
 
   prescriptionorder({this.prescription_id,
     this.item_unit,
@@ -64,14 +64,14 @@ class prescriptionorder {
 }
 class Prescription_Summary_Screen extends StatefulWidget {
   final addid; final preid;
-  Prescription_Summary_Screen({Key key, @required this.addid, @required this.preid}) : super(key: key);
+  Prescription_Summary_Screen({Key? key, @required this.addid, @required this.preid}) : super(key: key);
   @override
   _Prescription_Summary_ScreenState createState() => _Prescription_Summary_ScreenState();
 }
 
 class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Screen> {
 
-  int selectedRadioTile,selectedRadio;
+  int? selectedRadioTile,selectedRadio;
 
   @override
   void initState() {
@@ -120,7 +120,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
                         height: height / 4,
                         child: Column(
                             children: <Widget>[
-                              RadioListTile(
+                              RadioListTile<int>(
                                 value: 1,
                                 groupValue: selectedRadioTile,
                                 title: Text("Cash On Delivery",
@@ -132,12 +132,12 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
                                 // subtitle: Text("Cash / Card On Delivery"),
                                 onChanged: (val) {
                                   print("Radio Tile pressed $val");
-                                  setSelectedRadioTile(val);
+                                  setSelectedRadioTile(val ?? 0);
                                 },
                                 activeColor: LightColor.midnightBlue,
 
                               ),
-                              RadioListTile(
+                              RadioListTile<int>(
                                 value: 2,
                                 groupValue: selectedRadioTile,
                                 title: Text("Card On Delivery",style: TextStyle(
@@ -147,13 +147,13 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
                                 // subtitle: Text("Radio 2 Subtitle"),
                                 onChanged: (val) {
                                   print("Radio Tile pressed $val");
-                                  setSelectedRadioTile(val);
+                                  setSelectedRadioTile(val ?? 0);
                                 },
                                 activeColor: LightColor.midnightBlue,
 
                                 selected: false,
                               ),
-                              RadioListTile(
+                              RadioListTile<int>(
                                 value: 3,
                                 groupValue: selectedRadioTile,
                                 title: Text("Online Payment",style: TextStyle(
@@ -163,7 +163,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
                                 // subtitle: Text("Radio 2 Subtitle"),
                                 onChanged: (val) {
                                   print("Radio Tile pressed $val");
-                                  setSelectedRadioTile(val);
+                                  setSelectedRadioTile(val ?? 0);
                                 },
                                 activeColor: LightColor.midnightBlue,
 
@@ -209,7 +209,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
 }
 class Prescription_order_details extends StatefulWidget {
   final id;
-  Prescription_order_details({Key key, @required this.id}) : super(key: key);
+  Prescription_order_details({Key? key, @required this.id}) : super(key: key);
   //List data;
   @override
   _Prescription_order_detailsState createState() => _Prescription_order_detailsState();
@@ -223,7 +223,7 @@ class _Prescription_order_detailsState extends State<Prescription_order_details>
       future: _fetchJobs(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<prescriptionorder> data = snapshot.data;
+          List<prescriptionorder> data = snapshot.data ?? [];
           return imageSlider(context, data);
 
         } else if (snapshot.hasError) {
@@ -237,7 +237,7 @@ class _Prescription_order_detailsState extends State<Prescription_order_details>
   Future<List<prescriptionorder>> _fetchJobs() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/prescription_order_details.php';
     var data = {'prescriptionid':widget.id};
-    final response = await http.post(jobsListAPIUrl, body: json.encode(data));
+    final response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -333,7 +333,7 @@ imageSlider(context,data) {
 class Address_data extends StatefulWidget {
   // List data;
   final addid;
-  Address_data({Key key, @required this.addid}) : super(key: key);
+  Address_data({Key? key, @required this.addid}) : super(key: key);
   @override
   _Address_dataState createState() => _Address_dataState();
 }
@@ -342,13 +342,13 @@ class _Address_dataState extends State<Address_data> {
   var addselect;
   var add;
   bool _isCheck = false;
-  List<bool> _isChecks = List();
+  List<bool> _isChecks = [];
 
   getStringValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id=prefs.getString('id');
+    String? user_id=prefs.getString('id');
     return user_id;
   }
 
@@ -367,7 +367,7 @@ class _Address_dataState extends State<Address_data> {
   Future removeadd(id) async {
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/remove/remove_address.php';
     var data = {'id': id};
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
     var message = jsonDecode(response.body);
 
     showDialog(
@@ -376,7 +376,7 @@ class _Address_dataState extends State<Address_data> {
         return AlertDialog(
           title: new Text(message),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: new Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -392,7 +392,7 @@ class _Address_dataState extends State<Address_data> {
     print(val);
     var data = {'id': idd, 'value': val};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/selected_address.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
   }
 
   @override
@@ -401,7 +401,7 @@ class _Address_dataState extends State<Address_data> {
       future: _fetch_add_data(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<add_data> data = snapshot.data;
+          List<add_data> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -419,7 +419,7 @@ class _Address_dataState extends State<Address_data> {
     var data = {'addid':widget.addid};
 
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/address_api.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new add_data.fromJson(item)).toList();
@@ -530,7 +530,7 @@ class _Address_dataState extends State<Address_data> {
 class Total_prescriptionscreen extends StatefulWidget {
   final prescription_id;
 
-  Total_prescriptionscreen({Key key, @required this.prescription_id}) : super(key: key);
+  Total_prescriptionscreen({Key? key, @required this.prescription_id}) : super(key: key);
   @override
   _Total_prescriptionscreenState createState() => _Total_prescriptionscreenState();
 
@@ -552,8 +552,8 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
                 future: _fetchTotal(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    List<TotalPrescription> data = snapshot.data;
-                    if (snapshot.data.length == 0) {
+                    List<TotalPrescription> data = snapshot.data ?? [];
+                    if (snapshot.data?.length == 0) {
                       return Container(
                           padding: EdgeInsets.only(left: 15, right: 15, top: 15),
                           child: Image.asset("assets/noorderfound.png"));
@@ -580,7 +580,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
     print(widget.prescription_id);
     var data = {'prescription_id':widget.prescription_id };
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/prescription_total.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     // _finalprice_= jsonResponse["price"].map((item) => new Item.fromJson(item)).toList();

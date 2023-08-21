@@ -19,8 +19,8 @@ class Advertise_Screen extends StatelessWidget {
 }
 
 class Job {
-  final String url;
-  final String title;
+  final String? url;
+  final String? title;
 
   Job({this.url, this.title});
 
@@ -39,7 +39,7 @@ class AdvertiseDemo extends StatelessWidget {
       future: _fetchJobs(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Job> data = snapshot.data;
+          List<Job> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -55,7 +55,7 @@ class AdvertiseDemo extends StatelessWidget {
   Future<List<Job>> _fetchJobs() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=advertise';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

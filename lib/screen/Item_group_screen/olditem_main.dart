@@ -9,14 +9,14 @@ import 'package:robustremedy/screen/Item_group_screen/item_group.dart';
 import 'package:robustremedy/themes/light_color.dart';
 
 class Item_main extends StatefulWidget {
-  Item_main({Key key}) : super(key: key);
+  Item_main({Key? key}) : super(key: key);
 
   @override
   _Item_mainState createState() => _Item_mainState();
 }
 
 class _Item_mainState extends State<Item_main> {
-  DateTime currentBackPressTime;
+  late DateTime currentBackPressTime;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -55,14 +55,14 @@ class _Item_mainState extends State<Item_main> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
   }
 }
 
 class ItemData {
-  final String url;
-  final String title;
-  final String id;
+  final String? url;
+  final String? title;
+  final String? id;
   ItemData({this.url,this.title,this.id});
 
   factory ItemData.fromJson(Map<String, dynamic> json) {
@@ -84,7 +84,7 @@ class GridDemo extends StatelessWidget {
       future: _fetchItemData(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<ItemData> data = snapshot.data;
+          List<ItemData> data = snapshot.data ?? [];
           return Grid(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -96,7 +96,7 @@ class GridDemo extends StatelessWidget {
 
   Future<List<ItemData>> _fetchItemData() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/categories/itemmaingroup.php?action=itemmaingroup';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

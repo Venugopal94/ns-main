@@ -10,7 +10,7 @@ import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StaticPage {
-  final String content;
+  final String? content;
 
   StaticPage({this.content});
 
@@ -30,7 +30,7 @@ class _TermsStateScreen extends State<TermsScreen> {
   static const routeName = "/";
 
 // Receiving Email using Constructor.
-  String email;
+  String? email;
 
   void getData() async {
     SharedPreferences pf = await SharedPreferences.getInstance();
@@ -68,7 +68,7 @@ class TermsDemo extends StatelessWidget {
       future: _fetchStaticPage(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<StaticPage> data = snapshot.data;
+          List<StaticPage> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -81,7 +81,7 @@ class TermsDemo extends StatelessWidget {
   Future<List<StaticPage>> _fetchStaticPage() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=e_staticpages_terms';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

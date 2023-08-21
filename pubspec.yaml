@@ -4,61 +4,64 @@ description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 15.4.2+1
+version: 15.4.2+68
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <4.1.0"
 
 dependencies:
   flutter:
     sdk: flutter
   provider:
   vector_math: any
-  flutter_swiper: 1.1.6
+  #flutter_swiper: ^1.1.6
+  flutter_swiper_null_safety: ^1.0.2
   flutter_svg: ^1.0.0
   scoped_model:
-  localstorage: ^3.0.6
+  localstorage: ^4.0.1+4
   cupertino_icons: ^1.0.5
-  carousel_pro: ^1.0.0
+  #carousel_pro: ^1.0.0
+  #carousel_pro_nullsafety: ^2.0.0
   google_fonts:
-  sweetalert: any
+  #sweetalert: ^
   
   badges: ^2.0.3
-  connectivity: ^0.4.8+2
+  #connectivity_plus: ^4.0.2
   toast:
-  flutter_icons:
+  #flutter_icons:
   shared_preferences:
-  flutter_session:
+  #flutter_session:
   flutter_form_builder:
-  geolocator: ^5.1.1
-  geocoder: ^0.2.1
-  flutter_open_whatsapp:
+  geolocator: ^10.0.0
+  #geocoder: ^0.2.1
+  geocoding: ^2.1.0
+  #flutter_open_whatsapp: ^0.1.2
   font_awesome_flutter:
   double_back_to_close_app:
   flutter_html:
   material_floating_search_bar: ^0.3.6
-  file_picker: ^1.9.0+1
-  dio: ^3.0.9
+  file_picker: 5.2.0
+  dio: ^5.3.2
   path:
   translator:
   filter_list:
-  modal_bottom_sheet:
-  flutter_local_notifications: ^4.0.1+2
-  timeline_node:
+  modal_bottom_sheet: ^2.1.2
+  flutter_local_notifications: ^15.1.0+1
+  #timeline_node: ^0.1.0
   get_it:
   url_launcher:
-  expansion_card:
+  #expansion_card: ^0.1.0
   flutter_rating_bar:
   share:
-  flutter_range_slider:
+  flutter_xlider: ^3.5.0
   showcaseview:
   bouncing_widget:
   flutter_phone_direct_caller:
   webview_flutter:
-  flutter_typeahead: ^2.0.0
-  image_picker: ^0.6.7+22
+  flutter_typeahead:
+  image_picker: ^1.0.2
   change_app_package_name: ^1.0.0
-  dropdown_search:
+  dropdown_search: ^5.0.6
   arabic_numbers: ^1.0.0
 
 dev_dependencies:
@@ -71,7 +74,8 @@ flutter_icons:
   android: true
   image_path: "assets/Appicon.png"
 
-
+dependency_overrides:
+  modal_bottom_sheet: ^3.0.0-pre
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

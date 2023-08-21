@@ -5,9 +5,9 @@ class ButtonWidget extends StatelessWidget {
   var onClick;
 
 
-  ButtonWidget({this.btnText, this.onClick});
-  Color yellowColors = Colors.yellow[700];
-  Color yellowColor = Colors.yellow[700];
+  ButtonWidget({required this.btnText, this.onClick});
+  Color yellowColors = Colors.yellow[700] ?? Color(1);
+  Color yellowColor = Colors.yellow[700] ?? Color(1);
   @override
   Widget build(BuildContext context) {
     return InkWell(

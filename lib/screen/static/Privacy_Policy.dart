@@ -19,13 +19,13 @@ class _PolicyStateScreen extends State<PolicyScreen> {
   static const routeName = "/";
 
 // Receiving Email using Constructor.
-  String email;
+  String? email;
 
   void getData() async {
     SharedPreferences pf = await SharedPreferences.getInstance();
 
     setState(() {
-      email = pf.getString("email");
+      email = pf.getString("email") ?? "";
     });
   }
 
@@ -52,7 +52,7 @@ class _PolicyStateScreen extends State<PolicyScreen> {
 }
 
 class StaticPage {
-  final String content;
+  final String? content;
 
   StaticPage({this.content});
 
@@ -70,7 +70,7 @@ class Policy extends StatelessWidget {
       future: _fetchStaticPage(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<StaticPage> data = snapshot.data;
+          List<StaticPage> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -83,7 +83,7 @@ class Policy extends StatelessWidget {
   Future<List<StaticPage>> _fetchStaticPage() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=e_staticpages_privacypolicy';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

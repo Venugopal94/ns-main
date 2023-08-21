@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
 class UserModel {
-  final String zone;
+  String zone;
   final String area;
   final String id;
 
   UserModel(
-      {@required this.id, this.zone, @required this.area});
+      { required this.id, required this.zone, required this.area});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -35,5 +35,5 @@ class UserModel {
   }
 
   @override
-  String toString() => zone+' '+area;
+  String toString() => zone +' '+area;
 }

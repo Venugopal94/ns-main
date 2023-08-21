@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class logout extends StatefulWidget {
-  logout({Key key, this.title}) : super(key: key);
+  logout({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -13,7 +13,7 @@ class logout extends StatefulWidget {
 }
 
 class _logoutState extends State<logout> { // Wrapper Widget
-  String email;
+  String? email;
 
   Future userLogout() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();

@@ -10,22 +10,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Reviews_screen extends StatefulWidget {
   final itemproductid;
 
-  Reviews_screen({Key key, @required this.itemproductid}) : super(key: key);
+  Reviews_screen({Key? key, @required this.itemproductid}) : super(key: key);
   @override
   _Reviews_screenState createState() => _Reviews_screenState();
 }
 class reviews_data {
-  final String id;
-  final String customer_id;
-  final String product_group_id;
-  final String item_id;
-  final String rating;
-  final String review;
-  final String status;
-  final String added_on;
-  final String modified_on;
-  final String first_name;
-  final String last_name;
+  final String? id;
+  final String? customer_id;
+  final String? product_group_id;
+  final String? item_id;
+  final String? rating;
+  final String? review;
+  final String? status;
+  final String? added_on;
+  final String? modified_on;
+  final String? first_name;
+  final String? last_name;
 
   reviews_data(
       {this.id,
@@ -59,8 +59,8 @@ class reviews_data {
 class _Reviews_screenState extends State<Reviews_screen> {
   final reviewController=TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-double starrating;
-  int selectedRadioTile,selectedRadio;
+  late double starrating;
+  late int selectedRadioTile,selectedRadio;
 
   @override
   void initState() {
@@ -76,14 +76,14 @@ double starrating;
   }
   getStringValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String user_id=prefs.getString('id');
+    String user_id=prefs.getString('id') ?? "";
     return user_id;
   }
   Future<List<reviews_data>> _fetch_reviews_data() async {
     dynamic token = await getStringValues();
     var data = {'itemproductgroupid': widget.itemproductid,'userid':token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/pages/customer_reviews.php';
-    var response = await http.post(url,body: json.encode(data));
+    var response = await http.post(Uri(path: url),body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new reviews_data.fromJson(item)).toList();
@@ -96,7 +96,7 @@ double starrating;
     else{
       var url = 'https://onlinefamilypharmacy.com/mobileapplication/remove/remove_reviews.php';
       var data = { 'id': id};
-      var response = await http.post(url, body: json.encode(data));
+      var response = await http.post(Uri(path: url), body: json.encode(data));
       var message = jsonDecode(response.body);
       setState(() {
         _fetch_reviews_data();
@@ -129,7 +129,7 @@ double starrating;
         };
 
         // Starting Web API Call.
-        var response = await http.post(url, body: json.encode(data));
+        var response = await http.post(Uri(path: url), body: json.encode(data));
 
         // Getting Server response into variable.
         var message = json.decode(response.body);
@@ -151,8 +151,8 @@ double starrating;
           future: _fetch_reviews_data(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<reviews_data> data = snapshot.data;
-              if (snapshot.data.length == 0) {
+              List<reviews_data> data = snapshot.data ?? [];
+              if (snapshot.data?.length == 0) {
                 final width = MediaQuery.of(context).size.width;
                 final height=MediaQuery.of(context).size.height;
                 return Center(
@@ -244,22 +244,19 @@ double starrating;
                               ),
                             ),
                                   Center(
-                                    child: RaisedButton(
-                                      shape: RoundedRectangleBorder(
+                                    child:
+                                    ElevatedButton(onPressed: () {
+                                      user_review();
+                                      showInSnackBar('Review has been submitted successfully!');
+                                    },
+                                      style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                                         //  borderRadius: BorderRadius.circular(18.0),
-                                          side: BorderSide(color: LightColor.midnightBlue)),
-                                      onPressed: () {
-                                        user_review();
-                                        showInSnackBar('Review has been submitted successfully!');
-                                        // Navigator.of(context).pop();
-                                      },
-                                      color: LightColor.midnightBlue,
-                                      textColor: Colors.white,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text("Submit Review", style: TextStyle(fontSize: 18)),
-                                      ),
-                                    ),
+                                          side: BorderSide(color: LightColor.midnightBlue)), foregroundColor: LightColor.midnightBlue),
+
+                                      child: Text("Submit Review",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18.0)),),
                                   ),
                                 ])));});
 
@@ -391,7 +388,7 @@ double starrating;
     );
   }
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));

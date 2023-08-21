@@ -19,21 +19,21 @@ class PaymentOptionScreen extends StatefulWidget {
   //   this.data = data;
   // }
 
-  PaymentOptionScreen({Key key, @required this.amount, @required this.data}) : super(key: key);
+  PaymentOptionScreen({Key? key, required this.amount, required this.data}) : super(key: key);
 
   @override
   _PaymentScreenState createState() => _PaymentScreenState();
 }
 
 class _PaymentScreenState extends State<PaymentOptionScreen> {
-  int selectedRadioTile, selectedRadio;
+  int? selectedRadioTile, selectedRadio;
 
-  bool loading;
+  late bool loading;
   String accessToken = "";
 
-  int reference;
+  int? reference;
 
-  String paypalLink,
+  String? paypalLink,
       creditCardLink,
       cyberSecureLink,
       IBCardLink,
@@ -62,7 +62,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id = prefs.getString('id');
+    String? user_id = prefs.getString('id');
     return user_id;
   }
 
@@ -120,10 +120,10 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                                     //   child:Image.asset("assets/paypal.png",height: 60,width: 120,),),
                                   ]),
                               // subtitle: Text("Radio 2 Subtitle"),
-                              onChanged: (val) {
+                              onChanged: (int? val) {
                                 if (NapsLink != null) {
                                   print("Radio Tile pressed $val");
-                                  setSelectedRadioTile(val);
+                                  setSelectedRadioTile(val ?? 0);
                                 }
                               },
                               activeColor: LightColor.midnightBlue,
@@ -192,10 +192,10 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                                     ),
                                   ]),
                               // subtitle: Text("Radio 2 Subtitle"),
-                              onChanged: (val) {
+                              onChanged: (int? val) {
                                 if (IBCardLink != null) {
                                   print("Radio Tile pressed $val");
-                                  setSelectedRadioTile(val);
+                                  setSelectedRadioTile(val ?? 0);
                                 }
                               },
                               activeColor: LightColor.midnightBlue,
@@ -232,10 +232,10 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                                     ),
                                   ]),
                               // subtitle: Text("Radio 2 Subtitle"),
-                              onChanged: (val) {
+                              onChanged: (int? val) {
                                 if (paypalLink != null) {
                                   print("Radio Tile pressed $val");
-                                  setSelectedRadioTile(val);
+                                  setSelectedRadioTile(val ?? 0);
                                 }
                               },
                               activeColor: LightColor.midnightBlue,
@@ -288,14 +288,14 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
             //  label: Text("Add to Cart"),
             backgroundColor: LightColor.yellowColor,
             onPressed: () {
-              String url = "";
+              String? url = "";
               if (selectedRadioTile == 1) {
                 url = cyberSecureLink;
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          WebViewLoad(url, accessToken, this.widget.data),
+                          WebViewLoad(url ?? "", accessToken, this.widget.data),
                     ));
               } else if (selectedRadioTile == 2) {
                 url = IBCardLink;
@@ -304,7 +304,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          WebViewLoad(url, accessToken, this.widget.data),
+                          WebViewLoad(url ?? "", accessToken, this.widget.data),
                     ));
 
                 // url = NapsLink;
@@ -320,7 +320,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          WebViewLoad(url, accessToken, this.widget.data),
+                          WebViewLoad(url ?? "", accessToken, this.widget.data),
                     ));
               } else if (selectedRadioTile == 4) {
                 url = NapsLink;
@@ -328,7 +328,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          WebViewLoad(url, accessToken, this.widget.data),
+                          WebViewLoad(url ?? "", accessToken, this.widget.data),
                     ));
               }
             },
@@ -349,7 +349,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
     // String url="http://192.168.1.93:8080/paymentGatewayApi_war_exploded/GetAccessToken";
     String url =
         "http://robustremedy.com:8080/paymentGatewayApi/GetAccessToken";
-    var response = await http.get(url);
+    var response = await http.get(Uri(path: url));
     var jsonResponse = jsonDecode(response.body);
     print("response " + response.body);
     try {
@@ -363,8 +363,8 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
       setState(() {
         loading = false;
       });
-      Toast.show("SomeThing went wrong", context,
-          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+      Toast.show("SomeThing went wrong",
+          duration: Toast.lengthShort, gravity: Toast.bottom);
     }
   }
 
@@ -381,13 +381,13 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
       var data = {
         "reference": reference.toString(),
         "amount": this.widget.amount.toString(),
-        "email": account.email.trim(),
+        "email": account.email?.trim(),
         "mobile": account.mobile.toString(),
-        "name": account.first_name.trim(),
+        "name": account.first_name?.trim(),
         "token": accessToken
       };
       log(account.mobile.toString());
-      var response = await http.post(url, body: jsonEncode(data));
+      var response = await http.post(Uri(path: url), body: jsonEncode(data));
       print("response " + response.body);
       var jsonResponse = jsonDecode(response.body);
 
@@ -402,8 +402,8 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
       });
     } catch (e) {
       print(e);
-      Toast.show("SomeThing went wrong", context,
-          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+      Toast.show("SomeThing went wrong",
+          duration: Toast.lengthShort, gravity: Toast.bottom);
 
       setState(() {
         loading = false;
@@ -417,7 +417,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
     var data = {'userid': token};
     var url =
         'https://onlinefamilypharmacy.com/mobileapplication/account_details.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new Account.fromJson(item)).toList();
   }

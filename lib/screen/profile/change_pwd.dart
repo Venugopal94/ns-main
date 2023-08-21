@@ -20,7 +20,7 @@ class _changepwdState extends State<changepwd> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id=prefs.getString('id');
+    String? user_id=prefs.getString('id');
     return user_id;
   }
   Future changepass() async {
@@ -50,7 +50,7 @@ else {
     'userid':token
 
   };
-  var response = await http.post(url, body: json.encode(data));
+  var response = await http.post(Uri(path: url), body: json.encode(data));
 
   // Getting Server response into variable.
   var message = jsonDecode(response.body);
@@ -102,7 +102,7 @@ else {
                           Color(0xfff3f3f4),
                           filled: true),
                       validator: (val){
-                        if(val.isEmpty)
+                        if((val ?? "").isEmpty)
                           return 'Empty';
                         return null;
                       }),
@@ -122,7 +122,7 @@ else {
                         Color(0xfff3f3f4),
                         filled: true),
                     validator: (val){
-                      if(val.isEmpty)
+                      if((val ?? "").isEmpty)
                         return 'Empty';
                       return null;
                     }),
@@ -141,7 +141,7 @@ else {
                           Color(0xfff3f3f4),
                           filled: true),
                       validator: (val){
-                        if(val.isEmpty)
+                        if((val ?? "").isEmpty)
                           return 'Empty';
                         if(val != newpwdController.text)
                           return 'Not Match';
@@ -155,19 +155,17 @@ else {
                 ButtonTheme(
                   minWidth: 400.0,
                   height: 50.0,
-                  child: RaisedButton(
+                  child:
+                  ElevatedButton(
                     //     disabledColor: Colors.red,
                     // disabledTextColor: Colors.black,
-                    padding:
-                    const EdgeInsets.all(
-                        20),
-                    textColor: Colors.white,
-                    color: LightColor.midnightBlue,
+                    style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(
+                        20,), foregroundColor: LightColor.midnightBlue),
                     onPressed: changepass,
                     child:
                     Text('Change Password',  style: TextStyle(
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold, color: Colors.white,
                     ),),
                   ),
                 )
@@ -176,6 +174,6 @@ else {
 
     ))]));}
     void showInSnackBar(String value) {
-      _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
     }
   }

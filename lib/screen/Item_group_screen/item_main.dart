@@ -10,15 +10,15 @@ import 'package:robustremedy/themes/light_color.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Item_main extends StatefulWidget {
-  Item_main({Key key}) : super(key: key);
+  Item_main({Key? key}) : super(key: key);
 
   @override
   _Item_mainState createState() => _Item_mainState();
 }
 
 class _Item_mainState extends State<Item_main> {
-  DateTime currentBackPressTime;
-  List<ItemData> data ;
+  late DateTime currentBackPressTime;
+  late List<ItemData> data ;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String pharmacyname = "";
   Future<void> _showSearch() async {
@@ -30,7 +30,7 @@ class _Item_mainState extends State<Item_main> {
   }
   Future<List<ItemData>> fetchItemData() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/categories/itemmaingroup.php?action=itemmaingroup';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -95,14 +95,14 @@ class _Item_mainState extends State<Item_main> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
   }
 }
 
 class ItemData {
-  final String url;
-  final String title;
-  final String id;
+  final String? url;
+  final String? title;
+  final String? id;
   ItemData({this.url,this.title,this.id});
 
   factory ItemData.fromJson(Map<String, dynamic> json) {
@@ -124,7 +124,7 @@ class GridDemo extends StatelessWidget {
       future: fetchItemData(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<ItemData> data = snapshot.data;
+          List<ItemData> data = snapshot.data ?? [];
           return Grid(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -136,7 +136,7 @@ class GridDemo extends StatelessWidget {
 
   Future<List<ItemData>> fetchItemData() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/categories/itemmaingroup.php?action=itemmaingroup';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -374,70 +374,3 @@ Grid(context,data) {
     );
   }
 }
-
-class TheSearch extends SearchDelegate<String> {
-  TheSearch({this.contextPage, this.controller, @required this.data});
-
-  List<ItemData> data;
-  BuildContext contextPage;
-  WebViewController controller;
-  final suggestions1 = [];
-
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    return ThemeData(
-      primaryColor: LightColor.yellowColor,
-    );
-  }
-
-  @override
-  String get searchFieldLabel => "Search Main Group";
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () {
-          query = "";
-        },
-      )
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_arrow,
-        progress: transitionAnimation,
-      ),
-      onPressed: () {
-        close(context, null);
-      },
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return Grid(
-        context,
-        data
-            .where((element) => element.url
-            .toLowerCase()
-            .contains(query.toLowerCase()))
-            .toList());
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return Grid(
-        context,
-        data
-            .where((element) => element.title
-            .toLowerCase()
-            .contains(query.toLowerCase()))
-            .toList());
-  }
-}
-

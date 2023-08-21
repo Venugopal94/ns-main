@@ -1,6 +1,6 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoder/geocoder.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:robustremedy/screen/home/home_below_slider.dart';
 import 'package:robustremedy/screen/profile/address_profile.dart';
@@ -42,24 +42,23 @@ class _UserProfilePageState extends State<UserProfilePage> {
   var fname, addline, latitude, longitude;
 
   _getLocation() async {
-    Position position = await Geolocator().getCurrentPosition(
+    Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     debugPrint('location: ${position.latitude}');
-    final coordinates = new Coordinates(position.latitude, position.longitude);
     var addresses =
-        await Geocoder.local.findAddressesFromCoordinates(coordinates);
+        await placemarkFromCoordinates(position.latitude, position.longitude);
     var first = addresses.first;
-    print("${first.featureName} : ${first.addressLine}");
+    print("${first.name} : ${first.administrativeArea}");
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setString(
       'featureName',
-      first.featureName,
+      first.name ?? "",
     );
     prefs.setString(
       'addressLine',
-      first.addressLine,
+      first.toString(),
     );
     prefs.setString(
       'latitude',
@@ -330,7 +329,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
           InkWell(
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => logout()));
+                  context, MaterialPageRoute(builder: (context) => logout(title: '',)));
             },
             child: ListTile(
               leading:

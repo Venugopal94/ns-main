@@ -27,7 +27,7 @@ class visionmissionBannerView extends StatelessWidget {
               Flexible(
                 child: Text(
                   "Find Your Special Someone",
-                  style: Theme.of(context).textTheme.subtitle2.copyWith(
+                  style: Theme.of(context).textTheme.subtitle2?.copyWith(
                     color: LightColor.midnightBlue,
                         fontSize: 15.0,
                         fontWeight: FontWeight.w700,

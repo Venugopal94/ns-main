@@ -8,17 +8,17 @@ import 'package:robustremedy/screen/Item_group_screen/detail_page.dart';
 import 'package:robustremedy/themes/light_color.dart';
 
 class prescriptionorder_details {
-  final String prescription_id;
-  final String item_unit;
-  final String item_code;
-  final String itemname_en;
-  final String img;
-  final String quantity;
-  final String approval_status;
-  final String copayment_percent;
-  final String discount;
-  final String outofstock;
-  final String rs;
+  final String? prescription_id;
+  final String? item_unit;
+  final String? item_code;
+  final String? itemname_en;
+  final String? img;
+  final String? quantity;
+  final String? approval_status;
+  final String? copayment_percent;
+  final String? discount;
+  final String? outofstock;
+  final String? rs;
 
   prescriptionorder_details({
     this.prescription_id,
@@ -52,7 +52,7 @@ class prescriptionorder_details {
 
 class Prescription_order_detailsDemo extends StatefulWidget {
   final id;
-  Prescription_order_detailsDemo({Key key, @required this.id})
+  Prescription_order_detailsDemo({Key? key, @required this.id})
       : super(key: key);
   //List data;
   @override
@@ -68,7 +68,7 @@ class _Prescription_order_detailsDemoState
       future: _fetchJobs(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<prescriptionorder_details> data = snapshot.data;
+          List<prescriptionorder_details> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -85,7 +85,7 @@ class _Prescription_order_detailsDemoState
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/prescription_order_details.php';
     var data = {'prescriptionid': widget.id};
-    final response = await http.post(jobsListAPIUrl, body: json.encode(data));
+    final response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

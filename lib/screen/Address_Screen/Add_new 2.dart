@@ -12,14 +12,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 
 List data = [];
-String selectedvalue;
+String? selectedvalue;
 
 final String url1 =
     'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=zonearea';
 
 class Add_NewScreen extends StatefulWidget {
   final total;
-  Add_NewScreen({Key key, @required this.total}) : super(key: key);
+  Add_NewScreen({Key? key, @required this.total}) : super(key: key);
 
   @override
   _Add_NewScreenState createState() => _Add_NewScreenState();
@@ -38,7 +38,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id = prefs.getString('id');
+    String? user_id = prefs.getString('id');
     return user_id;
   }
 
@@ -61,7 +61,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
     String firstname = fnameController.text;
     String lastname = lnameController.text;
     String buildingno = buildingController.text;
-    String zone = selectedvalue;
+    String zone = selectedvalue ?? "";
     String street = streetController.text;
 
     if (firstname.length == 0 ||
@@ -86,7 +86,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
       };
 
       // Starting Web API Call.
-      var response = await http.post(url, body: json.encode(data));
+      var response = await http.post(Uri(path: url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
@@ -123,10 +123,10 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
   }
 
   Future<String> fetchData() async {
-    var response = await http.post(url1);
+    var response = await http.post(Uri(path: url1));
 
     if (response.statusCode == 200) {
-      var res = await http.post(Uri.encodeFull(url1));
+      var res = await http.post(Uri(path: url1));
 
       var resBody = json.decode(res.body);
       print("___________JSJSJS");
@@ -527,14 +527,14 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));
   }
 
-  showToast(String msg, {int duration, int gravity}) {
-    Toast.show(msg, context, duration: duration, gravity: gravity);
+  showToast(String msg, {int? duration, int? gravity}) {
+    Toast.show(msg, duration: duration, gravity: gravity);
   }
 }
 
@@ -542,8 +542,8 @@ class Button extends StatelessWidget {
   var btnText = "";
   var onClick;
 
-  Button({this.btnText, this.onClick});
-  Color yellowColors = Colors.yellow[700];
+  Button({required this.btnText, this.onClick});
+  Color yellowColors = Colors.yellow[700] ?? Color(0);
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99, 1);
   @override
   Widget build(BuildContext context) {

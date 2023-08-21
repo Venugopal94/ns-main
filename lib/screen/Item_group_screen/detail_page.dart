@@ -1,4 +1,5 @@
 import 'dart:convert';
+//import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -9,12 +10,11 @@ import 'package:robustremedy/screen/home/home_below_slider.dart';
 import 'package:robustremedy/screen/Item_group_screen/reviews.dart';
 import 'package:robustremedy/screen/static/ProductVariantModel.dart';
 import 'package:robustremedy/themes/light_color.dart';
-import 'package:robustremedy/widgets/badge.dart';
+import 'package:robustremedy/widgets/badge.dart' as Badge;
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 
 import '../../main.dart';
 
@@ -1195,7 +1195,7 @@ import '../../main.dart';
 class ListDetails extends StatefulWidget {
   final todo;
 
-  ListDetails({Key key, @required this.todo}) : super(key: key);
+  ListDetails({Key? key, @required this.todo}) : super(key: key);
 
   @override
   State<ListDetails> createState() => _ListDetailsState();
@@ -1218,7 +1218,7 @@ class _ListDetailsState extends State<ListDetails> {
   Future<String> getUserId() async {
     SharedPreferences pf = await SharedPreferences.getInstance();
 
-    return pf.getString('id');
+    return pf.getString('id') ?? "";
   }
 
   // Get Cart count
@@ -1275,7 +1275,7 @@ class _ListDetailsState extends State<ListDetails> {
 
   void showInSnackBar(String value) {
     // ignore: deprecated_member_use
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));
@@ -1363,7 +1363,7 @@ class _ListDetailsState extends State<ListDetails> {
       'itemproductgroupid': widget.todo.itemproductgroupid
     };
     var response = await http.post(
-        'https://onlinefamilypharmacy.com/mobileapplication/pages/dropdown_api.php',
+        Uri(path: 'https://onlinefamilypharmacy.com/mobileapplication/pages/dropdown_api.php'),
         body: json.encode(data));
 
     List responseData = json.decode(response.body);
@@ -1402,7 +1402,7 @@ class _ListDetailsState extends State<ListDetails> {
       };
 
       
-      var response = await http.post(url, body: json.encode(data));
+      var response = await http.post(Uri(path: url), body: json.encode(data));
 
       // getCartCount();
       
@@ -1425,7 +1425,7 @@ class _ListDetailsState extends State<ListDetails> {
         appBar: AppBar(
           title: Text(widget.todo.itemproductgrouptitle),
           actions: [
-            Badge(
+            Badge.Badge(
                 // value: cartCount,
                 value: ScopedModel.of<CartModel>(context,
                                     rebuildOnChange: true)
@@ -1457,29 +1457,30 @@ class _ListDetailsState extends State<ListDetails> {
                     height: 280,
                     child: Stack(
                       children: [
-                        Carousel(
-                          images: [
-                            Image.network(
-                                'https://onlinefamilypharmacy.com/images/item/' +
-                                    widget.todo.img,fit: BoxFit.contain, ),
-                            Image.network(
-                              'https://onlinefamilypharmacy.com/images/item/' +
-                                  widget.todo.img,fit: BoxFit.contain,
-                            ),
-                            Image.network(
-                              'https://onlinefamilypharmacy.com/images/item/' +
-                                  widget.todo.img,fit: BoxFit.contain,
-                            ),
-                          ],
-                          dotSize: 6.0,
-                          dotSpacing: 15.0,
-                          dotColor: LightColor.midnightBlue,
-                          indicatorBgPadding: 5.0,
-                          dotBgColor: Colors.transparent,
-                          borderRadius: true,
-                          defaultImage: Image.asset('assets/noimage.jpeg'),
-                          
-                        ),
+                        // TODO: HEY
+                        // Carousel(
+                        //   images: [
+                        //     Image.network(
+                        //         'https://onlinefamilypharmacy.com/images/item/' +
+                        //             widget.todo.img,fit: BoxFit.contain, ),
+                        //     Image.network(
+                        //       'https://onlinefamilypharmacy.com/images/item/' +
+                        //           widget.todo.img,fit: BoxFit.contain,
+                        //     ),
+                        //     Image.network(
+                        //       'https://onlinefamilypharmacy.com/images/item/' +
+                        //           widget.todo.img,fit: BoxFit.contain,
+                        //     ),
+                        //   ],
+                        //   dotSize: 6.0,
+                        //   dotSpacing: 15.0,
+                        //   dotColor: LightColor.midnightBlue,
+                        //   indicatorBgPadding: 5.0,
+                        //   dotBgColor: Colors.transparent,
+                        //   borderRadius: true,
+                        //   defaultImage: Image.asset('assets/noimage.jpeg'),
+                        //
+                        // ),
                         Positioned(
                             right: 10,
                             child: IconButton(
@@ -1584,7 +1585,7 @@ class _ListDetailsState extends State<ListDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                     
-                    productVariants[_selectedVariant].itempack == '' || productVariants[_selectedVariant].itempack == null  || productVariants[_selectedVariant].itempack.isEmpty
+                    productVariants[_selectedVariant].itempack == '' || productVariants[_selectedVariant].itempack == null  || productVariants[_selectedVariant].itempack!.isEmpty
                         ? SizedBox()
                         :    Text('Available Variants',
                             style: TextStyle(
@@ -1594,7 +1595,7 @@ class _ListDetailsState extends State<ListDetails> {
                         _selectedVariant != null
                             ? Text(
                               
-                                'QR ${double.parse(productVariants[_selectedVariant].rs).toStringAsFixed(2)}',
+                                'QR ${double.parse(productVariants[_selectedVariant]?.rs ?? "").toStringAsFixed(2)}',
                                 style: TextStyle(
                                     color: LightColor.midnightBlue,
                                     fontSize: 16,
@@ -1604,7 +1605,7 @@ class _ListDetailsState extends State<ListDetails> {
                       ],
                     ),
 
-                    productVariants[_selectedVariant].itempack == '' || productVariants[_selectedVariant].itempack == null  || productVariants[_selectedVariant].itempack.isEmpty
+                    productVariants[_selectedVariant].itempack == '' || productVariants[_selectedVariant].itempack == null  || productVariants[_selectedVariant].itempack!.isEmpty
                         ? SizedBox()
                         : _buildChoiceChips(),
 
@@ -1759,18 +1760,18 @@ class _ListDetailsState extends State<ListDetails> {
             showInSnackBar('Out of Stock');
           } else if (widget.todo.itemclassid == '4') {
             showInSnackBar('Prescription Required');
-          } else if(quantityOfVariant > int.parse(productVariants[_selectedVariant].stock)){
+          } else if(quantityOfVariant > int.parse(productVariants[_selectedVariant]?.stock ?? "")){
             showInSnackBar('You cannot add quantity greater than stock');
           } 
           
           else {
              ProductAddToCart _product = ProductAddToCart(
-                finalprice: double.parse(productVariants[_selectedVariant].rs),
-                id: productVariants[_selectedVariant].id,
+                finalprice: double.parse(productVariants[_selectedVariant]?.rs ?? ""),
+                id: productVariants[_selectedVariant]?.id ?? "",
                 img: widget.todo.img,
-                title: productVariants[_selectedVariant].itemnameEn,
+                title: productVariants[_selectedVariant]?.itemnameEn ?? "",
                 quantity: quantityOfVariant,
-                stockStatus: int.parse(productVariants[_selectedVariant].stock),
+                stockStatus: int.parse(productVariants[_selectedVariant]?.stock ?? ""),
                 price: double.parse(widget.todo.maxretailprice),
               );
 
@@ -1801,7 +1802,7 @@ class _ListDetailsState extends State<ListDetails> {
         ),
         itemBuilder: (BuildContext context, int index) {
           return ChoiceChip(
-            label:  index != _selectedVariant ? Text(productVariants[index].itempack,style: TextStyle(color: Colors.black),):Text(productVariants[index].itempack,style: TextStyle(color: Colors.white),),
+            label:  index != _selectedVariant ? Text(productVariants[index]?.itempack ?? "",style: TextStyle(color: Colors.black),):Text(productVariants[index]?.itempack ?? "",style: TextStyle(color: Colors.white),),
             selected: _selectedVariant == index,
             selectedColor: Colors.black,
             onSelected: (bool selected) {

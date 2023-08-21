@@ -14,9 +14,9 @@ class intro extends StatefulWidget {
 
 class _introState extends State<intro> {
 
-  List<SliderModel> mySLides = new List<SliderModel>();
+  List<SliderModel> mySLides = [];
   int slideIndex = 0;
-  PageController controller;
+  late PageController controller;
 
   Widget _buildPageIndicator(bool isCurrentPage){
     return Container(
@@ -79,11 +79,11 @@ class _introState extends State<intro> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: (){
                   controller.animateToPage(2, duration: Duration(milliseconds: 400), curve: Curves.linear);
                 },
-                splashColor: Colors.blue[50],
+                style: TextButton.styleFrom(foregroundColor: Colors.blue[50]),
                 child: Text(
                   "SKIP",
                   style: TextStyle(color: LightColor.midnightBlue, fontWeight: FontWeight.w700),
@@ -95,12 +95,12 @@ class _introState extends State<intro> {
                     for (int i = 0; i < 3 ; i++) i == slideIndex ? _buildPageIndicator(true): _buildPageIndicator(false),
                   ],),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: (){
                   print("this is slideIndex: $slideIndex");
                   controller.animateToPage(slideIndex + 1, duration: Duration(milliseconds: 500), curve: Curves.linear);
                 },
-                splashColor: LightColor.yellowColor,
+                style: TextButton.styleFrom(foregroundColor: LightColor.yellowColor),
                 child: Text(
                   "NEXT",
                   style: TextStyle(color: LightColor.midnightBlue, fontWeight: FontWeight.w700),
@@ -132,7 +132,7 @@ class _introState extends State<intro> {
 class SlideTile extends StatelessWidget {
   String imagePath, title, desc;
 
-  SlideTile({this.imagePath, this.title, this.desc});
+  SlideTile({required this.imagePath, required this.title, required this.desc});
 
   @override
   Widget build(BuildContext context) {

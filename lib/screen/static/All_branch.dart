@@ -10,6 +10,8 @@ import 'package:robustremedy/widgets/appdrawer_without_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../Item_group_screen/item_group.dart';
+
 class All_branch extends StatefulWidget {
   @override
   _All_branchState createState() => _All_branchState();
@@ -20,7 +22,7 @@ class _All_branchState extends State<All_branch> {
     final url =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=branch';
     //var data = {'itemid': widget.itemnull};
-    var response = await http.get(url);
+    var response = await http.get(Uri(path: url));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -33,9 +35,9 @@ class _All_branchState extends State<All_branch> {
   Icon actionIcon = new Icon(Icons.search);
   Widget appBarTitle = new Text("Pharmacy");
   String pharmacyname = "";
-  List<allbranch> data;
+  List<allbranch> data = [];
 
-  String email;
+  String? email;
 
   void getData() async {
     SharedPreferences pf = await SharedPreferences.getInstance();
@@ -115,72 +117,6 @@ class _All_branchState extends State<All_branch> {
   }
 }
 
-class TheSearch extends SearchDelegate<String> {
-  TheSearch({this.contextPage, this.controller, @required this.data});
-
-  List<allbranch> data;
-  BuildContext contextPage;
-  WebViewController controller;
-  final suggestions1 = [];
-
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    return ThemeData(
-      primaryColor: LightColor.yellowColor,
-    );
-  }
-
-  @override
-  String get searchFieldLabel => "Enter Pharmacy name";
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () {
-          query = "";
-        },
-      )
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_arrow,
-        progress: transitionAnimation,
-      ),
-      onPressed: () {
-        close(context, null);
-      },
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return Grid(
-        context,
-        data
-            .where((element) => element.branchecommercename
-                .toLowerCase()
-                .contains(query.toLowerCase()))
-            .toList());
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return Grid(
-        context,
-        data
-            .where((element) => element.branchecommercename
-                .toLowerCase()
-                .contains(query.toLowerCase()))
-            .toList());
-  }
-}
-
 class AllBranch extends StatefulWidget {
   AllBranch(this.key, this.data);
   final Key key;
@@ -191,25 +127,25 @@ class AllBranch extends StatefulWidget {
 }
 
 class allbranch {
-  final String id;
-  final String locationlatitude;
-  final String locationlongitude;
-  final String tel;
-  final String whatsapp;
-  final String branchecommercename;
-  final String branchname_english;
-  final String shortdescription;
-  final String street;
-  final String zone;
-  final String streetname;
-  final String zonename;
-  final String buildingno;
-  final String area;
-  final String city;
-  final String country;
-  final String email;
-  final String img;
-  final String openinghours;
+  final String? id;
+  final String? locationlatitude;
+  final String? locationlongitude;
+  final String? tel;
+  final String? whatsapp;
+  final String? branchecommercename;
+  final String? branchname_english;
+  final String? shortdescription;
+  final String? street;
+  final String? zone;
+  final String? streetname;
+  final String? zonename;
+  final String? buildingno;
+  final String? area;
+  final String? city;
+  final String? country;
+  final String? email;
+  final String? img;
+  final String? openinghours;
   allbranch(
       {this.id,
       this.locationlatitude,
@@ -309,8 +245,8 @@ Grid(context, data) {
                   decoration: BoxDecoration(
                       color: Colors.white12,
                       border: Border(
-                        bottom: BorderSide(color: Colors.grey[300], width: 1.5),
-                        top: BorderSide(color: Colors.grey[300], width: 1.5),
+                        bottom: BorderSide(color: Colors.grey[300] ?? Color(1), width: 1.5),
+                        top: BorderSide(color: Colors.grey[300] ?? Color(1), width: 1.5),
                       )),
                   height: 100.0,
                   child: Row(children: <Widget>[

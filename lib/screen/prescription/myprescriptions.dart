@@ -8,25 +8,27 @@ import 'dart:convert';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../profile/myorders_detail.dart';
+
 class Prescriptions {
-  final String user_id;
-  final String doctor;
-  final String date;
-  final String id;
-  final String status;
-  final String statustitle;
-  final String user_comments;
-  final String admin_comments;
-  final String name;
-  final String contact;
-  final String zone;
-  final String patient_insured;
-  final String insurance_company;
-  final String insurance_company_approval_note_file_path;
-  final String insurance_card_file_path;
-  final String insurance_claim_file_path;
-  final String qatarid_file_path;
-  final String file_path;
+  final String? user_id;
+  final String? doctor;
+  final String? date;
+  final String? id;
+  final String? status;
+  final String? statustitle;
+  final String? user_comments;
+  final String? admin_comments;
+  final String? name;
+  final String? contact;
+  final String? zone;
+  final String? patient_insured;
+  final String? insurance_company;
+  final String? insurance_company_approval_note_file_path;
+  final String? insurance_card_file_path;
+  final String? insurance_claim_file_path;
+  final String? qatarid_file_path;
+  final String? file_path;
 
   // final String email;
   Prescriptions({
@@ -85,7 +87,7 @@ class _myprescriptionState extends State<myprescription> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id = prefs.getString('id');
+    String? user_id = prefs.getString('id');
     return user_id;
   }
 
@@ -98,8 +100,8 @@ class _myprescriptionState extends State<myprescription> {
         future: _fetchPrescriptions(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<Prescriptions> data = snapshot.data;
-            if (snapshot.data.length == 0) {
+            List<Prescriptions> data = snapshot.data ?? [];
+            if (snapshot.data?.length == 0) {
               return Container(
                   padding: EdgeInsets.only(left: 15, right: 15, top: 15),
                   child: Image.asset("assets/noorderfound.png"));
@@ -124,7 +126,7 @@ class _myprescriptionState extends State<myprescription> {
     var data = {'userid': token};
     var url =
         'https://onlinefamilypharmacy.com/mobileapplication/myprescriptions.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     print("Prescription");
@@ -160,7 +162,7 @@ class _myprescriptionState extends State<myprescription> {
                           );
                         },
                         pageBuilder: (context, animation, animationTime) {
-                          return mypredetail(todo: data[index]);
+                          return myorderdetail(todo: data[index]);
                         })
                     //
                     );

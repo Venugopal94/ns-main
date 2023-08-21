@@ -21,7 +21,6 @@ import 'package:robustremedy/screen/static/insurance.dart';
 import 'package:robustremedy/screen/static/logout.dart';
 import 'package:robustremedy/screen/home_screen.dart';
 import 'package:robustremedy/screen/static/Refund_Replacement.dart';
-import 'package:robustremedy/screen/Item_group_screen/track_your_order.dart';
 import 'package:robustremedy/screen/prescription/upload_prescription.dart';
 import 'package:robustremedy/screen/static/loyaltyprogram.dart';
 import 'package:robustremedy/screen/static/ministrycircular.dart';
@@ -63,7 +62,7 @@ class _AppDrawerState extends State<AppDrawer> {
   var id;
   getStringValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String useridValue = prefs.getString('userid');
+    String useridValue = prefs.getString('userid') ?? "";
     print(useridValue);
     //return useridValue;
     setState(() {
@@ -74,7 +73,7 @@ class _AppDrawerState extends State<AppDrawer> {
 
   getStringValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String useridValue = prefs.getString('id');
+    String useridValue = prefs.getString('id') ?? "";
     print(useridValue);
     //return useridValue;
     setState(() {
@@ -118,7 +117,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 size: 50,
               ),
             ),
-          ),
+          ), accountEmail: null,
         ),
         //  DrawerHeader(
 
@@ -355,18 +354,20 @@ class _AppDrawerState extends State<AppDrawer> {
           title: Text('Share App',
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
           onTap: () {
-            final RenderBox box = context.findRenderObject();
-            Platform.isAndroid
-                ? Share.share(
-                    '\n\n Shop online on Qatar’s Most trusted pharmacy with a wide collection of items ranging from personal care, Baby care, Home care products, Medical equipment & supplements we are the healthcare with best priced deals we offer Home delivery across Qatar.' +
-                        '\n\n $_url',
-                    sharePositionOrigin:
-                        box.localToGlobal(Offset.zero) & box.size)
-                : Share.share(
-                    '\n\n Shop online on Qatar’s Most trusted pharmacy with a wide collection of items ranging from personal care, Baby care, Home care products, Medical equipment & supplements we are the healthcare with best priced deals we offer Home delivery across Qatar.' +
-                        '\n\n $appStore',
-                    sharePositionOrigin:
-                        box.localToGlobal(Offset.zero) & box.size);
+            final RenderBox? box = context.findRenderObject() as RenderBox;
+            if (box != null) {
+              Platform.isAndroid
+                  ? Share.share(
+                  '\n\n Shop online on Qatar’s Most trusted pharmacy with a wide collection of items ranging from personal care, Baby care, Home care products, Medical equipment & supplements we are the healthcare with best priced deals we offer Home delivery across Qatar.' +
+                      '\n\n $_url',
+                  sharePositionOrigin:
+                  box!.localToGlobal(Offset.zero) & box!.size)
+                  : Share.share(
+                  '\n\n Shop online on Qatar’s Most trusted pharmacy with a wide collection of items ranging from personal care, Baby care, Home care products, Medical equipment & supplements we are the healthcare with best priced deals we offer Home delivery across Qatar.' +
+                      '\n\n $appStore',
+                  sharePositionOrigin:
+                  box.localToGlobal(Offset.zero) & box.size);
+            }
           },
         ),
         ListTile(
@@ -438,7 +439,7 @@ class _AppDrawerState extends State<AppDrawer> {
             SharedPreferences pf = await SharedPreferences.getInstance();
             pf.clear();
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => logout()));
+                context, MaterialPageRoute(builder: (context) => logout(title: '',)));
           },
         ),
       ],

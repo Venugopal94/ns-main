@@ -13,7 +13,7 @@ class forgetpwd extends StatefulWidget{
 
 class _forgetpwdState extends State<forgetpwd> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  String verifyLink;
+  late String verifyLink;
   bool verifybutton =false;
   TextEditingController user= TextEditingController();
 
@@ -21,7 +21,7 @@ class _forgetpwdState extends State<forgetpwd> {
     String email = user.text;
     var data = { 'email': email};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/forgotpassword.php';
-    var response= await http.post(url, body: json.encode(data));
+    var response= await http.post(Uri(path: url), body: json.encode(data));
     var msg= json.decode(response.body);
     if (email.length == 0 ){
       showInSnackBar("Field Should not be empty");
@@ -132,7 +132,7 @@ class _forgetpwdState extends State<forgetpwd> {
     );
   }
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
   }
 
 
@@ -144,8 +144,8 @@ class Button extends StatelessWidget {
   var onClick;
 
 
-  Button({this.btnText, this.onClick});
-  Color yellowColors = Colors.yellow[700];
+  Button({required this.btnText, this.onClick});
+  Color yellowColors = Colors.yellow[700] ?? Color.fromARGB(0, 0, 0, 0);
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99,1);
   @override
   Widget build(BuildContext context) {

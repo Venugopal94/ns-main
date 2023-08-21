@@ -33,13 +33,13 @@ class AllBranch extends StatefulWidget {
 }
 
 class allbranch {
-  final String id;
-  final String name;
-  final String mobileno;
-  final String emailid;
-  final String designation;
-  final String post;
-  final String img;
+  final String? id;
+  final String? name;
+  final String? mobileno;
+  final String? emailid;
+  final String? designation;
+  final String? post;
+  final String? img;
   allbranch(
       {this.id,
       this.name,
@@ -70,7 +70,7 @@ class _AllBranchState extends State<AllBranch> {
         future: _fetchallbranch(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<allbranch> data = snapshot.data;
+            List<allbranch> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
@@ -85,7 +85,7 @@ class _AllBranchState extends State<AllBranch> {
     final url =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=salesteam';
     //var data = {'itemid': widget.itemnull};
-    var response = await http.get(url);
+    var response = await http.get(Uri(path: url));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -112,8 +112,8 @@ Grid(context, data) {
                   decoration: BoxDecoration(
                       color: Colors.white12,
                       border: Border(
-                        bottom: BorderSide(color: Colors.grey[300], width: 1.5),
-                        top: BorderSide(color: Colors.grey[300], width: 1.5),
+                        bottom: BorderSide(color: Colors.grey[300] ??  Color(1), width: 1.5),
+                        top: BorderSide(color: Colors.grey[300] ?? Color(1), width: 1.5),
                       )),
                   height: 100.0,
                   child: Row(children: <Widget>[

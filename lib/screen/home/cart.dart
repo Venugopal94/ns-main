@@ -18,12 +18,12 @@ class CartItem {
 
   // final String email;
   CartItem({
-    this.img,
-    this.title,
-    this.price,
-    this.id,
-    this.finalprice,
-    this.quantity,
+    required this.img,
+    required this.title,
+    required this.price,
+    required this.id,
+    required this.finalprice,
+    required this.quantity,
   });
   factory CartItem.fromJson(Map<String, dynamic> json) {
     return CartItem(
@@ -43,11 +43,11 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  String user_id;
+  late String user_id;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   getStringValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    user_id = prefs.getString('id');
+    user_id = prefs.getString('id') ?? "";
     return user_id;
   }
 
@@ -94,9 +94,9 @@ class _CartState extends State<Cart> {
                                       color: Colors.white12,
                                       border: Border(
                                         bottom: BorderSide(
-                                            color: Colors.grey[100], width: 1.0),
+                                            color: Colors.grey[100] ?? Color(1), width: 1.0),
                                         top: BorderSide(
-                                            color: Colors.grey[100], width: 1.0),
+                                            color: Colors.grey[100] ?? Color(1), width: 1.0),
                                       )),
                                   height: 104.0,
                                   child: Row(
@@ -244,7 +244,7 @@ class _CartState extends State<Cart> {
                                                           model.cart[index],
                                                           model.cart[index]
                                                                   .quantity +
-                                                              1) : _scaffoldKey.currentState.showSnackBar(new SnackBar(
+                                                              1) : ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text('You cannot add items more than the stock quantity.'),
       backgroundColor: LightColor.midnightBlue,
     ));
@@ -305,7 +305,7 @@ class _CartState extends State<Cart> {
                       : ScopedModel.of<CartModel>(context,
                                           rebuildOnChange: true)
                                       // ignore: deprecated_member_use
-                                      .totalCartValue == 0.0 ? _scaffoldKey.currentState.showSnackBar(new SnackBar(
+                                      .totalCartValue == 0.0 ? ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text('Add Items to Cart First'),
       backgroundColor: LightColor.midnightBlue,
     )):  Navigator.push(

@@ -26,15 +26,15 @@ List<Shipping> shippment = [];
 class PaymentScreen extends StatefulWidget {
   final addid;
   int total; // For calculation
-  double actutalTotal;
-  PaymentScreen({Key key, @required this.addid, @required this.total,  this.actutalTotal})
+  double? actutalTotal;
+  PaymentScreen({Key? key, required this.addid, required this.total,  this.actutalTotal})
       : super(key: key);
   @override
   _PaymentScreenState createState() => _PaymentScreenState();
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  int selectedRadioTile, selectedRadio;
+  int? selectedRadioTile, selectedRadio;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   Future getShippingCharge() async {
@@ -45,7 +45,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       'zoneId': int.parse(widget.addid.zone),
       'total': widget.total
     };
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     List jsonDecoded = json.decode(response.body);
     setState(() {
@@ -74,7 +74,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id = prefs.getString('id');
+    String? user_id = prefs.getString('id');
     return user_id;
   }
 
@@ -124,7 +124,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       var url =
           'https://onlinefamilypharmacy.com/mobileapplication/order_payment.php';
 
-      var response = await http.post(url, body: json.encode(data));
+      var response = await http.post(Uri(path: url), body: json.encode(data));
 
       log(response.body);
 
@@ -323,9 +323,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     // subtitle: Text("Cash / Card On Delivery"),
-                    onChanged: (val) {
+                    onChanged: (int? val) {
                       print("Radio Tile pressed $val");
-                      setSelectedRadioTile(val);
+                      setSelectedRadioTile(val ?? 0);
                     },
                     activeColor: LightColor.midnightBlue,
                   ),
@@ -340,9 +340,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     // subtitle: Text("Radio 2 Subtitle"),
-                    onChanged: (val) {
+                    onChanged: (int? val) {
                       print("Radio Tile pressed $val");
-                      setSelectedRadioTile(val);
+                      setSelectedRadioTile(val ?? 0);
                     },
                     activeColor: LightColor.midnightBlue,
 
@@ -385,7 +385,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               if (selectedRadioTile == 0) {
                 showInSnackBar("Select Payment Method ");
               } else if ((selectedRadioTile == 1) || (selectedRadioTile == 2)) {
-                int orderId;
+                int? orderId;
                  await  payment(model.cart).then((value) {
                   setState(() {
                     orderId = value;
@@ -393,7 +393,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 });
 
                 Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId,))));
+        .pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId ?? 0,))));
         ScopedModel.of<CartModel>(context).clearCart();
         ScopedModel.of<CartModel>(context).calculateTotal();
                 
@@ -455,7 +455,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));
@@ -469,7 +469,7 @@ class Summary_Cart extends StatefulWidget {
 
 class _Summary_CartState extends State<Summary_Cart> {
   
-  List<ProductAddToCart> tempList;
+  List<ProductAddToCart>? tempList;
   
 
   @override
@@ -707,9 +707,9 @@ class Shipping {
   final String lessthanshippingamt;
 
   Shipping({
-    this.shipping_charges,
-    this.lessthan,
-    this.lessthanshippingamt,
+    required this.shipping_charges,
+    required this.lessthan,
+    required this.lessthanshippingamt,
   });
 
   factory Shipping.fromJson(Map<String, dynamic> json) {

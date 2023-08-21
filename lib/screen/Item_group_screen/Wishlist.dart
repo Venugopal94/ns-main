@@ -9,35 +9,35 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Item {
-  final String url;
-  final String price;
-  final String itemid;
-  final String img;
-  final String itemname_en;
-  final String labelname;
-  final String itempack;
-  final String itemstrength;
-  final String itemmaingrouptitle;
-  final String itemgrouptitle;
-  final String itemproductgrouptitle;
-  final String itemproductgroupimage;
-  final String type;
-  final String itemdosageid;
-  final String itemclassid;
-  final String manufactureshortname;
-  final String seq;
-  final String maxretailprice;
-  final String minretailprice;
-  final String rs;
-  final String origin;
-  final String whichcompany;
-  final String allowsonapp;
-  final String status;
-  final String shortdescription;
-  final String description;
-  final String additionalinformation;
-  final String itemproductgroupid;
-  final String itemgroupid;
+  final String? url;
+  final String? price;
+  final String? itemid;
+  final String? img;
+  final String? itemname_en;
+  final String? labelname;
+  final String? itempack;
+  final String? itemstrength;
+  final String? itemmaingrouptitle;
+  final String? itemgrouptitle;
+  final String? itemproductgrouptitle;
+  final String? itemproductgroupimage;
+  final String? type;
+  final String? itemdosageid;
+  final String? itemclassid;
+  final String? manufactureshortname;
+  final String? seq;
+  final String? maxretailprice;
+  final String? minretailprice;
+  final String? rs;
+  final String? origin;
+  final String? whichcompany;
+  final String? allowsonapp;
+  final String? status;
+  final String? shortdescription;
+  final String? description;
+  final String? additionalinformation;
+  final String? itemproductgroupid;
+  final String? itemgroupid;
 
   // final String email;
   Item({this.url,this.price,this.itemid,
@@ -114,7 +114,7 @@ class _WishListState extends State<WishList> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id=prefs.getString('id');
+    String? user_id=prefs.getString('id');
     return user_id;
   }
   @override
@@ -129,8 +129,8 @@ class _WishListState extends State<WishList> {
   int counter = 1;
   int subTotal = 0;
   //final productprice;
-  double finalprice;
-  double totalamt;
+  double? finalprice;
+  double? totalamt = 0;
   void increment() {
 
     setState(() {
@@ -142,7 +142,7 @@ class _WishListState extends State<WishList> {
   }
   void total(amount){
     setState(() {
-      totalamt = double.parse(amount)+totalamt;
+      totalamt = double.parse(amount)+ totalamt!;
     });
   }
   void decrement() {
@@ -160,7 +160,7 @@ class _WishListState extends State<WishList> {
 print(token);print(itemid);
     var url='https://onlinefamilypharmacy.com/mobileapplication/remove/removewishlist.php';
     var data={'user_id':token,'itemid':itemid};
-    var response = await http.post(url, body:json.encode(data));
+    var response = await http.post(Uri(path: url), body:json.encode(data));
     var message = jsonDecode(response.body);
     setState(() {
       _fetchItem();
@@ -177,8 +177,8 @@ print(token);print(itemid);
       future: _fetchItem(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Item> data = snapshot.data;
-         if (snapshot.data.length == 0) {
+          List<Item> data = snapshot.data ?? [];
+         if (snapshot.data?.length == 0) {
             return Container(
                 padding: EdgeInsets.only(left: 15, right: 15,top:80),
                 child:Image.asset("assets/wishlistimage.png"));
@@ -201,7 +201,7 @@ print(token);print(itemid);
     dynamic token = await getStringValues();
     var data = {'userid': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/pages/wishlist_api.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new Item.fromJson(item)).toList();
@@ -234,11 +234,11 @@ print(token);print(itemid);
                   color: Colors.white12,
                   border: Border(
                     bottom: BorderSide(
-                        color: Colors.grey[100],
+                        color: Colors.grey[100] ?? Color(1),
                         width: 1.0
                     ),
                     top: BorderSide(
-                        color: Colors.grey[100],
+                        color: Colors.grey[100] ?? Color(1),
                         width: 1.0
                     ),
                   )

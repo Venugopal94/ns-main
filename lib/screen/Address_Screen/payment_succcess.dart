@@ -6,7 +6,7 @@ import 'package:robustremedy/screen/home_screen.dart';
 import 'package:robustremedy/themes/light_color.dart';
 
 class PaymentSuccessful extends StatefulWidget {
-  PaymentSuccessful({Key key}) : super(key: key);
+  PaymentSuccessful({Key? key}) : super(key: key);
 
   @override
   State<PaymentSuccessful> createState() => _PaymentSuccessfulState();
@@ -38,7 +38,7 @@ class _PaymentSuccessfulState extends State<PaymentSuccessful> {
     return WillPopScope(
       onWillPop: () async => Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => HomeScreen()),
-          (Route<dynamic> route) => false),
+          (Route<dynamic> route) => false) as bool,
       child: Scaffold(
         body: Container(
           width: mediaQuery.width,
@@ -78,22 +78,22 @@ class _PaymentSuccessfulState extends State<PaymentSuccessful> {
                   child: ButtonTheme(
                       minWidth: width,
                       height: 70.0,
-                      child: RaisedButton(
-                        onPressed: () {
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                  builder: (context) => HomeScreen()),
-                              (Route<dynamic> route) => false);
-                        },
-                        color: LightColor.yellowColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                      child:
+                      ElevatedButton(onPressed:(){
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()),
+                                (Route<dynamic> route) => false);
+                      },
+                        style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)), foregroundColor: LightColor.yellowColor),
+
                         child: Text("Continue Shopping",
                             style: TextStyle(
                                 color: LightColor.midnightBlue,
                                 fontSize: 20.0,
-                                fontWeight: FontWeight.bold)),
-                      )),
+                                fontWeight: FontWeight.bold)),),
+                      ),
                 ),
               ),
             ],

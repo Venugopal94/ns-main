@@ -1,26 +1,17 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 import 'package:robustremedy/screen/Item_group_screen/Wishlist.dart';
 import 'package:robustremedy/screen/home/cart.dart';
-import 'package:robustremedy/screen/Item_group_screen/search_screen.dart';
-import 'package:robustremedy/screen/tawkto.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/widgets/AppDrawer.dart';
-import 'package:robustremedy/widgets/badge.dart';
+import 'package:robustremedy/widgets/badge.dart' as Badge;
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:connectivity/connectivity.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 import '../widgets/appdrawer_without_login.dart';
 import 'home/home_slider.dart';
-import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:showcaseview/showcaseview.dart';
 
 class HomeScreen extends StatefulWidget {
   //final String email;
@@ -32,7 +23,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeStateScreen extends State<HomeScreen> {
-  String email;
+  String? email;
   String cart_total = "0";
   String cart = "0";
   var user_id;
@@ -45,7 +36,7 @@ class _HomeStateScreen extends State<HomeScreen> {
     var data2 = {'userid': user_id};
 
     // Starting Web API Call.
-    var response2 = await http.post(url2, body: json.encode(data2));
+    var response2 = await http.post(Uri(path: url2), body: json.encode(data2));
     setState(() {
       cart_total = (json.decode(response2.body)).toString();
     });
@@ -66,7 +57,7 @@ class _HomeStateScreen extends State<HomeScreen> {
   bool iswificonnected = false;
   bool isInternetOn = true;
 
-  DateTime currentBackPressTime;
+  late DateTime currentBackPressTime;
 
   @override
   void initState() {
@@ -94,8 +85,7 @@ class _HomeStateScreen extends State<HomeScreen> {
               // do something
             },
           ),
-
-          Badge(
+          Badge.Badge(
               value: ScopedModel.of<CartModel>(context,
                                     rebuildOnChange: true)
                                 .cart.length

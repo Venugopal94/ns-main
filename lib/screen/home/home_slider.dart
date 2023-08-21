@@ -1,8 +1,8 @@
 import 'dart:convert';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:robustremedy/screen/Item_group_screen/item_main.dart';
 import 'package:robustremedy/screen/home/home_below_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:http/http.dart' as http;
 import 'package:robustremedy/screen/home/home_category_maingroup.dart';
 import 'package:robustremedy/screen/Item_group_screen/search_screen.dart';
@@ -74,7 +74,7 @@ class Job {
   final String image2;
 
   Job({
-    this.image2,
+    required this.image2,
   });
 
   factory Job.fromJson(Map<String, dynamic> json) {
@@ -91,7 +91,7 @@ class SliderDemo extends StatelessWidget {
       future: _fetchJobs(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Job> data = snapshot.data;
+          List<Job> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -107,7 +107,7 @@ class SliderDemo extends StatelessWidget {
   Future<List<Job>> _fetchJobs() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=slider';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

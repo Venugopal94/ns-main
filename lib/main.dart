@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Family Pharmacy',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme.copyWith(
-        textTheme: GoogleFonts.muliTextTheme(
+        textTheme: GoogleFonts.maliTextTheme(
           Theme.of(context).textTheme,
         ),
       ),
@@ -97,13 +97,13 @@ class ProductAddToCart {
   double finalprice;
   int quantity;
   ProductAddToCart({
-   @required this.img,
-    @required this.title,
-    @required this.price,
-    @required this.id,
-    @required this.stockStatus,
-    @required this.finalprice,
-     @required this.quantity,
+   required this.img,
+    required this.title,
+    required this.price,
+    required this.id,
+    required this.stockStatus,
+    required this.finalprice,
+    required this.quantity,
   });
 }
 

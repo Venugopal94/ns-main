@@ -23,9 +23,9 @@ import 'package:showcaseview/showcaseview.dart';
 //}
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key, this.title}) : super(key: key);
+  LoginScreen({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  String? title;
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginScreen> {
     //  print(user_id);
   }
  // AnimationController _controller;
-  Animation<Offset> _animation;
+  late Animation<Offset> _animation;
 
   @override
   void initState() {
@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginScreen> {
       var data = {'email': email, 'password': password};
 
       // Starting Web API Call.
-      var response = await http.post(url, body: json.encode(data));
+      var response = await http.post(Uri(path: url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginScreen> {
       var data1 = {'email': email};
 
       // Starting Web API Call.
-      var response1 = await http.post(url1, body: json.encode(data1));
+      var response1 = await http.post(Uri(path: url1), body: json.encode(data1));
       setState(() {
         user_id = jsonDecode(response1.body);
         
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginScreen> {
       var data2 = {'userid': user_id};
 
       // Starting Web API Call.
-      var response2 = await http.post(url2, body: json.encode(data2));
+      var response2 = await http.post(Uri(path: url2), body: json.encode(data2));
       setState(() {
         cart_total = jsonDecode(response2.body);
         
@@ -327,7 +327,7 @@ class _LoginPageState extends State<LoginScreen> {
   }
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99,1);
 
-  Color yellowColors = Colors.yellow[700];
+  Color yellowColors = Colors.yellow[700] ?? Color.fromRGBO(1, 4, 99,1);
   Color blue=ButtonWid.midnightBlue;
   @override
   Widget build(BuildContext context) {
@@ -494,7 +494,7 @@ class _LoginPageState extends State<LoginScreen> {
         ));
   }
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
   }
 }
 
@@ -503,10 +503,10 @@ class ButtonWid extends StatelessWidget {
   var onClick;
 
 
-  ButtonWid({this.btnText, this.onClick});
+  ButtonWid({required this.btnText, this.onClick});
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99,1);
 
-  Color yellowColors = Colors.yellow[700];
+  Color yellowColors = Colors.yellow[700] ?? Color.fromRGBO(1, 4, 99,1);
   Color blue=ButtonWid.midnightBlue;
 
   @override

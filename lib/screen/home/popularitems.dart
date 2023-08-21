@@ -22,33 +22,33 @@ class _SummerItemsState extends State<SummerItems> {
 }
 
 class Job {
-  final String itemid;
-  final String img;
-  final String itemname_en;
-  final String labelname;
-  final String itempack;
-  final String itemstrength;
-  final String itemmaingrouptitle;
-  final String itemgrouptitle;
-  final String itemproductgrouptitle;
-  final String itemproductgroupimage;
-  final String type;
-  final String itemdosageid;
-  final String itemclassid;
-  final String manufactureshortname;
-  final String seq;
-  final String maxretailprice;
-  final String minretailprice;
-  final String rs;
-  final String origin;
-  final String whichcompany;
-  final String allowsonapp;
-  final String status;
-  final String shortdescription;
-  final String description;
-  final String additionalinformation;
-  final String itemproductgroupid;
-  final String itemgroupid;
+  final String? itemid;
+  final String? img;
+  final String? itemname_en;
+  final String? labelname;
+  final String? itempack;
+  final String? itemstrength;
+  final String? itemmaingrouptitle;
+  final String? itemgrouptitle;
+  final String? itemproductgrouptitle;
+  final String? itemproductgroupimage;
+  final String? type;
+  final String? itemdosageid;
+  final String? itemclassid;
+  final String? manufactureshortname;
+  final String? seq;
+  final String? maxretailprice;
+  final String? minretailprice;
+  final String? rs;
+  final String? origin;
+  final String? whichcompany;
+  final String? allowsonapp;
+  final String? status;
+  final String? shortdescription;
+  final String? description;
+  final String? additionalinformation;
+  final String? itemproductgroupid;
+  final String? itemgroupid;
   Job(
       {this.itemid,
         this.img,
@@ -118,7 +118,7 @@ class SummerItemsDemo extends StatelessWidget {
       future: _fetchJobs(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Job> data = snapshot.data;
+          List<Job> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -130,14 +130,14 @@ class SummerItemsDemo extends StatelessWidget {
       },
     );
   }
-  String epid;
+  late String epid;
   Future<List<Job>> _fetchJobs() async {
     var data = {
       'epid': 9
     };
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/ecommerceitemcode2.php';
-    final response = await http.post(jobsListAPIUrl,body: jsonEncode(data));
+    final response = await http.post(Uri(path: jobsListAPIUrl), body: jsonEncode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

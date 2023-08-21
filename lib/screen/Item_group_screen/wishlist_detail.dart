@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:carousel_pro/carousel_pro.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:robustremedy/screen/Item_group_screen/item_group_list.dart';
 import 'package:robustremedy/screen/Item_group_screen/item_subgroup.dart';
 import 'package:robustremedy/themes/light_color.dart';
 
@@ -9,83 +9,9 @@ class Wishlist_detail extends StatefulWidget {
   final itemid;
 
 
-  Wishlist_detail({Key key, @required this.itemid}) : super(key: key);
+  Wishlist_detail({Key? key, @required this.itemid}) : super(key: key);
   @override
   _Wishlist_detailState createState() => _Wishlist_detailState();
-}
-
-class ItemGrpData {
-  final String img;
-  final String itemname_en;
-  final String labelname;
-  final String itempack;
-  final String itemstrength;
-  final String itemmaingrouptitle;
-  final String itemgrouptitle;
-  final String itemproductgrouptitle;
-  final String itemproductgroupimage;
-  final String type;
-  final String itemdosageid;
-  final String itemclassid;
-  final String manufactureshortname;
-  final String seq;
-  final String maxretailprice;
-  final String minretailprice;
-  final String rs;
-  final String origin;
-  final String whichcompany;
-  final String allowsonapp;
-  final String status;
-  final String id;
-  ItemGrpData({ this.img,
-  this.itemname_en,
-  this.labelname,
-  this.itempack,
-  this.itemstrength,
-  this.itemmaingrouptitle,
-  this.itemgrouptitle,
-  this.itemproductgrouptitle,
-  this.itemproductgroupimage,
-  this.type,
-  this.itemdosageid,
-  this.itemclassid,
-  this.manufactureshortname,
-  this.seq,
-  this.maxretailprice,
-  this.minretailprice,
-  this.rs,
-  this.origin,
-  this.whichcompany,
-  this.allowsonapp,
-  this.status,this.id});
-
-  factory ItemGrpData.fromJson(Map<String, dynamic> json) {
-    return ItemGrpData(
-      id:json['id'],
-      img: json['img'],
-      itemname_en: json['itemname_en'],
-      labelname: json['labelname'],
-      itempack: json['itempack'],
-      itemstrength: json['itemstrength'],
-      itemmaingrouptitle: json['itemmaingrouptitle'],
-      itemgrouptitle: json['itemgrouptitle'],
-      itemproductgrouptitle: json['itemproductgrouptitle'],
-      itemproductgroupimage: json['itemproductgroupimage'],
-      type: json['type'],
-      itemdosageid: json['itemdosageid'],
-      itemclassid: json['itemclassid'],
-      manufactureshortname: json['manufactureshortname'],
-      seq: json['seq'],
-      maxretailprice: json['maxretailprice'],
-      minretailprice: json['minretailprice'],
-      rs: json['rs'],
-      origin: json['origin'],
-      whichcompany: json['whichcompany'],
-      allowsonapp: json['allowsonapp'],
-      status: json['status'],
-
-    );
-  }
 }
 
 class _Wishlist_detailState extends State<Wishlist_detail> {
@@ -101,7 +27,7 @@ class _Wishlist_detailState extends State<Wishlist_detail> {
         future: _fetchItemGrpData(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<ItemGrpData> data = snapshot.data;
+            List<ItemGrpData> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
@@ -117,7 +43,7 @@ class _Wishlist_detailState extends State<Wishlist_detail> {
     var data = {
       'itemid': widget.itemid
     };
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

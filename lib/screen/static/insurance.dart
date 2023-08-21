@@ -10,10 +10,10 @@ import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Job {
-  final String url;
-  final String title;
-  final String type;
-  final String preappLink;
+  final String? url;
+  final String? title;
+  final String? type;
+  final String? preappLink;
 
   Job({this.url, this.title, this.type, this.preappLink});
 
@@ -28,7 +28,7 @@ class Job {
 }
 
 class Insurance_Screen extends StatefulWidget {
-  Insurance_Screen({Key key}) : super(key: key);
+  Insurance_Screen({Key? key}) : super(key: key);
 
   @override
   State<Insurance_Screen> createState() => _Insurance_ScreenState();
@@ -38,7 +38,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
   Future<List<Job>> _fetchJobs() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=ecommerceinsurance';
-    final response = await http.get(jobsListAPIUrl);
+    final response = await http.get(Uri(path: jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -59,7 +59,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
           future: _fetchJobs(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<Job> data1 = snapshot.data;
+              List<Job> data1 = snapshot.data ?? [];
               return SingleChildScrollView(
                 child: Column(
                   children: [
@@ -118,10 +118,10 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
                                               : InkWell(
                                                   onTap: () async {
                                                     await canLaunch(data1[index]
-                                                            .preappLink)
+                                                            .preappLink ?? "")
                                                         ? await launch(
                                                             data1[index]
-                                                                .preappLink)
+                                                                .preappLink ?? "")
                                                         : throw 'Could not launch ${data1[index].preappLink}';
                                                   },
                                                   child: Container(

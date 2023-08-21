@@ -13,15 +13,15 @@ class ItemSub extends StatefulWidget {
   final itemsubid;
   final itemetitle;
 
-  ItemSub({Key key, @required this.itemsubid, @required this.itemetitle}) : super(key: key);
+  ItemSub({Key? key, @required this.itemsubid, @required this.itemetitle}) : super(key: key);
   @override
   _ItemSubState createState() => _ItemSubState();
 }
 
 class ItemSubData {
-  final String url;
-  final String title;
-  final String id;
+  final String? url;
+  final String? title;
+  final String? id;
   ItemSubData({this.url,this.title,this.id});
 
   factory ItemSubData.fromJson(Map<String, dynamic> json) {
@@ -45,11 +45,11 @@ class _ItemSubState extends State<ItemSub> {
           future: _fetchItemSubData(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              if (snapshot.data.length == 0) {
+              if (snapshot.data?.length == 0) {
                 print(widget.itemsubid);
                 return ListItems(itemnull:widget.itemsubid);
               }
-              List<ItemSubData> data = snapshot.data;
+              List<ItemSubData> data = snapshot.data ?? [];
               return Grid(context, data);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
@@ -66,7 +66,7 @@ class _ItemSubState extends State<ItemSub> {
     var data = {
       'itemsubid': widget.itemsubid
     };
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

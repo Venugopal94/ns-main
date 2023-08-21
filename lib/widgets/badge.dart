@@ -7,10 +7,10 @@ class Badge extends StatelessWidget {
   final Color color;
 
   const Badge({
-    Key key,
-    @required this.child,
-    @required this.value,
-    this.color, Text badgeContent
+    Key? key,
+    required this.child,
+    required this.value,
+    required this.color, Text? badgeContent
 }): super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class Badge extends StatelessWidget {
             padding: EdgeInsets.all(2.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
-              color: color != null ? color: Theme.of(context).accentColor
+              color: color != null ? color: Theme.of(context).primaryColor
             ),
             constraints: BoxConstraints(
               minHeight: 16,

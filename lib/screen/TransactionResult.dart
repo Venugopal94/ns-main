@@ -63,7 +63,7 @@ class TransactionResultState extends State<TransactionResult> {
       String url = "http://robustremedy.com:8080/paymentGatewayApi/ValidateTransaction";
 
 
-      var response = await http.post(url, body: jsonEncode(data));
+      var response = await http.post(Uri(path: url), body: jsonEncode(data));
       print("response " + response.body);
       var jsonResponse = jsonDecode(response.body);
       print(response.body);
@@ -82,7 +82,7 @@ class TransactionResultState extends State<TransactionResult> {
       }
 var dat=this.widget.data;
       dat['transaction_reference_no']=jsonResponse["msg"]["Reference"];
-      int orderId;
+      int? orderId;
 
       saveTransaction(dat).then((value) {
         setState(() {
@@ -91,15 +91,15 @@ var dat=this.widget.data;
       });
 
          Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId,))));
+        .pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId ?? 0,))));
         ScopedModel.of<CartModel>(context).clearCart();
                 ScopedModel.of<CartModel>(context).calculateTotal();
 
 
     } catch (e) {
       print(e);
-      Toast.show("SomeThing went wrong", context, duration: Toast.LENGTH_SHORT,
-          gravity: Toast.BOTTOM);
+      Toast.show("SomeThing went wrong", duration: Toast.lengthShort,
+          gravity: Toast.bottom);
 
       setState(() {
         loading = false;
@@ -113,7 +113,7 @@ var dat=this.widget.data;
     // print("saveTransaction"+data.toString());
     String url = 'https://onlinefamilypharmacy.com/mobileapplication/order_payment.php';
 
-var response = await http.post(url, body: json.encode(data));
+var response = await http.post(Uri(path: url), body: json.encode(data));
     return int.parse(response.body);
 
   }

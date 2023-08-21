@@ -9,16 +9,16 @@ import 'package:robustremedy/themes/light_color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class add_data {
-  final String first_name;
-  final String title;
-  final String last_name;
-  final String building;
-  final String addressid;
-  final String street;
-  final String zone;
-  final String area;
-  final String country;
-  final String select_address;
+  final String? first_name;
+  final String? title;
+  final String? last_name;
+  final String? building;
+  final String? addressid;
+  final String? street;
+  final String? zone;
+  final String? area;
+  final String? country;
+  final String? select_address;
   // final String email;
   add_data(
       {this.first_name,
@@ -48,27 +48,27 @@ class add_data {
 }
 class Prescription_Address_screen extends StatefulWidget {
   final pre_id;
-  Prescription_Address_screen({Key key, @required this.pre_id}) : super(key: key);
+  Prescription_Address_screen({Key? key, @required this.pre_id}) : super(key: key);
   @override
   _Prescription_Address_screenState createState() => _Prescription_Address_screenState();
 }
 
 class _Prescription_Address_screenState extends State<Prescription_Address_screen> {
-  bool selectadd;
-  List<bool> _isChecks = List();
+  bool? selectadd;
+  List<bool> _isChecks = [];
 //dynamic checkid;
   getStringValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id=prefs.getString('id');
+    String? user_id=prefs.getString('id');
     return user_id;
   }
   Future<List<add_data>> _fetch_add_data() async {
     dynamic token = await getStringValues();
     var data = {'user_id': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/address_api.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new add_data.fromJson(item)).toList();
@@ -243,7 +243,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
           future: _fetch_add_data(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<add_data> data = snapshot.data;
+              List<add_data> data = snapshot.data ?? [];
               return imageSlider(context, data);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
@@ -272,8 +272,8 @@ class _Address_dataState extends State<Address_data> {
   var add;
 
   bool _isCheck = false;
-  List<bool> _isChecks = List();
-  int selectedRadioTile,selectedRadio;
+  List<bool> _isChecks = [];
+  int? selectedRadioTile,selectedRadio;
 
   @override
   void initState() {
@@ -291,7 +291,7 @@ class _Address_dataState extends State<Address_data> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
 
-    String user_id=prefs.getString('id');
+    String? user_id=prefs.getString('id');
     return user_id;
   }
 
@@ -307,7 +307,7 @@ class _Address_dataState extends State<Address_data> {
     // print(id);
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/remove/remove_address.php';
     var data = {'id': id};
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
     var message = jsonDecode(response.body);
     setState(() {
       _fetch_add_data();
@@ -320,13 +320,13 @@ class _Address_dataState extends State<Address_data> {
       print(val);
       var data = {'id': idd, 'value':val,'title':title};
       var url = 'https://onlinefamilypharmacy.com/mobileapplication/selected_address.php';
-      var response = await http.post(url, body:json.encode(data));
+      var response = await http.post(Uri(path: url), body:json.encode(data));
     }
     else if (title=='SHIPPING'){
       print(val);
       var data = {'id': idd, 'value':val,'title':title};
       var url = 'https://onlinefamilypharmacy.com/mobileapplication/selected_address.php';
-      var response = await http.post(url, body:json.encode(data));
+      var response = await http.post(Uri(path: url), body:json.encode(data));
     }
     else{
 
@@ -343,7 +343,7 @@ class _Address_dataState extends State<Address_data> {
       future: _fetch_add_data(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<add_data> data = snapshot.data;
+          List<add_data> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
@@ -360,7 +360,7 @@ class _Address_dataState extends State<Address_data> {
     dynamic token = await getStringValues();
     var data = {'user_id': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/address_api.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new add_data.fromJson(item)).toList();
@@ -389,18 +389,19 @@ class _Address_dataState extends State<Address_data> {
                 children: <Widget>[
                   Checkbox(
                       value: _isChecks[index],
-                      onChanged: (bool val) {
+                      onChanged: (bool? val) {
 
-                        // addcheckbox(data[index].id,val,data[index].title);
+                        addcheckbox(data[index].id,val,data[index].title);
                         setState(() {
-                          _isChecks[index] = val;
+                          _isChecks[index] = val ?? false;
                         });
                         if(val==true){
                           setState(() {
                             // checkid=data[index];
                           });
                         }
-                      }),
+                      }
+                      ),
                   Expanded(
                       child: Padding(
                         padding: EdgeInsets.only(top: 10.0, left: 15.0),

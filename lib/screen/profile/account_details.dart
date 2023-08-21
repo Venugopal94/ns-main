@@ -7,12 +7,12 @@ import 'package:robustremedy/themes/light_color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Account {
-  final String user_id;
-  final String pass;
-  final String first_name;
-  final String last_name;
-  final String mobile;
-  final String email;
+  final String? user_id;
+  final String? pass;
+  final String? first_name;
+  final String? last_name;
+  final String? mobile;
+  final String? email;
 
   Account(
       {this.user_id,
@@ -41,10 +41,10 @@ class myaccount extends StatefulWidget {
 
 class _myaccountState extends State<myaccount> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  String firstname, lastname, email, mobile;
+  String? firstname, lastname, email, mobile;
   getStringValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String user_id = prefs.getString('id');
+    String? user_id = prefs.getString('id');
     return user_id;
   }
 
@@ -68,7 +68,7 @@ class _myaccountState extends State<myaccount> {
     };
 
     // Starting Web API Call.
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
 
     // Getting Server response into variable.
     var message = jsonDecode(response.body);
@@ -84,8 +84,8 @@ class _myaccountState extends State<myaccount> {
           future: _fetchaccount(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<Account> data = snapshot.data;
-              if (snapshot.data.length == 0) {
+              List<Account> data = snapshot.data ?? [];
+              if (snapshot.data?.length == 0) {
                 return Container(
                     padding: EdgeInsets.only(left: 15, right: 15, top: 80));
                     //child: Image.asset("assets/cart.png"));
@@ -126,7 +126,7 @@ class _myaccountState extends State<myaccount> {
   }
 
   void showInSnackBar(String value) {
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text(value),
       backgroundColor: LightColor.midnightBlue,
     ));
@@ -137,7 +137,7 @@ class _myaccountState extends State<myaccount> {
     print(token);
     var data = {'userid': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/account_details.php';
-    var response = await http.post(url, body: json.encode(data));
+    var response = await http.post(Uri(path: url), body: json.encode(data));
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new Account.fromJson(item)).toList();
   }

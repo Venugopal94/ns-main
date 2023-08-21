@@ -34,7 +34,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
   var id;
   getStringValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String useridValue = prefs.getString('userid');
+    String useridValue = prefs.getString('userid') ?? "";
     print(useridValue);
     //return useridValue;
     setState(() {
@@ -45,7 +45,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
 
   getStringValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String useridValue = prefs.getString('id');
+    String useridValue = prefs.getString('id') ?? "";
     print(useridValue);
     //return useridValue;
     setState(() {
