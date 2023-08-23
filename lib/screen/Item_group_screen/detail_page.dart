@@ -1,6 +1,7 @@
 import 'dart:convert';
 //import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:robustremedy/screen/Item_group_screen/related_products.dart';
@@ -1420,6 +1421,19 @@ class _ListDetailsState extends State<ListDetails> {
 
   @override
   Widget build(BuildContext context) {
+    List<Image> data = [
+      Image.network(
+        'https://onlinefamilypharmacy.com/images/item/' +
+            widget.todo.img,fit: BoxFit.contain, ),
+      Image.network(
+        'https://onlinefamilypharmacy.com/images/item/' +
+            widget.todo.img,fit: BoxFit.contain,
+      ),
+      Image.network(
+        'https://onlinefamilypharmacy.com/images/item/' +
+            widget.todo.img,fit: BoxFit.contain,
+      ),
+    ]
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
@@ -1457,21 +1471,19 @@ class _ListDetailsState extends State<ListDetails> {
                     height: 280,
                     child: Stack(
                       children: [
-                        // TODO: HEY
+                      Swiper(
+                      //autoplay: true,
+                      itemCount: data.length,
+                      indicatorLayout: PageIndicatorLayout.SLIDE,
+                      itemBuilder: (BuildContext context, int index) {
+                        return data[index];
+                      },
+                      autoplay: true,
+                      viewportFraction: 0.4,
+                      scale: 0.5
+                    ),
                         // Carousel(
-                        //   images: [
-                        //     Image.network(
-                        //         'https://onlinefamilypharmacy.com/images/item/' +
-                        //             widget.todo.img,fit: BoxFit.contain, ),
-                        //     Image.network(
-                        //       'https://onlinefamilypharmacy.com/images/item/' +
-                        //           widget.todo.img,fit: BoxFit.contain,
-                        //     ),
-                        //     Image.network(
-                        //       'https://onlinefamilypharmacy.com/images/item/' +
-                        //           widget.todo.img,fit: BoxFit.contain,
-                        //     ),
-                        //   ],
+                        //   images: ,
                         //   dotSize: 6.0,
                         //   dotSpacing: 15.0,
                         //   dotColor: LightColor.midnightBlue,
@@ -1479,7 +1491,6 @@ class _ListDetailsState extends State<ListDetails> {
                         //   dotBgColor: Colors.transparent,
                         //   borderRadius: true,
                         //   defaultImage: Image.asset('assets/noimage.jpeg'),
-                        //
                         // ),
                         Positioned(
                             right: 10,

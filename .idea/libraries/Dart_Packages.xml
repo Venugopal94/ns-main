@@ -842,6 +842,13 @@
             </list>
           </value>
         </entry>
+        <entry key="timelines">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/timelines-0.1.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="timezone">
           <value>
             <list>
@@ -1087,6 +1094,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/string_scanner-1.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/term_glyph-1.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/test_api-0.6.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/timelines-0.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/timezone-0.9.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/toast-0.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/translator-0.1.7/lib" />

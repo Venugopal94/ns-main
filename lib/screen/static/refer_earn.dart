@@ -30,7 +30,6 @@ class _referearnState extends State<referearn> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-
         appBar: AppBar(
           title: Text('Refer & Earn'),
         ),

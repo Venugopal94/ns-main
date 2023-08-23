@@ -162,7 +162,7 @@ class _myprescriptionState extends State<myprescription> {
                           );
                         },
                         pageBuilder: (context, animation, animationTime) {
-                          return myorderdetail(todo: data[index]);
+                          return mypredetail(todo: data[index]);
                         })
                     //
                     );

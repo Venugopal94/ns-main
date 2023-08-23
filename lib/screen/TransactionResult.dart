@@ -61,8 +61,6 @@ class TransactionResultState extends State<TransactionResult> {
       // String url="http://192.168.1.93:8080/paymentGatewayApi_war_exploded/ValidateTransaction";
       //old ip address of indore String url = "http://94.237.48.11:8080/paymentGatewayApi/ValidateTransaction";
       String url = "http://robustremedy.com:8080/paymentGatewayApi/ValidateTransaction";
-
-
       var response = await http.post(Uri.parse( url), body: jsonEncode(data));
       print("response " + response.body);
       var jsonResponse = jsonDecode(response.body);
@@ -81,7 +79,7 @@ class TransactionResultState extends State<TransactionResult> {
         });
       }
 var dat=this.widget.data;
-      dat['transaction_reference_no']=jsonResponse["msg"]["Reference"];
+      dat['transaction_reference_no']= jsonResponse["msg"]["Reference"];
       int? orderId;
 
       saveTransaction(dat).then((value) {
@@ -90,10 +88,9 @@ var dat=this.widget.data;
                   });
       });
 
-         Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId ?? 0,))));
+         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId ?? 0,))));
         ScopedModel.of<CartModel>(context).clearCart();
-                ScopedModel.of<CartModel>(context).calculateTotal();
+        ScopedModel.of<CartModel>(context).calculateTotal();
 
 
     } catch (e) {

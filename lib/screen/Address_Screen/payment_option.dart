@@ -109,7 +109,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                                       width: 70,
                                       alignment: Alignment.topRight,
                                       child: Image.asset(
-                                        "assets/naps.png",
+                                        "assets/debit_card.png",
                                         height: 60,
                                         width: 120,
                                       ),
@@ -185,7 +185,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                                       width: 70,
                                       alignment: Alignment.topRight,
                                       child: Image.asset(
-                                        "assets/visa.png",
+                                        "assets/credit_card.png",
                                         height: 60,
                                         width: 120,
                                       ),

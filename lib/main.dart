@@ -5,9 +5,9 @@ import 'package:robustremedy/themes/theme.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 void main() {
-  ErrorWidget.builder = (FlutterErrorDetails details) => Scaffold(
-        body: Container(),
-      );
+  // ErrorWidget.builder = (FlutterErrorDetails details) => Scaffold(
+  //       body: Container(),
+  //     );
   runApp(MyApp());
 }
 

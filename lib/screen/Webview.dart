@@ -32,20 +32,34 @@ class WebViewLoadUI extends State<WebViewLoad>{
           {
             print("url "+url);
             Uri uri=Uri.parse(url);
-            if(uri.host=="localhost")
+            if(url.contains("/order-status.php"))
               {
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult(uri,this.widget.token,this.widget.data) ));
               }
             print(uri);
             // print("Uri host"+uri.host);
             // print("Uri path"+uri.path);
-            // print("Uri queryparameter"+uri.queryParameters.toString());
+            print("Uri queryparameter"+uri.queryParameters.toString());
 
             // if(Uri.parse(url).)
             //   {
             //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult() ));
             //   }
             },
+          onPageFinished: (url) {
+            Uri uri=Uri.parse(url);
+            if(url.contains("/order-status.php"))
+            {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult(uri,this.widget.token,this.widget.data) ));
+            }
+          },
+          onWebViewCreated: (controller) {
+          print(controller);
+          controller.evaluateJavascript("document.documentElement.innerHTML").then((value) async {
+    if(value.contains("name=\"paymentId\"")){
+    }
+    });
+              },
           initialUrl: this.widget.url,
           javascriptMode: JavascriptMode.unrestricted,
 
