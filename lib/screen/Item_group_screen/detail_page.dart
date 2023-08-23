@@ -1363,7 +1363,7 @@ class _ListDetailsState extends State<ListDetails> {
       'itemproductgroupid': widget.todo.itemproductgroupid
     };
     var response = await http.post(
-        Uri(path: 'https://onlinefamilypharmacy.com/mobileapplication/pages/dropdown_api.php'),
+        Uri.parse( 'https://onlinefamilypharmacy.com/mobileapplication/pages/dropdown_api.php'),
         body: json.encode(data));
 
     List responseData = json.decode(response.body);
@@ -1402,7 +1402,7 @@ class _ListDetailsState extends State<ListDetails> {
       };
 
       
-      var response = await http.post(Uri(path: url), body: json.encode(data));
+      var response = await http.post(Uri.parse( url), body: json.encode(data));
 
       // getCartCount();
       

@@ -126,7 +126,7 @@ class _myprescriptionState extends State<myprescription> {
     var data = {'userid': token};
     var url =
         'https://onlinefamilypharmacy.com/mobileapplication/myprescriptions.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     print("Prescription");

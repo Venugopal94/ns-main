@@ -45,7 +45,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       'zoneId': int.parse(widget.addid.zone),
       'total': widget.total
     };
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonDecoded = json.decode(response.body);
     setState(() {
@@ -98,7 +98,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     if ((selectedRadioTile == 1) || (selectedRadioTile == 2)) {
       if (selectedRadioTile == 1) {
         mode_service = 'Cash On Delivery';
-      } else {
+      } else if (selectedRadioTile == 2){
         mode_service = 'Card On Delivery';
       }
       // itemcode = itemcode.toSet().toList();
@@ -114,7 +114,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         'country': widget.addid.country,
         'gross_total': newTotal - delchrg,
         'total': newTotal,
-        'delivery_charges': delchrg,
+        'delivery_charges': 0,
         'mode_service': mode_service,
         'itemcode': product.map((e) => e.id).toList(),
         'quantity': product.map((e) => e.quantity).toList(),
@@ -124,10 +124,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
       var url =
           'https://onlinefamilypharmacy.com/mobileapplication/order_payment.php';
 
-      var response = await http.post(Uri(path: url), body: json.encode(data));
+      var response = await http.post(Uri.parse( url), body: json.encode(data));
 
       log(response.body);
-
 
       return int.parse(response.body);
     }
@@ -348,25 +347,25 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
                     selected: false,
                   ),
-                  // RadioListTile(
-                  //   value: 3,
-                  //   groupValue: selectedRadioTile,
-                  //   title: Text(
-                  //     "Debit / Credit Card / Paypal",
-                  //     style: TextStyle(
-                  //         fontSize: 18,
-                  //         color: LightColor.midnightBlue,
-                  //         fontWeight: FontWeight.bold),
-                  //   ),
-                  //   // subtitle: Text("Radio 2 Subtitle"),
-                  //   onChanged: (val) {
+                  RadioListTile(
+                    value: 3,
+                    groupValue: selectedRadioTile,
+                    title: Text(
+                      "Debit / Credit Card / Paypal",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: LightColor.midnightBlue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    // subtitle: Text("Radio 2 Subtitle"),
+                    onChanged: (int? val) {
                       
-                  //     setSelectedRadioTile(val);
-                  //   },
-                  //   activeColor: LightColor.midnightBlue,
+                      setSelectedRadioTile(val ?? 0);
+                    },
+                    activeColor: LightColor.midnightBlue,
 
-                  //   selected: false,
-                  // ),
+                    selected: false,
+                  ),
                 ])),
             SizedBox(
               height: 60.0,
@@ -408,9 +407,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 int.parse(shippment[0].shipping_charges))
             : ((int.parse(shippment[0].shipping_charges) +
                 widget.total));
-
-
-              
 
               // log(temp.length.toString());
                 var data = {

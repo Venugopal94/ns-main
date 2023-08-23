@@ -66,7 +66,7 @@ class _AllBranchState extends State<AllBranch> {
   Future<List<allbranch>> _fetchallbranch() async {
     final url = 'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=slider';
     //var data = {'itemid': widget.itemnull};
-    var response = await http.get(Uri(path: url));
+    var response = await http.get(Uri.parse( url));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

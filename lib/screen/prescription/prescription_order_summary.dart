@@ -237,7 +237,7 @@ class _Prescription_order_detailsState extends State<Prescription_order_details>
   Future<List<prescriptionorder>> _fetchJobs() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/prescription_order_details.php';
     var data = {'prescriptionid':widget.id};
-    final response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
+    final response = await http.post(Uri.parse( jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -367,7 +367,7 @@ class _Address_dataState extends State<Address_data> {
   Future removeadd(id) async {
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/remove/remove_address.php';
     var data = {'id': id};
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
     var message = jsonDecode(response.body);
 
     showDialog(
@@ -392,7 +392,7 @@ class _Address_dataState extends State<Address_data> {
     print(val);
     var data = {'id': idd, 'value': val};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/selected_address.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
   }
 
   @override
@@ -419,7 +419,7 @@ class _Address_dataState extends State<Address_data> {
     var data = {'addid':widget.addid};
 
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/address_api.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new add_data.fromJson(item)).toList();
@@ -580,7 +580,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
     print(widget.prescription_id);
     var data = {'prescription_id':widget.prescription_id };
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/prescription_total.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     // _finalprice_= jsonResponse["price"].map((item) => new Item.fromJson(item)).toList();

@@ -68,7 +68,7 @@ class _myaccountState extends State<myaccount> {
     };
 
     // Starting Web API Call.
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     // Getting Server response into variable.
     var message = jsonDecode(response.body);
@@ -137,7 +137,7 @@ class _myaccountState extends State<myaccount> {
     print(token);
     var data = {'userid': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/account_details.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new Account.fromJson(item)).toList();
   }

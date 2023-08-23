@@ -144,7 +144,7 @@ class _myorderState extends State<myorder> {
     print(token);
     var data = {'userid': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/myorders.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     // _finalprice_= jsonResponse["price"].map((item) => new Item.fromJson(item)).toList();

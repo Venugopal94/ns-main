@@ -83,7 +83,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
     dynamic token = await getStringValues();
     var data = {'itemproductgroupid': widget.itemproductid,'userid':token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/pages/customer_reviews.php';
-    var response = await http.post(Uri(path: url),body: json.encode(data));
+    var response = await http.post(Uri.parse( url),body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new reviews_data.fromJson(item)).toList();
@@ -96,7 +96,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
     else{
       var url = 'https://onlinefamilypharmacy.com/mobileapplication/remove/remove_reviews.php';
       var data = { 'id': id};
-      var response = await http.post(Uri(path: url), body: json.encode(data));
+      var response = await http.post(Uri.parse( url), body: json.encode(data));
       var message = jsonDecode(response.body);
       setState(() {
         _fetch_reviews_data();
@@ -129,7 +129,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
         };
 
         // Starting Web API Call.
-        var response = await http.post(Uri(path: url), body: json.encode(data));
+        var response = await http.post(Uri.parse( url), body: json.encode(data));
 
         // Getting Server response into variable.
         var message = json.decode(response.body);

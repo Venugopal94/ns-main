@@ -74,7 +74,7 @@ class _Address_screenState extends State<Address_screen> {
     
 
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/address_api.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new add_data.fromJson(item)).toList();
@@ -91,7 +91,7 @@ class _Address_screenState extends State<Address_screen> {
      print(id);
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/remove/remove_address.php';
     var data = {'id': id};
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
     var message = jsonDecode(response.body);
     setState(() {
       _fetch_add_data();

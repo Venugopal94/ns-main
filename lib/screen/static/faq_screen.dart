@@ -62,7 +62,7 @@ class _faqState extends State<faq> {
 
   Future<List<faqItem>> _fetchCartItem() async {
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=faq';
-    var response = await http.post(Uri(path: url));
+    var response = await http.post(Uri.parse( url));
 
     List jsonResponse = json.decode(response.body);
 

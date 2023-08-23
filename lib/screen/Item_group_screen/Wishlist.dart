@@ -160,7 +160,7 @@ class _WishListState extends State<WishList> {
 print(token);print(itemid);
     var url='https://onlinefamilypharmacy.com/mobileapplication/remove/removewishlist.php';
     var data={'user_id':token,'itemid':itemid};
-    var response = await http.post(Uri(path: url), body:json.encode(data));
+    var response = await http.post(Uri.parse( url), body:json.encode(data));
     var message = jsonDecode(response.body);
     setState(() {
       _fetchItem();
@@ -201,7 +201,7 @@ print(token);print(itemid);
     dynamic token = await getStringValues();
     var data = {'userid': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/pages/wishlist_api.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new Item.fromJson(item)).toList();

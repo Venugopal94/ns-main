@@ -68,7 +68,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
     dynamic token = await getStringValues();
     var data = {'user_id': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/address_api.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new add_data.fromJson(item)).toList();
@@ -307,7 +307,7 @@ class _Address_dataState extends State<Address_data> {
     // print(id);
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/remove/remove_address.php';
     var data = {'id': id};
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
     var message = jsonDecode(response.body);
     setState(() {
       _fetch_add_data();
@@ -320,13 +320,13 @@ class _Address_dataState extends State<Address_data> {
       print(val);
       var data = {'id': idd, 'value':val,'title':title};
       var url = 'https://onlinefamilypharmacy.com/mobileapplication/selected_address.php';
-      var response = await http.post(Uri(path: url), body:json.encode(data));
+      var response = await http.post(Uri.parse( url), body:json.encode(data));
     }
     else if (title=='SHIPPING'){
       print(val);
       var data = {'id': idd, 'value':val,'title':title};
       var url = 'https://onlinefamilypharmacy.com/mobileapplication/selected_address.php';
-      var response = await http.post(Uri(path: url), body:json.encode(data));
+      var response = await http.post(Uri.parse( url), body:json.encode(data));
     }
     else{
 
@@ -360,7 +360,7 @@ class _Address_dataState extends State<Address_data> {
     dynamic token = await getStringValues();
     var data = {'user_id': token};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/address_api.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new add_data.fromJson(item)).toList();

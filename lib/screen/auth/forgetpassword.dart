@@ -21,7 +21,7 @@ class _forgetpwdState extends State<forgetpwd> {
     String email = user.text;
     var data = { 'email': email};
     var url = 'https://onlinefamilypharmacy.com/mobileapplication/forgotpassword.php';
-    var response= await http.post(Uri(path: url), body: json.encode(data));
+    var response= await http.post(Uri.parse( url), body: json.encode(data));
     var msg= json.decode(response.body);
     if (email.length == 0 ){
       showInSnackBar("Field Should not be empty");

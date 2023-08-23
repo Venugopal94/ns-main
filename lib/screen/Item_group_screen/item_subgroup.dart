@@ -66,7 +66,7 @@ class _ItemSubState extends State<ItemSub> {
     var data = {
       'itemsubid': widget.itemsubid
     };
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

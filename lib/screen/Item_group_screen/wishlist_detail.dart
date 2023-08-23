@@ -43,7 +43,7 @@ class _Wishlist_detailState extends State<Wishlist_detail> {
     var data = {
       'itemid': widget.itemid
     };
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

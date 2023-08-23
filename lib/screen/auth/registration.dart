@@ -161,7 +161,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
       };
 
       // Starting Web API Call.
-      var response = await http.post(Uri(path: url), body: json.encode(data));
+      var response = await http.post(Uri.parse( url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
@@ -538,7 +538,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
 
 class UserApi {
   static Future<List<ZoneArea>> getUsersuggestion(String query) async {
-    final response = await http.post(Uri(path: url1));
+    final response = await http.post(Uri.parse( url1));
 
     final List Zone = json.decode(response.body);
     return Zone.map((json) => ZoneArea.fromJson(json)).where((user) {

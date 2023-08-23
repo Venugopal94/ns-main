@@ -36,7 +36,7 @@ class WebViewLoadUI extends State<WebViewLoad>{
               {
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult(uri,this.widget.token,this.widget.data) ));
               }
-            print("Uri parameteer"+uri.host);
+            print(uri);
             // print("Uri host"+uri.host);
             // print("Uri path"+uri.path);
             // print("Uri queryparameter"+uri.queryParameters.toString());

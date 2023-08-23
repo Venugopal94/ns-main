@@ -142,7 +142,7 @@
 //   Future<List<TrackData>> _fetchTrackData() async {
 //     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/trackyourorder.php';
 //     var data = {'orderid': orderid};
-//     var response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
+//     var response = await http.post(Uri.parse( jobsListAPIUrl), body: json.encode(data));
 //
 //     if (response.statusCode == 200) {
 //       List jsonResponse = json.decode(response.body);

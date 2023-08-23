@@ -26,7 +26,7 @@ class viewAllState extends State<viewAll> {
     var data = {'epid': _id};
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/ecommerceitemcode.php';
-    final response = await http.post(Uri(path: jobsListAPIUrl), body: jsonEncode(data));
+    final response = await http.post(Uri.parse( jobsListAPIUrl), body: jsonEncode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

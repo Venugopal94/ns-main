@@ -78,7 +78,7 @@ Future showNotification() async{
 
   Future<List<Job>> _fetchJobs() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=advertise';
-    final response = await http.get(Uri(path: jobsListAPIUrl));
+    final response = await http.get(Uri.parse( jobsListAPIUrl));
 
     if (response.statusCode == 200) {
      //showNotification();

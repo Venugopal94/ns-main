@@ -685,7 +685,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
   Future<List<Brand>> _fetchJobs() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=manufacture';
-    final response = await http.get(Uri(path: jobsListAPIUrl));
+    final response = await http.get(Uri.parse( jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -698,7 +698,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
   Future<List<ItemMainData>> _fetchItemMainData() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/categories/itemmaingroup.php?action=itemmaingroup';
-    final response = await http.get(Uri(path: jobsListAPIUrl));
+    final response = await http.get(Uri.parse( jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -725,7 +725,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
       'itemid': itemid,
       'itemproductgroupid': itemproductgroupid
     };
-    var response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
+    var response = await http.post(Uri.parse( jobsListAPIUrl), body: json.encode(data));
   }
 
   Future<List<ItemData>> _fetchSearchData() async {
@@ -733,7 +733,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/get_user_search_history.php';
     var data = {'userid': token};
-    var response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
+    var response = await http.post(Uri.parse( jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
@@ -753,7 +753,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
       '_upperValue': _upperValue,
       'itemmaingroup': itemmaingroup
     };
-    var response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
+    var response = await http.post(Uri.parse( jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

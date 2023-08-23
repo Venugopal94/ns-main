@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginScreen> {
       var data = {'email': email, 'password': password};
 
       // Starting Web API Call.
-      var response = await http.post(Uri(path: url), body: json.encode(data));
+      var response = await http.post(Uri.parse( url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginScreen> {
       var data1 = {'email': email};
 
       // Starting Web API Call.
-      var response1 = await http.post(Uri(path: url1), body: json.encode(data1));
+      var response1 = await http.post(Uri.parse( url1), body: json.encode(data1));
       setState(() {
         user_id = jsonDecode(response1.body);
         
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginScreen> {
       var data2 = {'userid': user_id};
 
       // Starting Web API Call.
-      var response2 = await http.post(Uri(path: url2), body: json.encode(data2));
+      var response2 = await http.post(Uri.parse( url2), body: json.encode(data2));
       setState(() {
         cart_total = jsonDecode(response2.body);
         

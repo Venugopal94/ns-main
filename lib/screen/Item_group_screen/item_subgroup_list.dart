@@ -165,7 +165,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
     final url =
         'https://onlinefamilypharmacy.com/mobileapplication/categories/list_subgroup.php';
     var data = {'itemid': widget.sublist};
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

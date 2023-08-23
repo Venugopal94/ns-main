@@ -86,7 +86,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
       };
 
       // Starting Web API Call.
-      var response = await http.post(Uri(path: url), body: json.encode(data));
+      var response = await http.post(Uri.parse( url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
@@ -123,10 +123,10 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
   }
 
   Future<String> fetchData() async {
-    var response = await http.post(Uri(path: url1));
+    var response = await http.post(Uri.parse( url1));
 
     if (response.statusCode == 200) {
-      var res = await http.post(Uri(path: url1));
+      var res = await http.post(Uri.parse( url1));
 
       var resBody = json.decode(res.body);
       print("___________JSJSJS");

@@ -14,7 +14,6 @@ dependencies:
     sdk: flutter
   provider:
   vector_math: any
-  #flutter_swiper: ^1.1.6
   flutter_swiper_null_safety: ^1.0.2
   flutter_svg: ^1.0.0
   scoped_model:
@@ -23,14 +22,10 @@ dependencies:
   #carousel_pro: ^1.0.0
   #carousel_pro_nullsafety: ^2.0.0
   google_fonts:
-  #sweetalert: ^
-  
+
   badges: ^2.0.3
-  #connectivity_plus: ^4.0.2
   toast:
-  #flutter_icons:
   shared_preferences:
-  #flutter_session:
   flutter_form_builder:
   geolocator: ^10.0.0
   #geocoder: ^0.2.1
@@ -50,7 +45,6 @@ dependencies:
   #timeline_node: ^0.1.0
   get_it:
   url_launcher:
-  #expansion_card: ^0.1.0
   flutter_rating_bar:
   share:
   flutter_xlider: ^3.5.0

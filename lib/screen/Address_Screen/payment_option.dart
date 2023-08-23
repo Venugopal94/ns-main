@@ -349,7 +349,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
     // String url="http://192.168.1.93:8080/paymentGatewayApi_war_exploded/GetAccessToken";
     String url =
         "http://robustremedy.com:8080/paymentGatewayApi/GetAccessToken";
-    var response = await http.get(Uri(path: url));
+    var response = await http.get(Uri.parse( url));
     var jsonResponse = jsonDecode(response.body);
     print("response " + response.body);
     try {
@@ -387,7 +387,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
         "token": accessToken
       };
       log(account.mobile.toString());
-      var response = await http.post(Uri(path: url), body: jsonEncode(data));
+      var response = await http.post(Uri.parse( url), body: jsonEncode(data));
       print("response " + response.body);
       var jsonResponse = jsonDecode(response.body);
 
@@ -417,7 +417,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
     var data = {'userid': token};
     var url =
         'https://onlinefamilypharmacy.com/mobileapplication/account_details.php';
-    var response = await http.post(Uri(path: url), body: json.encode(data));
+    var response = await http.post(Uri.parse( url), body: json.encode(data));
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((item) => new Account.fromJson(item)).toList();
   }

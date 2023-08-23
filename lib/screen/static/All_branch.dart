@@ -22,7 +22,7 @@ class _All_branchState extends State<All_branch> {
     final url =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=branch';
     //var data = {'itemid': widget.itemnull};
-    var response = await http.get(Uri(path: url));
+    var response = await http.get(Uri.parse( url));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

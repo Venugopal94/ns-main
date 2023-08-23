@@ -36,7 +36,7 @@ class TransactionResultState extends State<TransactionResult> {
        appBar: AppBar(
            title: Text("Result")),
 
-     body: loading?CircularProgressIndicator():Center(child: Text(result),),
+     body: loading? CircularProgressIndicator() : Center(child: Text(result),),
 
    );
   }
@@ -63,7 +63,7 @@ class TransactionResultState extends State<TransactionResult> {
       String url = "http://robustremedy.com:8080/paymentGatewayApi/ValidateTransaction";
 
 
-      var response = await http.post(Uri(path: url), body: jsonEncode(data));
+      var response = await http.post(Uri.parse( url), body: jsonEncode(data));
       print("response " + response.body);
       var jsonResponse = jsonDecode(response.body);
       print(response.body);
@@ -113,7 +113,7 @@ var dat=this.widget.data;
     // print("saveTransaction"+data.toString());
     String url = 'https://onlinefamilypharmacy.com/mobileapplication/order_payment.php';
 
-var response = await http.post(Uri(path: url), body: json.encode(data));
+   var response = await http.post(Uri.parse( url), body: json.encode(data));
     return int.parse(response.body);
 
   }

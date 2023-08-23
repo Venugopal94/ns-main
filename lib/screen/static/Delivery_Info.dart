@@ -82,7 +82,7 @@ class DeliveryInfo extends StatelessWidget {
   Future<List<StaticPage>> _fetchStaticPage() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/e_static.php?action=e_staticpages_deliveryinformation';
-    final response = await http.get(Uri(path: jobsListAPIUrl));
+    final response = await http.get(Uri.parse( jobsListAPIUrl));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

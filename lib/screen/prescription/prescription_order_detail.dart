@@ -85,7 +85,7 @@ class _Prescription_order_detailsDemoState
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/prescription_order_details.php';
     var data = {'prescriptionid': widget.id};
-    final response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
+    final response = await http.post(Uri.parse( jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

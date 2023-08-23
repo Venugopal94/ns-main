@@ -30,7 +30,7 @@ class _headerstate extends State<Header> {
 
   List<header> myAllData = [];
   loadData() async {
-    var response = await http.get(Uri(path: url), headers: {"Aceept": "application/json"});
+    var response = await http.get(Uri.parse( url), headers: {"Aceept": "application/json"});
     if (response.statusCode == 200) {
       String responeBody = response.body;
       var jsonBody = json.decode(responeBody);
@@ -50,7 +50,7 @@ class _headerstate extends State<Header> {
     var data = {'epid': _id};
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/ecommerceitemcode.php';
-    final response = await http.post(Uri(path: jobsListAPIUrl), body: jsonEncode(data));
+    final response = await http.post(Uri.parse( jobsListAPIUrl), body: jsonEncode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

@@ -78,7 +78,7 @@ class _OrderdetailsItemsDemoState extends State<OrderdetailsItemsDemo> {
   Future<List<order_details>> _fetchJobs() async {
     final jobsListAPIUrl = 'https://onlinefamilypharmacy.com/mobileapplication/order_details_item.php';
     var data = {'itemid':widget.id};
-    final response = await http.post(Uri(path: jobsListAPIUrl), body: json.encode(data));
+    final response = await http.post(Uri.parse( jobsListAPIUrl), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);

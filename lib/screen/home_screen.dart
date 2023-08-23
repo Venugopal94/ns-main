@@ -36,7 +36,7 @@ class _HomeStateScreen extends State<HomeScreen> {
     var data2 = {'userid': user_id};
 
     // Starting Web API Call.
-    var response2 = await http.post(Uri(path: url2), body: json.encode(data2));
+    var response2 = await http.post(Uri.parse( url2), body: json.encode(data2));
     setState(() {
       cart_total = (json.decode(response2.body)).toString();
     });

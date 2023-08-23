@@ -70,7 +70,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
       };
 
       // Starting Web API Call.
-      var response = await http.post(Uri(path: url), body: json.encode(data));
+      var response = await http.post(Uri.parse( url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
