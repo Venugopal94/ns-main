@@ -1433,7 +1433,7 @@ class _ListDetailsState extends State<ListDetails> {
         'https://onlinefamilypharmacy.com/images/item/' +
             widget.todo.img,fit: BoxFit.contain,
       ),
-    ]
+    ];
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
