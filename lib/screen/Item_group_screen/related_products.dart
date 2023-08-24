@@ -190,7 +190,7 @@ imageSlider(context, data) {
                   height: 100,
                   child: new Image.network(
                     'https://onlinefamilypharmacy.com/images/item/' +
-                        data[index].img,
+                        data[index]?.img,
                     fit: BoxFit.fitWidth,
                     width: 100,
                   )),

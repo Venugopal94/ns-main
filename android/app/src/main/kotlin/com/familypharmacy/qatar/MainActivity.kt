@@ -1,4 +1,4 @@
-package com.example.ns_main
+package com.familypharmacy.qatar
 
 import io.flutter.embedding.android.FlutterActivity
 

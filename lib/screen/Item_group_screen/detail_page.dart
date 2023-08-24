@@ -1472,13 +1472,12 @@ class _ListDetailsState extends State<ListDetails> {
                     child: Stack(
                       children: [
                       Swiper(
-                      //autoplay: true,
+                      autoplay: true,
                       itemCount: data.length,
-                      indicatorLayout: PageIndicatorLayout.SLIDE,
+                      indicatorLayout: PageIndicatorLayout.NONE,
                       itemBuilder: (BuildContext context, int index) {
                         return data[index];
                       },
-                      autoplay: true,
                       viewportFraction: 0.4,
                       scale: 0.5
                     ),
