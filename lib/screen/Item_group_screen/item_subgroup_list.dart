@@ -138,6 +138,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: LightColor.yellowColor,
         actions: [
           IconButton(
               onPressed: () {

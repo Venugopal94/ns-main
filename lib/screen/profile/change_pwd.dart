@@ -73,7 +73,7 @@ else {
         key: _scaffoldKey,
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(
-        title: Text('Reset Password'),),
+        title: Text('Reset Password'),backgroundColor: LightColor.yellowColor,),
 
     body: Column(
     children: <Widget>[

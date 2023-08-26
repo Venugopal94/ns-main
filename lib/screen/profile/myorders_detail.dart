@@ -190,6 +190,7 @@ class _myorderdetailState extends State<myorderdetail> {
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(
           title: Text('Order Details'),
+          backgroundColor: LightColor.yellowColor,
         ),
         body: Column(children: <Widget>[
           Expanded(

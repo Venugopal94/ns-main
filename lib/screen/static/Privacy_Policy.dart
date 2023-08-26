@@ -10,6 +10,8 @@ import 'package:robustremedy/widgets/appdrawer_without_login.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../themes/light_color.dart';
+
 class PolicyScreen extends StatefulWidget {
   @override
   _PolicyStateScreen createState() => _PolicyStateScreen();
@@ -44,6 +46,7 @@ class _PolicyStateScreen extends State<PolicyScreen> {
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Privacy Policy"),
+        backgroundColor: LightColor.yellowColor,
       ),
       drawer: email != null ? AppDrawer() : AppDrawer_without(),
       body: Policy(),

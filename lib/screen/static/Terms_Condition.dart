@@ -9,6 +9,8 @@ import 'package:robustremedy/widgets/appdrawer_without_login.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../themes/light_color.dart';
+
 class StaticPage {
   final String? content;
 
@@ -54,6 +56,7 @@ class _TermsStateScreen extends State<TermsScreen> {
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Terms And Condition"),
+        backgroundColor: LightColor.yellowColor,
       ),
       drawer: email != null ? AppDrawer() : AppDrawer_without(),
       body: TermsDemo(),

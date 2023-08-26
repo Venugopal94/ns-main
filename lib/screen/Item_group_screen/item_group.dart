@@ -44,6 +44,7 @@ class _ItemGroupState extends State<ItemGroup> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.itemtitle),
+        backgroundColor: LightColor.yellowColor,
         actions: [
           IconButton(
               onPressed: (){
@@ -80,7 +81,8 @@ class _ItemGroupState extends State<ItemGroup> {
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
-      return jsonResponse.map((job) => new ItemGrpData.fromJson(job)).toList();
+      final data = jsonResponse.map((job) => new ItemGrpData.fromJson(job)).toList();
+      return data;
     } else {
       throw Exception('Failed to load jobs from API');
     }

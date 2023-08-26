@@ -46,6 +46,7 @@ class viewAllState extends State<viewAll> {
         key: _scaffoldKey,
         appBar: AppBar(
           title: Text("View All"),
+          backgroundColor: LightColor.yellowColor,
         ),
         body:FutureBuilder<List<Job>>(
           future: _fetchItemData(widget.epid),

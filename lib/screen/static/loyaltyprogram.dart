@@ -14,6 +14,7 @@ class Loyaltyprogram_Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Loyalty Program"),
+        backgroundColor: LightColor.yellowColor,
       ),
       body: AdvertiseDemo(),
     );

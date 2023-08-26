@@ -107,7 +107,9 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-          title: Text("Edit Address")),
+          title: Text("Edit Address"),
+        backgroundColor: LightColor.yellowColor,
+      ),
       body: Container(
         height: height,
         child: Stack(

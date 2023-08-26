@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../themes/light_color.dart';
+
 class WebViewExample extends StatefulWidget {
   @override
   _WebViewExampleState createState() => _WebViewExampleState();
@@ -23,6 +25,7 @@ class _WebViewExampleState extends State<WebViewExample> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Live Support'),
+        backgroundColor: LightColor.yellowColor,
       ),
       body: Builder(builder: (BuildContext context) {
         return WebView(

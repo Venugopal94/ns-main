@@ -13,6 +13,8 @@ import 'package:robustremedy/widgets/appdrawer_without_login.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../themes/light_color.dart';
+
 class About_Us_Screen extends StatefulWidget {
   @override
   _About_UsScreen createState() => _About_UsScreen();
@@ -48,6 +50,7 @@ class _About_UsScreen extends State<About_Us_Screen> {
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("About Us"),
+        backgroundColor: LightColor.yellowColor,
       ),
       drawer: email != null ? AppDrawer() : AppDrawer_without(),
       body: Refund(),

@@ -232,7 +232,9 @@ else {
     final width=MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Text("Select Address")),
+      appBar: AppBar(title: Text("Select Address"),
+        backgroundColor: LightColor.yellowColor,
+      ),
       body:  Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

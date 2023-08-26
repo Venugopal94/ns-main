@@ -21,6 +21,7 @@ class MyProfile extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("Profile"),
+          backgroundColor: LightColor.yellowColor,
         ),
         drawer: AppDrawer(),
         body: DoubleBackToCloseApp(

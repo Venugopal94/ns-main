@@ -20,6 +20,7 @@ class _All_branchState extends State<Salesteam> {
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text(" Sales Team "),
+        backgroundColor: LightColor.yellowColor,
       ),
       drawer: AppDrawer(),
       body: AllBranch(),

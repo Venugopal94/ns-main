@@ -61,7 +61,9 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-        appBar: AppBar(title: Text("Cart List")),
+        appBar: AppBar(title: Text("Cart List"),
+          backgroundColor: LightColor.yellowColor,
+        ),
         body: SingleChildScrollView(
           child: ScopedModel.of<CartModel>(context, rebuildOnChange: true)
                       .cart

@@ -73,6 +73,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Payment"),
+        backgroundColor: LightColor.yellowColor,
       ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[

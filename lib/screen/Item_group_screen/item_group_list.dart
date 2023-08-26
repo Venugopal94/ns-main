@@ -16,6 +16,8 @@ class ListItems extends StatefulWidget {
 
 class ItemGrpData {
   final String? itemid;
+  final String? title;
+  final String? image;
   final String? img;
   final String? itemname_en;
   final String? labelname;
@@ -46,6 +48,8 @@ class ItemGrpData {
 final String? itemgroupid;
   ItemGrpData(
       {this.itemid,
+        this.image,
+        this.title,
       this.img,
       this.itemname_en,
       this.labelname,
@@ -76,6 +80,8 @@ final String? itemgroupid;
     return ItemGrpData(
         itemid: json['itemid'],
         img: json['img'],
+        image: json['image'],
+        title: json['title'],
         itemname_en: json['itemname_en'],
         labelname: json['labelname'],
         itempack: json['itempack'],

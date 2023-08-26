@@ -73,6 +73,7 @@ class _HomeStateScreen extends State<HomeScreen> {
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Family Pharmacy"),
+        backgroundColor: LightColor.yellowColor,
         actions: <Widget>[
           IconButton(
             icon: Icon(

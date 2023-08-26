@@ -21,7 +21,9 @@ class _SubList_ItemsState extends State<SubList_Items> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),),
+        title: Text(widget.title),
+        backgroundColor: LightColor.yellowColor,
+      ),
       body: FutureBuilder<List<ItemGrpData>>(
         future: _fetchItemGrpData(),
         builder: (context, snapshot) {

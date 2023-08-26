@@ -73,6 +73,7 @@ class _All_branchState extends State<All_branch> {
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: appBarTitle,
+        backgroundColor: LightColor.yellowColor,
         actions: <Widget>[
           new IconButton(
             icon: actionIcon,

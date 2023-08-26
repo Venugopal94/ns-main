@@ -142,8 +142,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
     return ScopedModelDescendant<CartModel>(builder: (context,child,  model){
       return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Text("Order Summary")),
-      body: SingleChildScrollView(
+      appBar: AppBar(title: Text("Order Summary"),
+          backgroundColor: LightColor.yellowColor,
+      ),
+      body: shippment.isNotEmpty ? SingleChildScrollView(
           child: Column(children: <Widget>[
         Container(
           child: Column(children: <Widget>[
@@ -185,16 +187,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                               fontWeight: FontWeight.bold),
                                         ),
                                         widget.total <
-                                                int.parse(shippment[0].lessthan)
+                                                int.parse(shippment?.first?.lessthan ?? "")
                                             ? Text(
-                                                "QR ${(int.parse(shippment[0].lessthanshippingamt) + int.parse(shippment[0].shipping_charges))}",
+                                                "QR ${(int.parse(shippment?.first?.lessthanshippingamt ?? "") + int.parse(shippment.first.shipping_charges))}",
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )
                                             : Text(
-                                                "QR ${int.parse(shippment[0].shipping_charges)}",
+                                                "QR ${int.parse(shippment.first.shipping_charges)}",
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight:
@@ -280,7 +282,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               Text(
                                 "\  Street No - ${widget.addid.street},",
                                 style: TextStyle(
-                                  
+
                                     fontSize: 14, fontWeight: FontWeight.bold),
                               ),
                               Text(
@@ -359,7 +361,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                     // subtitle: Text("Radio 2 Subtitle"),
                     onChanged: (int? val) {
-                      
+
                       setSelectedRadioTile(val ?? 0);
                     },
                     activeColor: LightColor.midnightBlue,
@@ -372,7 +374,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
           ]),
         ),
-      ])),
+      ])) : Container(),
       floatingActionButton: Container(
           height: 50.0,
           width: 150.0,

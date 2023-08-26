@@ -113,6 +113,7 @@ class _BrandDetailState extends State<BrandDetail> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.brandtitle),
+        backgroundColor: LightColor.yellowColor,
       ),
       body: FutureBuilder<List<BrandDetailData>>(
         future: _fetchItemGrpData(),

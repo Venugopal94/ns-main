@@ -12,6 +12,7 @@ class Catlogue extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Catlogue"),
+        backgroundColor: LightColor.yellowColor,
       ),
       body: AdvertiseDemo(),
     );

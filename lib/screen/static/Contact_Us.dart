@@ -96,6 +96,7 @@ class _Contact_Us_State extends State<Contact_Us> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text("Contact Us"),
+        backgroundColor: LightColor.yellowColor,
         automaticallyImplyLeading: true,
       ),
       // drawer: check == null ? AppDrawer_without() : AppDrawer(),

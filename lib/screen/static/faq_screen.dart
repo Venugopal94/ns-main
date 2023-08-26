@@ -35,7 +35,9 @@ class _faqState extends State<faq> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("FAQ")),
+      appBar: AppBar(title: Text("FAQ"),
+        backgroundColor: LightColor.yellowColor,
+      ),
       body: FutureBuilder<List<faqItem>>(
         future: _fetchCartItem(),
         builder: (context, snapshot) {

@@ -57,6 +57,7 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
       child: Scaffold(
           appBar: AppBar(
             title: Text("Confirmation"),
+            backgroundColor: LightColor.yellowColor,
             automaticallyImplyLeading: false,
           ),
           body: Container(
@@ -69,31 +70,39 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
                   /*  Opacity(
                     opacity: opacity.value,
                     child:*/
-                  Center(
-                      child: Container(
-                          height: 300,
-                          child: ListView(
-                              scrollDirection: Axis.vertical,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.check_circle,
-                                  color: Colors.green,
-                                  size: 70.0,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Center(
-                                    child: Text(
-                                        'Thank You! \n\nYour Order ${widget.orderId} Has Been \n  Placed Successfully....!',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 22,
-                                            color: LightColor.midnightBlue,
-                                            fontWeight: FontWeight.bold))),
-                              ]))
-                      // ),
+                  if (widget.orderId == 0)
+                    Center(child: Container(
+                      alignment: Alignment.topRight,
+                      child: Image.asset(
+                        "assets/payment_failed.png",
                       ),
+                    )),
+                  if (widget.orderId != 0)
+                    Center(
+                        child: Container(
+                            height: 300,
+                            child: ListView(
+                                scrollDirection: Axis.vertical,
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.check_circle,
+                                    color: Colors.green,
+                                    size: 70.0,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Center(
+                                      child: Text(
+                                          'Thank You! \n\nYour Order ${widget.orderId} Has Been \n  Placed Successfully....!',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 22,
+                                              color: LightColor.midnightBlue,
+                                              fontWeight: FontWeight.bold))),
+                                ]))
+                      // ),
+                    ),
                   Container(
                     height: 70,
                     child: Padding(

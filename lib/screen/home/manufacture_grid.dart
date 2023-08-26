@@ -12,6 +12,7 @@ class BrandGrid extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("Shop By Brand"),
+          backgroundColor: LightColor.yellowColor,
         ),
         body: Container(
 

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:robustremedy/screen/TransactionResult.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../themes/light_color.dart';
+
 
 class WebViewLoad extends StatefulWidget {
 
@@ -27,7 +29,9 @@ class WebViewLoadUI extends State<WebViewLoad>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('Payment')),
+            title: Text('Payment'),
+          backgroundColor: LightColor.yellowColor,
+        ),
         body: WebView(onPageStarted: (url)
           {
             print("url "+url);

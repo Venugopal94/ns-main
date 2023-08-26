@@ -22,6 +22,7 @@ class _Wishlist_detailState extends State<Wishlist_detail> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.itemid),
+        backgroundColor: LightColor.yellowColor,
       ),
       body: FutureBuilder<List<ItemGrpData>>(
         future: _fetchItemGrpData(),

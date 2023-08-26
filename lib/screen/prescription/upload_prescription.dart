@@ -239,7 +239,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
       // backgroundColor: LightColor.yellowColor,
       appBar: AppBar(
         title: Text("Upload Prescription"),
-
+        backgroundColor: LightColor.yellowColor,
         // backgroundColor: LightColor.midnightBlue,
       ),
 

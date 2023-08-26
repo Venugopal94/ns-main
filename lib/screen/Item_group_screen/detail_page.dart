@@ -1438,6 +1438,7 @@ class _ListDetailsState extends State<ListDetails> {
         key: _scaffoldKey,
         appBar: AppBar(
           title: Text(widget.todo.itemproductgrouptitle),
+          backgroundColor: LightColor.yellowColor,
           actions: [
             Badge.Badge(
                 // value: cartCount,

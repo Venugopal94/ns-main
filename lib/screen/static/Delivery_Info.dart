@@ -7,6 +7,7 @@ import 'package:robustremedy/widgets/appdrawer_without_login.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import '../../themes/light_color.dart';
 import '../home/home_slider.dart';
 import 'package:flutter_html/flutter_html.dart';
 
@@ -54,6 +55,7 @@ class _DeliveryInfoStateScreen extends State<DeliveryInfoScreen> {
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Delivery Information"),
+        backgroundColor: LightColor.yellowColor,
         automaticallyImplyLeading: true,
       ),
       // drawer: email != null ? AppDrawer() : AppDrawer_without(),

@@ -58,6 +58,7 @@ class _Item_mainState extends State<Item_main> {
         appBar: AppBar(
 
           title: Text("Item Main Group"),
+          backgroundColor: LightColor.yellowColor,
           actions: [
             IconButton(
               onPressed: (){

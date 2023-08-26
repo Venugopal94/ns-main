@@ -7,6 +7,8 @@ import 'package:get_it/get_it.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../themes/light_color.dart';
+
 class CallsAndMessagesService {
   void call(String number) => launch("tel:$number");
   void sendSms(String number) => launch("sms:$number");
@@ -32,6 +34,7 @@ class _referearnState extends State<referearn> {
 
         appBar: AppBar(
           title: Text('Refer & Earn'),
+          backgroundColor: LightColor.yellowColor,
         ),
         body: Column(
             children: <Widget>[

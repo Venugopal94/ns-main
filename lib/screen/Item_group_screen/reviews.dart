@@ -145,7 +145,8 @@ class _Reviews_screenState extends State<Reviews_screen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Text("Reviews")),
+      appBar: AppBar(title: Text("Reviews"), backgroundColor: LightColor.yellowColor,
+      ),
       body:
         FutureBuilder<List<reviews_data>>(
           future: _fetch_reviews_data(),

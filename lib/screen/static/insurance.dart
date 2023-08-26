@@ -53,6 +53,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Insurance"),
+        backgroundColor: LightColor.yellowColor,
       ),
       body: SingleChildScrollView(
         child: FutureBuilder<List<Job>>(

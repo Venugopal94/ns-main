@@ -114,7 +114,9 @@ class _myorderState extends State<myorder> {
   Widget build(BuildContext context) {
     // final cart = Provider.of<Cart_>(context);
     return Scaffold(
-      appBar: AppBar(title: Text("My Orders")),
+      appBar: AppBar(title: Text("My Orders"),
+        backgroundColor: LightColor.yellowColor,
+      ),
       body: FutureBuilder<List<OrderItem>>(
         future: _fetchmyorder(),
         builder: (context, snapshot) {

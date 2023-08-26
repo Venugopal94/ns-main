@@ -7,6 +7,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:toast/toast.dart';
 
 import '../main.dart';
+import '../themes/light_color.dart';
 import 'Address_Screen/order_generated.dart';
 
 class TransactionResult extends StatefulWidget{
@@ -34,7 +35,9 @@ class TransactionResultState extends State<TransactionResult> {
     
    return Scaffold(
        appBar: AppBar(
-           title: Text("Result")),
+           title: Text("Result"),
+         backgroundColor: LightColor.yellowColor,
+       ),
 
      body: loading? CircularProgressIndicator() : Center(child: Text(result),),
 
@@ -88,11 +91,12 @@ var dat=this.widget.data;
                   });
       });
 
-         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId ?? 0,))));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: result == "success" ? (orderId ?? 0) : 0,))));
+      // Clear the cart only if the order is successful if not don't clear
+      if (result == "success") {
         ScopedModel.of<CartModel>(context).clearCart();
         ScopedModel.of<CartModel>(context).calculateTotal();
-
-
+      }
     } catch (e) {
       print(e);
       Toast.show("SomeThing went wrong", duration: Toast.lengthShort,

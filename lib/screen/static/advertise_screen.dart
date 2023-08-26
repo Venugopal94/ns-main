@@ -12,6 +12,7 @@ class Advertise_Screen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Advertise"),
+        backgroundColor: LightColor.yellowColor,
       ),
       body: AdvertiseDemo(),
     );
