@@ -47,6 +47,7 @@ class _PolicyStateScreen extends State<PolicyScreen> {
       appBar: AppBar(
         title: Text("Privacy Policy"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       drawer: email != null ? AppDrawer() : AppDrawer_without(),
       body: Policy(),

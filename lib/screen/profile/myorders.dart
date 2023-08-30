@@ -116,6 +116,7 @@ class _myorderState extends State<myorder> {
     return Scaffold(
       appBar: AppBar(title: Text("My Orders"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: FutureBuilder<List<OrderItem>>(
         future: _fetchmyorder(),

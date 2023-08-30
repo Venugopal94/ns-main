@@ -35,6 +35,7 @@ class _referearnState extends State<referearn> {
         appBar: AppBar(
           title: Text('Refer & Earn'),
           backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,
         ),
         body: Column(
             children: <Widget>[

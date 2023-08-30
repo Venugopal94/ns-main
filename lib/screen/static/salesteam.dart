@@ -21,6 +21,7 @@ class _All_branchState extends State<Salesteam> {
       appBar: AppBar(
         title: Text(" Sales Team "),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       drawer: AppDrawer(),
       body: AllBranch(),

@@ -35,6 +35,7 @@ class ItemGrpData {
   final String? maxretailprice;
   final String? minretailprice;
   final String? rs;
+  final String? id;
   final String? origin;
   final String? whichcompany;
   final String? allowsonapp;
@@ -50,6 +51,7 @@ final String? itemgroupid;
       {this.itemid,
         this.image,
         this.title,
+        this.id,
       this.img,
       this.itemname_en,
       this.labelname,
@@ -80,6 +82,7 @@ final String? itemgroupid;
     return ItemGrpData(
         itemid: json['itemid'],
         img: json['img'],
+        id: json['id'],
         image: json['image'],
         title: json['title'],
         itemname_en: json['itemname_en'],
@@ -178,22 +181,23 @@ Grid(context, data) {
                 children: <Widget>[
                   Stack(
                     children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        height: 100.0,
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(color: Colors.black12, blurRadius: 5.0)
-                            ],
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(10.0),
-                                bottomRight: Radius.circular(10.0)),
-                           image: DecorationImage(
-                                image:
-                                    NetworkImage('https://onlinefamilypharmacy.com/images/item/'+data[index].img),
-                                fit: BoxFit.fill)),
-                      ),
+                      if (data[index].img != null)
+                        Container(
+                          alignment: Alignment.topLeft,
+                          height: 100.0,
+                          width: 100.0,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(color: Colors.black12, blurRadius: 5.0)
+                              ],
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10.0),
+                                  bottomRight: Radius.circular(10.0)),
+                              image: DecorationImage(
+                                  image:
+                                  NetworkImage('https://onlinefamilypharmacy.com/images/item/'+data[index].img),
+                                  fit: BoxFit.fill)),
+                        ),
 
                       Positioned(
                         top: 1,

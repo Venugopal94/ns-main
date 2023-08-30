@@ -94,6 +94,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
     return Scaffold(
       appBar: AppBar(title: Text("Prescription Order Summary"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: SingleChildScrollView(
           child: Column(

@@ -22,6 +22,7 @@ class MyProfile extends StatelessWidget {
         appBar: AppBar(
           title: Text("Profile"),
           backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,
         ),
         drawer: AppDrawer(),
         body: DoubleBackToCloseApp(

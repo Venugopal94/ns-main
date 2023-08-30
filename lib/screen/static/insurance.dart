@@ -54,6 +54,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
       appBar: AppBar(
         title: Text("Insurance"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: SingleChildScrollView(
         child: FutureBuilder<List<Job>>(

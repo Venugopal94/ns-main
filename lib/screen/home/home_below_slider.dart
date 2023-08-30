@@ -138,7 +138,7 @@ class home_below_SliderGrid extends StatelessWidget {
                                     builder: (context) => WebViewExample()));
                           },
                             style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5)), foregroundColor: LightColor.midnightBlue),
+                                borderRadius: BorderRadius.circular(5)), backgroundColor: LightColor.midnightBlue),
 
                             child: Text("Chat",
                                 style: TextStyle(
@@ -214,7 +214,7 @@ class home_below_SliderGrid extends StatelessWidget {
                                               Upload_prescription()));
                                 },
                                   style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)), foregroundColor: LightColor.yellowColor),
+                                      borderRadius: BorderRadius.circular(10)), backgroundColor: LightColor.yellowColor),
 
                                   child: Text("Upload",
                                       style: TextStyle(
@@ -310,7 +310,7 @@ class home_below_SliderGrid extends StatelessWidget {
                           child:
                           ElevatedButton(onPressed: _callNumber,
                             style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)), foregroundColor: LightColor.yellowColor),
+                                borderRadius: BorderRadius.circular(10)), backgroundColor: LightColor.yellowColor),
 
                             child: Text("Call",
                                 style: TextStyle(

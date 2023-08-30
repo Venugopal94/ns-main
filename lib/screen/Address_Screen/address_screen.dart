@@ -234,6 +234,7 @@ else {
       key: _scaffoldKey,
       appBar: AppBar(title: Text("Select Address"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body:  Column(
         mainAxisSize: MainAxisSize.min,
@@ -267,7 +268,7 @@ else {
                       MaterialPageRoute(
                           builder: (context) => Add_NewScreen(total: widget.total)));
                 },
-                  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), foregroundColor: LightColor.yellowColor),
+                  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), backgroundColor: LightColor.yellowColor),
 
                   child: Text("Add Address",
                       style: TextStyle(

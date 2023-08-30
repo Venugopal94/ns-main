@@ -146,6 +146,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(title: Text("Reviews"), backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body:
         FutureBuilder<List<reviews_data>>(
@@ -252,7 +253,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
                                     },
                                       style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                                         //  borderRadius: BorderRadius.circular(18.0),
-                                          side: BorderSide(color: LightColor.midnightBlue)), foregroundColor: LightColor.midnightBlue),
+                                          side: BorderSide(color: LightColor.midnightBlue)), backgroundColor: LightColor.midnightBlue),
 
                                       child: Text("Submit Review",
                                           style: TextStyle(

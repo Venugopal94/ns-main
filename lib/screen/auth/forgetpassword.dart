@@ -86,6 +86,7 @@ class _forgetpwdState extends State<forgetpwd> {
       appBar: AppBar(
         title: Text("Forget Password"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: Container(
         height: height,

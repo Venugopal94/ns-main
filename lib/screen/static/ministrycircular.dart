@@ -15,6 +15,7 @@ class ministrycircular_Screen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Ministry Circular"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: AdvertiseDemo(),
     );

@@ -49,6 +49,7 @@ class _About_UsScreen extends State<Warehouse> {
       appBar: AppBar(
         title: Text("Warehouse"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       drawer: email != null ? AppDrawer() : AppDrawer_without(),
       body: Refund(),

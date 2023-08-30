@@ -73,7 +73,8 @@ else {
         key: _scaffoldKey,
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(
-        title: Text('Reset Password'),backgroundColor: LightColor.yellowColor,),
+        title: Text('Reset Password'),backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,),
 
     body: Column(
     children: <Widget>[
@@ -160,7 +161,7 @@ else {
                     //     disabledColor: Colors.red,
                     // disabledTextColor: Colors.black,
                     style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(
-                        20,), foregroundColor: LightColor.midnightBlue),
+                        20,), backgroundColor: LightColor.midnightBlue),
                     onPressed: changepass,
                     child:
                     Text('Change Password',  style: TextStyle(

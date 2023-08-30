@@ -288,7 +288,8 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: AppBar(title: Text("Search"), backgroundColor: LightColor.yellowColor, actions: <Widget>[
+        appBar: AppBar(title: Text("Search"),  backgroundColor: LightColor.yellowColor,
+            foregroundColor: LightColor.midnightBlue, actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.sort,

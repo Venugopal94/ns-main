@@ -37,6 +37,7 @@ class TransactionResultState extends State<TransactionResult> {
        appBar: AppBar(
            title: Text("Result"),
          backgroundColor: LightColor.yellowColor,
+         foregroundColor: LightColor.midnightBlue,
        ),
 
      body: loading? CircularProgressIndicator() : Center(child: Text(result),),

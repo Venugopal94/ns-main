@@ -203,6 +203,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
     return Scaffold(
       appBar: AppBar(title: Text("Select Prescription Address"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: Column(children: <Widget>[
         SizedBox(height: 25),

@@ -13,6 +13,7 @@ class BrandGrid extends StatelessWidget {
         appBar: AppBar(
           title: Text("Shop By Brand"),
           backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,
         ),
         body: Container(
 

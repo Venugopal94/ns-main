@@ -74,6 +74,7 @@ class _HomeStateScreen extends State<HomeScreen> {
       appBar: AppBar(
         title: Text("Family Pharmacy"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
         actions: <Widget>[
           IconButton(
             icon: Icon(

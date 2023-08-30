@@ -79,7 +79,8 @@ class _myaccountState extends State<myaccount> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(title: Text("My Account"), backgroundColor: LightColor.yellowColor,),
+        appBar: AppBar(title: Text("My Account"), backgroundColor: LightColor.yellowColor,
+            foregroundColor: LightColor.midnightBlue),
         body: FutureBuilder<List<Account>>(
           future: _fetchaccount(),
           builder: (context, snapshot) {

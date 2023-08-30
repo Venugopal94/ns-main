@@ -56,6 +56,7 @@ class _DeliveryInfoStateScreen extends State<DeliveryInfoScreen> {
       appBar: AppBar(
         title: Text("Delivery Information"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
         automaticallyImplyLeading: true,
       ),
       // drawer: email != null ? AppDrawer() : AppDrawer_without(),

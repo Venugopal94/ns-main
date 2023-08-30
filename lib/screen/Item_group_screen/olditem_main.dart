@@ -26,6 +26,7 @@ class _Item_mainState extends State<Item_main> {
         key: _scaffoldKey,
         appBar: AppBar(
           title: Text("Item Main Group"), backgroundColor: LightColor.yellowColor,
+            foregroundColor: LightColor.midnightBlue,
         ),
         body:GridDemo(),
 

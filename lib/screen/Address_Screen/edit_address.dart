@@ -109,6 +109,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
       appBar: AppBar(
           title: Text("Edit Address"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: Container(
         height: height,

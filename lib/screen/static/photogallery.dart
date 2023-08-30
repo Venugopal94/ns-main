@@ -19,6 +19,7 @@ class _photogalleryState extends State<photogallery> {
         //backgroundColor: LightColor.midnightBlue,
         title: Text("Gallery"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       drawer: AppDrawer(),
       body: AllBranch(),

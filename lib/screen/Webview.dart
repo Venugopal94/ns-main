@@ -31,6 +31,7 @@ class WebViewLoadUI extends State<WebViewLoad>{
         appBar: AppBar(
             title: Text('Payment'),
           backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,
         ),
         body: WebView(onPageStarted: (url)
           {

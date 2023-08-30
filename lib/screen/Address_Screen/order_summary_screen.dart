@@ -143,7 +143,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
       return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(title: Text("Order Summary"),
-          backgroundColor: LightColor.yellowColor,
+        backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: shippment.isNotEmpty ? SingleChildScrollView(
           child: Column(children: <Widget>[

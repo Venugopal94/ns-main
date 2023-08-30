@@ -150,6 +150,7 @@ class _mypredetailState extends State<mypredetail> {
         appBar: AppBar(
           title: Text('Prescription Details'),
           backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,
         ),
         body: Column(children: <Widget>[
           Expanded(

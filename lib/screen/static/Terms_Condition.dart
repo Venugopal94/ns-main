@@ -57,6 +57,7 @@ class _TermsStateScreen extends State<TermsScreen> {
       appBar: AppBar(
         title: Text("Terms And Condition"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       drawer: email != null ? AppDrawer() : AppDrawer_without(),
       body: TermsDemo(),

@@ -172,7 +172,9 @@ print(token);print(itemid);
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        title: Text("Wish List")),
+        title: Text("Wish List"),
+          backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,),
     body: FutureBuilder<List<Item>>(
       future: _fetchItem(),
       builder: (context, snapshot) {

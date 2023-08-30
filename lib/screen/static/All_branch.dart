@@ -74,6 +74,7 @@ class _All_branchState extends State<All_branch> {
       appBar: AppBar(
         title: appBarTitle,
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
         actions: <Widget>[
           new IconButton(
             icon: actionIcon,

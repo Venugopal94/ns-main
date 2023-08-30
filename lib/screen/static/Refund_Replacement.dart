@@ -47,6 +47,7 @@ class _RefundStateScreen extends State<RefundScreen> {
       appBar: AppBar(
         title: Text("Refund & Replacement"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       drawer: email != null ? AppDrawer() : AppDrawer_without(),
       body: Refund(),

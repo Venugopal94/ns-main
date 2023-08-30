@@ -74,6 +74,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
       appBar: AppBar(
         title: Text("Payment"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: SingleChildScrollView(
           child: Column(children: <Widget>[

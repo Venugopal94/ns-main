@@ -41,6 +41,7 @@ class _ItemSubState extends State<ItemSub> {
       appBar: AppBar(
         title: Text(widget.itemetitle),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body:       FutureBuilder<List<ItemSubData>>(
           future: _fetchItemSubData(),

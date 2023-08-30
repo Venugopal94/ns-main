@@ -47,6 +47,7 @@ class viewAll2State extends State<viewAll2> {
           appBar: AppBar(
             title: Text("View All"),
             backgroundColor: LightColor.yellowColor,
+            foregroundColor: LightColor.midnightBlue,
           ),
           body:FutureBuilder<List<Job>>(
             future: _fetchItemData(widget.epid),

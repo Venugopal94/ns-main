@@ -37,6 +37,7 @@ class _faqState extends State<faq> {
     return Scaffold(
       appBar: AppBar(title: Text("FAQ"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: FutureBuilder<List<faqItem>>(
         future: _fetchCartItem(),

@@ -35,7 +35,8 @@ class _Address_profileState extends State<Address_profile> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Address"), backgroundColor: LightColor.yellowColor,),
+      appBar: AppBar(title: Text("Address"), backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,),
       body: Column(
           children: <Widget>[
       Expanded(
@@ -65,7 +66,7 @@ class _Address_profileState extends State<Address_profile> {
                     //     disabledColor: Colors.red,
                     // disabledTextColor: Colors.black,
                     style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
+                        borderRadius: BorderRadius.circular(10)), backgroundColor: LightColor.yellowColor),
                     onPressed: () {
                       Navigator.push(
                           context,

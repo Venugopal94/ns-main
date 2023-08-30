@@ -86,7 +86,7 @@ class _PaymentSuccessfulState extends State<PaymentSuccessful> {
                                 (Route<dynamic> route) => false);
                       },
                         style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)), foregroundColor: LightColor.yellowColor),
+                            borderRadius: BorderRadius.circular(10)), backgroundColor: LightColor.yellowColor),
 
                         child: Text("Continue Shopping",
                             style: TextStyle(

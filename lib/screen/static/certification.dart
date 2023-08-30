@@ -17,6 +17,7 @@ class certification_Screen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Certification"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: AdvertiseDemo(),
     );

@@ -240,6 +240,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
       appBar: AppBar(
         title: Text("Upload Prescription"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
         // backgroundColor: LightColor.midnightBlue,
       ),
 
@@ -408,7 +409,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         child:
                         DropdownSearch<UserModel>(
                           popupProps: PopupProps.menu(
-                            showSelectedItems: true,
+                            showSelectedItems: false,
                           ),
                           asyncItems: (String? filter) async {
                             var response = await Dio().get(
@@ -964,7 +965,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                 },
                   style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: LightColor.midnightBlue)), foregroundColor: LightColor.midnightBlue),
+                      side: BorderSide(color: LightColor.midnightBlue)), backgroundColor: LightColor.midnightBlue),
 
                   child: Text("Upload",
                       style: TextStyle(

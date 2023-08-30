@@ -23,6 +23,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: FutureBuilder<List<ItemGrpData>>(
         future: _fetchItemGrpData(),

@@ -307,7 +307,8 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Text("Add New Address")),
+      appBar: AppBar(title: Text("Add New Address"), backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,),
       body: Container(
         height: height,
         child: Stack(

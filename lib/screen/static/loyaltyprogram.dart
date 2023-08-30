@@ -15,6 +15,7 @@ class Loyaltyprogram_Screen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Loyalty Program"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: AdvertiseDemo(),
     );

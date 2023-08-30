@@ -45,6 +45,7 @@ class _ItemGroupState extends State<ItemGroup> {
       appBar: AppBar(
         title: Text(widget.itemtitle),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
         actions: [
           IconButton(
               onPressed: (){

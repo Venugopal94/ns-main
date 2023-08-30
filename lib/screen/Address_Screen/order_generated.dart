@@ -58,6 +58,7 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
           appBar: AppBar(
             title: Text("Confirmation"),
             backgroundColor: LightColor.yellowColor,
+            foregroundColor: LightColor.midnightBlue,
             automaticallyImplyLeading: false,
           ),
           body: Container(
@@ -117,7 +118,7 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
                                 MaterialPageRoute(
                                     builder: (context) => HomeScreen()));
                           },
-                            style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), foregroundColor: LightColor.yellowColor),
+                            style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), backgroundColor: LightColor.yellowColor),
 
                             child: Text("Continue Shopping",
                                 style: TextStyle(

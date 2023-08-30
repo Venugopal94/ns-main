@@ -63,6 +63,7 @@ class _CartState extends State<Cart> {
       key: _scaffoldKey,
         appBar: AppBar(title: Text("Cart List"),
           backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,
         ),
         body: SingleChildScrollView(
           child: ScopedModel.of<CartModel>(context, rebuildOnChange: true)

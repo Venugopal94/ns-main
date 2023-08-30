@@ -26,6 +26,7 @@ class _WebViewExampleState extends State<WebViewExample> {
       appBar: AppBar(
         title: const Text('Live Support'),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: Builder(builder: (BuildContext context) {
         return WebView(

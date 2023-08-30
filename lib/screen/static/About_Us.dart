@@ -51,6 +51,7 @@ class _About_UsScreen extends State<About_Us_Screen> {
       appBar: AppBar(
         title: Text("About Us"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       drawer: email != null ? AppDrawer() : AppDrawer_without(),
       body: Refund(),

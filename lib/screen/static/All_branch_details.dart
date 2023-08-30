@@ -65,6 +65,7 @@ class _BranchDetailsState extends State<BranchDetails> {
       appBar: AppBar(
         title: Text(widget.todo.branchecommercename ?? ""),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: Column(
         children: <Widget>[

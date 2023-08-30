@@ -114,6 +114,7 @@ class _BrandDetailState extends State<BrandDetail> {
       appBar: AppBar(
         title: Text(widget.brandtitle),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: FutureBuilder<List<BrandDetailData>>(
         future: _fetchItemGrpData(),

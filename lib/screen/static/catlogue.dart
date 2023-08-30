@@ -13,6 +13,7 @@ class Catlogue extends StatelessWidget {
       appBar: AppBar(
         title: Text("Catlogue"),
         backgroundColor: LightColor.yellowColor,
+        foregroundColor: LightColor.midnightBlue,
       ),
       body: AdvertiseDemo(),
     );
