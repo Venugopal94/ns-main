@@ -10,7 +10,7 @@ import '../main.dart';
 import '../themes/light_color.dart';
 import 'Address_Screen/order_generated.dart';
 
-class TransactionResult extends StatefulWidget{
+class TransactionResult extends StatefulWidget {
   Uri uri;
   String token;
   var data;
@@ -84,14 +84,12 @@ class TransactionResultState extends State<TransactionResult> {
       }
 var dat=this.widget.data;
       dat['transaction_reference_no']= jsonResponse["msg"]["Reference"];
+      dat['status'] = result == "success" ? 2 : 3;
       int? orderId;
 
-      saveTransaction(dat).then((value) {
-        setState(() {
-                    orderId = value;
-                  });
+      await saveTransaction(dat).then((value) {
+         orderId = value;
       });
-
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: result == "success" ? (orderId ?? 0) : 0,))));
       // Clear the cart only if the order is successful if not don't clear
       if (result == "success") {
@@ -102,7 +100,6 @@ var dat=this.widget.data;
       print(e);
       Toast.show("SomeThing went wrong", duration: Toast.lengthShort,
           gravity: Toast.bottom);
-
       setState(() {
         loading = false;
       });
@@ -111,10 +108,7 @@ var dat=this.widget.data;
 
   Future<int>  saveTransaction(data)
   async{
-
-    // print("saveTransaction"+data.toString());
     String url = 'https://onlinefamilypharmacy.com/mobileapplication/order_payment.php';
-
    var response = await http.post(Uri.parse( url), body: json.encode(data));
     return int.parse(response.body);
 

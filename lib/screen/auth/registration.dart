@@ -424,7 +424,6 @@ class _SignUpPageState extends State<RegistrationScreen> {
                             child:
                             DropdownSearch<UserModel>(
                               popupProps: PopupProps.menu(
-                                showSelectedItems: true,
                               ),
                               asyncItems: (String? filter) async {
                                 var response = await Dio().get(

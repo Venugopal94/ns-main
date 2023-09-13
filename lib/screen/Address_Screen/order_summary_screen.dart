@@ -114,7 +114,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         'country': widget.addid.country,
         'gross_total': newTotal - delchrg,
         'total': newTotal,
-        'delivery_charges': 0,
+        'delivery_charges': delchrg,
         'mode_service': mode_service,
         'itemcode': product.map((e) => e.id).toList(),
         'quantity': product.map((e) => e.quantity).toList(),
@@ -389,12 +389,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
               } else if ((selectedRadioTile == 1) || (selectedRadioTile == 2)) {
                 int? orderId;
                  await  payment(model.cart).then((value) {
-                  setState(() {
                     orderId = value;
-                  });
                 });
-
-                Navigator.of(context)
+                 Navigator.of(context)
         .pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId ?? 0,))));
         ScopedModel.of<CartModel>(context).clearCart();
         ScopedModel.of<CartModel>(context).calculateTotal();
@@ -411,7 +408,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
             : ((int.parse(shippment[0].shipping_charges) +
                 widget.total));
 
-              // log(temp.length.toString());
+                int delchrg =
+                widget.total < int.parse(shippment[0].lessthan)
+                    ? (int.parse(shippment[0].lessthanshippingamt) +
+                    int.parse(shippment[0].shipping_charges))
+                    : ((int.parse(shippment[0].shipping_charges)));
                 var data = {
                   'user_id': token,
                   'addressid': widget.addid.addressid,
@@ -420,7 +421,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   'street': widget.addid.street,
                   'area': widget.addid.area,
                   'country': widget.addid.country,
-                  'total': double.parse(widget.total.toString()),
+                  'gross_total': newTotal - delchrg,
+                  'total': newTotal,
+                  'delivery_charges': delchrg,
                   'mode_service': "Online Payment",
                   'itemcode': model.cart.map((e) => e.id).toList(),
         'quantity': model.cart.map((e) => e.quantity).toList(),

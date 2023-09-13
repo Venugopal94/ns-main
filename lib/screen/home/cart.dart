@@ -300,7 +300,7 @@ class _CartState extends State<Cart> {
               FloatingActionButton.extended(
                 backgroundColor: Colors.amber,
                 onPressed: () {
-                  user_id == null
+                  user_id == ""
                       ? Navigator.push(
                           context,
                           MaterialPageRoute(

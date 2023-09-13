@@ -58,16 +58,8 @@ class WebViewLoadUI extends State<WebViewLoad>{
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult(uri,this.widget.token,this.widget.data) ));
             }
           },
-          onWebViewCreated: (controller) {
-          print(controller);
-          controller.evaluateJavascript("document.documentElement.innerHTML").then((value) async {
-    if(value.contains("name=\"paymentId\"")){
-    }
-    });
-              },
           initialUrl: this.widget.url,
           javascriptMode: JavascriptMode.unrestricted,
-
         )
     );
   }

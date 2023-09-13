@@ -435,7 +435,6 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
 
                       DropdownSearch<UserModel>(
                         popupProps: PopupProps.menu(
-                          showSelectedItems: true,
                         ),
                         asyncItems: (String? filter) async {
                           var response = await Dio().get(
