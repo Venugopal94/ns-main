@@ -172,7 +172,7 @@ print(token);print(itemid);
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        title: Text("Wish List"),
+        title: Text("Wish List", style: TextStyle(fontFamily: "Roboto")),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,),
     body: FutureBuilder<List<Item>>(
@@ -189,7 +189,7 @@ print(token);print(itemid);
           return imageSlider(context, data);
 
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
         }
         return Center(child: CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),
@@ -281,7 +281,7 @@ print(token);print(itemid);
                                   child: Text(
                                     data[index].itemname_en,
                                     style: TextStyle(fontWeight: FontWeight
-                                        .w600, fontSize: 15.0),overflow: TextOverflow.ellipsis,),
+                                        .w600, fontFamily: "Roboto", fontSize: 15.0),overflow: TextOverflow.ellipsis,),
                                 ),
                                 Container(
                                   alignment: Alignment.bottomRight,
@@ -306,13 +306,13 @@ print(token);print(itemid);
                             //finalprice=data[index].price,
                             Text(
                               data[index].itemmaingrouptitle,   style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 13.0,color:LightColor.grey),
+                                fontWeight: FontWeight.w600, fontFamily: "Roboto", fontSize: 13.0,color:LightColor.grey),
                               overflow: TextOverflow.ellipsis,
                             ),
                             SizedBox(height: 5.0,),
                             Text(
                               "\QR ${data[index].price}",   style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                                fontSize: 16, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                             ),
                             SizedBox(height: 5.0,),
 

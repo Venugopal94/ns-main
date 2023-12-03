@@ -114,7 +114,7 @@ class _myorderState extends State<myorder> {
   Widget build(BuildContext context) {
     // final cart = Provider.of<Cart_>(context);
     return Scaffold(
-      appBar: AppBar(title: Text("My Orders"),
+      appBar: AppBar(title: Text("My Orders", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -131,7 +131,7 @@ class _myorderState extends State<myorder> {
 
             return imageSlider(context, data);
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
           }
           return Center(
               child: CircularProgressIndicator(
@@ -211,6 +211,7 @@ class _myorderState extends State<myorder> {
                                   "\  Order ID ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
+                                      fontFamily: "Roboto",
                                       fontSize: 15.0),
                                   textAlign: TextAlign.left,
                                   overflow: TextOverflow.ellipsis,
@@ -221,6 +222,7 @@ class _myorderState extends State<myorder> {
                                     data[index].id,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: "Roboto",
                                         fontSize: 15.0),
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -239,6 +241,7 @@ class _myorderState extends State<myorder> {
                                     "\  Order Date ",
                                     style: TextStyle(
                                         fontSize: 14,
+                                        fontFamily: "Roboto",
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Padding(
@@ -247,6 +250,7 @@ class _myorderState extends State<myorder> {
                                       data[index].created_on,
                                       style: TextStyle(
                                         fontSize: 14,
+                                        fontFamily: "Roboto",
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -263,6 +267,7 @@ class _myorderState extends State<myorder> {
                                     "\  Status",
                                     style: TextStyle(
                                         fontSize: 14,
+                                        fontFamily: "Roboto",
                                         fontWeight: FontWeight.bold),
                                   ),
                                   if (data[index].ecommerceorderstatus ==
@@ -276,6 +281,7 @@ class _myorderState extends State<myorder> {
                                             'RECEIVED ORDER',
                                             style: TextStyle(
                                                 fontSize: 14,
+                                                fontFamily: "Roboto",
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
@@ -292,6 +298,7 @@ class _myorderState extends State<myorder> {
                                             'IN PROCESS',
                                             style: TextStyle(
                                                 fontSize: 14,
+                                                fontFamily: "Roboto",
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
@@ -307,6 +314,7 @@ class _myorderState extends State<myorder> {
                                             'SHIPPED - OUT FOR DELIVERY',
                                             style: TextStyle(
                                                 fontSize: 14,
+                                                fontFamily: "Roboto",
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
@@ -322,6 +330,7 @@ class _myorderState extends State<myorder> {
                                             'DELIVERED',
                                             style: TextStyle(
                                                 fontSize: 14,
+                                                fontFamily: "Roboto",
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
@@ -333,6 +342,7 @@ class _myorderState extends State<myorder> {
                                         data[index].ecommerceorderstatus,
                                         style: TextStyle(
                                           fontSize: 14,
+                                          fontFamily: "Roboto",
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),

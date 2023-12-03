@@ -35,7 +35,7 @@ class _faqState extends State<faq> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("FAQ"),
+      appBar: AppBar(title: Text("FAQ", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -52,7 +52,7 @@ class _faqState extends State<faq> {
             return imageSlider(context, data);
 
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
           }
           return Center(
               child: CircularProgressIndicator(
@@ -79,13 +79,13 @@ class _faqState extends State<faq> {
       itemBuilder: (context, index) {
         return Card(
           child: ExpansionTile(
-            title: Text(data[index].question),
+            title: Text(data[index].question, style: TextStyle(fontFamily: "Roboto",)),
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left:17.0, bottom:17.0, right: 17.0),
                 child: Text(
                   data[index].answer,
-                  style: TextStyle(fontSize: 13),
+                  style: TextStyle(fontSize: 13, fontFamily: "Roboto"),
                 ),
               ),
               CustomDividerView(),

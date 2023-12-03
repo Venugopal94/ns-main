@@ -54,7 +54,7 @@ class _mypredetailState extends State<mypredetail> {
   size: 30,
   ),
   textStyle: TextStyle(
-  color: LightColor.midnightBlue, fontWeight: FontWeight.bold),),
+  color: LightColor.midnightBlue, fontWeight: FontWeight.bold, fontFamily: "Roboto",),),
   HomePageTimelineObject(
   message: 'Approved',
   submsg: 'Your order is Approved',
@@ -80,7 +80,7 @@ class _mypredetailState extends State<mypredetail> {
     HomePageTimelineObject(
         message: 'Awaiting Approval',
         textStyle: TextStyle(
-            color: LightColor.midnightBlue, fontWeight: FontWeight.bold),
+            color: LightColor.midnightBlue, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
         submsg: 'Your order is in Awaiting stage',
         icon: Icon(
           Icons.check_circle,
@@ -117,8 +117,7 @@ class _mypredetailState extends State<mypredetail> {
           size: 30,
         ),
         textStyle: TextStyle(
-            color: LightColor.midnightBlue, fontWeight: FontWeight.bold),
-       ),
+            color: LightColor.midnightBlue, fontWeight: FontWeight.bold, fontFamily: "Roboto",)),
     HomePageTimelineObject(
         message: 'Approved',
         submsg: 'Your order is Approved',
@@ -128,7 +127,7 @@ class _mypredetailState extends State<mypredetail> {
           size: 30,
         ),
         textStyle: TextStyle(
-            color: LightColor.midnightBlue, fontWeight: FontWeight.bold)),
+            color: LightColor.midnightBlue, fontWeight: FontWeight.bold, fontFamily: "Roboto",)),
     HomePageTimelineObject(
         message: 'Processed',
         submsg: 'Your order is Processed',
@@ -138,7 +137,7 @@ class _mypredetailState extends State<mypredetail> {
           size: 30,
         ),
         textStyle: TextStyle(
-            color: LightColor.midnightBlue, fontWeight: FontWeight.bold),
+            color: LightColor.midnightBlue, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
         ),
   ];
 
@@ -148,7 +147,7 @@ class _mypredetailState extends State<mypredetail> {
 
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(
-          title: Text('Prescription Details'),
+          title: Text('Prescription Details', style: TextStyle(fontFamily: "Roboto")),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,
         ),
@@ -171,6 +170,7 @@ class _mypredetailState extends State<mypredetail> {
                   widget.todo.statustitle,
                   style: TextStyle(
                       fontSize: 17,
+                      fontFamily: "Roboto",
                       fontWeight: FontWeight.bold,
                       color: LightColor.midnightBlue),
                 ),
@@ -190,7 +190,7 @@ class _mypredetailState extends State<mypredetail> {
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
                   "\ Patient Details",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                 ),
               ),
               Container(
@@ -209,7 +209,7 @@ class _mypredetailState extends State<mypredetail> {
                           child: Text(
                             "\  Patient Name ",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                         ),
                       ]),
@@ -221,6 +221,7 @@ class _mypredetailState extends State<mypredetail> {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
+                              fontFamily: "Roboto",
                             ),
                           ),
                         ),
@@ -233,7 +234,7 @@ class _mypredetailState extends State<mypredetail> {
                           child: Text(
                             "\  Patient Contact ",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                         ),
                       ]),
@@ -245,6 +246,7 @@ class _mypredetailState extends State<mypredetail> {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
+                              fontFamily: "Roboto",
                             ),
                           ),
                         ),
@@ -257,7 +259,7 @@ class _mypredetailState extends State<mypredetail> {
                           child: Text(
                             "\  Is Insured ? ",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                         ),
                       ]),
@@ -269,6 +271,7 @@ class _mypredetailState extends State<mypredetail> {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
+                              fontFamily: "Roboto",
                             ),
                           ),
                         ),
@@ -281,7 +284,7 @@ class _mypredetailState extends State<mypredetail> {
                           child: Text(
                             "\  Insurance Company ",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                         ),
                       ]),
@@ -293,6 +296,7 @@ class _mypredetailState extends State<mypredetail> {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
+                              fontFamily: "Roboto",
                             ),
                           ),
                         ),
@@ -305,7 +309,7 @@ class _mypredetailState extends State<mypredetail> {
                           child: Text(
                             "\  Zone ",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                         ),
                       ]),
@@ -316,7 +320,7 @@ class _mypredetailState extends State<mypredetail> {
                             widget.todo.zone,
                             style: TextStyle(
                               fontSize: 14,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.bold, fontFamily: "Roboto",
                             ),
                           ),
                         ),
@@ -332,7 +336,7 @@ class _mypredetailState extends State<mypredetail> {
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
                   "\ User Comments",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                 ),
               ),
               SizedBox(
@@ -344,6 +348,7 @@ class _mypredetailState extends State<mypredetail> {
                   widget.todo.user_comments,
                   style: TextStyle(
                     fontSize: 14,
+                      fontFamily: "Roboto",
                   ),
                 ),
               ),
@@ -354,7 +359,7 @@ class _mypredetailState extends State<mypredetail> {
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
                   "\ Admin Comments",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                 ),
               ),
               SizedBox(
@@ -365,7 +370,7 @@ class _mypredetailState extends State<mypredetail> {
                 child: Text(
                   widget.todo?.admin_comments ?? "",
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 14, fontFamily: "Roboto",
                   ),
                 ),
               ),
@@ -438,6 +443,7 @@ class _mypredetailState extends State<mypredetail> {
                     style: TextStyle(
                         fontSize: 18,
                         color: LightColor.midnightBlue,
+                        fontFamily: "Roboto",
                         fontWeight: FontWeight.bold),
                   )),
                 ))
@@ -478,6 +484,7 @@ class _mypredetailState extends State<mypredetail> {
                       Text(processes[index].submsg,
                           style: TextStyle(
                             fontSize: 10,
+                            fontFamily: "Roboto",
                           )),
                     ])),
           ),
@@ -538,7 +545,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
 
                 return totalSlider(context, data);
               } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
+                return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
               }
               return Center(
                   child: CircularProgressIndicator(
@@ -595,7 +602,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
                             Text(
                               "\ Total Amount ",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 16, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                             ),
                             SizedBox(
                               height: 3,
@@ -603,7 +610,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
                             Text(
                               "\ QR ${data[index].Rs}",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 16, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                             ),
                           ]))),
             ],

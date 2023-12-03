@@ -11,7 +11,7 @@ class Advertise_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Advertise"),
+        title: Text("Advertise", style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -44,7 +44,7 @@ class AdvertiseDemo extends StatelessWidget {
           List<Job> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
         }
         return Center(
             child: CircularProgressIndicator(

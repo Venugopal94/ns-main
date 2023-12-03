@@ -35,12 +35,12 @@ class TransactionResultState extends State<TransactionResult> {
     
    return Scaffold(
        appBar: AppBar(
-           title: Text("Result"),
+           title: Text("Result", style: TextStyle(fontFamily: "Roboto",)),
          backgroundColor: LightColor.yellowColor,
          foregroundColor: LightColor.midnightBlue,
        ),
 
-     body: loading? CircularProgressIndicator() : Center(child: Text(result),),
+     body: loading? CircularProgressIndicator() : Center(child: Text(result, style: TextStyle(fontFamily: "Roboto",)),),
 
    );
   }

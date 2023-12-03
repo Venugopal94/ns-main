@@ -56,7 +56,7 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
           (Route<dynamic> route) => false) as bool,
       child: Scaffold(
           appBar: AppBar(
-            title: Text("Confirmation"),
+            title: Text("Confirmation", style: TextStyle(fontFamily: "Roboto")),
             backgroundColor: LightColor.yellowColor,
             foregroundColor: LightColor.midnightBlue,
             automaticallyImplyLeading: false,
@@ -99,6 +99,7 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: 22,
+                                              fontFamily: "Roboto",
                                               color: LightColor.midnightBlue,
                                               fontWeight: FontWeight.bold))),
                                 ]))
@@ -123,6 +124,7 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
                             child: Text("Continue Shopping",
                                 style: TextStyle(
                                     color: LightColor.midnightBlue,
+                                    fontFamily: "Roboto",
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold)),
                           )

@@ -39,7 +39,7 @@ class _ItemSubState extends State<ItemSub> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.itemetitle),
+        title: Text(widget.itemetitle, style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -54,7 +54,7 @@ class _ItemSubState extends State<ItemSub> {
               List<ItemSubData> data = snapshot.data ?? [];
               return Grid(context, data);
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+              return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
             }
             return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
           },
@@ -128,6 +128,7 @@ Grid(context,data) {
                           data[index].title,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.w700,
                           ),
                           overflow: TextOverflow.ellipsis,
@@ -190,6 +191,7 @@ Grid(context,data) {
                           data[index].title,textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.w700,
                           ),
                           overflow: TextOverflow.ellipsis,
@@ -253,6 +255,7 @@ Grid(context,data) {
                           data[index].title,textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.w700,
                           ),
                           overflow: TextOverflow.ellipsis,
@@ -315,6 +318,7 @@ Grid(context,data) {
                           data[index].title,textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.w700,
                           ),
                           overflow: TextOverflow.ellipsis,

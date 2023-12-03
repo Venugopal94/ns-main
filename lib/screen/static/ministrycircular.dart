@@ -13,7 +13,7 @@ class ministrycircular_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ministry Circular"),
+        title: Text("Ministry Circular", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),

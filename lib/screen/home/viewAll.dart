@@ -45,7 +45,7 @@ class viewAllState extends State<viewAll> {
       Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text("View All"),
+          title: Text("View All", style: TextStyle(fontFamily: "Roboto")),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,
         ),
@@ -56,7 +56,7 @@ class viewAllState extends State<viewAll> {
               List<Job> data = snapshot.data ?? [];
               return Grid(context, data);
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+              return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
             }
             return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
           },
@@ -81,7 +81,7 @@ class viewAllState extends State<viewAll> {
   }
 
   void showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value, style: TextStyle(fontFamily: "Roboto")),backgroundColor:LightColor.midnightBlue ,));
   }
 }
 
@@ -164,6 +164,7 @@ Grid(context,data) {
                         data[index].title, textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 15,
+                          fontFamily: "Roboto",
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -219,6 +220,7 @@ Grid(context,data) {
                           data[index].itemproductgrouptitle, textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -237,6 +239,7 @@ Grid(context,data) {
                                 // softWrap: true,
                                 style: TextStyle(
                                     fontSize: 13,
+                                    fontFamily: "Roboto",
                                     fontWeight:
                                     FontWeight.bold,
                                     color: LightColor
@@ -295,6 +298,7 @@ Grid(context,data) {
                           data[index].itemproductgrouptitle, textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -313,6 +317,7 @@ Grid(context,data) {
                                 // softWrap: true,
                                 style: TextStyle(
                                     fontSize: 13,
+                                    fontFamily: "Roboto",
                                     fontWeight:
                                     FontWeight.bold,
                                     color: LightColor
@@ -370,6 +375,7 @@ Grid(context,data) {
                           data[index].title, textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                           ),
                         ),

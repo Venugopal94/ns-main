@@ -11,7 +11,7 @@ class BrandGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Shop By Brand"),
+          title: Text("Shop By Brand", style: TextStyle(fontFamily: "Roboto")),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,
         ),
@@ -48,7 +48,7 @@ class BrandDemo extends StatelessWidget {
           return Grid(context, data);
 
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
         }
         return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
       },

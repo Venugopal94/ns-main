@@ -78,7 +78,7 @@ class joinusview extends StatelessWidget {
                               child: ListTile(
                                 leading: Icon(Icons.message,color:Colors.green),
                                 title: Text('Still need help? Email us.',style: TextStyle(
-                                    fontWeight: FontWeight.w600
+                                    fontWeight: FontWeight.w600, fontFamily: "Roboto"
                                 ),),
                                 trailing: Icon(Icons.arrow_right),
                                 onTap: () {
@@ -99,7 +99,7 @@ class joinusview extends StatelessWidget {
                               child: ListTile(
                                 leading: Icon(Icons.error,color:AppColors.highlighterPink),
                                 title: Text('Terms and Conditions',style: TextStyle(
-                                    fontWeight: FontWeight.w600
+                                    fontWeight: FontWeight.w600, fontFamily: "Roboto"
                                 ),),
                                 trailing: Icon(Icons.arrow_right),
                                 onTap: () {

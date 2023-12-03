@@ -95,7 +95,7 @@ class _myprescriptionState extends State<myprescription> {
   Widget build(BuildContext context) {
     // final cart = Provider.of<Cart_>(context);
     return Scaffold(
-      appBar: AppBar(title: Text("My Prescription"),  backgroundColor: LightColor.yellowColor,
+      appBar: AppBar(title: Text("My Prescription", style: TextStyle(fontFamily: "Roboto",)),  backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue),
       body: FutureBuilder<List<Prescriptions>>(
         future: _fetchPrescriptions(),
@@ -110,7 +110,7 @@ class _myprescriptionState extends State<myprescription> {
 
             return imageSlider(context, data);
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
           }
           return Center(
               child: CircularProgressIndicator(
@@ -195,6 +195,7 @@ class _myprescriptionState extends State<myprescription> {
                                   "\  Prescription ID ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
+                                      fontFamily: "Roboto",
                                       fontSize: 15.0),
                                   textAlign: TextAlign.left,
                                   overflow: TextOverflow.ellipsis,
@@ -204,6 +205,7 @@ class _myprescriptionState extends State<myprescription> {
                                   child: Text(
                                     data[index].id,
                                     style: TextStyle(
+                                        fontFamily: "Roboto",
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),
                                     overflow: TextOverflow.ellipsis,
@@ -222,6 +224,7 @@ class _myprescriptionState extends State<myprescription> {
                                   Text(
                                     "\  Prescription Date ",
                                     style: TextStyle(
+                                        fontFamily: "Roboto",
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -232,6 +235,7 @@ class _myprescriptionState extends State<myprescription> {
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
+                                         fontFamily: "Roboto",
                                       ),
                                     ),
                                   ),
@@ -247,6 +251,7 @@ class _myprescriptionState extends State<myprescription> {
                                     "\  Status",
                                     style: TextStyle(
                                         fontSize: 14,
+                                        fontFamily: "Roboto",
                                         fontWeight: FontWeight.bold),
                                   ),
                                   if (data[index].statustitle == "REJECTED")
@@ -259,6 +264,7 @@ class _myprescriptionState extends State<myprescription> {
                                             data[index].statustitle,
                                             style: TextStyle(
                                                 fontSize: 14,
+                                                fontFamily: "Roboto",
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
@@ -274,6 +280,7 @@ class _myprescriptionState extends State<myprescription> {
                                             data[index].statustitle,
                                             style: TextStyle(
                                               fontSize: 14,
+                                              fontFamily: "Roboto",
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -289,6 +296,7 @@ class _myprescriptionState extends State<myprescription> {
                                             'AWAITING APPROVAL',
                                             style: TextStyle(
                                                 fontSize: 14,
+                                                fontFamily: "Roboto",
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
@@ -304,6 +312,7 @@ class _myprescriptionState extends State<myprescription> {
                                             data[index].statustitle,
                                             style: TextStyle(
                                                 fontSize: 14,
+                                                fontFamily: "Roboto",
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
@@ -318,6 +327,7 @@ class _myprescriptionState extends State<myprescription> {
                                           label: Text(
                                             data[index].statustitle,
                                             style: TextStyle(
+                                                fontFamily: "Roboto",
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
@@ -329,6 +339,7 @@ class _myprescriptionState extends State<myprescription> {
                                       child: Text(
                                         data[index].statustitle,
                                         style: TextStyle(
+                                          fontFamily: "Roboto",
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
                                         ),

@@ -25,7 +25,7 @@ class _Item_mainState extends State<Item_main> {
     Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text("Item Main Group"), backgroundColor: LightColor.yellowColor,
+          title: Text("Item Main Group", style: TextStyle(fontFamily: "Roboto"),), backgroundColor: LightColor.yellowColor,
             foregroundColor: LightColor.midnightBlue,
         ),
         body:GridDemo(),
@@ -56,7 +56,7 @@ class _Item_mainState extends State<Item_main> {
   }
 
   void showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value, style: TextStyle(fontFamily: "Roboto"),),backgroundColor:LightColor.midnightBlue ,));
   }
 }
 
@@ -88,7 +88,7 @@ class GridDemo extends StatelessWidget {
           List<ItemData> data = snapshot.data ?? [];
           return Grid(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
         }
         return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
       },
@@ -153,6 +153,7 @@ Grid(context,data) {
                           data[index].title, textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -209,6 +210,7 @@ Grid(context,data) {
                           data[index].title, textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -265,6 +267,7 @@ Grid(context,data) {
                           data[index].title, textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -321,6 +324,7 @@ Grid(context,data) {
                           data[index].title, textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                           ),
                         ),

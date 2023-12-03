@@ -25,6 +25,7 @@ import 'package:robustremedy/themes/ui_helper.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:share/share.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'header2.dart';
 
@@ -50,7 +51,7 @@ class home_below_SliderGrid extends StatelessWidget {
                       Text(
                         "Shop By Category",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                       ),
                       IconButton(
                         padding: EdgeInsets.all(0),
@@ -115,7 +116,7 @@ class home_below_SliderGrid extends StatelessWidget {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16.0,
-                                        color: LightColor.midnightBlue),
+                                        color: LightColor.midnightBlue, fontFamily: "Roboto"),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -131,11 +132,15 @@ class home_below_SliderGrid extends StatelessWidget {
                           minWidth: 50.0,
                           height: 40.0,
                           child:
-                          ElevatedButton(onPressed:(){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => WebViewExample()));
+                          ElevatedButton(onPressed:() async {
+                            var contact = "+97470481616";
+                            var androidUrl = "whatsapp://send?phone=$contact&text=I want to purchase this Product...";
+                            var iosUrl = "https://wa.me/$contact?text=${Uri.parse('I want to purchase this Product...')}";
+                            if (await canLaunchUrl(Uri.parse(Platform.isIOS ? iosUrl : androidUrl))) {
+                            await launchUrl(Uri.parse(Platform.isIOS ? iosUrl : androidUrl));
+                            } else {
+                            throw 'Could not launch';
+                            }
                           },
                             style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)), backgroundColor: LightColor.midnightBlue),
@@ -144,7 +149,7 @@ class home_below_SliderGrid extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16.0,
-                                    fontWeight: FontWeight.bold)),),
+                                    fontWeight: FontWeight.bold, fontFamily: "Roboto")),),
                           ),
                     ),
                   ],
@@ -174,6 +179,7 @@ class home_below_SliderGrid extends StatelessWidget {
                                     'Order quickly with prescription',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: "Roboto",
                                         fontSize: 16.0,
                                         color: LightColor.midnightBlue),
                                     overflow: TextOverflow.ellipsis,
@@ -191,12 +197,14 @@ class home_below_SliderGrid extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 11,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
                                   color: LightColor.grey),
                             ),
                             Text(
                               'We do the rest!',
                               style: TextStyle(
                                   fontSize: 11,
+                                  fontFamily: "Roboto",
                                   fontWeight: FontWeight.bold,
                                   color: LightColor.grey),
                             ),
@@ -219,6 +227,7 @@ class home_below_SliderGrid extends StatelessWidget {
                                   child: Text("Upload",
                                       style: TextStyle(
                                           color: LightColor.midnightBlue,
+                                          fontFamily: "Roboto",
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold)),),
                                 ),
@@ -280,6 +289,7 @@ class home_below_SliderGrid extends StatelessWidget {
                                     'Want to Know More ?',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: "Roboto",
                                         fontSize: 16.0,
                                         color: LightColor.midnightBlue),
                                     overflow: TextOverflow.ellipsis,
@@ -295,6 +305,7 @@ class home_below_SliderGrid extends StatelessWidget {
                               "Get in call with our Pharmacist",
                               style: TextStyle(
                                   fontSize: 15,
+                                  fontFamily: "Roboto",
                                   fontWeight: FontWeight.bold,
                                   color: LightColor.grey),
                             ),
@@ -315,6 +326,7 @@ class home_below_SliderGrid extends StatelessWidget {
                             child: Text("Call",
                                 style: TextStyle(
                                     color: LightColor.midnightBlue,
+                                    fontFamily: "Roboto",
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.bold)),),
                           ),
@@ -495,7 +507,7 @@ class home_below_SliderGrid extends StatelessWidget {
                       Text(
                         "Shop By Brand",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                       ),
                       IconButton(
                         padding: EdgeInsets.all(0),
@@ -585,7 +597,7 @@ class GalleryDemo extends StatelessWidget {
           List<Job> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
         }
         return CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),

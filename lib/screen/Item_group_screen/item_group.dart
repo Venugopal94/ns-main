@@ -43,7 +43,7 @@ class _ItemGroupState extends State<ItemGroup> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.itemtitle),
+        title: Text(widget.itemtitle, style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
         actions: [
@@ -63,7 +63,7 @@ class _ItemGroupState extends State<ItemGroup> {
               List<ItemGrpData> data = snapshot.data ?? [];
               return Grid(context, data);
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+              return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
             }
             return Center(
                 child: CircularProgressIndicator(
@@ -143,6 +143,7 @@ Grid(context, data) {
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
+                          fontFamily: "Roboto",
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -204,6 +205,7 @@ Grid(context, data) {
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
+                            fontFamily: "Roboto",
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -264,6 +266,7 @@ Grid(context, data) {
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
+                            fontFamily: "Roboto"
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -324,6 +327,7 @@ Grid(context, data) {
                           data[index].title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            fontFamily: "Roboto",
                             fontSize: 15,
                             fontWeight: FontWeight.w700,
                           ),

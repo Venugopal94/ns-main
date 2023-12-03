@@ -20,7 +20,7 @@ class MyProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Profile"),
+          title: Text("Profile", style: TextStyle(fontFamily: "Roboto"),),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,
         ),
@@ -28,7 +28,7 @@ class MyProfile extends StatelessWidget {
         body: DoubleBackToCloseApp(
           child: UserProfilePage(),
           snackBar: const SnackBar(
-              content: Text('Tap back again to leave'),
+              content: Text('Tap back again to leave', style: TextStyle(fontFamily: "Roboto"),),
               backgroundColor: LightColor.midnightBlue),
         ));
   }
@@ -182,6 +182,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
     TextStyle _statCountTextStyle = TextStyle(
       color: Colors.black54,
       fontSize: 24.0,
+      fontFamily: "Roboto",
       fontWeight: FontWeight.bold,
     );
 
@@ -231,7 +232,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             child: ListTile(
               leading: Icon(Icons.line_style,
                   color: LightColor.midnightBlue, size: 30),
-              title: Text('My Orders'),
+              title: Text('My Orders', style: TextStyle(fontFamily: "Roboto"),),
             ),
           )
         ],
@@ -252,7 +253,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             child: ListTile(
               leading: Icon(Icons.description,
                   color: LightColor.midnightBlue, size: 30),
-              title: Text('My Prescriptions'),
+              title: Text('My Prescriptions', style: TextStyle(fontFamily: "Roboto"),),
             ),
           )
         ],
@@ -273,7 +274,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             child: ListTile(
               leading: Icon(Icons.location_on,
                   color: LightColor.midnightBlue, size: 30),
-              title: Text('Address'),
+              title: Text('Address', style: TextStyle(fontFamily: "Roboto"),),
             ),
           )
         ],
@@ -294,7 +295,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             child: ListTile(
               leading:
                   Icon(Icons.person, color: LightColor.midnightBlue, size: 30),
-              title: Text('Account Details'),
+              title: Text('Account Details', style: TextStyle(fontFamily: "Roboto"),),
             ),
           )
         ],
@@ -315,7 +316,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             child: ListTile(
               leading:
                   Icon(Icons.vpn_key, color: LightColor.midnightBlue, size: 30),
-              title: Text('Change Password'),
+              title: Text('Change Password', style: TextStyle(fontFamily: "Roboto"),),
             ),
           )
         ],
@@ -336,7 +337,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             child: ListTile(
               leading:
                   Icon(Icons.lock, color: LightColor.midnightBlue, size: 30),
-              title: Text('Logout'),
+              title: Text('Logout', style: TextStyle(fontFamily: "Roboto"),),
             ),
           )
         ],
@@ -345,7 +346,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
   }
 
   Widget _location() {
-    return Text(addline);
+    return Text(addline, style: TextStyle(fontFamily: "Roboto"),);
   }
 
   @override
@@ -389,7 +390,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             SizedBox(height: 8.0),
             _logout(),
             SizedBox(height: 20.0),
-            Center(child: Text('Version 6.0.3')),
+            Center(child: Text('Version 6.0.3', style: TextStyle(fontFamily: "Roboto"),)),
             SizedBox(height: 12.0),
             addline == null
                 ? Text('')
@@ -399,6 +400,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,
+                        fontFamily: "Roboto",
                     ),
                   )),
 

@@ -145,7 +145,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Text("Reviews"), backgroundColor: LightColor.yellowColor,
+      appBar: AppBar(title: Text("Reviews",  style: TextStyle(fontFamily: "Roboto")), backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
       body:
@@ -166,14 +166,14 @@ class _Reviews_screenState extends State<Reviews_screen> {
                       Center(child: Image.asset('assets/starrating.jpg',width: width,height: height/2,)),
                       Center(child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("There Aren't Any Reviews For The Product Yet.....!",style: TextStyle(fontSize: 18,color: LightColor.midnightBlue,fontWeight: FontWeight.bold)),
+                        child: Text("There Aren't Any Reviews For The Product Yet.....!",style: TextStyle(fontSize: 18,color: LightColor.midnightBlue,fontWeight: FontWeight.bold, fontFamily: "Roboto")),
                       ))
             ])),
                 );
               }
               return imageSlider(context, data);
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+              return Text("${snapshot.error}",  style: TextStyle(fontFamily: "Roboto"));
             }
             return Center(
                 child: CircularProgressIndicator(
@@ -207,7 +207,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
                                 children: <Widget>[
                                   Padding(
                                     padding: const EdgeInsets.only(left: 10),
-                                    child: Text('Rate',style: TextStyle(fontWeight: FontWeight.bold),),
+                                    child: Text('Rate',style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Roboto"),),
                                   ),
                           SizedBox(width: 5,),
                           RatingBar.builder(
@@ -234,6 +234,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
                               child: Container(
                                 width: 360.0,
                                 child: TextField(
+                                  style: TextStyle(fontFamily: "Roboto"),
                                   maxLines: 8,
                                   maxLength: 1000,
                                   controller: reviewController,
@@ -258,6 +259,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
                                       child: Text("Submit Review",
                                           style: TextStyle(
                                               color: Colors.white,
+                                              fontFamily: "Roboto",
                                               fontSize: 18.0)),),
                                   ),
                                 ])));});
@@ -337,7 +339,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
                               child: Text(
                                 data[index].review,
                                 style: TextStyle(
-                                  fontSize: 13,),
+                                  fontSize: 13, fontFamily: "Roboto"),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 50,
                               ),
@@ -355,13 +357,13 @@ class _Reviews_screenState extends State<Reviews_screen> {
                                     Text(
                                       ' @${data[index].first_name}' ,
                                       style: TextStyle(
-                                          fontSize: 13,fontWeight: FontWeight.bold),
+                                          fontSize: 13,fontWeight: FontWeight.bold, fontFamily: "Roboto"),
 
                                     ),
                                     Text(
                                       data[index].last_name ,
                                       style: TextStyle(
-                                          fontSize: 13,fontWeight: FontWeight.bold),
+                                          fontSize: 13,fontWeight: FontWeight.bold, fontFamily: "Roboto"),
 
                                     ),SizedBox(
                                       width: 5.0,
@@ -369,7 +371,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
                                     Text(
                                       data[index]. added_on ,textAlign: TextAlign.right,
                                       style: TextStyle(
-                                          fontSize: 13,color: Colors.black12),
+                                          fontSize: 13,color: Colors.black12, fontFamily: "Roboto"),
 
                                     ),]),
                             ),
@@ -391,7 +393,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
   }
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value,  style: TextStyle(fontFamily: "Roboto")),
       backgroundColor: LightColor.midnightBlue,
     ));
   }

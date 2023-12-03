@@ -35,7 +35,7 @@ class _Address_profileState extends State<Address_profile> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Address"), backgroundColor: LightColor.yellowColor,
+      appBar: AppBar(title: Text("Address", style: TextStyle(fontFamily: "Roboto",)), backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,),
       body: Column(
           children: <Widget>[
@@ -47,7 +47,7 @@ class _Address_profileState extends State<Address_profile> {
             List<add_data> data = snapshot.data ?? [];
             return imageSlider(context, data);
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
           }
           return Center(
               child: CircularProgressIndicator(
@@ -77,6 +77,7 @@ class _Address_profileState extends State<Address_profile> {
                         style: TextStyle(
                             color: LightColor.midnightBlue,
                             fontSize: 16.0,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold)),
                   )),
             ),
@@ -138,6 +139,7 @@ class _Address_profileState extends State<Address_profile> {
                                     data[index].title,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: "Roboto",
                                         fontSize: 15.0),
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -182,17 +184,17 @@ class _Address_profileState extends State<Address_profile> {
                               Text(
                                 "\Bldg No - ${data[index].building},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                               Text(
                                 "\  Street No - ${data[index].street},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                               Text(
                                 "\  Area  -${data[index].area}",
                                 style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold,),   overflow: TextOverflow.ellipsis,
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),   overflow: TextOverflow.ellipsis,
                               ),
                             ]),
                             SizedBox(
@@ -201,7 +203,7 @@ class _Address_profileState extends State<Address_profile> {
                             Text(
                               data[index].country,
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                             ),
                             SizedBox(
                               height: 15.0,

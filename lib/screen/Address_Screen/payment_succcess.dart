@@ -66,6 +66,7 @@ class _PaymentSuccessfulState extends State<PaymentSuccessful> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 22,
+                                        fontFamily: "Roboto",
                                         color: LightColor.midnightBlue,
                                         fontWeight: FontWeight.bold))),
                           ]))
@@ -91,6 +92,7 @@ class _PaymentSuccessfulState extends State<PaymentSuccessful> {
                         child: Text("Continue Shopping",
                             style: TextStyle(
                                 color: LightColor.midnightBlue,
+                                fontFamily: "Roboto",
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold)),),
                       ),

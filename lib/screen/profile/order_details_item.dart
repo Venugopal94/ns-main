@@ -68,7 +68,7 @@ class _OrderdetailsItemsDemoState extends State<OrderdetailsItemsDemo> {
           return imageSlider(context, data);
 
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
         }
         return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
       },
@@ -123,7 +123,7 @@ imageSlider(context,data) {
                             child: Padding( padding: EdgeInsets.only(left: 10,),
                               child: Text(data[index].itemname_en, textAlign: TextAlign.left,
                                   // softWrap: true,
-                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400,color:LightColor.midnightBlue)),
+                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400,color:LightColor.midnightBlue, fontFamily: "Roboto",)),
 
                             ) ),
 //Divider(),
@@ -132,7 +132,7 @@ imageSlider(context,data) {
                             child: Padding( padding: EdgeInsets.only(left: 15,),
                               child:Text("\QR ${data[index].net_total} x ${data[index].quantity}", textAlign: TextAlign.left,
                                   // softWrap: true,
-                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold,color:LightColor.midnightBlue)),
+                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold,color:LightColor.midnightBlue, fontFamily: "Roboto",)),
                             ) ),
 
 

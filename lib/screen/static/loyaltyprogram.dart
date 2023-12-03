@@ -13,7 +13,7 @@ class Loyaltyprogram_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Loyalty Program"),
+        title: Text("Loyalty Program", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),

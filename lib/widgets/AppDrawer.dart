@@ -101,7 +101,7 @@ class _AppDrawerState extends State<AppDrawer> {
           accountName: Text(
             '${username}',
             style:
-                TextStyle(fontSize: 15.0, color: Colors.white.withOpacity(1.0)),
+                TextStyle(fontSize: 15.0, color: Colors.white.withOpacity(1.0), fontFamily: "Roboto"),
           ),
           currentAccountPicture: CircleAvatar(
             backgroundColor: Theme.of(context).platform == TargetPlatform.iOS
@@ -136,7 +136,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/allcategories.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Home',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -148,7 +148,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/wishlist.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Your Wishlist',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => WishList()));
@@ -160,7 +160,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/youraccount.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Your Profile',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => MyProfile()));
@@ -172,7 +172,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/orderhistory.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Order History',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => myorder()));
@@ -184,7 +184,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/advertise.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Advertise',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => Advertise_Screen()));
@@ -207,7 +207,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Icon(Icons.line_style,
               size: 25.0, color: AppDrawer.midnightBlue),
           title: Text('My Prescription',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => myprescription()));
@@ -219,7 +219,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/rx.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Upload Prescription',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => Upload_prescription()));
@@ -232,7 +232,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/aboutus.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('About Us',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => About_Us_Screen()));
@@ -244,7 +244,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/contactus.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Contact Us',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Contact_Us()));
@@ -255,7 +255,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/delivery.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Locate Us',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => All_branch()));
@@ -282,7 +282,7 @@ class _AppDrawerState extends State<AppDrawer> {
           trailing: Icon(Icons.keyboard_arrow_right),
           leading: Icon(Icons.info_outline, color: LightColor.midnightBlue),
           title: Text('Insurance',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => Insurance_Screen()));
@@ -315,7 +315,7 @@ class _AppDrawerState extends State<AppDrawer> {
           trailing: Icon(Icons.keyboard_arrow_right),
           leading: Icon(Icons.security, color: LightColor.midnightBlue),
           title: Text('Certification',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(
                 context,
@@ -342,7 +342,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading:
               new Icon(Icons.star, size: 25.0, color: AppDrawer.midnightBlue),
           title: Text('Rate App',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             _launchURL();
           },
@@ -352,7 +352,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading:
               new Icon(Icons.share, size: 25.0, color: AppDrawer.midnightBlue),
           title: Text('Share App',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             final RenderBox? box = context.findRenderObject() as RenderBox;
             if (box != null) {
@@ -375,7 +375,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Icon(Icons.message,
               size: 25.0, color: AppDrawer.midnightBlue),
           title: Text('FAQ',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => faq()));
@@ -386,7 +386,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/terms.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Terms & Condition',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => TermsScreen()));
@@ -398,7 +398,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/privacy.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Privacy Policy',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => PolicyScreen()));
@@ -410,7 +410,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading:
               new Icon(Icons.note, size: 25.0, color: AppDrawer.midnightBlue),
           title: Text('Delivery Information',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => DeliveryInfoScreen()));
@@ -422,7 +422,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Icon(Icons.refresh_sharp,
               size: 25.0, color: AppDrawer.midnightBlue),
           title: Text('Refund & Replacement',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => RefundScreen()));
@@ -434,7 +434,7 @@ class _AppDrawerState extends State<AppDrawer> {
           leading: new Image.asset("assets/Drawer/logout.png",
               width: 20.0, color: AppDrawer.midnightBlue),
           title: Text('Log Out',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
           onTap: () async {
             SharedPreferences pf = await SharedPreferences.getInstance();
             pf.clear();

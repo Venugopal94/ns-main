@@ -33,7 +33,7 @@ class _All_branchState extends State<All_branch> {
   }
 
   Icon actionIcon = new Icon(Icons.search);
-  Widget appBarTitle = new Text("Pharmacy");
+  Widget appBarTitle = new Text("Pharmacy", style: TextStyle(fontFamily: "Roboto"));
   String pharmacyname = "";
   List<allbranch> data = [];
 
@@ -279,6 +279,7 @@ Grid(context, data) {
                               Text(
                                 data[index].branchecommercename,
                                 style: TextStyle(
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18.0),
                                 overflow: TextOverflow.ellipsis,
@@ -291,6 +292,7 @@ Grid(context, data) {
                               Text(
                                 data[index].email,
                                 style: TextStyle(
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.w600,
                                     fontSize: 15.0,
                                     color: LightColor.grey),
@@ -305,6 +307,7 @@ Grid(context, data) {
                                 data[index].shortdescription,
                                 style: TextStyle(
                                   fontSize: 14,
+                                  fontFamily: "Roboto",
                                 ),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 3,
@@ -321,6 +324,7 @@ Grid(context, data) {
                                   'Read More',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
+                                      fontFamily: "Roboto",
                                       fontWeight: FontWeight.w600,
                                       fontSize: 15.0,
                                       color: LightColor.midnightBlue),

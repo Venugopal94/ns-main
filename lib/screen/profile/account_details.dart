@@ -79,7 +79,7 @@ class _myaccountState extends State<myaccount> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(title: Text("My Account"), backgroundColor: LightColor.yellowColor,
+        appBar: AppBar(title: Text("My Account", style: TextStyle(fontFamily: "Roboto",)), backgroundColor: LightColor.yellowColor,
             foregroundColor: LightColor.midnightBlue),
         body: FutureBuilder<List<Account>>(
           future: _fetchaccount(),
@@ -94,7 +94,7 @@ class _myaccountState extends State<myaccount> {
 
               return imageSlider(context, data);
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+              return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
             }
             return Center(
                 child: CircularProgressIndicator(
@@ -121,6 +121,7 @@ class _myaccountState extends State<myaccount> {
                 style: TextStyle(
                     fontSize: 18,
                     color: LightColor.midnightBlue,
+                    fontFamily: "Roboto",
                     fontWeight: FontWeight.bold),
               )),
             )));
@@ -128,7 +129,7 @@ class _myaccountState extends State<myaccount> {
 
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto",)),
       backgroundColor: LightColor.midnightBlue,
     ));
   }
@@ -172,7 +173,7 @@ print(mobile);
                         Text(
                           "\  First Name ",
                           style: TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 15.0),
+                              fontWeight: FontWeight.w600, fontSize: 15.0, fontFamily: "Roboto",),
                           textAlign: TextAlign.left,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -238,7 +239,7 @@ print(mobile);
                         Text(
                           "\  Last Name ",
                           style: TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 15.0),
+                              fontWeight: FontWeight.w600, fontSize: 15.0, fontFamily: "Roboto",),
                           textAlign: TextAlign.left,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -273,7 +274,7 @@ print(mobile);
                         Text(
                           "\  Email Id ",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                         ),
                         Card(
                           child: Container(
@@ -286,7 +287,7 @@ print(mobile);
                                 //controller: emailController,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 15.0),
+                                    fontSize: 15.0, fontFamily: "Roboto"),
                                 onChanged: (text) {
                                   email = text;
                                 },
@@ -301,7 +302,7 @@ print(mobile);
                         Text(
                           "\  Mobile No ",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                         ),
                         Card(
                           child: Container(

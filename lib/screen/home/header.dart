@@ -96,11 +96,11 @@ class _headerstate extends State<Header> {
                   const EdgeInsets.only(left: 8.0, top: 8.0, bottom: 12.0),
                   child: Text(
                     myAllData[index].title,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                   ),
                 ),
                 InkWell(
-                  child: Text('See All', style:TextStyle(fontWeight: FontWeight.bold,color: LightColor.midnightBlue)),
+                  child: Text('See All', style:TextStyle(fontWeight: FontWeight.bold, fontFamily: "Roboto", color: LightColor.midnightBlue)),
                   onTap: () {
                     Navigator.push(
                         context,
@@ -190,6 +190,7 @@ class _headerstate extends State<Header> {
                                                 fontSize: 13,
                                                 fontWeight:
                                                 FontWeight.w400,
+                                                fontFamily: "Roboto",
                                                 color: LightColor
                                                     .midnightBlue)),
                                       )),
@@ -208,6 +209,7 @@ class _headerstate extends State<Header> {
                                                 fontSize: 13,
                                                 fontWeight:
                                                 FontWeight.bold,
+                                                fontFamily: "Roboto",
                                                 color: LightColor
                                                     .midnightBlue)),
                                       )),
@@ -227,9 +229,9 @@ class _headerstate extends State<Header> {
                 ));
                 }
                 else if (snap.error != null){
-                return Text("An Error occured");
+                return Text("An Error occured", style: TextStyle(fontFamily: "Roboto"));
                 }
-                return Text("Loading.....");
+                return Text("Loading.....", style: TextStyle(fontFamily: "Roboto"));
                 // return Center(child: CircularProgressIndicator());
               },
             ),

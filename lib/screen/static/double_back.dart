@@ -8,11 +8,11 @@ class Example extends StatelessWidget {
       home: Scaffold(
         body: DoubleBackToCloseApp(
           snackBar: const SnackBar(
-            content: Text('Tap back again to leave'),
+            content: Text('Tap back again to leave', style: TextStyle(fontFamily: "Roboto",)),
           ),
           child: Center(
             child: OutlinedButton(
-              child: const Text('Tap to simulate back'),
+              child: const Text('Tap to simulate back', style: TextStyle(fontFamily: "Roboto",)),
               // ignore: invalid_use_of_protected_member
               onPressed: WidgetsBinding.instance.handlePopRoute,
             ),

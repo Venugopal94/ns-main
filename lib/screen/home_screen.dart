@@ -72,7 +72,7 @@ class _HomeStateScreen extends State<HomeScreen> {
     return Scaffold(
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text("Family Pharmacy"),
+        title: Text("Family Pharmacy", style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
         actions: <Widget>[
@@ -130,13 +130,13 @@ class _HomeStateScreen extends State<HomeScreen> {
               ? DoubleBackToCloseApp(
                   child: SliderPage(),
                   snackBar: const SnackBar(
-                      content: Text('Tap back again to leave'),
+                      content: Text('Tap back again to leave', style: TextStyle(fontFamily: "Roboto"),),
                       backgroundColor: LightColor.midnightBlue),
                 )
               : DoubleBackToCloseApp(
                   child: SliderPage(),
                   snackBar: const SnackBar(
-                    content: Text('Tap back again to leave'),
+                    content: Text('Tap back again to leave', style: TextStyle(fontFamily: "Roboto"),),
                     backgroundColor: LightColor.midnightBlue,
                   ),
                 )
@@ -210,6 +210,7 @@ nointernet() {
         child: Text(
       "\n\n\n\n  No Internet Connection",
       style: TextStyle(
+          fontFamily: "Roboto",
           fontSize: 24,
           color: LightColor.midnightBlue,
           fontWeight: FontWeight.bold),
@@ -221,7 +222,7 @@ AlertDialog buildAlertDialog() {
   return AlertDialog(
     title: Text(
       "No Internet Connection Failed to Connect to Family Pharmacy. Please Check your Device's network connection and try again",
-      style: TextStyle(fontStyle: FontStyle.italic),
+      style: TextStyle(fontStyle: FontStyle.italic, fontFamily: "Roboto"),
     ),
   );
 }

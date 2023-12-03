@@ -17,7 +17,7 @@ class _photogalleryState extends State<photogallery> {
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         //backgroundColor: LightColor.midnightBlue,
-        title: Text("Gallery"),
+        title: Text("Gallery", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -57,7 +57,7 @@ class _AllBranchState extends State<AllBranch> {
             List<allbranch> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
           }
           return CircularProgressIndicator();
         },

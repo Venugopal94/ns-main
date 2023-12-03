@@ -21,7 +21,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title, style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -32,7 +32,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
             List<ItemGrpData> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
           }
           return CircularProgressIndicator();
         },
@@ -116,7 +116,7 @@ Grid(context, data) {
                                 child: Text(
                                   data[index].itemproductgrouptitle,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600, fontSize: 16.0),
+                                      fontWeight: FontWeight.w600, fontSize: 16.0, fontFamily: "Roboto"),
                                   overflow: TextOverflow.ellipsis,
 
                                 ),
@@ -128,7 +128,7 @@ Grid(context, data) {
                                 child: Text(
                                   data[index].itemmaingrouptitle,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600, fontSize: 13.0,color:LightColor.grey),
+                                      fontWeight: FontWeight.w600, fontFamily: "Roboto", fontSize: 13.0,color:LightColor.grey),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
@@ -162,7 +162,7 @@ getprice(max, min) {
       Expanded(
         child: Text(
           "\QR ${max}",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue, fontFamily: "Roboto"),
           overflow: TextOverflow.ellipsis,
         ),
       ),
@@ -171,13 +171,13 @@ getprice(max, min) {
     return Row(children: <Widget>[
       Text(
         "\QR ${max}",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue, fontFamily: "Roboto"),
         overflow: TextOverflow.ellipsis,
       ),
       Text(" - "),
       Text(
         "\QR ${min}",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue, fontFamily: "Roboto"),
         overflow: TextOverflow.ellipsis,
       ),
     ]);

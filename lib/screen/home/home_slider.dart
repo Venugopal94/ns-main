@@ -25,6 +25,7 @@ class SliderPage extends StatelessWidget {
                 padding: const EdgeInsets.only(
                     left: 12, right: 12, top: 0, bottom: 12),
                 child: TextFormField(
+                  style: TextStyle(fontFamily: "Roboto"),
                   decoration: new InputDecoration(
                     hintText: "Search Medicines / Healthcare Products",
                     fillColor: Colors.white,
@@ -94,7 +95,7 @@ class SliderDemo extends StatelessWidget {
           List<Job> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
         }
         return Center(
             child: CircularProgressIndicator(

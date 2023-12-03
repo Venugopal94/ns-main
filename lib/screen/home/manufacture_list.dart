@@ -112,7 +112,7 @@ class _BrandDetailState extends State<BrandDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.brandtitle),
+        title: Text(widget.brandtitle, style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -123,7 +123,7 @@ class _BrandDetailState extends State<BrandDetail> {
             List<BrandDetailData> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
           }
           return CircularProgressIndicator();
         },
@@ -201,7 +201,7 @@ Grid(context, data) {
                             child: Text(
                               data[index].itemproductgrouptitle,
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 16.0),
+                                  fontWeight: FontWeight.w600, fontSize: 16.0, fontFamily: "Roboto"),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -213,6 +213,7 @@ Grid(context, data) {
                               data[index].itemmaingrouptitle,
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
+                                  fontFamily: "Roboto",
                                   fontSize: 13.0,
                                   color: LightColor.grey),
                               overflow: TextOverflow.ellipsis,
@@ -225,7 +226,7 @@ Grid(context, data) {
                             child: Text(
                               data[index].minretailprice,
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 15.0),
+                                  fontWeight: FontWeight.w600, fontSize: 15.0, fontFamily: "Roboto"),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),

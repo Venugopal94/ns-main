@@ -189,7 +189,7 @@ class _myorderdetailState extends State<myorderdetail> {
 
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(
-          title: Text('Order Details'),
+          title: Text('Order Details', style: TextStyle(fontFamily: "Roboto",)),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,
         ),
@@ -209,7 +209,7 @@ class _myorderdetailState extends State<myorderdetail> {
 
                   Text(
                     "",
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                   ),
                   if (widget.todo.ecommerceorderstatus == "RECEIVED_ORDER")
                     (Padding(
@@ -220,6 +220,7 @@ class _myorderdetailState extends State<myorderdetail> {
                             'RECEIVED ORDER',
                             style: TextStyle(
                                 fontSize: 17,
+                                fontFamily: "Roboto",
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
@@ -234,6 +235,7 @@ class _myorderdetailState extends State<myorderdetail> {
                             style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: "Roboto",
                                 color: Colors.white),
                           ),
                         )))
@@ -247,6 +249,7 @@ class _myorderdetailState extends State<myorderdetail> {
                             'SHIPPED - OUT FOR DELIVERY',
                             style: TextStyle(
                                 fontSize: 17,
+                                fontFamily: "Roboto",
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
@@ -261,6 +264,7 @@ class _myorderdetailState extends State<myorderdetail> {
                             style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: "Roboto",
                                 color: Colors.white),
                           ),
                         )))
@@ -271,6 +275,7 @@ class _myorderdetailState extends State<myorderdetail> {
                         widget.todo.ecommerceorderstatus,
                         style: TextStyle(
                           fontSize: 17,
+                          fontFamily: "Roboto",
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -298,7 +303,7 @@ class _myorderdetailState extends State<myorderdetail> {
                     child: Text(
                       "\ View Order Details",
                       style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                     ),
                   ),
                   Container(
@@ -317,7 +322,7 @@ class _myorderdetailState extends State<myorderdetail> {
                               child: Text(
                                 "\  Order No ",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                             ),
                           ]),
@@ -329,6 +334,7 @@ class _myorderdetailState extends State<myorderdetail> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
                                 ),
                               ),
                             ),
@@ -341,7 +347,7 @@ class _myorderdetailState extends State<myorderdetail> {
                               child: Text(
                                 "\ Order Date ",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                             ),
                           ]),
@@ -353,6 +359,7 @@ class _myorderdetailState extends State<myorderdetail> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
                                 ),
                               ),
                             ),
@@ -365,7 +372,7 @@ class _myorderdetailState extends State<myorderdetail> {
                               child: Text(
                                 "\ Amount ",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                             ),
                           ]),
@@ -377,6 +384,7 @@ class _myorderdetailState extends State<myorderdetail> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
                                 ),
                               ),
                             ),
@@ -393,7 +401,7 @@ class _myorderdetailState extends State<myorderdetail> {
                     child: Text(
                       "View Item Details",
                       style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                     ),
                   ),
                   SizedBox(
@@ -414,7 +422,7 @@ class _myorderdetailState extends State<myorderdetail> {
                     child: Text(
                       "\ Payment Details",
                       style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                     ),
                   ),
                   Container(
@@ -481,7 +489,7 @@ class _myorderdetailState extends State<myorderdetail> {
                               child: Text(
                                 "\ Payment Service ",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                             ),
                           ]),
@@ -493,6 +501,7 @@ class _myorderdetailState extends State<myorderdetail> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
                                 ),
                               ),
                             ),
@@ -505,7 +514,7 @@ class _myorderdetailState extends State<myorderdetail> {
                               child: Text(
                                 "\ Payment Date  ",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                             ),
                           ]),
@@ -517,6 +526,7 @@ class _myorderdetailState extends State<myorderdetail> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
                                 ),
                               ),
                             ),

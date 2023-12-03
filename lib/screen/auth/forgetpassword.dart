@@ -54,10 +54,11 @@ class _forgetpwdState extends State<forgetpwd> {
         ),
         Text(
           "Email Id/ Phone Number",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
         ),
         TextField(
           controller: user,
+          style: TextStyle(fontFamily: "Roboto"),
           decoration: InputDecoration(
 
               border: InputBorder.none,
@@ -84,7 +85,7 @@ class _forgetpwdState extends State<forgetpwd> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text("Forget Password"),
+        title: Text("Forget Password", style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -134,7 +135,7 @@ class _forgetpwdState extends State<forgetpwd> {
     );
   }
   void showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value, style: TextStyle(fontFamily: "Roboto")),backgroundColor:LightColor.midnightBlue ,));
   }
 
 
@@ -179,7 +180,7 @@ class Button extends StatelessWidget {
           child: InkWell(
             child: Text(
               'Verify',
-              style: TextStyle(fontSize: 20, color:midnightBlue,fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, color:midnightBlue,fontWeight: FontWeight.bold, fontFamily: "Roboto"),
             ),
 
 

@@ -21,7 +21,7 @@ class _Wishlist_detailState extends State<Wishlist_detail> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.itemid),
+        title: Text(widget.itemid, style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -32,7 +32,7 @@ class _Wishlist_detailState extends State<Wishlist_detail> {
             List<ItemGrpData> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
           }
           return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
         },
@@ -80,6 +80,7 @@ Grid(context,data) {
                       '',
                       style: TextStyle(
                           fontSize: 24,
+                          fontFamily: "Roboto",
                           color: LightColor.midnightBlue,
                           fontWeight: FontWeight.bold),
 
@@ -97,6 +98,7 @@ Grid(context,data) {
                             child: Text(
                               "\ Manufacture- ${ data[index].manufactureshortname}",
                               style: TextStyle(
+                                  fontFamily: "Roboto",
                                   fontSize: 14, color: LightColor.midnightBlue),
                             ),),
                           SizedBox(width: 10),
@@ -115,7 +117,7 @@ Grid(context,data) {
                   Container(  padding: EdgeInsets.only(left: 15, right: 15),
                     child: Text(
                   '',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      style: TextStyle(fontSize: 14, color: Colors.grey, fontFamily: "Roboto"),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 4,
                     ),
@@ -379,6 +381,7 @@ Grid(context,data) {
                       "Description",
                       style: TextStyle(
                           fontSize: 17,
+                          fontFamily: "Roboto",
                           color: LightColor.midnightBlue,
                           fontWeight: FontWeight.bold),
                     ),
@@ -388,7 +391,7 @@ Grid(context,data) {
                   Container(  padding: EdgeInsets.only(left: 15, right: 15),
                     child: Text(
 '',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      style: TextStyle(fontSize: 14, color: Colors.grey, fontFamily: "Roboto"),
                       //overflow: TextOverflow.ellipsis, maxLines: 2,
                     ),);
                   SizedBox(height: 10);
@@ -398,6 +401,7 @@ Grid(context,data) {
                       style: TextStyle(
                           fontSize: 17,
                           color: LightColor.midnightBlue,
+                          fontFamily: "Roboto",
                           fontWeight: FontWeight.bold),
                     ),
                   );
@@ -406,7 +410,7 @@ Grid(context,data) {
                   Container(  padding: EdgeInsets.only(left: 15, right: 15),
                     child: Text(
                       data[index].manufactureshortname,
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      style: TextStyle(fontSize: 14, color: Colors.grey, fontFamily: "Roboto"),
                       //overflow: TextOverflow.ellipsis, maxLines: 2,
                     ),);
 
@@ -428,7 +432,7 @@ getprice(max,min) {
           Container(  padding: EdgeInsets.only(left: 15, right: 15),
 
             child: Text("\QR ${max}",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: "Roboto"),),
           ),
         ]);
   }
@@ -437,11 +441,11 @@ getprice(max,min) {
         children: <Widget>[
           Container(  padding: EdgeInsets.only(left: 15),
             child:
-            Text("\QR ${max}",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),),
+            Text("\QR ${max}",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: "Roboto")),),
 
 
           Text(" - "),
-          Text("\QR ${min}",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text("\QR ${min}",style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
 
         ]);
 

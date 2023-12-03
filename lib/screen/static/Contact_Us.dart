@@ -95,7 +95,7 @@ class _Contact_Us_State extends State<Contact_Us> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text("Contact Us"),
+        title: Text("Contact Us", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         automaticallyImplyLeading: true,
       ),
@@ -112,6 +112,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                 style: TextStyle(
                     fontSize: 24,
                     color: LightColor.midnightBlue,
+                    fontFamily: "Roboto",
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -120,7 +121,7 @@ class _Contact_Us_State extends State<Contact_Us> {
               padding: EdgeInsets.only(left: 15, right: 15),
               child: Text(
                 "Our customers always come first. We will take time to listen to you and respond to your needs. We will be happy to get any feedback that can improve/motivate us to better our services to you.",
-                style: TextStyle(fontSize: 14, color: LightColor.midnightBlue),
+                style: TextStyle(fontSize: 14, color: LightColor.midnightBlue, fontFamily: "Roboto"),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 4,
               ),
@@ -138,7 +139,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         child: Text(
                           "First Name",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                              fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                         ),
                       ),
                       SizedBox(
@@ -149,7 +150,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         child: Text(
                           "Last Name",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                              fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                         ),
                       ),
                     ])),
@@ -199,7 +200,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         child: Text(
                           "Your Email ",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                              fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                         ),
                       ),
                       SizedBox(
@@ -210,7 +211,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         child: Text(
                           "Your Phone",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                              fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                         ),
                       ),
                     ])),
@@ -225,6 +226,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         width: width / 2.3,
                         child: TextField(
                           controller: emailController,
+                          style: TextStyle(fontFamily: "Roboto",),
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               fillColor: Color(0xfff3f3f4),
@@ -256,7 +258,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                       Text(
                         "Message ",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                       ),
                     ])),
             Padding(
@@ -271,6 +273,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         child: TextField(
                           maxLines: 8,
                           maxLength: 1000,
+                          style: TextStyle(fontFamily: "Roboto",),
                           controller: msgController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -289,7 +292,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                 onPressed: () {
                   usermsg();
                 },
-                child: Text("Send Message", style: TextStyle(fontSize: 18, color: Colors.white)),
+                child: Text("Send Message", style: TextStyle(fontSize: 18, color: Colors.white, fontFamily: "Roboto")),
               ),
             ),
             SizedBox(height: 20),
@@ -314,7 +317,8 @@ class _Contact_Us_State extends State<Contact_Us> {
                                 "Address",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 20.0),
+                                    fontSize: 20.0,
+                                    fontFamily: "Roboto"),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -327,17 +331,17 @@ class _Contact_Us_State extends State<Contact_Us> {
                           Text(
                             "Office No.68,",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                           Text(
                             " Bldg No.68,",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                           Text(
                             "\ Al Khalidiya Street,",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                         ]),
                         SizedBox(
@@ -347,12 +351,12 @@ class _Contact_Us_State extends State<Contact_Us> {
                           Text(
                             "Najma",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                           ),
                           Text(
                             " Qatar,",
                             style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                           ),
                         ]),
                         SizedBox(
@@ -386,7 +390,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                                 " Contact",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 20.0),
+                                    fontSize: 20.0, fontFamily: "Roboto"),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -398,7 +402,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         Text(
                           "Mobile: +974-4436 5489 / 4418 0245",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                         ),
                         SizedBox(
                           height: 5.0,
@@ -406,7 +410,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         Text(
                           "Hotline: +974-70481616",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                         ),
                         SizedBox(
                           height: 5.0,
@@ -414,7 +418,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         Text(
                           "Mail: mail@fmc.qa",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                         ),
                         SizedBox(
                           height: 5.0,
@@ -450,7 +454,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                                 " Hour Of Operation",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 20.0),
+                                    fontSize: 20.0, fontFamily: "Roboto"),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -462,7 +466,7 @@ class _Contact_Us_State extends State<Contact_Us> {
                         Text(
                           "Sunday - Thursday 7.00 AM to 4.00 PM",
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                         ),
                         SizedBox(
                           height: 15.0,
@@ -483,7 +487,7 @@ class _Contact_Us_State extends State<Contact_Us> {
 
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context)..showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto",)),
       backgroundColor: LightColor.midnightBlue,
     ));
   }

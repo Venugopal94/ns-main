@@ -73,7 +73,7 @@ else {
         key: _scaffoldKey,
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(
-        title: Text('Reset Password'),backgroundColor: LightColor.yellowColor,
+        title: Text('Reset Password', style: TextStyle(fontFamily: "Roboto")),backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,),
 
     body: Column(
@@ -91,6 +91,7 @@ else {
                 Text('Old Password',  style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "Roboto",
                 ),),
                 SizedBox(height: 10),
                TextFormField(
@@ -111,6 +112,7 @@ else {
                 Text('New Password',  style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "Roboto",
                 ),),
                 SizedBox(height: 10),
                 TextFormField(
@@ -130,7 +132,7 @@ else {
                 SizedBox(height: 20),
                 Text('Re-Enter New Password',  style: TextStyle(
                   fontSize: 14,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.bold, fontFamily: "Roboto"
                 ),),SizedBox(height: 10),
                  TextFormField(
                       obscureText: true,
@@ -166,6 +168,7 @@ else {
                     child:
                     Text('Change Password',  style: TextStyle(
                       fontSize: 14,
+                      fontFamily: "Roboto",
                       fontWeight: FontWeight.bold, color: Colors.white,
                     ),),
                   ),
@@ -175,6 +178,6 @@ else {
 
     ))]));}
     void showInSnackBar(String value) {
-      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+      ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value, style: TextStyle(fontFamily: "Roboto",)),backgroundColor:LightColor.midnightBlue ,));
     }
   }

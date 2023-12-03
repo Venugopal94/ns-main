@@ -212,7 +212,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
           children: <Widget>[
             Text(
               'Already have an account ?',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, fontFamily: "Roboto"),
             ),
             SizedBox(
               width: 10,
@@ -222,6 +222,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
               style: TextStyle(
                   color: Color(0xfff79c4f),
                   fontSize: 13,
+                  fontFamily: "Roboto",
                   fontWeight: FontWeight.w600),
             ),
           ],
@@ -275,7 +276,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                             child: Text(
                               "First Name",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                           SizedBox(
@@ -286,7 +287,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                             child: Text(
                               "Last Name",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                         ]),
@@ -296,6 +297,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                           Container(
                             width: width / 2.3,
                             child: TextField(
+                              style: TextStyle(fontFamily: "Roboto"),
                               controller: fnameController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -309,6 +311,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                           Container(
                             width: width / 2.3,
                             child: TextField(
+                              style: TextStyle(fontFamily: "Roboto"),
                               controller: lnameController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -326,7 +329,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                           Text(
                             "Mobile No",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
+                                fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                           ),
                         ]),
                     Row(
@@ -335,6 +338,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                           Container(
                             width: width / 5.5,
                             child: TextField(
+                              style: TextStyle(fontFamily: "Roboto"),
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                   hintText: '+974',
@@ -349,6 +353,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                           Container(
                             width: width / 1.45,
                             child: TextField(
+                              style: TextStyle(fontFamily: "Roboto"),
                               controller: mobileController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -366,10 +371,11 @@ class _SignUpPageState extends State<RegistrationScreen> {
                           Text(
                             "Email Id",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
+                                fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                           ),
                         ]),
                     TextField(
+                      style: TextStyle(fontFamily: "Roboto"),
                       controller: emailController,
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -387,11 +393,12 @@ class _SignUpPageState extends State<RegistrationScreen> {
                             child: Text(
                               "Building No",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                         ]),
                     TextField(
+                      style: TextStyle(fontFamily: "Roboto"),
                       controller: buildingController,
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -410,7 +417,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                             child: Text(
                               "Zone/Area",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                         ]),
@@ -453,12 +460,13 @@ class _SignUpPageState extends State<RegistrationScreen> {
                             child: Text(
                               "Street",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                         ]),
 
                     TextField(
+                      style: TextStyle(fontFamily: "Roboto"),
                       controller: streetController,
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -476,10 +484,11 @@ class _SignUpPageState extends State<RegistrationScreen> {
                           Text(
                             "Password",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
+                                fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                           ),
                         ]),
                     TextField(
+                        style: TextStyle(fontFamily: "Roboto"),
                         obscureText: true,
                         controller: passwordController,
                         decoration: InputDecoration(
@@ -495,11 +504,12 @@ class _SignUpPageState extends State<RegistrationScreen> {
                           Text(
                             "Confirm Password",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
+                                fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                           ),
                         ]),
 
                     TextField(
+                        style: TextStyle(fontFamily: "Roboto"),
                         obscureText: true,
                         controller: confirmPasswordController,
                         decoration: InputDecoration(
@@ -529,7 +539,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
 
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto")),
       backgroundColor: LightColor.midnightBlue,
     ));
   }
@@ -596,6 +606,7 @@ class Button extends StatelessWidget {
               'Register Now',
               style: TextStyle(
                   fontSize: 20,
+                  fontFamily: "Roboto",
                   color: midnightBlue,
                   fontWeight: FontWeight.bold),
             ),

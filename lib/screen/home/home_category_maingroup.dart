@@ -43,7 +43,7 @@ class ItemDemo extends StatelessWidget {
           return imageSlider(context, data);
 
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
         }
         return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
       },
@@ -100,7 +100,7 @@ imageSlider(context,data) {
                                 Text(data[index].title,
                                     // softWrap: true,
                                     style:
-                                    TextStyle(fontSize: 13, fontWeight: FontWeight.w400,color:Colors.black)),
+                                    TextStyle(fontSize: 13, fontWeight: FontWeight.w400,color:Colors.black, fontFamily: "Roboto")),
                               ]
                           ),
                         ]

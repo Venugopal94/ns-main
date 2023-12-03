@@ -72,7 +72,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Payment"),
+        title: Text("Payment",  style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -103,6 +103,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                                       "Debit Card",
                                       style: TextStyle(
                                           fontSize: 18,
+                                          fontFamily: "Roboto",
                                           color: LightColor.midnightBlue,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -179,6 +180,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                                       "Credit Card",
                                       style: TextStyle(
                                           fontSize: 18,
+                                          fontFamily: "Roboto",
                                           color: LightColor.midnightBlue,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -219,6 +221,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
                                       "Paypal",
                                       style: TextStyle(
                                           fontSize: 18,
+                                          fontFamily: "Roboto",
                                           color: LightColor.midnightBlue,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -340,6 +343,7 @@ class _PaymentScreenState extends State<PaymentOptionScreen> {
               "Confirm",
               style: TextStyle(
                   fontSize: 18,
+                  fontFamily: "Roboto",
                   color: LightColor.midnightBlue,
                   fontWeight: FontWeight.bold),
             )),

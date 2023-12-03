@@ -130,7 +130,7 @@ class _related_productsState extends State<Related_products> {
           List<related_products> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}",  style: TextStyle(fontFamily: "Roboto"));
         }
         return Center(
             child: CircularProgressIndicator(
@@ -209,6 +209,7 @@ imageSlider(context, data) {
                         // softWrap: true,
                         style: TextStyle(
                             fontSize: 13,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.w400,
                             color: LightColor.midnightBlue)),
                   )),
@@ -225,6 +226,7 @@ imageSlider(context, data) {
                         // softWrap: true,
                         style: TextStyle(
                             fontSize: 13,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold,
                             color: LightColor.midnightBlue)),
                   )),

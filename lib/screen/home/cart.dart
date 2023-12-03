@@ -61,7 +61,7 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-        appBar: AppBar(title: Text("Cart List"),
+        appBar: AppBar(title: Text("Cart List", style: TextStyle(fontFamily: "Roboto")),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,
         ),
@@ -140,6 +140,7 @@ class _CartState extends State<Cart> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w600,
+                                                        fontFamily: "Roboto",
                                                         fontSize: 15.0),
                                                     maxLines: 2,
                                                   ),
@@ -176,6 +177,7 @@ class _CartState extends State<Cart> {
                                                     "\QR ",
                                                     style: TextStyle(
                                                         fontSize: 16,
+                                                        fontFamily: "Roboto",
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -184,6 +186,7 @@ class _CartState extends State<Cart> {
                                                         .toString(),
                                                     style: TextStyle(
                                                         fontSize: 16,
+                                                        fontFamily: "Roboto",
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -223,6 +226,7 @@ class _CartState extends State<Cart> {
                                                         .toString(),
                                                     style: TextStyle(
                                                         fontSize: 20,
+                                                        fontFamily: "Roboto",
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -248,7 +252,7 @@ class _CartState extends State<Cart> {
                                                           model.cart[index]
                                                                   .quantity +
                                                               1) : ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text('You cannot add items more than the stock quantity.'),
+      content: new Text('You cannot add items more than the stock quantity.', style: TextStyle(fontFamily: "Roboto")),
       backgroundColor: LightColor.midnightBlue,
     ));
                                                     },
@@ -289,6 +293,7 @@ class _CartState extends State<Cart> {
                           .toString(),
                   style: TextStyle(
                       color: Colors.black,
+                      fontFamily: "Roboto",
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
                 ),
@@ -309,7 +314,7 @@ class _CartState extends State<Cart> {
                                           rebuildOnChange: true)
                                       // ignore: deprecated_member_use
                                       .totalCartValue == 0.0 ? ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text('Add Items to Cart First'),
+      content: new Text('Add Items to Cart First', style: TextStyle(fontFamily: "Roboto")),
       backgroundColor: LightColor.midnightBlue,
     )):  Navigator.push(
                           context,
@@ -323,7 +328,7 @@ class _CartState extends State<Cart> {
                   children: <Widget>[
                     Text(
                       "Proceed",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.black, fontFamily: "Roboto"),
                     ),
                     Icon(
                       Icons.arrow_forward,

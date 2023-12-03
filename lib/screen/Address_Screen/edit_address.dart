@@ -107,7 +107,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-          title: Text("Edit Address"),
+          title: Text("Edit Address", style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -128,7 +128,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                       width: width/2.3,
                       child: Text(
                         "First Name",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                       ),),
                   SizedBox(
                     width: width/38,
@@ -137,7 +137,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                       width: width/2.3,
                       child:Text(
                         "Last Name",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                       ),),
                     ]),
                     Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
@@ -152,6 +152,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                             //controller: emailController,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
+                                fontFamily: "Roboto",
                                 fontSize: 15.0),
                             onChanged: (text) {
                               firstname=text;
@@ -176,6 +177,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
 
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
+                                fontFamily: "Roboto",
                                 fontSize: 15.0),
                             onChanged: (text) {
                               lastname=text;
@@ -189,7 +191,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                     ),Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
                     Text(
                       "Building No",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                     ),]),
                 Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
                     Container(
@@ -202,7 +204,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                           //controller: emailController,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 15.0),
+                              fontSize: 15.0, fontFamily: "Roboto"),
                           onChanged: (text) {
                             buildingno=text;
                           },
@@ -215,7 +217,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                 Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
                     Text(
                       "Zone/Area",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                     ),]),
                 Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
                     Container(
@@ -228,7 +230,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                           //controller: emailController,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 15.0),
+                              fontSize: 15.0, fontFamily: "Roboto"),
                           onChanged: (text) {
                             zone=text;
                           },
@@ -241,7 +243,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                 Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
                     Text(
                       "Street",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                     ), ]),
                 Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
                   Container(
@@ -254,7 +256,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
                           //controller: emailController,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 15.0),
+                              fontSize: 15.0, fontFamily: "Roboto"),
                           onChanged: (text) {
                             street=text;
                           },
@@ -301,7 +303,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
     );
   }
   void showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value, style: TextStyle(fontFamily: "Roboto")),backgroundColor:LightColor.midnightBlue ,));
   }
   showToast(String msg, {int? duration, int? gravity}) {
     Toast.show(msg, duration: duration, gravity: gravity);
@@ -346,7 +348,7 @@ class Button extends StatelessWidget {
               style: TextStyle(
                   fontSize: 20,
                   color: midnightBlue,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold, fontFamily: "Roboto"),
             ),
           ),
         ));

@@ -54,7 +54,7 @@ class _DeliveryInfoStateScreen extends State<DeliveryInfoScreen> {
     return Scaffold(
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text("Delivery Information"),
+        title: Text("Delivery Information", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
         automaticallyImplyLeading: true,
@@ -75,7 +75,7 @@ class DeliveryInfo extends StatelessWidget {
           List<StaticPage> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
         }
         return CircularProgressIndicator();
       },

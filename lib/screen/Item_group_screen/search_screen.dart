@@ -86,7 +86,7 @@ class RangeSliderData {
               minWidth: 40.0,
               maxWidth: 40.0,
             ),
-            child: Text(lowerValueText),
+            child: Text(lowerValueText, style: TextStyle(fontFamily: "Roboto"),),
           ),
           Expanded(
             child: SliderTheme(
@@ -123,7 +123,7 @@ class RangeSliderData {
               minWidth: 40.0,
               maxWidth: 40.0,
             ),
-            child: Text(upperValueText),
+            child: Text(upperValueText, style: TextStyle(fontFamily: "Roboto"),),
           ),
         ],
       ),
@@ -288,7 +288,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-        appBar: AppBar(title: Text("Search"),  backgroundColor: LightColor.yellowColor,
+        appBar: AppBar(title: Text("Search", style: TextStyle(fontFamily: "Roboto"),),  backgroundColor: LightColor.yellowColor,
             foregroundColor: LightColor.midnightBlue, actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -310,7 +310,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                 decoration: new BoxDecoration(
                                     color: LightColor.yellowColor),
                                 child: ListTile(
-                                  title: Text('Filter'),
+                                  title: Text('Filter', style: TextStyle(fontFamily: "Roboto"),),
                                 ),
                               ),
                               Align(
@@ -322,6 +322,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: LightColor.midnightBlue,
+                                        fontFamily: "Roboto",
                                         fontWeight: FontWeight.bold),
                                     textAlign: TextAlign.left,
                                   ),
@@ -336,7 +337,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                       List<ItemMainData> data = snapshot.data ?? [];
                                       return chipview(context, data);
                                     } else if (snapshot.hasError) {
-                                      return Text("${snapshot.error}");
+                                      return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
                                     }
                                     return Center(
                                         child: CircularProgressIndicator(
@@ -355,6 +356,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                     "Manufacture",
                                     style: TextStyle(
                                         fontSize: 16,
+                                        fontFamily: "Roboto",
                                         color: LightColor.midnightBlue,
                                         fontWeight: FontWeight.bold),
                                     textAlign: TextAlign.left,
@@ -370,7 +372,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                       List<Brand> data = snapshot.data ?? [];
                                       return chipview(context, data);
                                     } else if (snapshot.hasError) {
-                                      return Text("${snapshot.error}");
+                                      return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
                                     }
                                     return Center(
                                         child: CircularProgressIndicator(
@@ -402,6 +404,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                         decoration: BoxDecoration(color: Colors.white),
                         width: width / 1.2,
                         child: TextField(
+                          style: TextStyle(fontFamily: "Roboto"),
                           autofocus: true,
                           textInputAction: TextInputAction.go,
                           decoration: InputDecoration(
@@ -446,6 +449,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: LightColor.midnightBlue,
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left,
                               ),
@@ -460,7 +464,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                     List<ItemData> data = snapshot.data ?? [];
                                     return GridSearch(context, data);
                                   } else if (snapshot.hasError) {
-                                    return Text("${snapshot.error}");
+                                    return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
                                   }
                                   return Center(
                                       child: CircularProgressIndicator(
@@ -482,7 +486,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                       //filterdata(data);
                       return Grid(context, data);
                     } else if (snapshot.hasError) {
-                      return Text("${snapshot.error}");
+                      return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
                     }
                     return Center(
                         child: CircularProgressIndicator(
@@ -503,7 +507,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                       filterdata(data);
                       return Grid(context, data);
                     } else if (snapshot.hasError) {
-                      return Text("${snapshot.error}");
+                      return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
                     }
                     return Center(
                         child: CircularProgressIndicator(
@@ -540,11 +544,11 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                             //
                             // Simple example
                             //
-                            Center(child: Text('Price range from 0 to 500')),
+                            Center(child: Text('Price range from 0 to 500', style: TextStyle(fontFamily: "Roboto"),)),
                             Padding(
                               padding: const EdgeInsets.only(left: 15),
                               child: Row(children: <Widget>[
-                                Text(_lowerValueFormatter.toString()),
+                                Text(_lowerValueFormatter.toString(), style: TextStyle(fontFamily: "Roboto"),),
                                 Container(
                                   width: width / 1.3,
                                   child: frs.FlutterSlider(
@@ -559,7 +563,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                         });
                                       }),
                                 ),
-                                Text(_upperValueFormatter.toString()),
+                                Text(_upperValueFormatter.toString(), style: (TextStyle(fontFamily: "Roboto")),),
                               ]),
                             ),
                             //   ),
@@ -573,7 +577,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                             ListTile(
                               leading: Image.asset('assets/az.png',
                                   color: LightColor.midnightBlue, height: 24),
-                              title: Text('Name A To Z'),
+                              title: Text('Name A To Z', style: TextStyle(fontFamily: "Roboto"),),
                               onTap: () {
                                 setState(() {
                                   filter = true;
@@ -585,7 +589,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                             ListTile(
                               leading: Image.asset('assets/za.png',
                                   color: LightColor.midnightBlue, height: 24),
-                              title: Text('Name Z To A'),
+                              title: Text('Name Z To A', style: TextStyle(fontFamily: "Roboto"),),
                               onTap: () {
                                 setState(() {
                                   filter = true;
@@ -597,7 +601,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                             ListTile(
                               leading: Icon(Icons.arrow_upward,
                                   color: LightColor.midnightBlue, size: 30),
-                              title: Text('Price low to high'),
+                              title: Text('Price low to high', style: TextStyle(fontFamily: "Roboto"),),
                               onTap: () {
                                 setState(() {
                                   filter = true;
@@ -609,7 +613,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                             ListTile(
                               leading: Icon(Icons.arrow_downward,
                                   color: LightColor.midnightBlue, size: 30),
-                              title: Text('Price high to low'),
+                              title: Text('Price high to low', style: TextStyle(fontFamily: "Roboto")),
                               onTap: () {
                                 setState(() {
                                   filter = true;
@@ -630,6 +634,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                   style: TextStyle(
                       fontSize: 15,
                       color: Colors.white,
+                      fontFamily: "Roboto",
                       fontWeight: FontWeight.bold),
                 ),
               )),
@@ -672,6 +677,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
+                                    fontFamily: "Roboto",
                                     color: LightColor.midnightBlue),
                               ),
                             ),
@@ -815,6 +821,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                       data[index].itemname_en,
                       style: TextStyle(
                           fontSize: 12,
+                          fontFamily: "Roboto",
                           fontWeight: FontWeight.bold,
                           color: LightColor.midnightBlue),
                     ),
@@ -883,6 +890,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                               child: Text(
                                 data[index].itemproductgrouptitle,
                                 style: TextStyle(
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.w600,
                                     fontSize: 16.0),
                                 overflow: TextOverflow.ellipsis,
@@ -895,6 +903,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
                               child: Text(
                                 data[index].itemmaingrouptitle,
                                 style: TextStyle(
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.w600,
                                     fontSize: 13.0,
                                     color: LightColor.grey),
@@ -934,6 +943,7 @@ getprice(max, min) {
           "\QR ${max}",
           style: TextStyle(
               fontWeight: FontWeight.bold,
+              fontFamily: "Roboto",
               fontSize: 16.0,
               color: LightColor.midnightBlue),
           overflow: TextOverflow.ellipsis,
@@ -947,6 +957,7 @@ getprice(max, min) {
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16.0,
+            fontFamily: "Roboto",
             color: LightColor.midnightBlue),
         overflow: TextOverflow.ellipsis,
       ),
@@ -956,6 +967,7 @@ getprice(max, min) {
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16.0,
+            fontFamily: "Roboto",
             color: LightColor.midnightBlue),
         overflow: TextOverflow.ellipsis,
       ),

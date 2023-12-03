@@ -49,7 +49,7 @@ class _About_UsScreen extends State<About_Us_Screen> {
     return Scaffold(
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text("About Us"),
+        title: Text("About Us", style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -81,7 +81,7 @@ class Refund extends StatelessWidget {
           List<StaticPage> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
         }
         return CircularProgressIndicator();
       },

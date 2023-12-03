@@ -18,19 +18,17 @@ class _logoutState extends State<logout> { // Wrapper Widget
   Future userLogout() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.remove("email");
-   // SharedPreferences preferences = await SharedPreferences.getInstance();
-    //await preferences.clear();
+    await preferences.clear();
   }
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration.zero, () => showAlert(context));
     return Container(
-
     );
   }
 
-  void showAlert(BuildContext context) {
-    userLogout();
+  Future<void> showAlert(BuildContext context) async {
+    await userLogout();
     // Create button
     Navigator.push(
         context,

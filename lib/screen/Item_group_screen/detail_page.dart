@@ -1277,7 +1277,7 @@ class _ListDetailsState extends State<ListDetails> {
   void showInSnackBar(String value) {
     // ignore: deprecated_member_use
     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto",)),
       backgroundColor: LightColor.midnightBlue,
     ));
   }
@@ -1302,7 +1302,7 @@ class _ListDetailsState extends State<ListDetails> {
           child: Text(
             "\QR ${replaceFarsiNumber(max)}",
             style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.amber),
+                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.amber, fontFamily: "Roboto",),
           ),
         ),
       ]);
@@ -1312,14 +1312,14 @@ class _ListDetailsState extends State<ListDetails> {
           child: Text(
             "\QR ${replaceFarsiNumber(min)}",
             style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.amber),
+                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.amber, fontFamily: "Roboto",),
           ),
         ),
-        Text(" - "),
+        Text(" - ", style: TextStyle(fontFamily: "Roboto",)),
         Text(
           "\QR ${replaceFarsiNumber(max)}",
           style: TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.amber),
+              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.amber, fontFamily: "Roboto"),
         ),
       ]);
     }
@@ -1334,6 +1334,7 @@ class _ListDetailsState extends State<ListDetails> {
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
+                fontFamily: "Roboto",
                 color: LightColor.midnightBlue),
           ),
         ),
@@ -1345,6 +1346,7 @@ class _ListDetailsState extends State<ListDetails> {
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "Roboto",
                   color: LightColor.midnightBlue)),
         ),
         Text(" - "),
@@ -1352,6 +1354,7 @@ class _ListDetailsState extends State<ListDetails> {
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
+                fontFamily: "Roboto",
                 color: LightColor.midnightBlue)),
       ]);
     }
@@ -1437,7 +1440,7 @@ class _ListDetailsState extends State<ListDetails> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text(widget.todo.itemproductgrouptitle),
+          title: Text(widget.todo.itemproductgrouptitle, style: TextStyle(fontFamily: "Roboto"),),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,
           actions: [
@@ -1549,6 +1552,7 @@ class _ListDetailsState extends State<ListDetails> {
                     Text(widget.todo.itemproductgrouptitle.toString().trim(),
                         style: TextStyle(
                             fontSize: 18,
+                            fontFamily: "Roboto",
                             color: LightColor.midnightBlue,
                             fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left),
@@ -1585,7 +1589,7 @@ class _ListDetailsState extends State<ListDetails> {
                           ),
                           label: Text(
                             'View Reviews',
-                            style: TextStyle(color: LightColor.midnightBlue),
+                            style: TextStyle(color: LightColor.midnightBlue, fontFamily: "Roboto"),
                           )),
                     ),
 
@@ -1602,6 +1606,7 @@ class _ListDetailsState extends State<ListDetails> {
                         :    Text('Available Variants',
                             style: TextStyle(
                                 fontSize: 15,
+                                fontFamily: "Roboto",
                                 fontWeight: FontWeight.bold,
                                 color: LightColor.midnightBlue)),
                         _selectedVariant != null
@@ -1611,6 +1616,7 @@ class _ListDetailsState extends State<ListDetails> {
                                 style: TextStyle(
                                     color: LightColor.midnightBlue,
                                     fontSize: 16,
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.bold),
                               )
                             : SizedBox(),
@@ -1638,7 +1644,7 @@ class _ListDetailsState extends State<ListDetails> {
                               color: Colors.white),
                           child: Text(
                             quantityOfVariant.toString(),
-                            style: TextStyle(color: Colors.black, fontSize: 16),
+                            style: TextStyle(color: Colors.black, fontSize: 16, fontFamily: "Roboto"),
                           ),
                         ),
                         IconButton(onPressed: (){
@@ -1653,14 +1659,14 @@ class _ListDetailsState extends State<ListDetails> {
                     _selectedVariant != null
                         ? Text(
                             'Item Code - ${productVariants[_selectedVariant].id}',
-                            style: TextStyle(color: LightColor.midnightBlue),
+                            style: TextStyle(color: LightColor.midnightBlue, fontFamily: "Roboto"),
                           )
                         : SizedBox(),
 
                     _selectedVariant != null
                         ? Text(
                             'Type of Packing - ${productVariants[_selectedVariant].itempack}',
-                            style: TextStyle(color: LightColor.midnightBlue),
+                            style: TextStyle(color: LightColor.midnightBlue, fontFamily: "Roboto"),
                           )
                         : SizedBox(),
 
@@ -1669,6 +1675,7 @@ class _ListDetailsState extends State<ListDetails> {
                       'Manufacture - ${widget.todo.manufactureshortname}',
                       style: TextStyle(
                         fontSize: 14,
+                        fontFamily: "Roboto",
                         color: LightColor.midnightBlue,
                       ),
                       textAlign: TextAlign.start,
@@ -1680,12 +1687,14 @@ class _ListDetailsState extends State<ListDetails> {
                                 'Stock Status - Out Of Stock',
                                 style: TextStyle(
                                     color: Colors.red,
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.bold),
                               )
                             : Text(
                                 'Stock Status - ${productVariants[_selectedVariant].stock}',
                                 style: TextStyle(
                                     color: Colors.green,
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.bold),
                               )
                         : SizedBox(),
@@ -1696,13 +1705,14 @@ class _ListDetailsState extends State<ListDetails> {
                         style: TextStyle(
                             fontSize: 15,
                             color: LightColor.midnightBlue,
+                            fontFamily: "Roboto",
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 10),
                       Text(
                         widget.todo.description,
                         style: TextStyle(
-                            fontSize: 14, color: Colors.grey),
+                            fontSize: 14, fontFamily: "Roboto", color: Colors.grey),
                         //overflow: TextOverflow.ellipsis, maxLines: 2,
                       ),
                       SizedBox(height: 10),
@@ -1710,6 +1720,7 @@ class _ListDetailsState extends State<ListDetails> {
                         'Additional Description',
                         style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             color: LightColor.midnightBlue,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1719,7 +1730,7 @@ class _ListDetailsState extends State<ListDetails> {
                         child: Text(
                           widget.todo.additionalinformation,
                           style: TextStyle(
-                              fontSize: 14, color: Colors.grey),
+                              fontSize: 14, color: Colors.grey, fontFamily: "Roboto"),
                           
                         ),
                       ),
@@ -1728,6 +1739,7 @@ class _ListDetailsState extends State<ListDetails> {
                         'Related Products',
                         style: TextStyle(
                             fontSize: 15,
+                            fontFamily: "Roboto",
                             color: LightColor.midnightBlue,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1756,6 +1768,7 @@ class _ListDetailsState extends State<ListDetails> {
                 'Prescription Required',
                 style: TextStyle(
                     fontSize: 13.0,
+                    fontFamily: "Roboto",
                     fontWeight: FontWeight.bold,
                     color: LightColor.midnightBlue),
               )
@@ -1764,6 +1777,7 @@ class _ListDetailsState extends State<ListDetails> {
                 style: TextStyle(
                     fontSize: 13.0,
                     fontWeight: FontWeight.bold,
+                    fontFamily: "Roboto",
                     color: LightColor.midnightBlue),
               ),
         backgroundColor: LightColor.yellowColor,
@@ -1814,7 +1828,7 @@ class _ListDetailsState extends State<ListDetails> {
         ),
         itemBuilder: (BuildContext context, int index) {
           return ChoiceChip(
-            label:  index != _selectedVariant ? Text(productVariants[index]?.itempack ?? "",style: TextStyle(color: Colors.black),):Text(productVariants[index]?.itempack ?? "",style: TextStyle(color: Colors.white),),
+            label:  index != _selectedVariant ? Text(productVariants[index]?.itempack ?? "",style: TextStyle(color: Colors.black, fontFamily: "Roboto"),):Text(productVariants[index]?.itempack ?? "",style: TextStyle(color: Colors.white, fontFamily: "Roboto"),),
             selected: _selectedVariant == index,
             selectedColor: Colors.black,
             onSelected: (bool selected) {
@@ -1824,7 +1838,7 @@ class _ListDetailsState extends State<ListDetails> {
               });
             },
             backgroundColor: index != _selectedVariant ? Colors.grey[200] :LightColor.midnightBlue,
-            labelStyle:   TextStyle(color: Colors.white),
+            labelStyle:   TextStyle(color: Colors.white, fontFamily: "Roboto"),
           );
         },
       ),

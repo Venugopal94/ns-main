@@ -155,7 +155,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
           Container(
             child: Text(
               "First Name",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
             ),
           ),
           SizedBox(
@@ -163,13 +163,14 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
           ),
           Text(
             "Last Name",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
           ),
         ]),
         Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
           Container(
             width: 175.0,
             child: TextField(
+              style: TextStyle(fontFamily: "Roboto"),
               controller: fnameController,
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -183,6 +184,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
           Container(
             width: 180.0,
             child: TextField(
+              style: TextStyle(fontFamily: "Roboto"),
               controller: lnameController,
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -202,7 +204,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
           ),*/
               Text(
                 "Building No",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
               ),
               SizedBox(
                   // width: 44,
@@ -212,7 +214,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                   ),
               Text(
                 "Street",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
               ),
             ]),
         Row(
@@ -221,6 +223,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
               Container(
                 width: 100.0,
                 child: TextField(
+                  style: TextStyle(fontFamily: "Roboto"),
                   controller: buildingController,
                   decoration: InputDecoration(
                       border: InputBorder.none,
@@ -274,7 +277,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                   itemBuilder: (context, ZoneArea suggestion) {
                     final user = suggestion;
                     return ListTile(
-                      title: Text(user.zone + "-" + user.area),
+                      title: Text(user.zone + "-" + user.area,  style: TextStyle(fontFamily: "Roboto")),
                     );
                   },
                   onSuggestionSelected: (ZoneArea suggestion) {
@@ -290,6 +293,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
               Container(
                   width: 100.0,
                   child: TextField(
+                    style: TextStyle(fontFamily: "Roboto"),
                     controller: streetController,
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -310,7 +314,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Text("Add New Address"),
+      appBar: AppBar(title: Text("Add New Address", style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -341,7 +345,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                             child: Text(
                               "First Name",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                           SizedBox(
@@ -352,7 +356,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                             child: Text(
                               "Last Name",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                         ]),
@@ -362,6 +366,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                           Container(
                             width: width / 2.3,
                             child: TextField(
+                              style: TextStyle(fontFamily: "Roboto"),
                               controller: fnameController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -375,6 +380,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                           Container(
                             width: width / 2.3,
                             child: TextField(
+                              style: TextStyle(fontFamily: "Roboto"),
                               controller: lnameController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -396,12 +402,13 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                             child: Text(
                               "Building No",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                         ]),
 
                     TextField(
+                      style: TextStyle(fontFamily: "Roboto"),
                       controller: buildingController,
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -422,7 +429,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                             child: Text(
                               "Zone/Area",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                         ]),
@@ -465,12 +472,13 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                             child: Text(
                               "Street",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
                             ),
                           ),
                         ]),
 
                     TextField(
+                      style: TextStyle(fontFamily: "Roboto"),
                       controller: streetController,
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -502,7 +510,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
 
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto")),
       backgroundColor: LightColor.midnightBlue,
     ));
   }
@@ -550,7 +558,7 @@ class Button extends StatelessWidget {
               style: TextStyle(
                   fontSize: 20,
                   color: midnightBlue,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold, fontFamily: "Roboto"),
             ),
           ),
         ));

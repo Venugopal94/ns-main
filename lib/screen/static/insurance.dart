@@ -52,7 +52,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Insurance"),
+        title: Text("Insurance", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -114,6 +114,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
                                                       'Pre Approval: ${data1[index].preappLink}',
                                                       style: new TextStyle(
                                                           fontSize: 12.0,
+                                                          fontFamily: "Roboto",
                                                           color: AppColors
                                                               .whiteColor)),
                                                 )
@@ -141,6 +142,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
                                                     child: new Text(
                                                         ' Pre Approval: Login',
                                                         style: new TextStyle(
+                                                            fontFamily: "Roboto",
                                                             fontSize: 12.0,
                                                             color: AppColors
                                                                 .whiteColor)),
@@ -159,6 +161,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text('${data1[index].title}',
                                                 style: TextStyle(
+                                                    fontFamily: "Roboto",
                                                     fontSize: 18.0,
                                                     fontWeight:
                                                         FontWeight.bold)),
@@ -175,7 +178,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
                                                       'Documents Required - (Originals Only)\n',
                                                   style: new TextStyle(
                                                       fontWeight:
-                                                          FontWeight.bold)),
+                                                          FontWeight.bold, fontFamily: "Roboto",)),
                                               new TextSpan(
                                                   text:
                                                       'Original Prescription \nValid Insurance Card\nDoctors Claim Form\nQatar ID'),
@@ -199,7 +202,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
                 ),
               );
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+              return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
             }
             return Center(
                 child: Center(

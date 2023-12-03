@@ -86,7 +86,7 @@ class _introState extends State<intro> {
                 style: TextButton.styleFrom(foregroundColor: Colors.blue[50]),
                 child: Text(
                   "SKIP",
-                  style: TextStyle(color: LightColor.midnightBlue, fontWeight: FontWeight.w700),
+                  style: TextStyle(color: LightColor.midnightBlue, fontWeight: FontWeight.w700, fontFamily: "Roboto"),
                 ),
               ),
               Container(
@@ -103,7 +103,7 @@ class _introState extends State<intro> {
                 style: TextButton.styleFrom(foregroundColor: LightColor.yellowColor),
                 child: Text(
                   "NEXT",
-                  style: TextStyle(color: LightColor.midnightBlue, fontWeight: FontWeight.w700),
+                  style: TextStyle(color: LightColor.midnightBlue, fontWeight: FontWeight.w700, fontFamily: "Roboto"),
                 ),
               ),
             ],
@@ -120,7 +120,7 @@ class _introState extends State<intro> {
             alignment: Alignment.center,
             child: Text(
               "GET STARTED NOW",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontFamily: "Roboto"),
             ),
           ),
         ),
@@ -156,6 +156,7 @@ class SlideTile extends StatelessWidget {
           ),
           Text(title, textAlign: TextAlign.center, style: TextStyle(
               fontWeight: FontWeight.w700,
+              fontFamily: "Roboto",
               fontSize: 25
           ),),
           SizedBox(
@@ -163,7 +164,7 @@ class SlideTile extends StatelessWidget {
           ),
           Text(desc, textAlign: TextAlign.center, style: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: 14))
+              fontSize: 14, fontFamily: "Roboto"))
   ])))
           else
         (
@@ -178,6 +179,7 @@ class SlideTile extends StatelessWidget {
                       ),
                       Text(title, textAlign: TextAlign.center, style: TextStyle(
                           fontWeight: FontWeight.w700,
+                          fontFamily: "Roboto",
                           fontSize: 25
                       ),),
                       SizedBox(
@@ -185,7 +187,7 @@ class SlideTile extends StatelessWidget {
                       ),
                       Text(desc, textAlign: TextAlign.center, style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 14))
+                          fontSize: 14, fontFamily: "Roboto"))
                     ]))
         )
         ],

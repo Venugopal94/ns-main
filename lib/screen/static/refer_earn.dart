@@ -33,7 +33,7 @@ class _referearnState extends State<referearn> {
     return Scaffold(
 
         appBar: AppBar(
-          title: Text('Refer & Earn'),
+          title: Text('Refer & Earn', style: TextStyle(fontFamily: "Roboto",)),
           backgroundColor: LightColor.yellowColor,
           foregroundColor: LightColor.midnightBlue,
         ),

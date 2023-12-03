@@ -92,7 +92,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new Image.asset("assets/Drawer/allcategories.png",
                   width: 20.0, color: AppDrawer_without.midnightBlue),
               title: Text('Home',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -104,7 +104,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new  Icon(Icons.login,
                   size: 25.0, color: AppDrawer_without.midnightBlue),
               title: Text('Login',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => LoginScreen()));
@@ -115,7 +115,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new  Icon(Icons.login,
               size: 25.0, color: AppDrawer_without.midnightBlue),
               title: Text('Registration',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => RegistrationScreen()));
@@ -131,7 +131,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
                   width: 20.0, color: AppDrawer_without.midnightBlue),
 
               title: Text('Advertise',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Advertise_Screen()));
@@ -144,7 +144,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new Image.asset("assets/Drawer/delivery.png",
                   width: 20.0, color: AppDrawer_without.midnightBlue),
               title: Text('Locate Us',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => All_branch()));
@@ -156,7 +156,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new Image.asset("assets/Drawer/aboutus.png",
                   width: 20.0, color: AppDrawer_without.midnightBlue),
               title: Text('About Us',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => About_Us_Screen()));
@@ -168,7 +168,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new Image.asset("assets/Drawer/contactus.png",
                   width: 20.0, color: AppDrawer_without.midnightBlue),
               title: Text('Contact Us',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Contact_Us()));
@@ -180,7 +180,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new Image.asset("assets/Drawer/terms.png",
                   width: 20.0, color: AppDrawer_without.midnightBlue),
               title: Text('Terms & Condition',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => TermsScreen()));
@@ -192,7 +192,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new Image.asset("assets/Drawer/privacy.png",
                   width: 20.0, color: AppDrawer_without.midnightBlue),
               title: Text('Privacy Policy',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => PolicyScreen()));
@@ -204,7 +204,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new  Icon(Icons.note,
                   size: 25.0, color: AppDrawer_without.midnightBlue),
               title: Text('Delivery Information',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => DeliveryInfoScreen()));
@@ -216,7 +216,7 @@ class _AppDrawerState extends State<AppDrawer_without> {
               leading: new  Icon(Icons.refresh_sharp,
                   size: 25.0, color: AppDrawer_without.midnightBlue),
               title: Text('Refund & Replacement',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => RefundScreen()));

@@ -47,7 +47,7 @@ class _About_UsScreen extends State<Warehouse> {
     return Scaffold(
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text("Warehouse"),
+        title: Text("Warehouse", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),

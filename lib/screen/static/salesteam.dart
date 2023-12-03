@@ -19,7 +19,7 @@ class _All_branchState extends State<Salesteam> {
     return Scaffold(
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text(" Sales Team "),
+        title: Text(" Sales Team ", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -75,7 +75,7 @@ class _AllBranchState extends State<AllBranch> {
             List<allbranch> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
           }
           return CircularProgressIndicator();
         },
@@ -147,6 +147,7 @@ Grid(context, data) {
                                 data[index].name,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
+                                    fontFamily: "Roboto",
                                     fontSize: 17.0),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
@@ -161,6 +162,7 @@ Grid(context, data) {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 15.0,
+                                    fontFamily: "Roboto",
                                     color: LightColor.grey),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -174,6 +176,7 @@ Grid(context, data) {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 15.0,
+                                    fontFamily: "Roboto",
                                     color: LightColor.grey),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -186,6 +189,7 @@ Grid(context, data) {
                                 data[index].post,
                                 style: TextStyle(
                                   fontSize: 14,
+                                  fontFamily: "Roboto",
                                 ),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 6,

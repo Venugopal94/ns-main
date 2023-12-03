@@ -63,7 +63,7 @@ class _BranchDetailsState extends State<BranchDetails> {
       key: _scaffoldKey,
        //backgroundColor: LightColor.yellowColor,
       appBar: AppBar(
-        title: Text(widget.todo.branchecommercename ?? ""),
+        title: Text(widget.todo.branchecommercename ?? "", style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -111,6 +111,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                           widget.todo.branchecommercename ?? "",
                           style: TextStyle(
                               fontSize: 24,
+                              fontFamily: "Roboto",
                               color: LightColor.midnightBlue,
                               fontWeight: FontWeight.bold),
                         ),
@@ -123,7 +124,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                         child: Text(
                           widget.todo.email ?? "",
                           style: TextStyle(
-                              fontSize: 14, color: LightColor.midnightBlue),
+                              fontSize: 14, color: LightColor.midnightBlue, fontFamily: "Roboto",),
                         ),
                       ),
                       SizedBox(height: 10),
@@ -133,7 +134,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                         padding: EdgeInsets.only(left: 15, right: 15),
                         child: Text(
                           widget.todo.shortdescription ?? "",
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                          style: TextStyle(fontSize: 14, color: Colors.grey, fontFamily: "Roboto",),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 4,
                         ),
@@ -163,7 +164,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                                           "Address",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 20.0),
+                                              fontSize: 20.0, fontFamily: "Roboto",),
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
@@ -177,13 +178,13 @@ class _BranchDetailsState extends State<BranchDetails> {
                                       "\Bldg No - ${widget.todo.buildingno},",
                                       style: TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                     ),
                                     Text(
                                       "\  Street No - ${widget.todo.street},",
                                       style: TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                     ),
                                   ]),
                                   SizedBox(
@@ -194,7 +195,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                                       "${widget.todo.streetname} ",
                                       style: TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 2,
                                     ),
@@ -202,13 +203,13 @@ class _BranchDetailsState extends State<BranchDetails> {
                                       widget.todo.city ?? "",
                                       style: TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                     ),
                                     Text(
                                       " ${widget.todo.country},",
                                       style: TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                     ),
                                   ]),
                                   SizedBox(
@@ -242,7 +243,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                                           " Contact",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 20.0),
+                                              fontSize: 20.0, fontFamily: "Roboto",),
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
@@ -255,19 +256,19 @@ class _BranchDetailsState extends State<BranchDetails> {
                                     "Tel.: "+ widget.todo.tel!,
                                     style: TextStyle(
                                         fontSize: 14,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                   ),
                                   Text(
                                     "Whatsapp:"+ widget.todo.whatsapp!,
                                     style: TextStyle(
                                         fontSize: 14,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                   ),
                                   Text(
                                     "Email: " + widget.todo.email!,
                                     style: TextStyle(
                                         fontSize: 14,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                   ),
                                   SizedBox(
                                     height: 5.0,
@@ -304,7 +305,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                                           " Opening Hours",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 20.0),
+                                              fontSize: 20.0, fontFamily: "Roboto",),
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
@@ -317,7 +318,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                                     widget.todo.openinghours ?? "",
                                     style: TextStyle(
                                         fontSize: 14,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                   ),
                                   SizedBox(
                                     height: 15.0,
@@ -362,7 +363,7 @@ class _BranchDetailsState extends State<BranchDetails> {
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                                      color: Colors.white, fontFamily: "Roboto",),
                                 ),
                               ),
                             )
@@ -384,7 +385,7 @@ class _BranchDetailsState extends State<BranchDetails> {
 
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context)..showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto",),),
       backgroundColor: LightColor.midnightBlue,
     ));
   }

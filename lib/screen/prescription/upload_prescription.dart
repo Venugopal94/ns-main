@@ -238,7 +238,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
       key: _scaffoldKey,
       // backgroundColor: LightColor.yellowColor,
       appBar: AppBar(
-        title: Text("Upload Prescription"),
+        title: Text("Upload Prescription", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
         // backgroundColor: LightColor.midnightBlue,
@@ -256,6 +256,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                   style: TextStyle(
                       fontSize: 24,
                       color: LightColor.midnightBlue,
+                      fontFamily: "Roboto",
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -266,7 +267,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                 child: Text(
                   "Want to check your previous prescriptions?",
                   style:
-                  TextStyle(fontSize: 14, color: LightColor.midnightBlue),
+                  TextStyle(fontSize: 14, color: LightColor.midnightBlue, fontFamily: "Roboto",),
                 ),
               ),
             ),
@@ -283,7 +284,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       style: TextStyle(
                           fontSize: 14,
                           color: LightColor.midnightBlue,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                     ),
                   ),
                 )),
@@ -312,7 +313,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       Text(
                         "Patient Name",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                       ),
                     ])),
             Padding(
@@ -326,6 +327,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         width: width / 1.1,
                         child: TextField(
                           controller: fnameController,
+                            style: TextStyle(fontFamily: "Roboto",),
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               fillColor: Color(0xfff3f3f4),
@@ -346,7 +348,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       Text(
                         "Mobile No",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                       ),
                     ])),
             Padding(
@@ -359,6 +361,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       Container(
                         width: width / 5.5,
                         child: TextField(
+                          style: TextStyle(fontFamily: "Roboto",),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               hintText: '+974',
@@ -373,6 +376,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       Container(
                         width: width / 1.45,
                         child: TextField(
+                          style: TextStyle(fontFamily: "Roboto",),
                           controller: mobileController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -392,7 +396,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       Text(
                         "Zone Name or Number ",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                       ),
                     ])),
             Padding(
@@ -441,7 +445,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       Text(
                         "Upload Prescriptions ",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                       ),
                     ])),
             Container(
@@ -451,8 +455,8 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               margin: EdgeInsets.all(10),
               //show file name here
               child: _image == null
-                  ? Text("Choose File")
-                  : Text(basename(_image?.path ?? "")),
+                  ? Text("Choose File", style: TextStyle(fontFamily: "Roboto",))
+                  : Text(basename(_image?.path ?? ""), style: TextStyle(fontFamily: "Roboto",)),
               //basename is from path package, to get filename from path
               //check if file is selected, if yes then show file name
             ),
@@ -473,7 +477,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                     onPressed: () => showDialog<String>(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Choose Prescription'),
+                        title: const Text('Choose Prescription', style: TextStyle(fontFamily: "Roboto",)),
                         actions: <Widget>[
 
                           SizedBox(width: 30,),
@@ -498,7 +502,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       ),
                     ),
                     icon: Icon(Icons.folder_open),
-                    label: Text("CHOOSE FILE"),
+                    label: Text("CHOOSE FILE", style: TextStyle(fontFamily: "Roboto",)),
                     // color: LightColor.midnightBlue,
                     // colorBrightness: Brightness.dark,
                   )),
@@ -514,7 +518,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                     // uploadFile();
                   },
                   icon: Icon(Icons.folder_open),
-                  label: Text("UPLOAD FILE"),
+                  label: Text("UPLOAD FILE", style: TextStyle(fontFamily: "Roboto",)),
                   // color: Colors.redAccent,
                   // colorBrightness: Brightness.dark,
                 )),
@@ -530,7 +534,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       Text(
                         "Comments (optional) ",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                       ),
                     ])),
             Padding(
@@ -545,6 +549,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         child: TextField(
                           maxLines: 5,
                           maxLength: 1000,
+                          style: TextStyle(fontFamily: "Roboto",),
                           controller: commentController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -577,6 +582,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                           style: TextStyle(
                               color: LightColor.midnightBlue,
                               fontWeight: FontWeight.bold,
+                              fontFamily: "Roboto",
                               fontSize: 15)),
                     ])),
             SizedBox(height: 10),
@@ -593,6 +599,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                           child: Text(
                             "Insurance Details",
                             style: TextStyle(
+                                fontFamily: "Roboto",
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                                 color: LightColor.midnightBlue),
@@ -605,6 +612,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         Text(
                           "Company Name ",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                         SizedBox(
@@ -613,6 +621,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         Container(
                           width: width / 1.1,
                           child: TextField(
+                            style: TextStyle(fontFamily: "Roboto",),
                             controller: companyController,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -626,7 +635,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                              Text('Insurance Card'),
+                              Text('Insurance Card', style: TextStyle(fontFamily: "Roboto",)),
                               SizedBox(
                                 width: 10,
                               ),
@@ -642,8 +651,8 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                           margin: EdgeInsets.all(10),
                           //show file name here
                           child: _image1 == null
-                              ? Text("Choose File")
-                              : Text(basename(_image1?.path ?? "")),
+                              ? Text("Choose File", style: TextStyle(fontFamily: "Roboto",))
+                              : Text(basename(_image1?.path ?? ""), style: TextStyle(fontFamily: "Roboto",)),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(),
@@ -655,7 +664,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                                   context: context,
                                   builder: (BuildContext context) =>
                                       AlertDialog(
-                                        title: const Text('Choose Insurance Card'),
+                                        title: const Text('Choose Insurance Card', style: TextStyle(fontFamily: "Roboto",)),
                                         actions: <Widget>[
                                           SizedBox(width: 30,),
                                           TextButton(
@@ -678,7 +687,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                                       ),
                                 ),
                                 icon: Icon(Icons.folder_open),
-                                label: Text("CHOOSE FILE"),
+                                label: Text("CHOOSE FILE", style: TextStyle(fontFamily: "Roboto",)),
                                 // color: LightColor.midnightBlue,
                                 // colorBrightness: Brightness.dark,
                               )),
@@ -689,7 +698,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                              Text('Claim File'),
+                              Text('Claim File', style: TextStyle(fontFamily: "Roboto",)),
                               SizedBox(
                                 width: 10,
                               ),
@@ -704,8 +713,8 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                           margin: EdgeInsets.all(10),
                           //show file name here
                           child: _image2 == null
-                              ? Text("Choose File")
-                              : Text(basename(_image2?.path ?? "")),
+                              ? Text("Choose File", style: TextStyle(fontFamily: "Roboto",))
+                              : Text(basename(_image2?.path ?? ""), style: TextStyle(fontFamily: "Roboto",)),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(),
@@ -717,7 +726,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                                   context: context,
                                   builder: (BuildContext context) =>
                                       AlertDialog(
-                                        title: const Text('Choose Claim File'),
+                                        title: const Text('Choose Claim File', style: TextStyle(fontFamily: "Roboto",)),
                                         actions: <Widget>[
                                           SizedBox(width: 30,),
                                           TextButton(
@@ -751,7 +760,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                              Text('Qatar Id'),
+                              Text('Qatar Id', style: TextStyle(fontFamily: "Roboto",)),
                             ]),
                         SizedBox(
                           height: 5,
@@ -763,8 +772,8 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                           margin: EdgeInsets.all(10),
                           //show file name here
                           child: _image3 == null
-                              ? Text("Choose File")
-                              : Text(basename(_image3?.path ?? "")),
+                              ? Text("Choose File", style: TextStyle(fontFamily: "Roboto",))
+                              : Text(basename(_image3?.path ?? ""), style: TextStyle(fontFamily: "Roboto",)),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(),
@@ -776,7 +785,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                                   context: context,
                                   builder: (BuildContext context) =>
                                       AlertDialog(
-                                        title: const Text('Choose Qatar Id'),
+                                        title: const Text('Choose Qatar Id', style: TextStyle(fontFamily: "Roboto",)),
                                         actions: <Widget>[
                                           SizedBox(width: 30,),
                                           TextButton(
@@ -799,7 +808,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                                       ),
                                 ),
                                 icon: Icon(Icons.folder_open),
-                                label: Text("CHOOSE FILE"),
+                                label: Text("CHOOSE FILE", style: TextStyle(fontFamily: "Roboto",)),
                                 style: TextButton.styleFrom(foregroundColor: LightColor.midnightBlue),
                               )),
                         ),
@@ -823,6 +832,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                 'Your attached prescription will be secure and private.\n Only our pharmacist wil review it.',
                 style: TextStyle(
                   fontSize: 12,
+                  fontFamily: "Roboto",
                 ),
               ),
             ]),
@@ -850,7 +860,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(
                   "Valid Prescription Guide",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
                 ),
               ),
             ),
@@ -861,7 +871,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               ),
               child: Text(
                 "Instructions for uploads",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto",),
               ),
             ),
             SizedBox(
@@ -873,7 +883,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               ),
               child: Text(
                 "• Only JPEG/JPG, PDF file types are allowed. ",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontFamily: "Roboto",),
               ),
             ),
             Padding(
@@ -882,7 +892,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               ),
               child: Text(
                 "• Ensure that the picture or scan is such that the entire prescription is visible (including the doctor/clinic's letterhead).",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontFamily: "Roboto",),
               ),
             ),
             Padding(
@@ -891,7 +901,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               ),
               child: Text(
                 "• Ensure that the picture is taken in a way that the handwriting/type is visible clearly.",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontFamily: "Roboto",),
               ),
             ),
             Padding(
@@ -900,7 +910,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               ),
               child: Text(
                 "• The total size of all uploaded files should not exceed 5 MB.",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontFamily: "Roboto",),
               ),
             ),
             Padding(
@@ -909,7 +919,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               ),
               child: Text(
                 "• Ensure that the prescription is valid. You family member or a caregiver can place order for prescription medicines on your behalf.",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontFamily: "Roboto",),
               ),
             ),
             Padding(
@@ -918,7 +928,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
               ),
               child: Text(
                 "• Please be sure to also upload the back-side image of your prescription, if present. ",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, fontFamily: "Roboto",),
               ),
             ),
             Padding(
@@ -936,6 +946,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                       Text("I hearby agree and accept ",
                           style: TextStyle(
                             color: LightColor.midnightBlue,
+                            fontFamily: "Roboto",
                             fontSize: 15,
                           )),
                       InkWell(
@@ -947,6 +958,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                         },
                         child: Text(" Privacy Policy ",
                             style: TextStyle(
+                                fontFamily: "Roboto",
                                 color: LightColor.midnightBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold)),
@@ -970,6 +982,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
                   child: Text("Upload",
                       style: TextStyle(
                           color: Colors.white,
+                          fontFamily: "Roboto",
                           fontSize: 18.0),),
                 ),
               ),
@@ -983,7 +996,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
 
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context as BuildContext).showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto",)),
       backgroundColor: LightColor.midnightBlue,
     ));
   }

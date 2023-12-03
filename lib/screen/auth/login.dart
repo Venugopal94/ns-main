@@ -55,9 +55,9 @@ class _LoginPageState extends State<LoginScreen> {
   addStringTocart(cart_total) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String total=cart_total;
+    int total= cart_total;
     // prefs.setString('email', email,);
-    prefs.setString('cart_total', total,);
+    prefs.setInt('cart_total', total);
     //  print(user_id);
   }
  // AnimationController _controller;
@@ -215,7 +215,7 @@ class _LoginPageState extends State<LoginScreen> {
               ),
             ),
           ),
-          Text('or'),
+          Text('or', style: TextStyle(fontFamily: "Roboto")),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -261,7 +261,7 @@ class _LoginPageState extends State<LoginScreen> {
           children: <Widget>[
             Text(
               'Don\'t have an account ?',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, fontFamily: "Roboto"),
             ),
             SizedBox(
               width: 10,
@@ -271,7 +271,7 @@ class _LoginPageState extends State<LoginScreen> {
               style: TextStyle(
                   color: Color(0xfff79c4f),
                   fontSize: 13,
-                  fontWeight: FontWeight.w600),
+                  fontWeight: FontWeight.w600, fontFamily: "Roboto"),
             ),
           ],
         ),
@@ -296,10 +296,11 @@ class _LoginPageState extends State<LoginScreen> {
 
         Text(
           "Email Id",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
         ),
         TextField(
           controller: emailController,
+          style: TextStyle(fontFamily: "Roboto"),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
 
@@ -312,9 +313,10 @@ class _LoginPageState extends State<LoginScreen> {
         ),
         Text(
           "Password",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
         ),
         TextField(
+            style: TextStyle(fontFamily: "Roboto"),
             obscureText: true,
             controller: passwordController,
             decoration: InputDecoration(
@@ -399,7 +401,7 @@ class _LoginPageState extends State<LoginScreen> {
                       child: InkWell(
                         child: Text(
                           'Login',
-                          style: TextStyle(fontSize: 20, color:blue,fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 20, color:blue,fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                         ),
 
 
@@ -441,7 +443,7 @@ class _LoginPageState extends State<LoginScreen> {
                           alignment: Alignment.centerRight,
                           child: Text('Forgot Password ?',
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w500)),
+                                  fontSize: 14, fontWeight: FontWeight.w500, fontFamily: "Roboto")),
                         ),
                       ),
 
@@ -480,7 +482,7 @@ class _LoginPageState extends State<LoginScreen> {
                           alignment: Alignment.centerRight,
                           child: Text('Skip',
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold,color: LightColor.midnightBlue)),
+                                  fontSize: 14, fontWeight: FontWeight.bold,color: LightColor.midnightBlue, fontFamily: "Roboto")),
                         ),
                       )
                 //),
@@ -494,7 +496,7 @@ class _LoginPageState extends State<LoginScreen> {
         ));
   }
   void showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value,  style: TextStyle(fontFamily: "Roboto")),backgroundColor:LightColor.midnightBlue ,));
   }
 }
 
@@ -537,7 +539,7 @@ class ButtonWid extends StatelessWidget {
           child: InkWell(
             child: Text(
               'Login',
-              style: TextStyle(fontSize: 20, color:blue,fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, color:blue,fontWeight: FontWeight.bold, fontFamily: "Roboto"),
             ),
 
 

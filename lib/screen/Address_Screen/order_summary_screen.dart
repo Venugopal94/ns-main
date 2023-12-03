@@ -142,7 +142,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     return ScopedModelDescendant<CartModel>(builder: (context,child,  model){
       return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Text("Order Summary"),
+      appBar: AppBar(title: Text("Order Summary", style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -172,6 +172,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     "\ Payment Details",
                                     style: TextStyle(
                                       fontSize: 15,
+                                        fontFamily: "Roboto"
                                     ),
                                   ),
                                   SizedBox(
@@ -185,6 +186,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                           "\ Delivery Charge",
                                           style: TextStyle(
                                               fontSize: 14,
+                                              fontFamily: "Roboto",
                                               fontWeight: FontWeight.bold),
                                         ),
                                         widget.total <
@@ -193,6 +195,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                 "QR ${(int.parse(shippment?.first?.lessthanshippingamt ?? "") + int.parse(shippment.first.shipping_charges))}",
                                                 style: TextStyle(
                                                     fontSize: 14,
+                                                    fontFamily: "Roboto",
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )
@@ -200,6 +203,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                 "QR ${int.parse(shippment.first.shipping_charges)}",
                                                 style: TextStyle(
                                                     fontSize: 14,
+                                                    fontFamily: "Roboto",
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
@@ -215,6 +219,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                           "\ Total Amount",
                                           style: TextStyle(
                                               fontSize: 14,
+                                              fontFamily: "Roboto",
                                               fontWeight: FontWeight.bold),
                                         ),
                                         widget.total <
@@ -223,6 +228,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                 "QR ${int.parse(shippment[0].lessthanshippingamt) + widget.total + int.parse(shippment[0].shipping_charges)}",
                                                 style: TextStyle(
                                                     fontSize: 14,
+                                                    fontFamily: "Roboto",
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )
@@ -230,6 +236,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                 "QR ${int.parse(shippment[0].shipping_charges) + widget.total}",
                                                 style: TextStyle(
                                                     fontSize: 14,
+                                                    fontFamily: "Roboto",
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
@@ -265,6 +272,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     widget.addid.title,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: "Roboto",
                                         fontSize: 15.0),
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -278,19 +286,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               Text(
                                 "\Bldg No - ${widget.addid.building},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                               ),
                               Text(
                                 "\  Street No - ${widget.addid.street},",
                                 style: TextStyle(
 
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                               ),
                               Text(
                                 "\  Area  -${widget.addid.area}",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -301,7 +310,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             Text(
                               widget.addid.country,
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                             ),
                           ],
                         ),
@@ -322,7 +331,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       style: TextStyle(
                           fontSize: 18,
                           color: LightColor.midnightBlue,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                     ),
                     // subtitle: Text("Cash / Card On Delivery"),
                     onChanged: (int? val) {
@@ -339,7 +348,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       style: TextStyle(
                           fontSize: 18,
                           color: LightColor.midnightBlue,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                     ),
                     // subtitle: Text("Radio 2 Subtitle"),
                     onChanged: (int? val) {
@@ -358,6 +367,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       style: TextStyle(
                           fontSize: 18,
                           color: LightColor.midnightBlue,
+                          fontFamily: "Roboto",
                           fontWeight: FontWeight.bold),
                     ),
                     // subtitle: Text("Radio 2 Subtitle"),
@@ -449,6 +459,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               style: TextStyle(
                   fontSize: 18,
                   color: LightColor.midnightBlue,
+                  fontFamily: "Roboto",
                   fontWeight: FontWeight.bold),
             )),
           )),
@@ -458,7 +469,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text(value),
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto")),
       backgroundColor: LightColor.midnightBlue,
     ));
   }
@@ -531,6 +542,7 @@ class _Summary_CartState extends State<Summary_Cart> {
                     // softWrap: true,
                     style: TextStyle(
                         fontSize: 12,
+                        fontFamily: "Roboto",
                         fontWeight: FontWeight.w400,
                         color: LightColor.midnightBlue),
                     overflow: TextOverflow.ellipsis, maxLines: 4,
@@ -554,6 +566,7 @@ class _Summary_CartState extends State<Summary_Cart> {
                     // softWrap: true,
                     style: TextStyle(
                         fontSize: 13,
+                        fontFamily: "Roboto",
                         fontWeight: FontWeight.bold,
                         color: LightColor.midnightBlue)),
               )),
@@ -566,6 +579,7 @@ class _Summary_CartState extends State<Summary_Cart> {
               '${model.cart[index].quantity * model.cart[index].price}',
               style: TextStyle(
                   fontSize: 14,
+                  fontFamily: "Roboto",
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),

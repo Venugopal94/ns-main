@@ -128,7 +128,7 @@ class _ListItemsState extends State<ListItems> {
               List<ItemGrpData> data = snapshot.data ?? [];
               return Grid(context, data);
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+              return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
             }
             return CircularProgressIndicator();
           },
@@ -220,7 +220,7 @@ Grid(context, data) {
                             child: Text(
                               data[index].itemproductgrouptitle,
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 16.0),
+                                  fontWeight: FontWeight.w600, fontSize: 16.0, fontFamily: "Roboto"),
                               overflow: TextOverflow.ellipsis,
 
                             ),
@@ -232,7 +232,7 @@ Grid(context, data) {
                             child: Text(
                               data[index].itemmaingrouptitle,
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 13.0,color:LightColor.grey),
+                                  fontWeight: FontWeight.w600, fontSize: 13.0,color:LightColor.grey, fontFamily: "Roboto"),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -266,7 +266,7 @@ getprice(max, min) {
       Expanded(
         child: Text(
           "\QR ${max}",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue, fontFamily: "Roboto"),
           overflow: TextOverflow.ellipsis,
         ),
       ),
@@ -275,13 +275,13 @@ getprice(max, min) {
     return Row(children: <Widget>[
       Text(
         "\QR ${max}",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue, fontFamily: "Roboto"),
         overflow: TextOverflow.ellipsis,
       ),
       Text(" - "),
       Text(
         "\QR ${min}",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0,color:LightColor.midnightBlue, fontFamily: "Roboto"),
         overflow: TextOverflow.ellipsis,
       ),
     ]);

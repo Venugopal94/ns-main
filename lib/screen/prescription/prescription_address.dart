@@ -135,6 +135,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
                                         data[index].title,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
+                                            fontFamily: "Roboto",
                                             fontSize: 15.0),
                                         overflow: TextOverflow.ellipsis,
                                       ),
@@ -162,17 +163,17 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
                                   Text(
                                     "\Bldg No - ${data[index].building},",
                                     style: TextStyle(
-                                        fontSize: 14, fontWeight: FontWeight.bold),
+                                        fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                   ),
                                   Text(
                                     "\  Street No - ${data[index].street},",
                                     style: TextStyle(
-                                        fontSize: 14, fontWeight: FontWeight.bold),
+                                        fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                   ),
                                   Text(
                                     "\  Area  -${data[index].area}",
                                     style: TextStyle(
-                                      fontSize: 14, fontWeight: FontWeight.bold,),   overflow: TextOverflow.ellipsis,
+                                      fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),   overflow: TextOverflow.ellipsis,
                                   ),
                                 ]),
                                 SizedBox(
@@ -181,7 +182,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
                                 Text(
                                   data[index].country,
                                   style: TextStyle(
-                                      fontSize: 14, fontWeight: FontWeight.bold),
+                                      fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                 ),
                                 SizedBox(
                                   height: 15.0,
@@ -201,7 +202,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
   Widget build(BuildContext context) {
     final height=MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(title: Text("Select Prescription Address"),
+      appBar: AppBar(title: Text("Select Prescription Address", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -236,6 +237,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
                 'Add Address',
                 style: TextStyle(
                     fontSize: 18,
+                    fontFamily: "Roboto",
                     color: LightColor.midnightBlue,
                     fontWeight: FontWeight.bold),
               ),
@@ -249,7 +251,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
               List<add_data> data = snapshot.data ?? [];
               return imageSlider(context, data);
             } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
+              return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
             }
             return Center(
                 child: CircularProgressIndicator(
@@ -349,7 +351,7 @@ class _Address_dataState extends State<Address_data> {
           List<add_data> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
         }
         return Center(
             child: CircularProgressIndicator(
@@ -421,6 +423,7 @@ class _Address_dataState extends State<Address_data> {
                                   child: Text(
                                     data[index].title,
                                     style: TextStyle(
+                                        fontFamily: "Roboto",
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),
                                     overflow: TextOverflow.ellipsis,
@@ -449,17 +452,17 @@ class _Address_dataState extends State<Address_data> {
                               Text(
                                 "\Bldg No - ${data[index].building},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                               Text(
                                 "\  Street No - ${data[index].street},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                               Text(
                                 "\  Area  -${data[index].area}",
                                 style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold,),   overflow: TextOverflow.ellipsis,
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),   overflow: TextOverflow.ellipsis,
                               ),
                             ]),
                             SizedBox(
@@ -468,7 +471,7 @@ class _Address_dataState extends State<Address_data> {
                             Text(
                               data[index].country,
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                             ),
                             SizedBox(
                               height: 15.0,

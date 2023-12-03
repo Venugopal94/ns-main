@@ -147,7 +147,7 @@ else {
                                     data[index].title,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 15.0),
+                                        fontSize: 15.0, fontFamily: "Roboto"),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -191,17 +191,17 @@ else {
                               Text(
                                 "\Bldg No - ${data[index].building},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                               ),
                               Text(
                                 "\  Street No - ${data[index].street},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                               ),
                               Text(
                                 "\  Area  -${data[index].area}",
                                 style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold,),
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                               ),
                             ]),
                             SizedBox(
@@ -210,7 +210,7 @@ else {
                             Text(
                               data[index].country,
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
                             ),
                             SizedBox(
                               height: 15.0,
@@ -232,7 +232,7 @@ else {
     final width=MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Text("Select Address"),
+      appBar: AppBar(title: Text("Select Address", style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -247,7 +247,7 @@ else {
           List<add_data> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
         }
         return Center(
             child: CircularProgressIndicator(
@@ -273,6 +273,7 @@ else {
                   child: Text("Add Address",
                       style: TextStyle(
                           color: LightColor.midnightBlue,
+                          fontFamily: "Roboto",
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold)),
                 ),
@@ -284,7 +285,7 @@ else {
     );
   }
   void showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value, style: TextStyle(fontFamily: "Roboto")),backgroundColor:LightColor.midnightBlue ,));
   }
 }
 

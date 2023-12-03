@@ -92,7 +92,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
 
 
     return Scaffold(
-      appBar: AppBar(title: Text("Prescription Order Summary"),
+      appBar: AppBar(title: Text("Prescription Order Summary", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
       ),
@@ -129,6 +129,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
                                 title: Text("Cash On Delivery",
                                   style: TextStyle(
                                       fontSize: 18,
+                                      fontFamily: "Roboto",
                                       color: LightColor.midnightBlue,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -146,6 +147,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
                                 title: Text("Card On Delivery",style: TextStyle(
                                     fontSize: 18,
                                     color: LightColor.midnightBlue,
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.bold),),
                                 // subtitle: Text("Radio 2 Subtitle"),
                                 onChanged: (val) {
@@ -162,6 +164,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
                                 title: Text("Online Payment",style: TextStyle(
                                     fontSize: 18,
                                     color: LightColor.midnightBlue,
+                                    fontFamily: "Roboto",
                                     fontWeight: FontWeight.bold),),
                                 // subtitle: Text("Radio 2 Subtitle"),
                                 onChanged: (val) {
@@ -203,6 +206,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
                   "Confirm",
                   style: TextStyle(
                       fontSize: 18,
+                      fontFamily: "Roboto",
                       color: LightColor.midnightBlue,
                       fontWeight: FontWeight.bold),
                 )),
@@ -230,7 +234,7 @@ class _Prescription_order_detailsState extends State<Prescription_order_details>
           return imageSlider(context, data);
 
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
         }
         return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
       },
@@ -288,7 +292,7 @@ imageSlider(context,data) {
                             child: Padding( padding: EdgeInsets.only(left: 10,),
                               child: Text(data[index].itemname_en, textAlign: TextAlign.left,
                                   // softWrap: true,
-                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400,color:LightColor.midnightBlue)),
+                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400,color:LightColor.midnightBlue, fontFamily: "Roboto",)),
 
                             ) ),
 //Divider(),
@@ -297,7 +301,7 @@ imageSlider(context,data) {
                             child: Padding( padding: EdgeInsets.only(left: 15,),
                               child:Text("\QR ${data[index].rs} x ${data[index].quantity}", textAlign: TextAlign.left,
                                   // softWrap: true,
-                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold,color:LightColor.midnightBlue)),
+                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold,color:LightColor.midnightBlue, fontFamily: "Roboto",)),
                             ) ),
 
                         //  SizedBox( width: 120, height:20, child:
@@ -308,6 +312,7 @@ imageSlider(context,data) {
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: "Roboto",
                                 color: LightColor.midnightBlue),
                           ),)
                         // ),
@@ -380,7 +385,7 @@ class _Address_dataState extends State<Address_data> {
           title: new Text(message),
           actions: <Widget>[
             TextButton(
-              child: new Text("OK"),
+              child: new Text("OK", style: TextStyle(fontFamily: "Roboto",)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -407,7 +412,7 @@ class _Address_dataState extends State<Address_data> {
           List<add_data> data = snapshot.data ?? [];
           return imageSlider(context, data);
         } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
         }
         return Center(
             child: CircularProgressIndicator(
@@ -465,6 +470,7 @@ class _Address_dataState extends State<Address_data> {
                                   child: Text(
                                     data[index].title,
                                     style: TextStyle(
+                                        fontFamily: "Roboto",
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),
                                     overflow: TextOverflow.ellipsis,
@@ -493,17 +499,17 @@ class _Address_dataState extends State<Address_data> {
                               Text(
                                 "\Bldg No - ${data[index].building},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                               Text(
                                 "\  Street No - ${data[index].street},",
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                               ),
                               Text(
                                 "\  Area  -${data[index].area}",
                                 style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold,),   overflow: TextOverflow.ellipsis,
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),   overflow: TextOverflow.ellipsis,
                               ),
                             ]),
                             SizedBox(
@@ -512,7 +518,7 @@ class _Address_dataState extends State<Address_data> {
                             Text(
                               data[index].country,
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
+                                  fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                             ),
                             SizedBox(
                               height: 15.0,
@@ -564,7 +570,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
 
                     return totalSlider(context, data);
                   } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
+                    return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
                   }
                   return Center(
                       child: CircularProgressIndicator(
@@ -614,7 +620,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
                                 Text(
                                   "\ Payment Details",
                                   style: TextStyle(
-                                    fontSize: 15, ),
+                                    fontSize: 15, fontFamily: "Roboto",),
                                 ),SizedBox(height: 10,),
                                 Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -622,12 +628,12 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
                                       Text(
                                         "\ Delivery Charge",
                                         style: TextStyle(
-                                            fontSize: 14, fontWeight: FontWeight.bold),
+                                            fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                       ),
                                       Text(
                                         "\ 0",
                                         style: TextStyle(
-                                            fontSize: 14, fontWeight: FontWeight.bold),
+                                            fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                       ),]),SizedBox(height: 5,),
                                 Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -635,12 +641,12 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
                                       Text(
                                         "\ Total Amount",
                                         style: TextStyle(
-                                            fontSize: 14, fontWeight: FontWeight.bold),
+                                            fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                       ),
                                       Text(
                                         "\ QR ${data[index].Rs}",
                                         style: TextStyle(
-                                            fontSize: 14, fontWeight: FontWeight.bold),
+                                            fontSize: 14, fontWeight: FontWeight.bold, fontFamily: "Roboto",),
                                       ),]),
                                 SizedBox(height: 10,),
                               ])))
