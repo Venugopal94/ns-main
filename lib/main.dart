@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:robustremedy/screen/static/splash_screen.dart';
@@ -7,10 +8,14 @@ import 'package:robustremedy/themes/theme.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+import 'Helpers/firebase_notification_manager.dart';
+
+void main() async {
   // ErrorWidget.builder = (FlutterErrorDetails details) => Scaffold(
   //       body: Container(),
   //     );
+  WidgetsFlutterBinding.ensureInitialized();
+  await FirebaseNotificationManager.instance?.initialiseFirebase();
   runApp(MyApp());
 }
 
@@ -30,12 +35,6 @@ class MyApp extends StatelessWidget {
     ));
   }
 }
-
-
-
-
-
-
 
 class CartModel extends Model {
   List<ProductAddToCart> cart = [];
@@ -100,7 +99,7 @@ class CartModel extends Model {
   void calculateTotal() {
     totalCartValue = 0;
     cart.forEach((f) {
-      totalCartValue += f.price * f.quantity;
+      totalCartValue += f.finalprice * f.quantity;
     });
   }
 }

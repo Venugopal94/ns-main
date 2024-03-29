@@ -127,7 +127,7 @@ class _CartState extends State<Cart> {
                                       Expanded(
                                           child: Padding(
                                         padding: EdgeInsets.only(
-                                            top: 10.0, left: 15.0),
+                                            top: 5.0, left: 15.0),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -141,7 +141,7 @@ class _CartState extends State<Cart> {
                                                         fontWeight:
                                                             FontWeight.w600,
                                                         fontFamily: "Roboto",
-                                                        fontSize: 15.0),
+                                                        fontSize: 14.0),
                                                     maxLines: 2,
                                                   ),
                                                 ),

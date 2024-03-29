@@ -15,6 +15,8 @@ import 'package:robustremedy/widgets/AppDrawer.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../auth/login.dart';
+
 class MyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -345,6 +347,26 @@ class _UserProfilePageState extends State<UserProfilePage> {
     );
   }
 
+  Widget deleteAccountCard() {
+    return Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => LoginScreen(title: "",isFromDeleteAction: true,)));
+            },
+            child: ListTile(
+              leading:
+              Icon(Icons.delete, color: LightColor.midnightBlue, size: 30),
+              title: Text('Delete Account', style: TextStyle(fontFamily: "Roboto"),),
+            ),
+          )
+        ],
+      ),
+    );
+  }
   Widget _location() {
     return Text(addline, style: TextStyle(fontFamily: "Roboto"),);
   }
@@ -389,6 +411,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
 //            _changepassword(),
             SizedBox(height: 8.0),
             _logout(),
+            SizedBox(height: 8.0),
+            deleteAccountCard(),
             SizedBox(height: 20.0),
             Center(child: Text('Version 6.0.3', style: TextStyle(fontFamily: "Roboto"),)),
             SizedBox(height: 12.0),

@@ -1379,7 +1379,7 @@ class _ListDetailsState extends State<ListDetails> {
     print(responseData);
    
 
-    return productVariants;
+    return productVariants ?? [];
   }
 
   // add To Cart
@@ -1603,7 +1603,7 @@ class _ListDetailsState extends State<ListDetails> {
                     
                     productVariants[_selectedVariant].itempack == '' || productVariants[_selectedVariant].itempack == null  || productVariants[_selectedVariant].itempack!.isEmpty
                         ? SizedBox()
-                        :    Text('Available Variants',
+                        :    Text(' Available Variants',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: "Roboto",
@@ -1612,10 +1612,10 @@ class _ListDetailsState extends State<ListDetails> {
                         _selectedVariant != null
                             ? Text(
                               
-                                'QR ${double.parse(productVariants[_selectedVariant]?.rs ?? "").toStringAsFixed(2)}',
+                                'QR ${double.parse(productVariants[_selectedVariant]?.rs ?? "").toStringAsFixed(2)}  ',
                                 style: TextStyle(
                                     color: LightColor.midnightBlue,
-                                    fontSize: 16,
+                                    fontSize: 18,
                                     fontFamily: "Roboto",
                                     fontWeight: FontWeight.bold),
                               )
@@ -1788,9 +1788,7 @@ class _ListDetailsState extends State<ListDetails> {
             showInSnackBar('Prescription Required');
           } else if(quantityOfVariant > int.parse(productVariants[_selectedVariant]?.stock ?? "")){
             showInSnackBar('You cannot add quantity greater than stock');
-          } 
-          
-          else {
+          } else {
              ProductAddToCart _product = ProductAddToCart(
                 finalprice: double.parse(productVariants[_selectedVariant]?.rs ?? ""),
                 id: productVariants[_selectedVariant]?.id ?? "",
@@ -1805,8 +1803,6 @@ class _ListDetailsState extends State<ListDetails> {
               showInSnackBar('Added Successfully');
             // addToCart();
           }
-
-         
         },
       ),
     
@@ -1830,7 +1826,8 @@ class _ListDetailsState extends State<ListDetails> {
           return ChoiceChip(
             label:  index != _selectedVariant ? Text(productVariants[index]?.itempack ?? "",style: TextStyle(color: Colors.black, fontFamily: "Roboto"),):Text(productVariants[index]?.itempack ?? "",style: TextStyle(color: Colors.white, fontFamily: "Roboto"),),
             selected: _selectedVariant == index,
-            selectedColor: Colors.black,
+            checkmarkColor: Colors.white,
+            selectedColor: LightColor.midnightBlue,
             onSelected: (bool selected) {
               setState(() {
                 _selectedVariant = selected ? index : 0;

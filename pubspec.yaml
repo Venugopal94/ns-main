@@ -4,7 +4,7 @@ description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 15.4.2+68
+version: 15.4.6+74
 
 environment:
   sdk: ">=2.12.0 <4.1.0"
@@ -19,6 +19,10 @@ dependencies:
   scoped_model:
   localstorage: ^4.0.1+4
   cupertino_icons: ^1.0.5
+  firebase_remote_config: ^3.0.6
+  firebase_messaging: ^14.1.1
+  firebase_core: ^2.3.0
+  firebase_analytics: ^10.0.7
   #carousel_pro: ^1.0.0
   #carousel_pro_nullsafety: ^2.0.0
   google_fonts:
@@ -56,6 +60,7 @@ dependencies:
   change_app_package_name: ^1.0.0
   dropdown_search: ^5.0.6
   arabic_numbers: ^1.0.0
+  package_info_plus: ^3.1.2
 
 dev_dependencies:
   flutter_test:

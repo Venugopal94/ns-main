@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "935253165662",
+    "project_id": "familypharmacy-ca726",
+    "storage_bucket": "familypharmacy-ca726.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935253165662:android:ea0458475c5790e08196cf",
+        "android_client_info": {
+          "package_name": "com.familypharmacy.qatar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPBOG6IAUhLkE35wvYLmFzXFMQI6qmDY4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,6 +10,7 @@ import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/widgets/bezierContainer.dart';
 import 'package:robustremedy/screen/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 //import 'package:showcaseview/showcase_widget.dart';
 import 'package:showcaseview/showcaseview.dart';
 
@@ -23,9 +24,11 @@ import 'package:showcaseview/showcaseview.dart';
 //}
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key, this.title}) : super(key: key);
+  LoginScreen({Key? key, this.title, this.isFromDeleteAction})
+      : super(key: key);
 
   String? title;
+  bool? isFromDeleteAction = false;
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -38,66 +41,71 @@ class _LoginPageState extends State<LoginScreen> {
 
   addStringToSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String email=emailController.text;
-    String id=user_id;
-    prefs.setString('email', email,);
-   // prefs.setString('userid', id,);
-  //  print(user_id);
+    String email = emailController.text;
+    String id = user_id;
+    prefs.setString(
+      'email',
+      email,
+    );
+    // prefs.setString('userid', id,);
+    //  print(user_id);
   }
+
   addStringTo(user_id) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String id=user_id;
-   // prefs.setString('email', email,);
-    prefs.setString('id', id,);
+    String id = user_id;
+    // prefs.setString('email', email,);
+    prefs.setString(
+      'id',
+      id,
+    );
     //  print(user_id);
   }
+
   addStringTocart(cart_total) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    int total= cart_total;
+    int total = cart_total;
     // prefs.setString('email', email,);
     prefs.setInt('cart_total', total);
     //  print(user_id);
   }
- // AnimationController _controller;
+
+  // AnimationController _controller;
   late Animation<Offset> _animation;
 
   @override
   void initState() {
     super.initState();
-
   }
 
   Future checkLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var email =prefs.getString("email");
+    var email = prefs.getString("email");
     // bool _seen = (prefs.getBool('seen') ?? false);
-    if(email == null)
-    {
-
+    if (email == null) {
       Navigator.of(context).pushReplacement(
           new MaterialPageRoute(builder: (context) => new LoginScreen()));
-    }
-    else {
+    } else {
       // prefs.setBool('seen', true);
 
       Navigator.of(context).pushReplacement(
           new MaterialPageRoute(builder: (context) => new HomeScreen()));
     }
-
   }
 
   @override
   // For CircularProgressIndicator.
   bool visible = false;
-  var user_id,cart_total;
+  var user_id, cart_total;
+
   // Getting value from TextField widget.
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   Future userLogin() async {
-    SharedPreferences preferences= await SharedPreferences.getInstance();
+    SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString("email", emailController.text);
     // Showing CircularProgressIndicator.
     setState(() {
@@ -107,47 +115,56 @@ class _LoginPageState extends State<LoginScreen> {
     // Getting value from Controller
     String email = emailController.text;
     String password = passwordController.text;
-    if (
-    email.length == 0 ||
-        password.length == 0) {
+    if (email.length == 0 || password.length == 0) {
       showInSnackBar("Field Should not be empty");
-
-    }
-    else {
+    } else {
       // SERVER LOGIN API URL
-      var url = 'https://onlinefamilypharmacy.com/mobileapplication/login.php';
+      var url = (widget.isFromDeleteAction ?? false)
+          ? 'https://onlinefamilypharmacy.com/mobileapplication/logincheckanddelete.php'
+          : 'https://onlinefamilypharmacy.com/mobileapplication/login.php';
       // Store all data with Param Name.
       var data = {'email': email, 'password': password};
 
       // Starting Web API Call.
-      var response = await http.post(Uri.parse( url), body: json.encode(data));
+      var response = await http.post(Uri.parse(url), body: json.encode(data));
 
       // Getting Server response into variable.
       var message = jsonDecode(response.body);
-      var url1 = 'https://onlinefamilypharmacy.com/mobileapplication/getuserid.php';
-      // Store all data with Param Name.
-      var data1 = {'email': email};
+      if (!(widget.isFromDeleteAction ?? false)) {
+        var url1 =
+            'https://onlinefamilypharmacy.com/mobileapplication/getuserid.php';
+        // Store all data with Param Name.
+        var data1 = {'email': email};
 
-      // Starting Web API Call.
-      var response1 = await http.post(Uri.parse( url1), body: json.encode(data1));
-      setState(() {
-        user_id = jsonDecode(response1.body);
-        
-        addStringTo(user_id);
-      });
-      var url2 = 'https://onlinefamilypharmacy.com/mobileapplication/getcart_count.php';
-      // Store all data with Param Name.
-      var data2 = {'userid': user_id};
+        // Starting Web API Call.
+        var response1 =
+            await http.post(Uri.parse(url1), body: json.encode(data1));
+        setState(() {
+          user_id = jsonDecode(response1.body);
 
-      // Starting Web API Call.
-      var response2 = await http.post(Uri.parse( url2), body: json.encode(data2));
-      setState(() {
-        cart_total = jsonDecode(response2.body);
-        
-        addStringTocart(cart_total);
-      });
+          addStringTo(user_id);
+        });
+        var url2 =
+            'https://onlinefamilypharmacy.com/mobileapplication/getcart_count.php';
+        // Store all data with Param Name.
+        var data2 = {'userid': user_id};
+
+        // Starting Web API Call.
+        var response2 =
+            await http.post(Uri.parse(url2), body: json.encode(data2));
+        setState(() {
+          cart_total = jsonDecode(response2.body);
+
+          addStringTocart(cart_total);
+        });
+      } else {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        preferences.remove("email");
+        await preferences.clear();
+      }
       // If the Response Message is Matched.
-      if (message == 'Login Matched') {
+      if (message == 'Login Matched' ||
+          message == 'Account has been deleted successfully') {
         // Hiding the CircularProgressIndicator.
         setState(() {
           visible = false;
@@ -166,10 +183,12 @@ class _LoginPageState extends State<LoginScreen> {
                   );
                 },
                 pageBuilder: (context, animation, animationTime) {
-                  return HomeScreen();
+                  return (widget.isFromDeleteAction ?? false)
+                      ? LoginScreen()
+                      : HomeScreen();
                 })
-          // MaterialPageRoute(builder: (context) => HomeScreen())
-        );
+            // MaterialPageRoute(builder: (context) => HomeScreen())
+            );
       } else {
         // If Email or Password did not Matched.
         // Hiding the CircularProgressIndicator.
@@ -197,7 +216,6 @@ class _LoginPageState extends State<LoginScreen> {
       }
     }
   }
-
 
   Widget _divider() {
     return Container(
@@ -232,8 +250,6 @@ class _LoginPageState extends State<LoginScreen> {
     );
   }
 
-
-
   Widget _createAccountLabel() {
     return InkWell(
       onTap: () {
@@ -241,16 +257,16 @@ class _LoginPageState extends State<LoginScreen> {
             context,
             PageRouteBuilder(
                 transitionDuration: Duration(milliseconds: 500),
-                transitionsBuilder: (context,animation,animationTime,child){
+                transitionsBuilder: (context, animation, animationTime, child) {
                   return FadeTransition(
-                    opacity:animation,
+                    opacity: animation,
                     child: child,
                   );
                 },
-                pageBuilder: (context,animation,animationTime){
+                pageBuilder: (context, animation, animationTime) {
                   return RegistrationScreen();
                 }));
-            //MaterialPageRoute(builder: (context) => RegistrationScreen()));
+        //MaterialPageRoute(builder: (context) => RegistrationScreen()));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
@@ -261,7 +277,10 @@ class _LoginPageState extends State<LoginScreen> {
           children: <Widget>[
             Text(
               'Don\'t have an account ?',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, fontFamily: "Roboto"),
+              style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: "Roboto"),
             ),
             SizedBox(
               width: 10,
@@ -271,7 +290,8 @@ class _LoginPageState extends State<LoginScreen> {
               style: TextStyle(
                   color: Color(0xfff79c4f),
                   fontSize: 13,
-                  fontWeight: FontWeight.w600, fontFamily: "Roboto"),
+                  fontWeight: FontWeight.w600,
+                  fontFamily: "Roboto"),
             ),
           ],
         ),
@@ -293,27 +313,27 @@ class _LoginPageState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-
         Text(
           "Email Id",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
         ),
         TextField(
           controller: emailController,
           style: TextStyle(fontFamily: "Roboto"),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-
               border: InputBorder.none,
               fillColor: Color(0xfff3f3f4),
-              filled: true
-          ),),
+              filled: true),
+        ),
         SizedBox(
           height: 10,
         ),
         Text(
           "Password",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
         ),
         TextField(
             style: TextStyle(fontFamily: "Roboto"),
@@ -324,21 +344,30 @@ class _LoginPageState extends State<LoginScreen> {
                 fillColor: Color(0xfff3f3f4),
                 filled: true))
       ],
-
     );
   }
-  static const Color midnightBlue = const Color.fromRGBO(1, 4, 99,1);
 
-  Color yellowColors = Colors.yellow[700] ?? Color.fromRGBO(1, 4, 99,1);
-  Color blue=ButtonWid.midnightBlue;
+  static const Color midnightBlue = const Color.fromRGBO(1, 4, 99, 1);
+
+  Color yellowColors = Colors.yellow[700] ?? Color.fromRGBO(1, 4, 99, 1);
+  Color blue = ButtonWid.midnightBlue;
+
   @override
   Widget build(BuildContext context) {
-   /* WidgetsBinding.instance.addPostFrameCallback((_) =>
+    /* WidgetsBinding.instance.addPostFrameCallback((_) =>
         ShowCaseWidget.of(context)
             .startShowCase([_one, _two,]));*/
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
         key: _scaffoldKey,
+        appBar: !(widget.isFromDeleteAction ?? false)
+            ? null
+            : AppBar(
+                title: Text("Delete Account",
+                    style: TextStyle(fontFamily: "Roboto")),
+                backgroundColor: LightColor.yellowColor,
+                foregroundColor: LightColor.midnightBlue,
+              ),
         body: Container(
           height: height,
           child: Stack(
@@ -359,172 +388,222 @@ class _LoginPageState extends State<LoginScreen> {
                       SizedBox(height: 50),
                       _emailPasswordWidget(),
                       SizedBox(height: 20),
-                /*  Showcase(
+                      /*  Showcase(
                     key: _one,
                     description: 'Tap to login',
                     child:*/
-                /*  BouncingWidget(
+                      /*  BouncingWidget(
                     duration: Duration(milliseconds: 100),
                     scaleFactor: 1.5,
                     onPressed: () {
                      // print("onPressed");
                     },
                     child:*/
-                    Center(
-                  child:
-                      BouncingWidget(
-
-                        onPressed: () {
-                          userLogin();
-                          print('hueu');
-                        },
-                          duration: Duration(milliseconds: 100),
-                          scaleFactor: 1.5,
-                          child: Container(
-                          width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.symmetric(vertical: 15),
-                      alignment: Alignment.center,
-
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(50),),
-                          boxShadow: <BoxShadow>[
-                            BoxShadow(
-                                color: Colors.grey.shade200,
-                                offset: Offset(2, 4),
-                                blurRadius: 5,
-                                spreadRadius: 2)
-                          ],
-                          gradient: LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              colors: [yellowColors,yellowColors])),
-                      child: InkWell(
-                        child: Text(
-                          'Login',
-                          style: TextStyle(fontSize: 20, color:blue,fontWeight: FontWeight.bold, fontFamily: "Roboto"),
-                        ),
-
-
-                      ),
-                    )
-                      ),
-              /*   child: ButtonWid(
+                      Center(
+                        child: BouncingWidget(
+                            onPressed: () {
+                              if (!(widget.isFromDeleteAction ?? false)) {
+                                userLogin();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: new Text(
+                                          "Are you sure you want to delete your account?"),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: new Text("Cancel"),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        TextButton(
+                                          child: new Text("Yes"),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                            userLogin();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                              print('hueu');
+                            },
+                            duration: Duration(milliseconds: 100),
+                            scaleFactor: 1.5,
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              padding: EdgeInsets.symmetric(vertical: 15),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(50),
+                                  ),
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                        color: Colors.grey.shade200,
+                                        offset: Offset(2, 4),
+                                        blurRadius: 5,
+                                        spreadRadius: 2)
+                                  ],
+                                  gradient: LinearGradient(
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                      colors: [yellowColors, yellowColors])),
+                              child: InkWell(
+                                child: Text(
+                                  (widget.isFromDeleteAction ?? false)
+                                      ? 'Delete Account'
+                                      : 'Login',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: blue,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: "Roboto"),
+                                ),
+                              ),
+                            )),
+                        /*   child: ButtonWid(
                         onClick: userLogin,
 
                          btnText: "Login",
                      ),*/
-
                       ),
-                 // ),
-                //  ),
-                 InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                  transitionDuration: Duration(milliseconds: 500),
-                                  transitionsBuilder: (context,animation,animationTime,child){
-                                    return SlideTransition(
-                                      position: Tween(
-                                          begin: Offset(1.0, 0.0),
-                                          end: Offset(0.0, 0.0))
-                                          .animate(animation),
-                                      child: child,
-                                    );
+                      // ),
+                      //  ),
+                      !(widget.isFromDeleteAction ?? false)
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        PageRouteBuilder(
+                                            transitionDuration:
+                                                Duration(milliseconds: 500),
+                                            transitionsBuilder: (context,
+                                                animation,
+                                                animationTime,
+                                                child) {
+                                              return SlideTransition(
+                                                position: Tween(
+                                                        begin: Offset(1.0, 0.0),
+                                                        end: Offset(0.0, 0.0))
+                                                    .animate(animation),
+                                                child: child,
+                                              );
+                                            },
+                                            pageBuilder: (context, animation,
+                                                animationTime) {
+                                              return forgetpwd();
+                                            })
+                                        //
+                                        );
                                   },
-                                  pageBuilder: (context,animation,animationTime){
-                                    return forgetpwd();
-                                  })
-                            //
-                          );
-                        },
-                        child:   Container(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          alignment: Alignment.centerRight,
-                          child: Text('Forgot Password ?',
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w500, fontFamily: "Roboto")),
-                        ),
-                      ),
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    alignment: Alignment.centerRight,
+                                    child: Text('Forgot Password ?',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: "Roboto")),
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                _createAccountLabel(),
 
-
-                      SizedBox(height:5),
-                      _createAccountLabel(),
-
-                 /* Showcase(
+                                /* Showcase(
                     key: _two,
                     title: 'Skip',
                     description: 'Tap to Skip Login',
                     child:*/
-                    InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                  transitionDuration: Duration(milliseconds: 800),
-                                  transitionsBuilder: (context, animation, animationTime, child) {
-                                    return ScaleTransition(
-                                      alignment: Alignment.center,
-                                      child: child,
-                                      scale: animation,
-                                    );
-                                  },
-                                  pageBuilder: (context, animation, animationTime) {
-                                    return HomeScreen();
-                                  })
-                            // MaterialPageRoute(builder: (context) => HomeScreen())
-                          );
-                         /* Navigator.push(
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        PageRouteBuilder(
+                                            transitionDuration:
+                                                Duration(milliseconds: 800),
+                                            transitionsBuilder: (context,
+                                                animation,
+                                                animationTime,
+                                                child) {
+                                              return ScaleTransition(
+                                                alignment: Alignment.center,
+                                                child: child,
+                                                scale: animation,
+                                              );
+                                            },
+                                            pageBuilder: (context, animation,
+                                                animationTime) {
+                                              return HomeScreen();
+                                            })
+                                        // MaterialPageRoute(builder: (context) => HomeScreen())
+                                        );
+                                    /* Navigator.push(
                               context, MaterialPageRoute(builder: (context) => HomeScreen())); */
-                        },
-                        child:   Container(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          alignment: Alignment.centerRight,
-                          child: Text('Skip',
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold,color: LightColor.midnightBlue, fontFamily: "Roboto")),
-                        ),
-                      )
-                //),
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    alignment: Alignment.centerRight,
+                                    child: Text('Skip',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: LightColor.midnightBlue,
+                                            fontFamily: "Roboto")),
+                                  ),
+                                )
+                              ],
+                            )
+                          : Container()
+                      //),
                     ],
                   ),
                 ),
               ),
-
             ],
           ),
         ));
   }
+
   void showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value,  style: TextStyle(fontFamily: "Roboto")),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+      content: new Text(value, style: TextStyle(fontFamily: "Roboto")),
+      backgroundColor: LightColor.midnightBlue,
+    ));
   }
 }
 
 class ButtonWid extends StatelessWidget {
-  var btnText ="";
+  var btnText = "";
   var onClick;
 
-
   ButtonWid({required this.btnText, this.onClick});
-  static const Color midnightBlue = const Color.fromRGBO(1, 4, 99,1);
 
-  Color yellowColors = Colors.yellow[700] ?? Color.fromRGBO(1, 4, 99,1);
-  Color blue=ButtonWid.midnightBlue;
+  static const Color midnightBlue = const Color.fromRGBO(1, 4, 99, 1);
+
+  Color yellowColors = Colors.yellow[700] ?? Color.fromRGBO(1, 4, 99, 1);
+  Color blue = ButtonWid.midnightBlue;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: onClick,
-
-
-
         child: Container(
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.symmetric(vertical: 15),
           alignment: Alignment.center,
-
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(50),),
+              borderRadius: BorderRadius.all(
+                Radius.circular(50),
+              ),
               boxShadow: <BoxShadow>[
                 BoxShadow(
                     color: Colors.grey.shade200,
@@ -535,21 +614,17 @@ class ButtonWid extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [yellowColors,yellowColors])),
+                  colors: [yellowColors, yellowColors])),
           child: InkWell(
             child: Text(
               'Login',
-              style: TextStyle(fontSize: 20, color:blue,fontWeight: FontWeight.bold, fontFamily: "Roboto"),
+              style: TextStyle(
+                  fontSize: 20,
+                  color: blue,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Roboto"),
             ),
-
-
           ),
-        )
-
-    );
+        ));
   }
-
 }
-
-
-

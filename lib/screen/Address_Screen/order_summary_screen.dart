@@ -510,10 +510,6 @@ class _Summary_CartState extends State<Summary_Cart> {
         
         return ScopedModelDescendant<CartModel>(builder: (context,child,model){
 
-
-          
-          
-          
          return Card(
           child: SingleChildScrollView(
         child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
@@ -561,7 +557,7 @@ class _Summary_CartState extends State<Summary_Cart> {
                   left: 15,
                 ),
                 child: Text(
-                    "\QR ${model.cart[index].price} x ${model.cart[index].quantity}",
+                    "\QR ${model.cart[index].finalprice} x ${model.cart[index].quantity}",
                     textAlign: TextAlign.left,
                     // softWrap: true,
                     style: TextStyle(
