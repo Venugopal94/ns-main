@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
@@ -26,8 +27,6 @@ import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:share/share.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'header2.dart';
 
 class home_below_SliderGrid extends StatelessWidget {
   final _pageController = PageController();
@@ -339,7 +338,7 @@ class home_below_SliderGrid extends StatelessWidget {
                 height: 10,
               ),
               Container(
-                height: 800, // scroll mei hang ho rha hai .. // ok ?
+                height: 860, // scroll mei hang ho rha hai .. // ok ?
                 child: Header(),
               ),
 
@@ -347,10 +346,10 @@ class home_below_SliderGrid extends StatelessWidget {
               aboutus_intro(),
               CustomDividerView(),
 
-              Container(
-                height: 400,
-                child: Header(),
-              ),
+              // Container(
+              //   height: 900,
+              //   child: Header(),
+              // ),
 
               SizedBox(
                 height: 20.0,
@@ -497,7 +496,7 @@ class home_below_SliderGrid extends StatelessWidget {
                     ),
                   )),*/
 
-              CustomDividerView(),
+              //CustomDividerView(),
               Container(
                   padding: EdgeInsets.all(4.0),
                   alignment: Alignment.topLeft,
@@ -625,10 +624,12 @@ Swiper imageSlider(context, data) {
     //autoplay: true,
     itemCount: data.length,
     itemBuilder: (BuildContext context, int index) {
-      return new Image.network(
+      return CachedNetworkImage(imageUrl:
         data[index].url,
         fit: BoxFit.fitWidth,
         width: 300,
+        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+        errorWidget: (context, url, error) => Icon(Icons.error),
       );
     },
 
@@ -675,14 +676,14 @@ class footerview extends StatelessWidget {
                 'Family Pharmacy',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1
+                    .bodyLarge
                     ?.copyWith(color: Colors.grey),
               ),
               Text(
                 'Wanna stay healthy! Stay close to Family!',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1
+                    .bodyLarge
                     ?.copyWith(color: Colors.grey),
               ),
               UIHelper.verticalSpaceExtraLarge(),

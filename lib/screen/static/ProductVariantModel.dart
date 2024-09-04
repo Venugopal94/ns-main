@@ -20,6 +20,8 @@ class VariantProduct {
   String? manufactureshortname;
   String? seq;
   String? rs;
+  String? realRs;
+  String? labelPercentagediscount;
   String? ws;
   String? avgprice;
   String? origin;
@@ -53,6 +55,8 @@ class VariantProduct {
       this.manufactureshortname,
       this.seq,
       this.rs,
+        this.realRs,
+        this.labelPercentagediscount,
       this.ws,
       this.avgprice,
       this.origin,
@@ -73,6 +77,8 @@ class VariantProduct {
     itemnameAr = json['itemname_ar'];
     labelname = json['labelname'];
     itempack = json['itempack'];
+    realRs = json['real_rs'];
+    labelPercentagediscount = json['label_percentagediscount'];
     itemstrength = json['itemstrength'];
     itemproductgroupid = json['itemproductgroupid'];
     itemmaingroupid = json['itemmaingroupid'];
@@ -103,6 +109,8 @@ class VariantProduct {
     data['stock'] = this.stock;
     data['id'] = this.id;
     data['mohprice'] = this.mohprice;
+    data['real_rs'] = this.realRs;
+    data['label_percentagediscount'] = this.labelPercentagediscount;
     data['img'] = this.img;
     data['itemname_en'] = this.itemnameEn;
     data['itemname_ar'] = this.itemnameAr;

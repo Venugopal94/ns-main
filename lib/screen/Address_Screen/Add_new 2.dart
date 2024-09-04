@@ -274,7 +274,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                       title: Text(user.zone + "-" + user.area),
                     );
                   },
-                  onSuggestionSelected: (ZoneArea suggestion) {
+                  onSelected: (ZoneArea suggestion) {
                     final user = suggestion;
                     _typeAheadController.text = user.area;
                     selectedvalue = user.id;
@@ -306,6 +306,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(title: Text("Add New Address"), backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,),
@@ -457,7 +458,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                                   title: Text(user.zone + "-" + user.area),
                                 );
                               },
-                              onSuggestionSelected: (ZoneArea suggestion) {
+                              onSelected: (ZoneArea suggestion) {
                                 final user = suggestion;
                                 _typeAheadController.text = user.area;
                                 selectedvalue = user.id;

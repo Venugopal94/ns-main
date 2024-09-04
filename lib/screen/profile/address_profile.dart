@@ -35,6 +35,7 @@ class _Address_profileState extends State<Address_profile> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(title: Text("Address", style: TextStyle(fontFamily: "Roboto",)), backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,),
       body: Column(

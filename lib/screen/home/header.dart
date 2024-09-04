@@ -56,7 +56,6 @@ class _headerstate extends State<Header> {
       List jsonResponse = json.decode(response.body);
 
       return jsonResponse.map((job) => new Job.fromJson(job)).toList();
-
     } else {
       throw Exception('Failed to load jobs from API');
     }
@@ -75,6 +74,7 @@ class _headerstate extends State<Header> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        backgroundColor: Colors.white,
       body: myAllData.length == 0
           ? new Center(
               child: new CircularProgressIndicator(
@@ -159,7 +159,24 @@ class _headerstate extends State<Header> {
                                         //   width: 100,
                                         // ),
                                       ),
-
+                                      if ((item.labelPercentagediscount ?? '').isNotEmpty)
+                                        Container(
+                                            margin: EdgeInsets.only(top: 8, left: 0),
+                                            padding: EdgeInsets.only(left: 5, right: 5),
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(2),
+                                              color: Colors.red,
+                                            ),
+                                            child: Text(
+                                                item.labelPercentagediscount ?? "",
+                                                textAlign: TextAlign.left,
+                                                // softWrap: true,
+                                                style: TextStyle(
+                                                    fontSize: 10,
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                    fontFamily: "Roboto",
+                                                    color: Colors.white))),
                                       Positioned(
                                         top: 1,
                                         child: Container(
@@ -170,10 +187,6 @@ class _headerstate extends State<Header> {
                                       ),
                                     ],
                                   ),
-
-
-
-
 
                                   SizedBox(
                                       width: 120,
@@ -194,25 +207,52 @@ class _headerstate extends State<Header> {
                                                 color: LightColor
                                                     .midnightBlue)),
                                       )),
-                                  SizedBox(
-                                      width: 120,
-                                      height: 20,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                          left: 15,
-                                        ),
-                                        child: Text(
-                                            "\QR ${double.parse(item.maxretailprice ?? "").toStringAsFixed(2)}",
-                                            textAlign: TextAlign.left,
-                                            // softWrap: true,
-                                            style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight:
-                                                FontWeight.bold,
-                                                fontFamily: "Roboto",
-                                                color: LightColor
-                                                    .midnightBlue)),
-                                      )),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        if ((item.labelPercentagediscount ?? '').isNotEmpty)
+                                          SizedBox(
+                                            height: 20,
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                left: 15,
+                                              ),
+                                              child: Text(
+                                                  "\QR ${double.parse(item.realRs ?? "").toStringAsFixed(2)}",
+                                                  textAlign: TextAlign.left,
+                                                  // softWrap: true,
+                                                  style: TextStyle(
+                                                      decoration: TextDecoration.lineThrough,
+                                                      fontSize: 9,
+                                                      fontWeight:
+                                                      FontWeight.bold,
+                                                      fontFamily: "Roboto",
+                                                      color: Colors.red)),
+                                            )),
+                                        SizedBox(
+                                            height: 20,
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                left: 5,
+                                                right: 10
+                                              ),
+                                              child: Text(
+                                                  "\QR ${double.parse(item.rs ?? "").toStringAsFixed(2)}",
+                                                  textAlign: TextAlign.left,
+                                                  // softWrap: true,
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                      FontWeight.bold,
+                                                      fontFamily: "Roboto",
+                                                      color: LightColor
+                                                          .midnightBlue)),
+                                            )),
+                                        if ((item.labelPercentagediscount ?? '').isEmpty)
+                                          SizedBox(width: 50),
+                                      ],
+                                    )
                                 ],
                               ),
                             ),
@@ -232,7 +272,7 @@ class _headerstate extends State<Header> {
                 return Text("An Error occured", style: TextStyle(fontFamily: "Roboto"));
                 }
                 return Text("Loading.....", style: TextStyle(fontFamily: "Roboto"));
-                // return Center(child: CircularProgressIndicator());
+                // return Center(child: Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)));
               },
             ),
           );

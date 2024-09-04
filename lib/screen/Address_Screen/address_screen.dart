@@ -231,6 +231,7 @@ else {
     final height=MediaQuery.of(context).size.height;
     final width=MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(title: Text("Select Address", style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,

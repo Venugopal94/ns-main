@@ -171,6 +171,7 @@ print(token);print(itemid);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
         title: Text("Wish List", style: TextStyle(fontFamily: "Roboto")),
           backgroundColor: LightColor.yellowColor,

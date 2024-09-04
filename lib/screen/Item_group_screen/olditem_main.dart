@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -23,6 +24,7 @@ class _Item_mainState extends State<Item_main> {
     return
     //  WillPopScope(onWillPop: onWillPop,child:
     Scaffold(
+        backgroundColor: Colors.white,
         key: _scaffoldKey,
         appBar: AppBar(
           title: Text("Item Main Group", style: TextStyle(fontFamily: "Roboto"),), backgroundColor: LightColor.yellowColor,
@@ -145,8 +147,11 @@ Grid(context,data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network('https://onlinefamilypharmacy.com/images/itemmaingroupimages/'+data[index].url,    height: containerh / 2.5,
-                        width: width / 2,),
+                      CachedNetworkImage(imageUrl:'https://onlinefamilypharmacy.com/images/itemmaingroupimages/'+data[index].url,    height: containerh / 2.5,
+                        width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                       Container(
                         height: containerh / 15, width: width / 2,
                         child: Text(
@@ -202,8 +207,11 @@ Grid(context,data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network('https://onlinefamilypharmacy.com/images/itemmaingroupimages/'+data[index].url, height: containerh / 1.5,
-                        width: width / 2,),
+                      CachedNetworkImage(imageUrl:'https://onlinefamilypharmacy.com/images/itemmaingroupimages/'+data[index].url, height: containerh / 1.5,
+                        width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                       Container(
                         height: containerh / 10, width: width / 2,
                         child: Text(
@@ -259,8 +267,11 @@ Grid(context,data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network('https://onlinefamilypharmacy.com/images/itemmaingroupimages/'+data[index].url, height: containerh / 3.5,
-                        width: width / 2,),
+                      CachedNetworkImage(imageUrl: 'https://onlinefamilypharmacy.com/images/itemmaingroupimages/'+data[index].url, height: containerh / 3.5,
+                        width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                       Container(
                         height: containerh / 21, width: width / 2,
                         child: Text(
@@ -316,8 +327,11 @@ Grid(context,data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network('https://onlinefamilypharmacy.com/images/itemmaingroupimages/'+data[index].url, height: containerh / 1.5,
-                        width: width / 2,),
+                      CachedNetworkImage(imageUrl:'https://onlinefamilypharmacy.com/images/itemmaingroupimages/'+data[index].url, height: containerh / 1.5,
+                        width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                       Container(
                         height: containerh / 10, width: width / 2,
                         child: Text(

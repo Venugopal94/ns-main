@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -10,6 +11,7 @@ class BrandGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text("Shop By Brand", style: TextStyle(fontFamily: "Roboto")),
           backgroundColor: LightColor.yellowColor,
@@ -104,9 +106,11 @@ Grid(context,data) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      'https://onlinefamilypharmacy.com/images/manufacturerimages/' +
-                          data[index].url, fit: BoxFit.fill,),
+                    CachedNetworkImage(imageUrl: 'https://onlinefamilypharmacy.com/images/manufacturerimages/' +
+                          data[index].url, fit: BoxFit.fill,
+                      placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
 
                   ],
                 ),
@@ -157,9 +161,11 @@ Grid(context,data) {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.network(
-                          'https://onlinefamilypharmacy.com/images/manufacturerimages/' +
-                              data[index].url, fit: BoxFit.fill,),
+                        CachedNetworkImage(imageUrl: 'https://onlinefamilypharmacy.com/images/manufacturerimages/' +
+                              data[index].url, fit: BoxFit.fill,
+                          placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        ),
 
                       ],
                     ),
@@ -210,9 +216,12 @@ Grid(context,data) {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.network(
+                        CachedNetworkImage(imageUrl:
                           'https://onlinefamilypharmacy.com/images/manufacturerimages/' +
-                              data[index].url, fit: BoxFit.fill,),
+                              data[index].url, fit: BoxFit.fill,
+                          placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        ),
 
                       ],
                     ),
@@ -258,9 +267,12 @@ Grid(context,data) {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.network(
+                        CachedNetworkImage(imageUrl:
                           'https://onlinefamilypharmacy.com/images//manufacturerimages/' +
-                              data[index].url, fit: BoxFit.fill,),
+                              data[index].url, fit: BoxFit.fill,
+                          placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        ),
 
                       ],
                     ),

@@ -51,6 +51,7 @@ class _Insurance_ScreenState extends State<Insurance_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Insurance", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,

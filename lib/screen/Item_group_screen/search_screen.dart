@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:robustremedy/screen/Item_group_screen/item_group.dart';
+import 'package:robustremedy/screen/home/popularitems.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -288,6 +289,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(title: Text("Search", style: TextStyle(fontFamily: "Roboto"),),  backgroundColor: LightColor.yellowColor,
             foregroundColor: LightColor.midnightBlue, actions: <Widget>[
           IconButton(
@@ -478,11 +480,11 @@ class UserFilterDemoState extends State<UserFilterDemo> {
             else if ((search == true) & (filter == false))
               (Container(
                 height: height / 1.22,
-                child: FutureBuilder<List<ItemData>>(
+                child: FutureBuilder<List<Job>>(
                   future: _fetchItemData(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      List<ItemData> data = snapshot.data ?? [];
+                      List<Job> data = snapshot.data ?? [];
                       //filterdata(data);
                       return Grid(context, data);
                     } else if (snapshot.hasError) {
@@ -499,11 +501,11 @@ class UserFilterDemoState extends State<UserFilterDemo> {
             else if ((search == true) & (filter == true))
               (Container(
                 height: height / 1.3,
-                child: FutureBuilder<List<ItemData>>(
+                child: FutureBuilder<List<Job>>(
                   future: _fetchItemData(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      List<ItemData> data = snapshot.data ?? [];
+                      List<Job> data = snapshot.data ?? [];
                       filterdata(data);
                       return Grid(context, data);
                     } else if (snapshot.hasError) {
@@ -750,7 +752,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     }
   }
 
-  Future<List<ItemData>> _fetchItemData() async {
+  Future<List<Job>> _fetchItemData() async {
     final jobsListAPIUrl =
         'https://onlinefamilypharmacy.com/mobileapplication/search_api.php';
     print(itemmaingroup);
@@ -764,7 +766,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
-      return jsonResponse.map((job) => new ItemData.fromJson(job)).toList();
+      return jsonResponse.map((job) => new Job.fromJson(job)).toList();
     } else {
       throw Exception('Failed to load jobs from API');
     }
@@ -774,7 +776,7 @@ class UserFilterDemoState extends State<UserFilterDemo> {
     return data;
   }
 
-  filterdata(List<ItemData> data) {
+  filterdata(List<Job> data) {
     data = data;
     if (sort == 'asc') {
       data.sort((a, b) {

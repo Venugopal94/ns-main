@@ -70,6 +70,7 @@ else {
 
 
     return Scaffold(
+        backgroundColor: Colors.white,
         key: _scaffoldKey,
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(

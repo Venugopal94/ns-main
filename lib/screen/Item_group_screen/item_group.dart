@@ -1,5 +1,6 @@
 import 'dart:convert';
 //import 'package:double_back_to_close_app/double_back_to_close_app.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:robustremedy/screen/Item_group_screen/item_subgroup.dart';
@@ -42,6 +43,7 @@ class _ItemGroupState extends State<ItemGroup> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.itemtitle, style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
@@ -128,12 +130,12 @@ Grid(context, data) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      'https://onlinefamilypharmacy.com/images/itemgroupimages/' +
-                          data[index].url,
-                      height: containerh / 2.5,
-                      width: width / 2,
-                    ),
+                    CachedNetworkImage(imageUrl: 'https://onlinefamilypharmacy.com/images/itemgroupimages/' +
+                        data[index].url,
+                    height: containerh / 2.5,  width: width / 2,
+                    placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
                     Container(
                       height: containerh / 15,
                       width: width / 2,
@@ -190,11 +192,13 @@ Grid(context, data) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
+                    CachedNetworkImage(imageUrl:
                       'https://onlinefamilypharmacy.com/images/itemgroupimages/' +
                           data[index].url,
                       height: containerh / 1.5,
                       width: width / 2,
+                      placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
                     Container(
                       height: containerh / 10,
@@ -252,10 +256,12 @@ Grid(context, data) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
+                    CachedNetworkImage(imageUrl:
                       'https://onlinefamilypharmacy.com/images/itemgroupimages/' +
                           data[index].url, height: containerh / 3.5,
                       width: width / 2,
+                      placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
                     Container(
                       height: containerh / 21,
@@ -314,11 +320,13 @@ Grid(context, data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
+                      CachedNetworkImage(imageUrl:
                         'https://onlinefamilypharmacy.com/images/itemgroupimages/' +
                             data[index].url,
                         height: containerh / 1.5,
                         width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                       Container(
                         height: containerh / 10,

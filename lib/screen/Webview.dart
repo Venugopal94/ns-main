@@ -28,6 +28,7 @@ class WebViewLoadUI extends State<WebViewLoad>{
 
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
             title: Text('Payment', style: TextStyle(fontFamily: "Roboto",)),
           backgroundColor: LightColor.yellowColor,

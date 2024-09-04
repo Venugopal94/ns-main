@@ -47,6 +47,7 @@ class _About_UsScreen extends State<About_Us_Screen> {
     // TODO: implement build
 
     return Scaffold(
+        backgroundColor: Colors.white,
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("About Us", style: TextStyle(fontFamily: "Roboto"),),
@@ -83,7 +84,7 @@ class Refund extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
         }
-        return CircularProgressIndicator();
+        return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
       },
     );
   }

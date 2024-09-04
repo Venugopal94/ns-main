@@ -12,6 +12,7 @@ class Loyaltyprogram_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Loyalty Program", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,

@@ -186,6 +186,7 @@ class _myorderdetailState extends State<myorderdetail> {
     ];
 
     return Scaffold(
+        backgroundColor: Colors.white,
 
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(

@@ -202,6 +202,7 @@ class _Prescription_Address_screenState extends State<Prescription_Address_scree
   Widget build(BuildContext context) {
     final height=MediaQuery.of(context).size.height;
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(title: Text("Select Prescription Address", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,

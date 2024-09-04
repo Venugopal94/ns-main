@@ -20,6 +20,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.title, style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
@@ -34,7 +35,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
         },
       ),
       

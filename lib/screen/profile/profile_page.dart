@@ -21,6 +21,7 @@ class MyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text("Profile", style: TextStyle(fontFamily: "Roboto"),),
           backgroundColor: LightColor.yellowColor,
@@ -162,7 +163,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
         borderRadius: BorderRadius.circular(4.0),
       ),
       child: Text(
-        useremail,
+        useremail ?? "",
         style: TextStyle(
           fontFamily: 'Spectral',
           color: Colors.black,
@@ -375,6 +376,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.white,
         // backgroundColor: Colors.black12,
         body: SingleChildScrollView(
       // children: <Widget>[

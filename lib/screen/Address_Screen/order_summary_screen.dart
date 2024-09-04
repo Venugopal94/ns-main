@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:robustremedy/screen/Address_Screen/address_screen.dart';
@@ -141,6 +142,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     
     return ScopedModelDescendant<CartModel>(builder: (context,child,  model){
       return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(title: Text("Order Summary", style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
@@ -320,66 +322,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ),
             ),
-            Container(
-                height: height / 4,
-                child: Column(children: <Widget>[
-                  RadioListTile(
-                    value: 1,
-                    groupValue: selectedRadioTile,
-                    title: Text(
-                      "Cash On Delivery",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: LightColor.midnightBlue,
-                          fontWeight: FontWeight.bold, fontFamily: "Roboto"),
-                    ),
-                    // subtitle: Text("Cash / Card On Delivery"),
-                    onChanged: (int? val) {
-                      print("Radio Tile pressed $val");
-                      setSelectedRadioTile(val ?? 0);
-                    },
-                    activeColor: LightColor.midnightBlue,
-                  ),
-                  RadioListTile(
-                    value: 2,
-                    groupValue: selectedRadioTile,
-                    title: Text(
-                      "Card On Delivery",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: LightColor.midnightBlue,
-                          fontWeight: FontWeight.bold, fontFamily: "Roboto"),
-                    ),
-                    // subtitle: Text("Radio 2 Subtitle"),
-                    onChanged: (int? val) {
-                      print("Radio Tile pressed $val");
-                      setSelectedRadioTile(val ?? 0);
-                    },
-                    activeColor: LightColor.midnightBlue,
-
-                    selected: false,
-                  ),
-                  RadioListTile(
-                    value: 3,
-                    groupValue: selectedRadioTile,
-                    title: Text(
-                      "Debit / Credit Card / Paypal",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: LightColor.midnightBlue,
-                          fontFamily: "Roboto",
-                          fontWeight: FontWeight.bold),
-                    ),
-                    // subtitle: Text("Radio 2 Subtitle"),
-                    onChanged: (int? val) {
-
-                      setSelectedRadioTile(val ?? 0);
-                    },
-                    activeColor: LightColor.midnightBlue,
-
-                    selected: false,
-                  ),
-                ])),
             SizedBox(
               height: 60.0,
             ),
@@ -394,21 +336,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             
             backgroundColor: LightColor.yellowColor,
             onPressed: () async {
-              if (selectedRadioTile == 0) {
-                showInSnackBar("Select Payment Method ");
-              } else if ((selectedRadioTile == 1) || (selectedRadioTile == 2)) {
-                int? orderId;
-                 await  payment(model.cart).then((value) {
-                    orderId = value;
-                });
-                 Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => (Order_GeneratedScreen(orderId: orderId ?? 0,))));
-        ScopedModel.of<CartModel>(context).clearCart();
-        ScopedModel.of<CartModel>(context).calculateTotal();
-                
-              } else {
                 dynamic token = await getStringValues();
-
         
     int newTotal =
         widget.total < int.parse(shippment[0].lessthan)
@@ -450,12 +378,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 );
                 
       
-              }
-            },
+              },
             // icon: Icon(Icons.save),
             label: Center(
                 child: Text(
-              "Confirm",
+              "Continue",
               style: TextStyle(
                   fontSize: 18,
                   color: LightColor.midnightBlue,
@@ -496,6 +423,7 @@ class _Summary_CartState extends State<Summary_Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       body: ScopedModel.of<CartModel>(context,rebuildOnChange: true).cart.length == 0 ?  Center(
         child: Container(
                           //  padding: EdgeInsets.only(left: 15, right: 15, top: 80),
@@ -516,11 +444,12 @@ class _Summary_CartState extends State<Summary_Cart> {
           Container(
               width: 100,
               height: 100,
-              child: new Image.network(
-                'https://onlinefamilypharmacy.com/images/item/' +
+              child: CachedNetworkImage(imageUrl: 'https://onlinefamilypharmacy.com/images/item/' +
                     model.cart[index].img,
                 fit: BoxFit.fitWidth,
                 width: 100,
+                placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               )),
           SizedBox(
             height: 10,

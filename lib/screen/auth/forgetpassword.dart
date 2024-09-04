@@ -25,20 +25,16 @@ class _forgetpwdState extends State<forgetpwd> {
     var msg= json.decode(response.body);
     if (email.length == 0 ){
       showInSnackBar("Field Should not be empty");
-
     }
-    // showToast(msg,gravity: Toast.BOTTOM,duration: 3);
-    if(msg=="Invalid Email Id"){
-      showInSnackBar("Invalid Email Id");
-
-    }
-    else{
+    if(msg=="Invalid Email Id / Mobile No"){
+      showInSnackBar("Invalid Email Id / Mobile No");
+    } else {
       setState(() {
-        verifyLink=msg;
-        //verifybutton=true;
+        verifyLink = msg;
       });
-      showInSnackBar("Check Your Email");
-
+      showInSnackBar(msg);
+      await Future.delayed(Duration(seconds: 10));
+      Navigator.pop(context);
     }
     print(msg);
   }
@@ -53,7 +49,7 @@ class _forgetpwdState extends State<forgetpwd> {
           height: 10,
         ),
         Text(
-          "Email Id/ Phone Number",
+          "Email Id / Mobile Number",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
         ),
         TextField(
@@ -83,6 +79,7 @@ class _forgetpwdState extends State<forgetpwd> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text("Forget Password", style: TextStyle(fontFamily: "Roboto")),
@@ -135,7 +132,7 @@ class _forgetpwdState extends State<forgetpwd> {
     );
   }
   void showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value, style: TextStyle(fontFamily: "Roboto")),backgroundColor:LightColor.midnightBlue ,));
+    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(content: new Text(value, style: TextStyle(fontFamily: "Roboto")),backgroundColor:LightColor.midnightBlue , duration: Duration(seconds: 10),));
   }
 
 

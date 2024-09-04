@@ -111,6 +111,7 @@ class _BrandDetailState extends State<BrandDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.brandtitle, style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,
@@ -125,7 +126,7 @@ class _BrandDetailState extends State<BrandDetail> {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"));
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
         },
       ),
     );

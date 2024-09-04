@@ -40,6 +40,7 @@ class _PaymentSuccessfulState extends State<PaymentSuccessful> {
           MaterialPageRoute(builder: (context) => HomeScreen()),
           (Route<dynamic> route) => false) as bool,
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Container(
           width: mediaQuery.width,
           child: Column(

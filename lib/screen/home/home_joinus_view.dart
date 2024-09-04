@@ -170,7 +170,7 @@ class _GenieCardView extends StatelessWidget {
             children: <Widget>[
               Text(
                 title,
-                style: Theme.of(context).textTheme.subtitle2?.copyWith(fontSize: 22.0),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 22.0),
               ),
               UIHelper.verticalSpaceMedium(),
               Row(
@@ -181,7 +181,7 @@ class _GenieCardView extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         desc,
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       UIHelper.verticalSpaceSmall(),
                       ClipOval(

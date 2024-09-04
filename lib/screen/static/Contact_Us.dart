@@ -93,6 +93,7 @@ class _Contact_Us_State extends State<Contact_Us> {
     final width = MediaQuery.of(context).size.width;
     // getData();
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text("Contact Us", style: TextStyle(fontFamily: "Roboto",)),
@@ -287,8 +288,7 @@ class _Contact_Us_State extends State<Contact_Us> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: LightColor.midnightBlue)),
-                  primary: LightColor.midnightBlue),
+                    side: BorderSide(color: LightColor.midnightBlue))),
                 onPressed: () {
                   usermsg();
                 },

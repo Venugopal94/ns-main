@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:http/http.dart' as http;
@@ -60,6 +61,7 @@ class _BranchDetailsState extends State<BranchDetails> {
 
     int itemCount = 0;
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
        //backgroundColor: LightColor.yellowColor,
       appBar: AppBar(
@@ -86,11 +88,13 @@ class _BranchDetailsState extends State<BranchDetails> {
                           autoplay: true,
                           itemCount: 3,
                           itemBuilder: (BuildContext context, int index) {
-                            return new Image.network(
+                            return CachedNetworkImage(imageUrl:
                               'https://onlinefamilypharmacy.com/images/branch/' +
                                   widget.todo.img!,
                               //fit: BoxFit.fitWidth,
                               height: 500, width: 500,
+                              placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
                             );
                           },
                           viewportFraction: 0.7,

@@ -144,6 +144,7 @@ class _Reviews_screenState extends State<Reviews_screen> {
     }
 
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(title: Text("Reviews",  style: TextStyle(fontFamily: "Roboto")), backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,

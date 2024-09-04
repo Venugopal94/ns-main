@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -10,6 +11,7 @@ class BrandPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
 
         body: Container(
           child: BrandDemo(),
@@ -89,11 +91,12 @@ imageSlider(context,data) {
                           Container(
                               width: 140,
                               height:90,
-                              child:  new Image.network(
+                              child: CachedNetworkImage(imageUrl:
                                 'https://onlinefamilypharmacy.com/images/manufacturerimages/'+data[index].url,
                                 fit: BoxFit.fitWidth,
                                 //width:50 ,
-
+                                placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                                errorWidget: (context, url, error) => Icon(Icons.error),
                               )
 
                           ),

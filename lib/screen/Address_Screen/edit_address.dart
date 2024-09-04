@@ -105,6 +105,7 @@ class _Edit_Address_ScreenState extends State<Edit_Address_Screen> {
     zone=widget.addid.zone;
     street=widget.addid.street;
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(
           title: Text("Edit Address", style: TextStyle(fontFamily: "Roboto")),

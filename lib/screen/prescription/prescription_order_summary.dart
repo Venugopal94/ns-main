@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:robustremedy/screen/Address_Screen/address_screen.dart';
@@ -92,6 +93,7 @@ class _Prescription_Summary_ScreenState extends State<Prescription_Summary_Scree
 
 
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(title: Text("Prescription Order Summary", style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue,
@@ -280,10 +282,12 @@ imageSlider(context,data) {
                         Container(
                             width: 100,
                             height:100,
-                            child:  new Image.network(
+                            child:  CachedNetworkImage(imageUrl:
                               'https://onlinefamilypharmacy.com/images/noimage.jpg',
                               fit: BoxFit.fitWidth,
                               width: 100,
+                              placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                              errorWidget: (context, url, error) => Icon(Icons.error),
                             )
 
                         ),
@@ -551,6 +555,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
   Widget build(BuildContext context) {
     // final cart = Provider.of<Cart_>(context);
     return Scaffold(
+        backgroundColor: Colors.white,
       // appBar: AppBar(title: Text("Cart List")),
       body:Column(
           children: <Widget>[

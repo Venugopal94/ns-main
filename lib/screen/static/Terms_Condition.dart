@@ -53,6 +53,7 @@ class _TermsStateScreen extends State<TermsScreen> {
     // TODO: implement build
 
     return Scaffold(
+        backgroundColor: Colors.white,
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Terms And Condition", style: TextStyle(fontFamily: "Roboto",)),
@@ -77,7 +78,7 @@ class TermsDemo extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
         }
-        return CircularProgressIndicator();
+        return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
       },
     );
   }

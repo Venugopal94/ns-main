@@ -235,6 +235,7 @@ class _Upload_prescriptions_State extends State<Upload_prescription> {
     }
 
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       // backgroundColor: LightColor.yellowColor,
       appBar: AppBar(

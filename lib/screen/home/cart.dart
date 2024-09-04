@@ -60,6 +60,7 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
         appBar: AppBar(title: Text("Cart List", style: TextStyle(fontFamily: "Roboto")),
           backgroundColor: LightColor.yellowColor,

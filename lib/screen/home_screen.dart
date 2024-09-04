@@ -70,6 +70,7 @@ class _HomeStateScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Family Pharmacy", style: TextStyle(fontFamily: "Roboto"),),

@@ -78,6 +78,7 @@ class _myaccountState extends State<myaccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         key: _scaffoldKey,
         appBar: AppBar(title: Text("My Account", style: TextStyle(fontFamily: "Roboto",)), backgroundColor: LightColor.yellowColor,
             foregroundColor: LightColor.midnightBlue),

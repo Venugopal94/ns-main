@@ -10,6 +10,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:robustremedy/screen/auth/login.dart';
 import 'package:robustremedy/screen/auth/usermodel.dart';
+import 'package:robustremedy/screen/auth/verify_otp.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/widgets/bezierContainer.dart';
 import 'package:geolocator/geolocator.dart';
@@ -43,6 +44,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
   final zoneController = TextEditingController();
   final streetController = TextEditingController();
   final TextEditingController _typeAheadController = TextEditingController();
+  int _groupValue = 0;
 
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -164,25 +166,51 @@ class _SignUpPageState extends State<RegistrationScreen> {
       var response = await http.post(Uri.parse( url), body: json.encode(data));
 
       // Getting Server response into variable.
-      var message = jsonDecode(response.body);
+      var message = response.body;
 
       // If Web call Success than Hide the CircularProgressIndicator.
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 && message == "\"User Registered Successfully\"") {
         setState(() {
           visible = false;
         });
+        if (_groupValue == 0) {
+          Navigator.push(
+              context,
+              PageRouteBuilder(
+                  transitionDuration: Duration(milliseconds: 500),
+                  transitionsBuilder: (context, animation, animationTime,
+                      child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                  pageBuilder: (context, animation, animationTime) {
+                    return VerifyOtpScreen(firstname: firstname,
+                      lastname: lastname,
+                      password: password,
+                      zone: zone,
+                      street: street,
+                      buildingno: buildingno,
+                      email: email,
+                      mobileno: mobileno,);
+                  }));
+          return;
+        }
+        showNotification();
+        fnameController.clear();
+        lnameController.clear();
+        mobileController.clear();
+        emailController.clear();
+        buildingController.clear();
+        zoneController.clear();
+        streetController.clear();
+        passwordController.clear();
+        showVerificationAlert(
+            "Verification link has been sent to your email. Please verify to complete registration!");
+      } else {
+        showInSnackBar(message);
       }
-      showNotification();
-      fnameController.clear();
-      lnameController.clear();
-      mobileController.clear();
-      emailController.clear();
-      buildingController.clear();
-      zoneController.clear();
-      streetController.clear();
-      passwordController.clear();
-      showInSnackBar(
-          "Verification link has been sent to your email. Please verify to complete registration!");
     }
   }
 
@@ -246,6 +274,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       body: Container(
         height: height,
@@ -340,6 +369,7 @@ class _SignUpPageState extends State<RegistrationScreen> {
                             child: TextField(
                               style: TextStyle(fontFamily: "Roboto"),
                               keyboardType: TextInputType.number,
+                              readOnly: true,
                               decoration: InputDecoration(
                                   hintText: '+974',
                                   border: InputBorder.none,
@@ -519,10 +549,46 @@ class _SignUpPageState extends State<RegistrationScreen> {
                     SizedBox(
                       height: 20,
                     ),
+
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "Verification",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15, fontFamily: "Roboto"),
+                          ),
+                        ]),
+                    SizedBox(height: 10,),
+                    Container(
+                      height: 40,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: 160,
+                            height: 40,
+                              child: radioButton(
+                          title: "SMS",
+                          value: 0,
+                          onChanged: (newValue) => setState(() => _groupValue = newValue ?? 0),
+                        )),
+                        Container(
+                          width: 150,
+                          height: 40,
+                        child: radioButton(
+                          title: "Email",
+                          value: 1,
+                          onChanged: (newValue) => setState(() => _groupValue = newValue ?? 0),
+                        )),
+                      ],
+                    )),
+                    SizedBox(height: 20,),
                     Center(
                       child: Button(
                         onClick: userRegistration,
-                        btnText: "Registration",
+                        btnText: "Register Now",
                       ),
                     ),
                     // SizedBox(height: height * .14),
@@ -537,11 +603,131 @@ class _SignUpPageState extends State<RegistrationScreen> {
     );
   }
 
+  Widget radioButton({required String title, required int value, required Function(int?) onChanged}) {
+    return RadioListTile(
+      value: value,
+      groupValue: _groupValue,
+      onChanged: onChanged,
+      title: Text(title, style: TextStyle(fontFamily: "Roboto", fontSize: 14, fontWeight: FontWeight.w900)),
+    );
+  }
   void showInSnackBar(String value) {
     ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
       content: new Text(value, style: TextStyle(fontFamily: "Roboto")),
       backgroundColor: LightColor.midnightBlue,
     ));
+  }
+
+  void showVerificationAlert(String value) {
+    showDialog(
+        context: context,
+        builder: (context)
+        {
+          Color yellowColors = Colors.yellow[700] ??  Color(0);
+
+          return AlertDialog(
+            title: Container(
+                alignment: Alignment.center,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(23),
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 46,
+                      height: 46,
+                      color: midnightBlue,
+                      child: Icon(Icons.email_outlined, color: Colors.white,),
+                    ))
+            ),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Container(
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 4.5,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .height,
+                    alignment: Alignment.center,
+                    child: ListView(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text('Please Verify your Email!',
+                              style: TextStyle(
+                                  fontFamily: "Roboto",
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 15,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Center(
+                            child: Text(value,
+                              style: TextStyle(
+                                  fontFamily: "Roboto",
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 15,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+
+                          SizedBox(height: 10,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children:<Widget>[
+                              Text('Welcome to ',
+                                style: TextStyle(
+                                    fontFamily: "Roboto",
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 15,
+                                    color: Colors.black),
+                                textAlign: TextAlign.center,
+                              ),
+                              Text(' Family',
+                                style: TextStyle(
+                                    fontFamily: "Roboto",
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15,
+                                    color: yellowColors),
+                                textAlign: TextAlign.center,
+                              )
+                            ],),
+
+                          SizedBox(height: 20,),
+                          Container(
+                              height: 40,
+                              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                              child: Button(
+                                onClick: () {
+                                  Navigator.push(
+                                      context,
+                                      PageRouteBuilder(
+                                          transitionDuration: Duration(milliseconds: 500),
+                                          transitionsBuilder: (context, animation, animationTime, child) {
+                                            return FadeTransition(
+                                              opacity: animation,
+                                              child: child,
+                                            );
+                                          },
+                                          pageBuilder: (context, animation, animationTime) {
+                                            return LoginScreen();
+                                          }));
+                                },
+                                btnText: "Done",
+                                isFromAlert: true,
+                              )),
+                        ]
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
 
@@ -572,8 +758,9 @@ class ZoneArea {
 class Button extends StatelessWidget {
   var btnText = "";
   var onClick;
+  bool? isFromAlert = false;
 
-  Button({required this.btnText, this.onClick});
+  Button({required this.btnText, this.onClick, this.isFromAlert});
   Color yellowColors = Colors.yellow[700] ??  Color(0);
   static const Color midnightBlue = const Color.fromRGBO(1, 4, 99, 1);
   @override
@@ -584,7 +771,7 @@ class Button extends StatelessWidget {
         onPressed: onClick,
         child: Container(
           width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(vertical: 15),
+          padding: EdgeInsets.symmetric(vertical: (isFromAlert == true) ? 0 : 15),
           alignment: Alignment.center,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
@@ -603,14 +790,15 @@ class Button extends StatelessWidget {
                   colors: [yellowColors, Color(0xfffbb448)])),
           child: InkWell(
             child: Text(
-              'Register Now',
+              btnText,
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: (isFromAlert ?? false) ? 15 : 20,
                   fontFamily: "Roboto",
                   color: midnightBlue,
                   fontWeight: FontWeight.bold),
             ),
           ),
-        ));
+        )
+    );
   }
 }

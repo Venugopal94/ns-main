@@ -55,6 +55,7 @@ class _Order_GeneratedScreenState extends State<Order_GeneratedScreen>
           MaterialPageRoute(builder: (context) => HomeScreen()),
           (Route<dynamic> route) => false) as bool,
       child: Scaffold(
+        backgroundColor: Colors.white,
           appBar: AppBar(
             title: Text("Confirmation", style: TextStyle(fontFamily: "Roboto")),
             backgroundColor: LightColor.yellowColor,

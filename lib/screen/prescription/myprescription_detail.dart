@@ -144,6 +144,7 @@ class _mypredetailState extends State<mypredetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
 
         // backgroundColor: LightColor.yellowColor,
         appBar: AppBar(
@@ -529,6 +530,7 @@ class _Total_prescriptionscreenState extends State<Total_prescriptionscreen> {
   Widget build(BuildContext context) {
     // final cart = Provider.of<Cart_>(context);
     return Scaffold(
+        backgroundColor: Colors.white,
       // appBar: AppBar(title: Text("Cart List")),
       body: Column(children: <Widget>[
         Expanded(

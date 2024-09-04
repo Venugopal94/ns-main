@@ -31,6 +31,7 @@ class _referearnState extends State<referearn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
 
         appBar: AppBar(
           title: Text('Refer & Earn', style: TextStyle(fontFamily: "Roboto",)),

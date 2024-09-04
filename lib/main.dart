@@ -9,7 +9,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Helpers/firebase_notification_manager.dart';
-
+var isProd = true;
 void main() async {
   // ErrorWidget.builder = (FlutterErrorDetails details) => Scaffold(
   //       body: Container(),

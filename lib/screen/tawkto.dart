@@ -23,6 +23,7 @@ class _WebViewExampleState extends State<WebViewExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Live Support', style: TextStyle(fontFamily: "Roboto",)),
         backgroundColor: LightColor.yellowColor,

@@ -268,9 +268,13 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                 //   },
                 // ),
                 child: TypeAheadField<ZoneArea>(
-                  textFieldConfiguration: TextFieldConfiguration(
-                      decoration: InputDecoration(border: OutlineInputBorder()),
-                      controller: this._typeAheadController),
+                  builder: (context, controller, focusNode) {
+                     return TextField(
+                            controller: this._typeAheadController,
+                            focusNode: focusNode,
+                            decoration: InputDecoration(border: OutlineInputBorder()),
+                            );
+                     },
                   hideOnLoading: true,
                   hideOnEmpty: true,
                   suggestionsCallback: UserApi.getUsersuggestion,
@@ -279,12 +283,11 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
                     return ListTile(
                       title: Text(user.zone + "-" + user.area,  style: TextStyle(fontFamily: "Roboto")),
                     );
-                  },
-                  onSuggestionSelected: (ZoneArea suggestion) {
-                    final user = suggestion;
-                    _typeAheadController.text = user.zone + "-" + user.area;
-                    selectedvalue = user.id;
-                  },
+                  }, onSelected: (ZoneArea value) {
+                  final user = value;
+                  _typeAheadController.text = user.zone + "-" + user.area;
+                  selectedvalue = user.id;
+                },
                 ),
               ),
               SizedBox(
@@ -313,6 +316,7 @@ class _Add_NewScreenState extends State<Add_NewScreen> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(title: Text("Add New Address", style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,

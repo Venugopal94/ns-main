@@ -17,6 +17,7 @@ class _All_branchState extends State<Salesteam> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text(" Sales Team ", style: TextStyle(fontFamily: "Roboto",)),
@@ -68,6 +69,7 @@ class _AllBranchState extends State<AllBranch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       body: FutureBuilder<List<allbranch>>(
         future: _fetchallbranch(),
         builder: (context, snapshot) {
@@ -77,7 +79,7 @@ class _AllBranchState extends State<AllBranch> {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
         },
       ),
     );

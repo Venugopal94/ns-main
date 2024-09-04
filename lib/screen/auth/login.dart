@@ -6,22 +6,11 @@ import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:robustremedy/screen/auth/forgetpassword.dart';
 import 'package:robustremedy/screen/auth/registration.dart';
+import 'package:robustremedy/screen/auth/verify_otp.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/widgets/bezierContainer.dart';
 import 'package:robustremedy/screen/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-//import 'package:showcaseview/showcase_widget.dart';
-import 'package:showcaseview/showcaseview.dart';
-
-//void main() async{
-// checkLogin();
-//WidgetsFlutterBinding.ensureInitialized();
-//SharedPreferences preferences= await SharedPreferences.getInstance();
-//var email =preferences.getString("email");
-//await FlutterSession().set("token", email);
-//runApp(MaterialApp(home: email== null?  LoginScreen() : HomeScreen(),));
-//}
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key, this.title, this.isFromDeleteAction})
@@ -47,29 +36,22 @@ class _LoginPageState extends State<LoginScreen> {
       'email',
       email,
     );
-    // prefs.setString('userid', id,);
-    //  print(user_id);
   }
 
   addStringTo(user_id) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
     String id = user_id;
-    // prefs.setString('email', email,);
     prefs.setString(
       'id',
       id,
     );
-    //  print(user_id);
   }
 
   addStringTocart(cart_total) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     int total = cart_total;
-    // prefs.setString('email', email,);
     prefs.setInt('cart_total', total);
-    //  print(user_id);
   }
 
   // AnimationController _controller;
@@ -105,8 +87,6 @@ class _LoginPageState extends State<LoginScreen> {
   final passwordController = TextEditingController();
 
   Future userLogin() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString("email", emailController.text);
     // Showing CircularProgressIndicator.
     setState(() {
       visible = true;
@@ -165,10 +145,13 @@ class _LoginPageState extends State<LoginScreen> {
       // If the Response Message is Matched.
       if (message == 'Login Matched' ||
           message == 'Account has been deleted successfully') {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        preferences.setString("email", emailController.text);
         // Hiding the CircularProgressIndicator.
         setState(() {
           visible = false;
         });
+
         // print(user_id);
         // Navigate to Profile Screen & Sending Email to Next Screen.
         Navigator.push(
@@ -359,6 +342,7 @@ class _LoginPageState extends State<LoginScreen> {
             .startShowCase([_one, _two,]));*/
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+        backgroundColor: Colors.white,
         key: _scaffoldKey,
         appBar: !(widget.isFromDeleteAction ?? false)
             ? null

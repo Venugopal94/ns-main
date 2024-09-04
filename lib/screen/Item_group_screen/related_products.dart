@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -188,12 +189,15 @@ imageSlider(context, data) {
               Container(
                   width: 100,
                   height: 100,
-                  child: new Image.network(
+                  child: CachedNetworkImage(imageUrl:
                     'https://onlinefamilypharmacy.com/images/item/' +
                         data[index]?.img,
                     fit: BoxFit.fitWidth,
                     width: 100,
-                  )),
+                    placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  )
+              ),
               SizedBox(
                 height: 10,
               ),

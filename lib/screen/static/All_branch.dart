@@ -70,6 +70,7 @@ class _All_branchState extends State<All_branch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: appBarTitle,
@@ -198,9 +199,10 @@ class _AllBranchState extends State<AllBranch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       key: widget.key,
       body: widget.data == null
-          ? CircularProgressIndicator()
+          ? Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),))
           : Grid(context, widget.data),
     );
   }

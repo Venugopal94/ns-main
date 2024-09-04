@@ -20,6 +20,7 @@ class _Wishlist_detailState extends State<Wishlist_detail> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.itemid, style: TextStyle(fontFamily: "Roboto")),
         backgroundColor: LightColor.yellowColor,

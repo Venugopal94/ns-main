@@ -6,6 +6,7 @@ class Example extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.white,
         body: DoubleBackToCloseApp(
           snackBar: const SnackBar(
             content: Text('Tap back again to leave', style: TextStyle(fontFamily: "Roboto",)),

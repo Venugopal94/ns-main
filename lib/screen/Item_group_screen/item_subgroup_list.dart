@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:robustremedy/screen/Item_group_screen/detail_page.dart';
 import 'package:robustremedy/screen/Item_group_screen/item_group.dart';
+import 'package:robustremedy/screen/home/popularitems.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/screen/Item_group_screen/item_subgroup.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -112,7 +113,7 @@ class SubList_Items extends StatefulWidget {
 // }
 
 class _SubList_ItemsState extends State<SubList_Items> {
-  late List<ItemGrpData> data;
+  late List<Job> data;
   String pharmacyname = "";
   Future<void> _showSearch() async {
     await showSearch(
@@ -136,6 +137,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.title, style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
@@ -148,22 +150,22 @@ class _SubList_ItemsState extends State<SubList_Items> {
               icon: Icon(Icons.search))
         ],
       ),
-      body: FutureBuilder<List<ItemGrpData>>(
+      body: FutureBuilder<List<Job>>(
         future: _fetchItemGrpData(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<ItemGrpData> data = snapshot.data ?? [];
+            List<Job> data = snapshot.data ?? [];
             return Grid(context, data);
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
         },
       ),
     );
   }
 
-  Future<List<ItemGrpData>> _fetchItemGrpData() async {
+  Future<List<Job>> _fetchItemGrpData() async {
     final url =
         'https://onlinefamilypharmacy.com/mobileapplication/categories/list_subgroup.php';
     var data = {'itemid': widget.sublist};
@@ -171,7 +173,7 @@ class _SubList_ItemsState extends State<SubList_Items> {
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
-      return jsonResponse.map((job) => new ItemGrpData.fromJson(job)).toList();
+      return jsonResponse.map((job) => new Job.fromJson(job)).toList();
     } else {
       throw Exception('Failed to load jobs from API');
     }
@@ -228,6 +230,24 @@ Grid(context, data) {
                               bottomRight: Radius.circular(10.0)),
                         ),
                       ),
+                      if ((data[index].labelPercentagediscount ?? '').isNotEmpty)
+                        Container(
+                            margin: EdgeInsets.only(top: 8, left: 6),
+                            padding: EdgeInsets.only(left: 5, right: 5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2),
+                              color: Colors.red,
+                            ),
+                            child: Text(
+                                data[index].labelPercentagediscount ?? "",
+                                textAlign: TextAlign.left,
+                                // softWrap: true,
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                    fontFamily: "Roboto",
+                                    color: Colors.white))),
                       Positioned(
                         top: 1,
                         child: Container(
@@ -270,7 +290,7 @@ Grid(context, data) {
                         ]),
                         SizedBox(height: 5),
                         getprice(double.parse(data[index].maxretailprice).toStringAsFixed(2),
-                            double.parse(data[index].minretailprice).toStringAsFixed(2)),
+                            double.parse(data[index].minretailprice).toStringAsFixed(2), index, data),
 
                         /* Row(
       children: <Widget>[
@@ -291,19 +311,27 @@ Grid(context, data) {
   );
 }
 
-getprice(max, min) {
+getprice(max, min, index, data) {
   if (max == min) {
     return Row(children: <Widget>[
-      Expanded(
-        child: Text(
-          "\QR ${max}",
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
-              fontFamily: "Roboto",
-              color: LightColor.midnightBlue),
-          overflow: TextOverflow.ellipsis,
-        ),
+      if ((data[index].labelPercentagediscount ?? '').isNotEmpty)
+        Text(
+        "\QR ${(double.parse(data[index].realRs).toStringAsFixed(2))}",
+        style: TextStyle(
+            decoration: TextDecoration.lineThrough,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Roboto",
+            color: Colors.red)),
+      if ((data[index].labelPercentagediscount ?? '').isNotEmpty)
+          SizedBox(width: 6,),
+        Text(
+        "\QR ${double.parse(data[index].rs).toStringAsFixed(2)}",
+        style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Roboto",
+            color: LightColor.midnightBlue),
       ),
     ]);
   } else {

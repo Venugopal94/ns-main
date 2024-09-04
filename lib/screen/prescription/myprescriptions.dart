@@ -95,6 +95,7 @@ class _myprescriptionState extends State<myprescription> {
   Widget build(BuildContext context) {
     // final cart = Provider.of<Cart_>(context);
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(title: Text("My Prescription", style: TextStyle(fontFamily: "Roboto",)),  backgroundColor: LightColor.yellowColor,
         foregroundColor: LightColor.midnightBlue),
       body: FutureBuilder<List<Prescriptions>>(

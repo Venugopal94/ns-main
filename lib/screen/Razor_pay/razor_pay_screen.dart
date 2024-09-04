@@ -72,6 +72,7 @@ class _Razor_payState extends State<Razor_pay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Razor Pay Tutorial"),
       ),

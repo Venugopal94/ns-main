@@ -14,6 +14,7 @@ class _photogalleryState extends State<photogallery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       //resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         //backgroundColor: LightColor.midnightBlue,
@@ -50,6 +51,7 @@ class _AllBranchState extends State<AllBranch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       body: FutureBuilder<List<allbranch>>(
         future: _fetchallbranch(),
         builder: (context, snapshot) {
@@ -59,7 +61,7 @@ class _AllBranchState extends State<AllBranch> {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto",));
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
         },
       ),
     );

@@ -1,5 +1,6 @@
 import 'dart:convert';
 //import 'package:double_back_to_close_app/double_back_to_close_app.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:robustremedy/screen/Item_group_screen/item_group_list.dart';
@@ -38,6 +39,7 @@ class _ItemSubState extends State<ItemSub> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.itemetitle, style: TextStyle(fontFamily: "Roboto"),),
         backgroundColor: LightColor.yellowColor,
@@ -117,10 +119,13 @@ Grid(context,data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
+                      CachedNetworkImage(imageUrl:
                         'https://onlinefamilypharmacy.com/images/itemsubgroupimages/' +
                             data[index].url,   height: containerh / 2.5,
-                        width: width / 2,),
+                        width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                       // Image.network(data[index].url, height: 150, width: 200,),
                       Container(
                         height: containerh /15, width: width / 2,
@@ -180,10 +185,13 @@ Grid(context,data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
+                      CachedNetworkImage(imageUrl:
                         'https://onlinefamilypharmacy.com/images/itemsubgroupimages/' +
                             data[index].url, height: containerh / 1.5,
-                        width: width / 2,),
+                        width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                       // Image.network(data[index].url, height: 150, width: 200,),
                       Container(
                         height: containerh / 10, width: width / 2,
@@ -244,10 +252,13 @@ Grid(context,data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
+                      CachedNetworkImage(imageUrl:
                         'https://onlinefamilypharmacy.com/images/itemsubgroupimages/' +
                             data[index].url, height: containerh / 3.5,
-                        width: width / 2,),
+                        width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                       // Image.network(data[index].url, height: 150, width: 200,),
                       Container(
                         height: containerh / 21, width: width / 2,
@@ -307,10 +318,13 @@ Grid(context,data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
+                      CachedNetworkImage(imageUrl:
                         'https://onlinefamilypharmacy.com/images/itemsubgroupimages/' +
                             data[index].url, height: containerh / 1.5,
-                        width: width / 2,),
+                        width: width / 2,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
                       // Image.network(data[index].url, height: 150, width: 200,),
                       Container(
                         height: containerh / 10, width: width / 2,

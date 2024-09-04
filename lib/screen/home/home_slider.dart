@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:robustremedy/screen/Item_group_screen/item_main.dart';
 import 'package:robustremedy/screen/home/home_below_slider.dart';
@@ -120,19 +121,27 @@ class SliderDemo extends StatelessWidget {
 }
 
 Swiper imageSlider(context, data) {
-  return new Swiper(
+  return Swiper(
     autoplay: true,
     itemCount: data.length,
     itemBuilder: (BuildContext context, int index) {
-      return new Image.network(
+      return CachedNetworkImage(imageUrl:
         'https://onlinefamilypharmacy.com/images/sliderimages/' + data[index].image2,
         fit: BoxFit.fitWidth,
         width: 300,
+        placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+        errorWidget: (context, url, error) => Icon(Icons.error),
       );
     },
-    pagination: SwiperPagination(),
+    pagination: new SwiperPagination(
+      alignment: Alignment.bottomCenter,
+      builder: new DotSwiperPaginationBuilder(
+          color: LightColor.yellowColor, activeColor: LightColor.midnightBlue),
+    ),
+    control: new SwiperControl(
+      color: Color(0xff38547C),
+    ),
     //viewportFraction: 0.2,
-
     scale: 1.0,
   );
 }

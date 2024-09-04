@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:robustremedy/screen/Item_group_screen/detail_page.dart';
+import 'package:robustremedy/screen/home/popularitems.dart';
 import 'package:robustremedy/themes/light_color.dart';
 
 
@@ -120,17 +121,18 @@ class _ListItemsState extends State<ListItems> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       body:
-       FutureBuilder<List<ItemGrpData>>(
+       FutureBuilder<List<Job>>(
           future: _fetchItemGrpData(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<ItemGrpData> data = snapshot.data ?? [];
+              List<Job> data = snapshot.data ?? [];
               return Grid(context, data);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}", style: TextStyle(fontFamily: "Roboto"),);
             }
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),));
           },
         ),
 
@@ -138,14 +140,14 @@ class _ListItemsState extends State<ListItems> {
 
   }
 
-  Future<List<ItemGrpData>> _fetchItemGrpData() async {
+  Future<List<Job>> _fetchItemGrpData() async {
     final url = 'https://onlinefamilypharmacy.com/mobileapplication/categories/list_groupitems.php';
     var data = {'itemid': widget.itemnull};
     var response = await http.post(Uri.parse( url), body: json.encode(data));
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
-      return jsonResponse.map((job) => new ItemGrpData.fromJson(job)).toList();
+      return jsonResponse.map((job) => new Job.fromJson(job)).toList();
     } else {
       throw Exception('Failed to load jobs from API');
     }

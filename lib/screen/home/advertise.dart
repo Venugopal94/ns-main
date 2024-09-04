@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -9,6 +10,7 @@ class Advertise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
 
         body:
           AdvertiseDemo(),
@@ -119,12 +121,14 @@ imageSlider(context,data) {
 
                               //width: 205,
 
-                              child:  new Image.network(
+                              child:  CachedNetworkImage(imageUrl:
                                 'https://onlinefamilypharmacy.com/images/advertiseimages/'+data[index].url,
                                 fit: BoxFit.fitHeight,
                                  width: 205,
                                 height:150,
-                              )
+                                placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                                errorWidget: (context, url, error) => Icon(Icons.error),
+                              ),
 
                           ),
 

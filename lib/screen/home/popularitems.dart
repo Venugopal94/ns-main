@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -16,6 +17,7 @@ class _SummerItemsState extends State<SummerItems> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
       body: SummerItemsDemo(),
     );
   }
@@ -40,6 +42,8 @@ class Job {
   final String? maxretailprice;
   final String? minretailprice;
   final String? rs;
+  final String? realRs;
+  final String? labelPercentagediscount;
   final String? origin;
   final String? whichcompany;
   final String? allowsonapp;
@@ -68,6 +72,8 @@ class Job {
         this.maxretailprice,
         this.minretailprice,
         this.rs,
+        this.realRs,
+        this.labelPercentagediscount,
         this.origin,
         this.whichcompany,
         this.allowsonapp,
@@ -98,6 +104,8 @@ class Job {
         maxretailprice: json['maxretailprice'],
         minretailprice: json['minretailprice'],
         rs: json['rs'],
+        realRs: json['real_rs'],
+        labelPercentagediscount: json['label_percentagediscount'],
         origin: json['origin'],
         whichcompany: json['whichcompany'],
         allowsonapp: json['allowsonapp'],
@@ -174,12 +182,15 @@ imageSlider(context, data) {
                     Container(
                         width: 100,
                         height: 100,
-                        child: new Image.network(
+                        child: CachedNetworkImage(imageUrl:
                           'https://onlinefamilypharmacy.com/images/item/' +
                               data[index].img,
                           fit: BoxFit.fitWidth,
                           width: 100,
-                        )),
+                          placeholder: (context, url) => Center(child: CircularProgressIndicator( valueColor:AlwaysStoppedAnimation<Color>(LightColor.midnightBlue),)),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        )
+                    ),
                     SizedBox(
                       height: 10,
                     ),
