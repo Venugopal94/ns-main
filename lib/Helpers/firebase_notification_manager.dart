@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -19,8 +21,15 @@ class FirebaseNotificationManager {
     await Firebase.initializeApp();
     await FirebaseMessaging.instance.requestPermission();
 
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    myToken = fcmToken ?? "";
+    if (Platform.isIOS) {
+      String? apnsToken = await FirebaseMessaging.instance.getAPNSToken();
+      print('APNS Token: $apnsToken');
+      myToken = apnsToken ?? "";
+      await Future.delayed(Duration(seconds: 2));
+    } else {
+      final fcmToken = await FirebaseMessaging.instance.getToken();
+      myToken = fcmToken ?? "";
+    }
     FirebaseMessaging.instance.onTokenRefresh.listen((newToken) async {
       myToken = newToken;
     });

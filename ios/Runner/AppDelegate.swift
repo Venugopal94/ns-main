@@ -6,7 +6,7 @@ import AppTrackingTransparency
 import Firebase
 import FirebaseMessaging
 import UserNotifications
-@UIApplicationMain
+@main
 @objc class AppDelegate: FlutterAppDelegate {
     var firebaseToken : String = "";
   override func application(
