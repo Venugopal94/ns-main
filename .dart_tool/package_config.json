@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "_flutterfire_internals",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.52",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.59",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -21,15 +21,15 @@
     },
     {
       "name": "args",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/args-2.6.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/args-2.7.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "async",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/async-2.11.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/async-2.12.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.4"
     },
     {
       "name": "badges",
@@ -38,10 +38,16 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "boolean_selector",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
+      "name": "barcode",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/barcode-2.2.9",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "boolean_selector",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/boolean_selector-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
     },
     {
       "name": "bouncing_widget",
@@ -51,43 +57,43 @@
     },
     {
       "name": "cached_network_image",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/cached_network_image-3.3.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/cached_network_image-3.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "cached_network_image_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/cached_network_image_platform_interface-4.0.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/cached_network_image_platform_interface-4.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "cached_network_image_web",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/cached_network_image_web-1.2.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/cached_network_image_web-1.3.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "change_app_package_name",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/change_app_package_name-1.4.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/change_app_package_name-1.5.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "characters",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/characters-1.3.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/characters-1.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.4"
     },
     {
       "name": "clock",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/clock-1.1.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/clock-1.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.4"
     },
     {
       "name": "collection",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/collection-1.19.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/collection-1.19.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -105,9 +111,9 @@
     },
     {
       "name": "csslib",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/csslib-0.17.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/csslib-1.0.2",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "cupertino_icons",
@@ -129,7 +135,7 @@
     },
     {
       "name": "dio_web_adapter",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/dio_web_adapter-2.1.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/dio_web_adapter-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -147,15 +153,15 @@
     },
     {
       "name": "fake_async",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/fake_async-1.3.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/fake_async-1.3.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.3"
     },
     {
       "name": "ffi",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/ffi-2.1.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/ffi-2.1.4",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.7"
     },
     {
       "name": "file",
@@ -177,9 +183,9 @@
     },
     {
       "name": "file_selector_macos",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+2",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+3",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.6"
     },
     {
       "name": "file_selector_platform_interface",
@@ -201,73 +207,73 @@
     },
     {
       "name": "firebase_analytics",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_analytics-11.4.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_analytics-11.6.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_analytics_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_analytics_platform_interface-4.3.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_analytics_platform_interface-4.4.3",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_analytics_web",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_analytics_web-0.5.10+9",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_analytics_web-0.5.10+16",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "firebase_core",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_core-3.12.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_core-3.15.2",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_core_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-5.4.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-6.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_core_web",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_core_web-2.21.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_core_web-2.24.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "firebase_messaging",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_messaging-15.2.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_messaging-15.2.10",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_messaging_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_messaging_platform_interface-4.6.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_messaging_platform_interface-4.6.10",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_messaging_web",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.10.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.10.10",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "firebase_remote_config",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_remote_config-5.4.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_remote_config-5.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_remote_config_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_remote_config_platform_interface-1.5.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_remote_config_platform_interface-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "firebase_remote_config_web",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_remote_config_web-1.8.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/firebase_remote_config_web-1.8.9",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -281,25 +287,25 @@
       "name": "flutter",
       "rootUri": "file:///Users/venugopal/Documents/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.7"
     },
     {
       "name": "flutter_cache_manager",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.4.1",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_form_builder",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_form_builder-9.7.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_form_builder-10.0.1",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "3.7"
     },
     {
       "name": "flutter_html",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_html-3.0.0-beta.2",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_html-3.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.2"
     },
     {
       "name": "flutter_keyboard_visibility",
@@ -345,33 +351,39 @@
     },
     {
       "name": "flutter_local_notifications",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_local_notifications-15.1.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_local_notifications-19.3.1",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.4"
     },
     {
       "name": "flutter_local_notifications_linux",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_local_notifications_linux-4.0.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_local_notifications_linux-6.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.4"
     },
     {
       "name": "flutter_local_notifications_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_local_notifications_platform_interface-7.2.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_local_notifications_platform_interface-9.1.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "flutter_local_notifications_windows",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_local_notifications_windows-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "flutter_phone_direct_caller",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_phone_direct_caller-2.1.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_phone_direct_caller-2.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.24",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.28",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.6"
     },
     {
       "name": "flutter_rating_bar",
@@ -395,7 +407,7 @@
       "name": "flutter_test",
       "rootUri": "file:///Users/venugopal/Documents/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.7"
     },
     {
       "name": "flutter_typeahead",
@@ -407,7 +419,7 @@
       "name": "flutter_web_plugins",
       "rootUri": "file:///Users/venugopal/Documents/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.7"
     },
     {
       "name": "flutter_xlider",
@@ -453,21 +465,21 @@
     },
     {
       "name": "geolocator_android",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/geolocator_android-4.6.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2",
       "packageUri": "lib/",
-      "languageVersion": "2.15"
+      "languageVersion": "3.5"
     },
     {
       "name": "geolocator_apple",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/geolocator_apple-2.3.9",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/geolocator_apple-2.3.13",
       "packageUri": "lib/",
-      "languageVersion": "2.15"
+      "languageVersion": "3.5"
     },
     {
       "name": "geolocator_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/geolocator_platform_interface-4.2.4",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/geolocator_platform_interface-4.2.6",
       "packageUri": "lib/",
-      "languageVersion": "2.15"
+      "languageVersion": "3.5"
     },
     {
       "name": "geolocator_web",
@@ -477,9 +489,9 @@
     },
     {
       "name": "geolocator_windows",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.5",
       "packageUri": "lib/",
-      "languageVersion": "2.15"
+      "languageVersion": "3.5"
     },
     {
       "name": "get_it",
@@ -489,21 +501,21 @@
     },
     {
       "name": "google_fonts",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/google_fonts-4.0.4",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/google_fonts-6.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "html",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/html-0.15.4",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/html-0.15.6",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.2"
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/http-0.13.6",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/http-1.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.4"
     },
     {
       "name": "http_parser",
@@ -525,9 +537,9 @@
     },
     {
       "name": "image_picker_android",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+21",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+24",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.6"
     },
     {
       "name": "image_picker_for_web",
@@ -543,9 +555,9 @@
     },
     {
       "name": "image_picker_linux",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.1+1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.1+2",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.4"
     },
     {
       "name": "image_picker_macos",
@@ -567,19 +579,19 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/intl-0.20.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/leak_tracker-10.0.7",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/leak_tracker-10.0.8",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.8",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.9",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -603,9 +615,9 @@
     },
     {
       "name": "matcher",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/matcher-0.12.16+1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/matcher-0.12.17",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.4"
     },
     {
       "name": "material_color_utilities",
@@ -621,13 +633,13 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/meta-1.15.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/meta-1.16.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "mime",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/mime-1.0.6",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/mime-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -651,21 +663,21 @@
     },
     {
       "name": "package_info_plus",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/package_info_plus-8.2.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/package_info_plus-8.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "package_info_plus_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/package_info_plus_platform_interface-3.1.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/package_info_plus_platform_interface-3.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "path",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/path-1.9.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/path-1.9.1",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.4"
     },
     {
       "name": "path_drawing",
@@ -687,9 +699,9 @@
     },
     {
       "name": "path_provider_android",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/path_provider_android-2.2.15",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/path_provider_android-2.2.17",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.6"
     },
     {
       "name": "path_provider_foundation",
@@ -717,9 +729,9 @@
     },
     {
       "name": "petitparser",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/petitparser-6.0.2",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/petitparser-6.1.0",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.5"
     },
     {
       "name": "pin_input_text_field",
@@ -759,19 +771,25 @@
     },
     {
       "name": "pointer_interceptor_web",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/pointer_interceptor_web-0.10.2+1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/pointer_interceptor_web-0.10.3",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.6"
     },
     {
       "name": "provider",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/provider-6.1.2",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/provider-6.1.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
+      "name": "qr",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/qr-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "rxdart",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/rxdart-0.28.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -782,22 +800,28 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "share",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/share-2.0.4",
+      "name": "share_plus",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/share_plus-11.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "share_plus_platform_interface",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/share_plus_platform_interface-6.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
     },
     {
       "name": "shared_preferences",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/shared_preferences-2.5.2",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "shared_preferences_android",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.6",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.10",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.6"
     },
     {
       "name": "shared_preferences_foundation",
@@ -839,7 +863,7 @@
       "name": "sky_engine",
       "rootUri": "file:///Users/venugopal/Documents/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.7"
     },
     {
       "name": "sms_autofill",
@@ -849,9 +873,9 @@
     },
     {
       "name": "source_span",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/source_span-1.10.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/source_span-1.10.1",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.1"
     },
     {
       "name": "sprintf",
@@ -861,27 +885,27 @@
     },
     {
       "name": "sqflite",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/sqflite-2.4.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/sqflite-2.4.2",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.7"
     },
     {
       "name": "sqflite_android",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/sqflite_android-2.4.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/sqflite_android-2.4.1",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.7"
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/sqflite_common-2.5.4+6",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/sqflite_common-2.5.5",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.7"
     },
     {
       "name": "sqflite_darwin",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/sqflite_darwin-2.4.1+1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/sqflite_darwin-2.4.2",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.7"
     },
     {
       "name": "sqflite_platform_interface",
@@ -891,49 +915,49 @@
     },
     {
       "name": "stack_trace",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/stack_trace-1.12.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/stack_trace-1.12.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "stream_channel",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/stream_channel-2.1.2",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/stream_channel-2.1.4",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.3"
     },
     {
       "name": "string_scanner",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/string_scanner-1.3.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/string_scanner-1.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
     {
       "name": "synchronized",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/synchronized-3.3.0+3",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/synchronized-3.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "term_glyph",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/term_glyph-1.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "test_api",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/test_api-0.7.4",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
-      "name": "term_glyph",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/term_glyph-1.2.1",
+      "name": "timelines_plus",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/timelines_plus-1.0.7",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "test_api",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/test_api-0.7.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "timelines",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/timelines-0.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.2"
     },
     {
       "name": "timezone",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/timezone-0.9.4",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/timezone-0.10.1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -945,9 +969,9 @@
     },
     {
       "name": "translator",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/translator-0.1.7",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/translator-1.0.3+1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "typed_data",
@@ -957,21 +981,21 @@
     },
     {
       "name": "url_launcher",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/url_launcher-6.3.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/url_launcher-6.3.2",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.6"
     },
     {
       "name": "url_launcher_android",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.14",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.16",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.6"
     },
     {
       "name": "url_launcher_ios",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.2",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.3",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.4"
     },
     {
       "name": "url_launcher_linux",
@@ -993,7 +1017,7 @@
     },
     {
       "name": "url_launcher_web",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/url_launcher_web-2.4.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/url_launcher_web-2.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     },
@@ -1017,45 +1041,45 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/vm_service-14.3.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/vm_service-14.3.1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "web",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/web-1.1.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/web-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "webview_flutter",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/webview_flutter-2.8.0",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/webview_flutter-4.13.0",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "3.6"
     },
     {
       "name": "webview_flutter_android",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/webview_flutter_android-2.10.4",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/webview_flutter_android-4.8.2",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "3.6"
     },
     {
       "name": "webview_flutter_platform_interface",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-1.9.5",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-2.13.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.6"
     },
     {
       "name": "webview_flutter_wkwebview",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-2.9.5",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.22.1",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.6"
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/win32-5.10.1",
+      "rootUri": "file:///Users/venugopal/.pub-cache/hosted/pub.dev/win32-5.13.0",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.7"
     },
     {
       "name": "xdg_directories",
@@ -1082,10 +1106,10 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2025-02-19T18:06:47.801276Z",
+  "generated": "2025-07-31T05:59:51.379687Z",
   "generator": "pub",
-  "generatorVersion": "3.6.0",
+  "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Users/venugopal/Documents/flutter",
-  "flutterVersion": "3.27.1",
+  "flutterVersion": "3.29.3",
   "pubCache": "file:///Users/venugopal/.pub-cache"
 }

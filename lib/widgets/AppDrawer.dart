@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:robustremedy/screen/prescription/myprescriptions.dart';
+import 'package:robustremedy/screen/profile/coupons_page.dart';
+import 'package:robustremedy/screen/profile/family_miles_screen.dart';
 import 'package:robustremedy/screen/static/advertise_screen.dart';
 import 'package:robustremedy/screen/static/catlogue.dart';
 import 'package:robustremedy/screen/static/certification.dart';
@@ -29,7 +31,7 @@ import 'package:robustremedy/screen/static/salesteam.dart';
 import 'package:robustremedy/screen/static/warehouse.dart';
 import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -213,6 +215,30 @@ class _AppDrawerState extends State<AppDrawer> {
                 MaterialPageRoute(builder: (context) => myprescription()));
           },
         ),
+        if (username.toString().isNotEmpty && username != null)
+          ListTile(
+            trailing: Icon(Icons.keyboard_arrow_right),
+            leading: Image.asset("assets/Drawer/loyalty.png",
+                width: 20.0, color: AppDrawer.midnightBlue),
+            title: Text('Family Miles',
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MyProfile()));
+            },
+          ),
+        if (username.toString().isNotEmpty && username != null)
+          ListTile(
+            trailing: Icon(Icons.keyboard_arrow_right),
+            leading: Image.asset("assets/Drawer/coupon.png",
+                width: 20.0, color: AppDrawer.midnightBlue),
+            title: Text('Coupons',
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: "Roboto")),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CouponsPage()));
+            },
+          ),
 
         ListTile(
           trailing: Icon(Icons.keyboard_arrow_right),
@@ -445,4 +471,5 @@ class _AppDrawerState extends State<AppDrawer> {
       ],
     ));
   }
+
 }

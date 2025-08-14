@@ -16,7 +16,7 @@ import 'package:robustremedy/themes/light_color.dart';
 import 'package:robustremedy/widgets/badge.dart' as Badge;
 import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';

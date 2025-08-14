@@ -175,12 +175,12 @@ class _PinFieldAutoFillState extends State<PinFieldAutoFill> with CodeAutoFill {
 
   @override
   void codeUpdated() {
-    if (controller.text != code) {
-      controller.value = TextEditingValue(text: code ?? '');
-      if (widget.onCodeChanged != null) {
-        widget.onCodeChanged!(code ?? '');
-      }
-    }
+    // if (controller.text != code) {
+    //   controller.value = TextEditingValue(text: code ?? '');
+    //   if (widget.onCodeChanged != null) {
+    //     widget.onCodeChanged!(code ?? '');
+    //   }
+    // }
   }
 
   @override

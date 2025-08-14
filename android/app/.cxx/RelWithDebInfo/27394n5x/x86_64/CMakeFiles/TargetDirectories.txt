@@ -1,0 +1,2 @@
+/Users/venugopal/Documents/ns-main/android/app/.cxx/RelWithDebInfo/27394n5x/x86_64/CMakeFiles/edit_cache.dir
+/Users/venugopal/Documents/ns-main/android/app/.cxx/RelWithDebInfo/27394n5x/x86_64/CMakeFiles/rebuild_cache.dir

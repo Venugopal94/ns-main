@@ -1,0 +1,2 @@
+/Users/venugopal/Documents/ns-main/android/app/.cxx/Debug/2p122t3j/x86/CMakeFiles/edit_cache.dir
+/Users/venugopal/Documents/ns-main/android/app/.cxx/Debug/2p122t3j/x86/CMakeFiles/rebuild_cache.dir

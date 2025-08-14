@@ -6,7 +6,7 @@ import 'package:robustremedy/screen/home/cart.dart';
 import 'package:robustremedy/screen/prescription/prescription_address.dart';
 import 'package:robustremedy/screen/prescription/prescription_order_detail.dart';
 import 'package:robustremedy/themes/light_color.dart';
-import 'package:timelines/timelines.dart';
+import 'package:timelines_plus/timelines_plus.dart';
 
 class TotalPrescription {
   final String? Rs;

@@ -7,6 +7,8 @@ import 'package:robustremedy/screen/profile/address_profile.dart';
 import 'package:robustremedy/screen/Address_Screen/address_screen.dart';
 import 'package:robustremedy/screen/profile/account_details.dart';
 import 'package:robustremedy/screen/profile/change_pwd.dart';
+import 'package:robustremedy/screen/profile/family_miles_history.dart';
+import 'package:robustremedy/screen/profile/family_miles_screen.dart';
 import 'package:robustremedy/screen/profile/myorders.dart';
 import 'package:robustremedy/screen/prescription/myprescriptions.dart';
 import 'package:robustremedy/screen/static/logout.dart';
@@ -16,6 +18,7 @@ import 'package:robustremedy/widgets/custom_divider_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../auth/login.dart';
+import 'coupons_page.dart';
 
 class MyProfile extends StatelessWidget {
   @override
@@ -141,19 +144,14 @@ class _UserProfilePageState extends State<UserProfilePage> {
     );
   }
 
-  Widget _buildFullName() {
-    TextStyle _nameTextStyle = TextStyle(
-      fontFamily: 'Roboto',
-      color: Colors.black,
-      fontSize: 28.0,
-      fontWeight: FontWeight.w700,
-    );
-
-    return Text(
-      _fullName,
-      style: _nameTextStyle,
+  Widget _buildProfileImage1() {
+    return Center(
+      child: Container(
+       child: FamilyMilesScreen(),
+      ),
     );
   }
+
 
   Widget _buildStatus(BuildContext context) {
     return Container(
@@ -272,7 +270,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
           InkWell(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Address_profile()));
+                  MaterialPageRoute(builder: (context) => FamilyMilesScreen()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => Address_profile()));
             },
             child: ListTile(
               leading: Icon(Icons.location_on,
@@ -383,11 +383,14 @@ class _UserProfilePageState extends State<UserProfilePage> {
       // _buildCoverImage(screenSize),
       // child: SafeArea(
       //child: SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
+      child: Column(
           children: <Widget>[
+            _buildProfileImage1(),
             // SizedBox(height: screenSize.height ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
             Card(
                 color: Colors.white,
                 child: Column(children: <Widget>[
@@ -432,9 +435,11 @@ class _UserProfilePageState extends State<UserProfilePage> {
 
             CustomDividerView(),
             footerview(),
+              ],
+            )),
           ],
         ),
       ),
-    ));
+    );
   }
 }

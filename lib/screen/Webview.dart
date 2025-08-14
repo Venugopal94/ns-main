@@ -24,24 +24,28 @@ class WebViewLoad extends StatefulWidget {
 
 
 class WebViewLoadUI extends State<WebViewLoad>{
+  late final WebViewController _controller;
 
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-            title: Text('Payment', style: TextStyle(fontFamily: "Roboto",)),
-          backgroundColor: LightColor.yellowColor,
-          foregroundColor: LightColor.midnightBlue,
-        ),
-        body: WebView(onPageStarted: (url)
-          {
+  @override
+  void initState() {
+    super.initState();
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            CircularProgressIndicator.adaptive(
+              value: progress.toDouble(),
+            );
+          },
+          onPageStarted: (String url) {
             print("url "+url);
             Uri uri=Uri.parse(url);
             if(url.contains("/order-status.php"))
-              {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult(uri,this.widget.token,this.widget.data) ));
-              }
+            {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult(uri,this.widget.token,this.widget.data) ));
+            }
             print(uri);
             // print("Uri host"+uri.host);
             // print("Uri path"+uri.path);
@@ -51,23 +55,34 @@ class WebViewLoadUI extends State<WebViewLoad>{
             //   {
             //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult() ));
             //   }
-            },
-          onPageFinished: (url) {
+          },
+          onPageFinished: (String url) {
             Uri uri=Uri.parse(url);
             if(url.contains("/order-status.php"))
             {
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>TransactionResult(uri,this.widget.token,this.widget.data) ));
             }
           },
-          initialUrl: this.widget.url,
-          javascriptMode: JavascriptMode.unrestricted,
-        )
-    );
+          onWebResourceError: (WebResourceError error) {},
+          onNavigationRequest: (NavigationRequest request) {
+            if (request.url.startsWith('https://www.youtube.com/')) {
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(this.widget.url));
   }
-
-  @override
-  void initState() {
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
-    super.initState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+            title: Text('Payment', style: TextStyle(fontFamily: "Roboto",)),
+          backgroundColor: LightColor.yellowColor,
+          foregroundColor: LightColor.midnightBlue,
+        ),
+        body: WebViewWidget(controller: _controller,)
+    );
   }
 }

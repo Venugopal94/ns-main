@@ -3,7 +3,7 @@ import 'package:robustremedy/screen/home/cart.dart';
 import 'package:robustremedy/screen/home/summer_items.dart';
 import 'package:robustremedy/screen/profile/order_details_item.dart';
 import 'package:robustremedy/themes/light_color.dart';
-import 'package:timelines/timelines.dart';
+import 'package:timelines_plus/timelines_plus.dart';
 
 import '../prescription/myprescription_detail.dart';
 //import 'package:timeline_node/timeline_node.dart';

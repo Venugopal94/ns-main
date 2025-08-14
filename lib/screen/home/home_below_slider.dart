@@ -24,7 +24,6 @@ import 'package:robustremedy/themes/light_color.dart';
 import 'package:http/http.dart' as http;
 import 'package:robustremedy/themes/ui_helper.dart';
 import 'package:robustremedy/widgets/custom_divider_view.dart';
-import 'package:share/share.dart';
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 

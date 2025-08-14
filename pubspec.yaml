@@ -4,7 +4,7 @@ description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 15.4.6+74
+version: 15.9.1+79
 
 environment:
   sdk: ">=2.12.0 <4.1.0"
@@ -22,7 +22,7 @@ dependencies:
   firebase_remote_config: ^5.4.1
   firebase_messaging: ^15.2.3
   firebase_core: ^3.12.0
-  firebase_analytics: ^11.4.3
+  firebase_analytics: 11.6.0
   #carousel_pro: ^1.0.0
   #carousel_pro_nullsafety: ^2.0.0
   google_fonts:
@@ -44,17 +44,16 @@ dependencies:
   translator:
   filter_list:
   modal_bottom_sheet: ^2.1.2
-  flutter_local_notifications: ^15.1.0+1
-  timelines: ^0.1.0
+  flutter_local_notifications: ^19.3.1
   get_it:
   url_launcher:
   flutter_rating_bar:
-  share:
+  share_plus: ^11.0.0
   flutter_xlider: ^3.5.0
   showcaseview:
   bouncing_widget:
-  flutter_phone_direct_caller:
-  webview_flutter: ^2.5.0
+  flutter_phone_direct_caller: ^2.2.1
+  webview_flutter: ^4.0.0
   flutter_typeahead:
   image_picker: ^1.0.2
   change_app_package_name: ^1.0.0
@@ -64,6 +63,12 @@ dependencies:
   crypto: ^3.0.3
   cached_network_image: ^3.3.1
   sms_autofill: ^2.4.0
+  timelines_plus: ^1.0.7
+  barcode: ^2.2.9
+#  timelines:
+#    git:
+#      url: https://github.com/chulwoo-park/timelines
+#      commit: be9648a
 
 dev_dependencies:
   flutter_test:
